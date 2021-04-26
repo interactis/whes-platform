@@ -36,14 +36,21 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
-        'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            'rules' => [
-            ],
-        ],
-        */
+    	'urlManager' => [
+        	'showScriptName' => false,
+    		'enablePrettyUrl' => true,
+    		'rules' => [
+    			'article/<slug:[\w\-]+>' =>'article/view',
+    			//'artikel/<slug:[\w\-]+>' => 'article/view',
+    			//'artikel' => 'article/index',
+    			'poi/<slug:[\w\-]+>' =>'poi/view',
+    			'tour/<slug:[\w\-]+>' =>'tour/view',
+    			
+        		'<controller:\w+>/<id:\d+>' => '<controller>/view',
+                '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
+                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
+    		],
+		],
     ],
     'params' => $params,
 ];

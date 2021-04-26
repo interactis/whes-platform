@@ -44,7 +44,7 @@ return [
     			//'artikel/<slug:[\w\-]+>' => 'article/view',
     			//'artikel' => 'article/index',
     			'poi/<slug:[\w\-]+>' =>'poi/view',
-    			'tour/<slug:[\w\-]+>' =>'tour/view',
+    			'route/<slug:[\w\-]+>' =>'route/view',
     			
         		'<controller:\w+>/<id:\d+>' => '<controller>/view',
                 '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',

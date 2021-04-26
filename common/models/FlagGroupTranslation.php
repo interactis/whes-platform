@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "flag_group_translation".
@@ -25,6 +26,16 @@ class FlagGroupTranslation extends \yii\db\ActiveRecord
     public static function tableName()
     {
         return 'flag_group_translation';
+    }
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function behaviors()
+    {
+        return [
+            TimestampBehavior::className(),
+        ];
     }
 
     /**

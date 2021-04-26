@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "tag_translation".
@@ -26,6 +27,16 @@ class TagTranslation extends \yii\db\ActiveRecord
     public static function tableName()
     {
         return 'tag_translation';
+    }
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function behaviors()
+    {
+        return [
+            TimestampBehavior::className(),
+        ];
     }
 
     /**

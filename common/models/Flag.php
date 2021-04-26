@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "flag".
@@ -27,7 +28,17 @@ class Flag extends \yii\db\ActiveRecord
     {
         return 'flag';
     }
-
+	
+	/**
+     * {@inheritdoc}
+     */
+    public function behaviors()
+    {
+        return [
+            TimestampBehavior::className(),
+        ];
+    }
+	
     /**
      * {@inheritdoc}
      */

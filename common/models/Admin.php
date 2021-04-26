@@ -58,8 +58,16 @@ class Admin extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            ['status', 'default', 'value' => self::STATUS_INACTIVE],
+            ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_INACTIVE, self::STATUS_DELETED]],
+           	['heritage_id', 'exist', 'skipOnError' => true, 'targetClass' => Heritage::className(), 'targetAttribute' => ['heritage_id' => 'id']],
+        ];
+    }
+    
+    public function attributeLabels()
+    {
+        return [
+            'heritage_id' => Yii::t('app', 'Heritage')
         ];
     }
 	

@@ -1,0 +1,72 @@
+<?php
+
+namespace common\models;
+
+use Yii;
+
+/**
+ * This is the model class for table "article".
+ *
+ * @property int $id
+ * @property int|null $content_id
+ * @property int|null $created_at
+ * @property int|null $updated_at
+ *
+ * @property Content $content
+ * @property ArticleTranslation[] $articleTranslations
+ */
+class Article extends \yii\db\ActiveRecord
+{
+    /**
+     * {@inheritdoc}
+     */
+    public static function tableName()
+    {
+        return 'article';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function rules()
+    {
+        return [
+            [['content_id', 'created_at', 'updated_at'], 'default', 'value' => null],
+            [['content_id', 'created_at', 'updated_at'], 'integer'],
+            [['content_id'], 'exist', 'skipOnError' => true, 'targetClass' => Content::className(), 'targetAttribute' => ['content_id' => 'id']],
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function attributeLabels()
+    {
+        return [
+            'id' => Yii::t('app', 'ID'),
+            'content_id' => Yii::t('app', 'Content ID'),
+            'created_at' => Yii::t('app', 'Created At'),
+            'updated_at' => Yii::t('app', 'Updated At'),
+        ];
+    }
+
+    /**
+     * Gets query for [[Content]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getContent()
+    {
+        return $this->hasOne(Content::className(), ['id' => 'content_id']);
+    }
+
+    /**
+     * Gets query for [[ArticleTranslations]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getArticleTranslations()
+    {
+        return $this->hasMany(ArticleTranslation::className(), ['article_id' => 'id']);
+    }
+}

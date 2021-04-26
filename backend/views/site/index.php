@@ -39,7 +39,7 @@ $this->title = 'Dashboard';
 				<div class="col-md-4 margin-bottom">
 					<div class="h1">Users</div>
 					<p class="lead">
-						<a  href="/admins">
+						<a  href="/admin">
 							Admin Users
 						</a>
 					</p>

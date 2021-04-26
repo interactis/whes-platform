@@ -138,6 +138,11 @@ a.desc:after {
     outline: none;
 }
 
+h1,
+.h1 {
+	margin-bottom: 18px;
+}
+
 .margin-bottom {
 	margin-bottom: 30px;
 }

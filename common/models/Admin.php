@@ -29,7 +29,10 @@ class Admin extends ActiveRecord implements IdentityInterface
     const STATUS_DELETED = 0;
     const STATUS_INACTIVE = 9;
     const STATUS_ACTIVE = 10;
-
+    
+    const ROLE_SUPER_ADMIN = 1;
+    const ROLE_ADMIN = 2;
+    const ROLE_EDITOR = 3;
 
     /**
      * {@inheritdoc}
@@ -59,7 +62,7 @@ class Admin extends ActiveRecord implements IdentityInterface
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_INACTIVE, self::STATUS_DELETED]],
         ];
     }
-
+	
     /**
      * {@inheritdoc}
      */
@@ -189,5 +192,25 @@ class Admin extends ActiveRecord implements IdentityInterface
     public function removePasswordResetToken()
     {
         $this->password_reset_token = null;
+    }
+    
+    public function isAdmin()
+    {
+        if ($this->role == self::ROLE_ADMIN OR $this->role == self::ROLE_SUPER_ADMIN)
+        {
+        	return true;
+        }
+        else
+        	return false;
+    }
+    
+    public function isEditor()
+    {
+        if ($this->role == self::ROLE_EDITOR)
+        {
+        	return true;
+        }
+        else
+        	return false;
     }
 }

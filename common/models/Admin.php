@@ -196,9 +196,13 @@ class Admin extends ActiveRecord implements IdentityInterface
      *
      * @param string $password
      */
-    public function setPassword($password)
+    public function setPassword()
     {
-        $this->password_hash = Yii::$app->security->generatePasswordHash($password);
+    	if (!empty($this->password)) {
+    		$this->password_hash = Yii::$app->security->generatePasswordHash($this->password);
+    	}
+        	
+        return true;
     }
 
     /**

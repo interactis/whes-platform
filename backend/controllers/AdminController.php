@@ -70,7 +70,7 @@ class AdminController extends Controller
         $model = new Admin();
 		$model->scenario = 'create';
 		
-        if ($model->load(Yii::$app->request->post()) && $model->save())
+        if ($model->load(Yii::$app->request->post()) && $model->setPassword() && $model->save())
         {
         	Yii::$app->getSession()->setFlash(
 				'success',
@@ -95,7 +95,7 @@ class AdminController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save())
+        if ($model->load(Yii::$app->request->post()) && $model->setPassword() && $model->save())
         {
         	Yii::$app->getSession()->setFlash(
 				'success',

@@ -38,7 +38,6 @@ $translationModel = new MediaTranslation();
 						</div>
 					</div>
 					<br />
-					
 				
 					<?= Yii::$app->controller->renderPartial('//translation/field', [
 						'model' => $model,

@@ -152,6 +152,11 @@ h1 {
 	margin-bottom: 18px;
 }
 
+h4,
+.h4 {
+	margin-top: 0;
+}
+
 .main-nav-tabs {
 	margin-bottom: 30px;
 	font-size: 1.1em;

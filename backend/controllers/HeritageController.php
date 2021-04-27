@@ -38,7 +38,7 @@ class HeritageController extends Controller
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action) {
-                            return $this->isOwnerOrAdmin();
+                            return $this->_isOwnerOrAdmin();
                         }
                     ]
                 ],
@@ -135,7 +135,7 @@ class HeritageController extends Controller
         throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
     }
     
-    protected function isOwnerOrAdmin()
+    private function _isOwnerOrAdmin()
     {   
     	$user = Yii::$app->user->identity;
     	

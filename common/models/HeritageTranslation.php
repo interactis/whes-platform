@@ -71,7 +71,7 @@ class HeritageTranslation extends \yii\db\ActiveRecord
             'name' => Yii::t('app', 'Name'),
             'short_name' => Yii::t('app', 'Short Name'),
             'description' => Yii::t('app', 'Description'),
-            'link_url' => Yii::t('app', 'Link Url'),
+            'link_url' => Yii::t('app', 'Link URL'),
             'link_text' => Yii::t('app', 'Link Text'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),

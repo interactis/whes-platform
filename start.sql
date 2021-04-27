@@ -515,3 +515,12 @@ ALTER TABLE supplier_translation ADD FOREIGN KEY (supplier_id) REFERENCES suppli
 ALTER TABLE supplier_translation ADD FOREIGN KEY (language_id) REFERENCES language (id) ON DELETE CASCADE;
 
 ALTER TABLE flag ADD FOREIGN KEY (flag_group_id) REFERENCES flag_group (id) ON DELETE CASCADE;
+
+
+
+/* Insert data */
+
+INSERT INTO language (code, name) VALUES ('de', 'Deutsch');
+INSERT INTO language (code, name) VALUES ('en', 'English');
+INSERT INTO language (code, name) VALUES ('fr', 'Français');
+INSERT INTO language (code, name) VALUES ('it', 'Italiano');

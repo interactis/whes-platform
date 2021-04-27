@@ -4,6 +4,7 @@ namespace common\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
+use common\models\helpers\TranslationModel;
 
 /**
  * This is the model class for table "heritage".
@@ -23,8 +24,11 @@ use yii\behaviors\TimestampBehavior;
  * @property HeritageTranslation[] $heritageTranslations
  * @property Media[] $media
  */
-class Heritage extends \yii\db\ActiveRecord
+class Heritage extends TranslationModel
 {
+	public $translationFields = ['name', 'short_name', 'description', 'link_url', 'link_text'];
+	public $requiredTranslationFields = ['name', 'short_name', 'description'];
+
     /**
      * {@inheritdoc}
      */

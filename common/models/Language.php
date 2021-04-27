@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "language".
@@ -142,5 +143,11 @@ class Language extends \yii\db\ActiveRecord
     public function getTagTranslations()
     {
         return $this->hasMany(TagTranslation::className(), ['language_id' => 'id']);
+    }
+    
+    public static function getLanguages()
+    {
+        $languages = Language::find()->all();
+        return ArrayHelper::map($languages, 'code', 'id');
     }
 }

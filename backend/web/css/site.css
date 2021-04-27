@@ -138,9 +138,26 @@ a.desc:after {
     outline: none;
 }
 
-h1,
+@media(min-width:992px) {
+	.fixed {
+		position: fixed;
+	}
+}
+
+h1 {
+	margin-bottom: 42px;
+}
+
 .h1 {
 	margin-bottom: 18px;
+}
+
+.panel {
+	margin-bottom: 60px;
+}
+
+.panel h3 {
+	margin: 6px 0;
 }
 
 .margin-bottom {

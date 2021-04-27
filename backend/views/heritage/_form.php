@@ -8,7 +8,7 @@ $translationModel = new HeritageTranslation();
 
 $viewUrl = false;
 if (!$model->isNewRecord)
-	$viewUrl = Yii::$app->params['frontendUrl'] .'/'. $model->slug;
+	$viewUrl = Yii::$app->params['frontendUrl'] . $model->slug;
 ?>
 
 <div class="heritage-form">
@@ -37,7 +37,8 @@ if (!$model->isNewRecord)
 						'form' => $form,
 						'field' => 'short_name',
 						'translations' => $translations,
-						'translationModel' => $translationModel
+						'translationModel' => $translationModel,
+						'hint' => Yii::t('app', 'Use the full name here if no short name is available.')
 					]); ?>
 					
 					<?= Yii::$app->controller->renderPartial('//translation/field', [

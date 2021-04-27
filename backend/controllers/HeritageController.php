@@ -101,7 +101,6 @@ class HeritageController extends Controller
 
     /**
      * Updates an existing Heritage model.
-     * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -109,9 +108,24 @@ class HeritageController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+		$post = Yii::$app->request->post();
+		
+		if ($model->load($post))
+		{
+        	if ($model->validateTranslations($post) && $model->validate())
+        	{
+        		if ($model->save(false)	&&
+        			$model->saveTranslations($post) &&
+        			$model->generateSlugs('short_name')
+        		)
+        		{        						
+					Yii::$app->getSession()->setFlash(
+						'success',
+						'<span class="glyphicon glyphicon-ok-sign"></span> Your changes have been saved.'
+					);
+					return $this->redirect(['update', 'id' => $model->id]);	
+				}
+       		}
         }
 
         return $this->render('update', [

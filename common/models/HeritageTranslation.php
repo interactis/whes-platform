@@ -55,6 +55,7 @@ class HeritageTranslation extends \yii\db\ActiveRecord
             [['slug', 'name', 'short_name', 'link_url', 'link_text'], 'string', 'max' => 255],
             [['heritage_id'], 'exist', 'skipOnError' => true, 'targetClass' => Heritage::className(), 'targetAttribute' => ['heritage_id' => 'id']],
             [['language_id'], 'exist', 'skipOnError' => true, 'targetClass' => Language::className(), 'targetAttribute' => ['language_id' => 'id']],
+        	[['link_url'], 'url']
         ];
     }
 

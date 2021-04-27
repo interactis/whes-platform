@@ -1,5 +1,10 @@
 <?php
 return [
+	'supportedLanguages' => ['de', 'en', 'fr', 'it'],
+	'languageIds' => ['de' => 1, 'en' => 2, 'fr' => 3, 'it' => 4],
+    'preferredLanguageId' => 1, // preferred DE = default
+    'secondaryLanguageId' => 2, // secondary EN
+	
     'adminEmail' => 'info@interactis.ch',
     'supportEmail' => 'info@interactis.ch',
     'senderEmail' => 'info@ourheritage.ch',

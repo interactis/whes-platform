@@ -152,6 +152,11 @@ h1 {
 	margin-bottom: 18px;
 }
 
+.main-nav-tabs {
+	margin-bottom: 30px;
+	font-size: 1.1em;
+}
+
 .panel {
 	margin-bottom: 60px;
 }

@@ -4,8 +4,11 @@ namespace backend\controllers;
 
 use Yii;
 use common\models\Media;
+use common\models\Heritage;
+use common\models\Content;
 use backend\models\MediaSearch;
 use yii\web\Controller;
+use yii\filters\AccessControl;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
@@ -14,12 +17,45 @@ use yii\filters\VerbFilter;
  */
 class MediaController extends Controller
 {
+	private $_heritage;
+	private $_content;
+	
     /**
      * {@inheritdoc}
      */
     public function behaviors()
     {
         return [
+        	'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'actions' => ['page'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action) {
+                        	$user = Yii::$app->user->identity;
+                            return $user->isAdmin();
+                        }
+                    ],
+                    [
+                        'actions' => ['heritage'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action) {
+                            return $this->_isHeritageOwnerOrAdmin();
+                        }
+                    ],
+                    [
+                        'actions' => ['content'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action) {
+                            return $this->_isContentOwnerOrAdmin();
+                        }
+                    ]
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -28,60 +64,47 @@ class MediaController extends Controller
             ],
         ];
     }
-
-    /**
-     * Lists all Media models.
-     * @return mixed
-     */
-    public function actionIndex()
+	
+	public function actionPage($id)
     {
-        $searchModel = new MediaSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
         return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
+            'model' => $this->findPageModels($id),
         ]);
     }
-
-    /**
-     * Displays a single Media model.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    public function actionView($id)
+	
+    public function actionHeritage($id)
     {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
+    	$heritage = $this->_findHeritage($id);
+    	
+        return $this->render('heritage', [
+        	'model' => $heritage,
+            'models' => $heritage->media,
+        ]);
+        
+    }
+    
+    public function actionContent($id)
+    {
+    	$content = $this->_findContent($id);
+    	
+        return $this->render('index', [
+            'models' => $content->media,
         ]);
     }
-
-    /**
-     * Creates a new Media model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
-    public function actionCreate()
+	
+    public function actionCreateHeritageMedia()
     {
         $model = new Media();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index', 'id' => $model->id]);
         }
 
         return $this->render('create', [
             'model' => $model,
         ]);
     }
-
-    /**
-     * Updates an existing Media model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
+	
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
@@ -94,28 +117,14 @@ class MediaController extends Controller
             'model' => $model,
         ]);
     }
-
-    /**
-     * Deletes an existing Media model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
+	
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }
-
-    /**
-     * Finds the Media model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return Media the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
-     */
+	
     protected function findModel($id)
     {
         if (($model = Media::findOne($id)) !== null) {
@@ -123,5 +132,74 @@ class MediaController extends Controller
         }
 
         throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
+    }
+    
+    
+    private function _findHeritage($id)
+    {
+    	if (empty($this->_heritage))
+    	{
+    		if (($model = Heritage::findOne($id)) !== null)
+    		{
+    			$this->_heritage = $model;
+				return $model;
+			}
+			
+			throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
+    	}
+        else
+			return $this->_heritage;
+    }
+    
+    private function _findContent($id)
+    {
+    	if (empty($this->_content))
+    	{
+    		if (($model = Content::findOne($id)) !== null)
+    		{
+    			$this->_content = $model;
+				return $model;
+			}
+			
+			throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
+    	}
+        else
+			return $this->_content;
+    }
+    
+    private function _isHeritageOwnerOrAdmin()
+    {   
+    	$user = Yii::$app->user->identity;
+    	
+    	if ($user->isAdmin())
+    	{
+    		return true;
+    	}
+    	else
+    	{
+    		$heritage = $this->_findHeritage(Yii::$app->request->get('id'));
+    		if ($heritage->id == $user->heritage_id)
+    			return true;
+    	}
+    	
+    	return false;
+    }
+    
+    private function _isContentOwnerOrAdmin()
+    {   
+    	$user = Yii::$app->user->identity;
+    	
+    	if ($user->isAdmin())
+    	{
+    		return true;
+    	}
+    	else
+    	{
+    		$content = $this->_findContent(Yii::$app->request->get('id'));
+    		if ($content->heritage_id == $user->heritage_id)
+    			return true;
+    	}
+    	
+    	return false;
     }
 }

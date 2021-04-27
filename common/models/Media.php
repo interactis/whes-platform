@@ -29,6 +29,8 @@ class Media extends HelperModel
 	public $translationFields = ['title', 'description', 'copyright'];
 	public $requiredTranslationFields = ['title', 'description'];
 	
+	public $image_file;
+	
     /**
      * {@inheritdoc}
      */
@@ -60,6 +62,11 @@ class Media extends HelperModel
             [['content_id'], 'exist', 'skipOnError' => true, 'targetClass' => Content::className(), 'targetAttribute' => ['content_id' => 'id']],
             [['heritage_id'], 'exist', 'skipOnError' => true, 'targetClass' => Heritage::className(), 'targetAttribute' => ['heritage_id' => 'id']],
             [['page_id'], 'exist', 'skipOnError' => true, 'targetClass' => Page::className(), 'targetAttribute' => ['page_id' => 'id']],
+        
+        	['image_file', 'image', 'extensions' => 'png, jpg',
+        		'minWidth' => 1600, 'maxWidth' => 5000,
+        		'minHeight' => 600, 'maxHeight' => 5000
+    		],
         ];
     }
 

@@ -89,7 +89,7 @@ class HeritageController extends Controller
 						'success',
 						'<span class="glyphicon glyphicon-ok-sign"></span> Your changes have been saved.'
 					);
-					return $this->redirect(['update', 'id' => $model->id]);	
+					return $this->redirect(['update', 'id' => $model->id]);
 				}
        		}
         }

@@ -65,7 +65,7 @@ class MediaTranslation extends \yii\db\ActiveRecord
             'id' => Yii::t('app', 'ID'),
             'media_id' => Yii::t('app', 'Media ID'),
             'language_id' => Yii::t('app', 'Language ID'),
-            'title' => Yii::t('app', 'Title'),
+            'title' => Yii::t('app', 'Title / Alt Text'),
             'description' => Yii::t('app', 'Description'),
             'author' => Yii::t('app', 'Author'),
             'copyright' => Yii::t('app', 'Copyright'),

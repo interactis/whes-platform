@@ -1,36 +1,79 @@
 <?php
-
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use common\models\MediaTranslation;
+use kartik\file\FileInput;
 
-/* @var $this yii\web\View */
-/* @var $model common\models\Media */
-/* @var $form yii\widgets\ActiveForm */
+$translations = $model->mediaTranslations;
+$translationModel = new MediaTranslation();
 ?>
 
 <div class="media-form">
 
     <?php $form = ActiveForm::begin(); ?>
-
-    <?= $form->field($model, 'heritage_id')->textInput() ?>
-
-    <?= $form->field($model, 'content_id')->textInput() ?>
-
-    <?= $form->field($model, 'page_id')->textInput() ?>
-
-    <?= $form->field($model, 'filename')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'exif')->textarea(['rows' => 6]) ?>
-
-    <?= $form->field($model, 'order')->textInput() ?>
-
-    <?= $form->field($model, 'created_at')->textInput() ?>
-
-    <?= $form->field($model, 'updated_at')->textInput() ?>
-
-    <div class="form-group">
-        <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>
-    </div>
+	
+	<div class="row">
+    	<div class="col-md-10 col-lg-8">
+    	
+			<div id="image" class="panel panel-default">
+				<div class="panel-heading">
+					<h3>Image</h3>
+				</div>
+				<div class="panel-body">
+				
+					<div class="row">
+						<div class="col-md-4">
+							<?= $model->getImageHtml(400, 'img-thumbnail', 'Media image', Yii::$app->params['frontendUrl']) ?>
+						</div>
+						<div class="col-md-8">
+							<?= $form->field($model, 'image_file')->widget(FileInput::classname(), [
+								'options' => ['accept' => 'image/*'],
+								'pluginOptions' => [
+									'showPreview' => false,
+									'showCaption' => true,
+									'showRemove' => true,
+									'showUpload' => false
+								]
+							]) ?>
+						</div>
+					</div>
+					<br />
+					
+				
+					<?= Yii::$app->controller->renderPartial('//translation/field', [
+						'model' => $model,
+						'form' => $form,
+						'field' => 'title',
+						'translations' => $translations,
+						'translationModel' => $translationModel
+					]); ?>
+					
+					<?= Yii::$app->controller->renderPartial('//translation/field', [
+						'model' => $model,
+						'form' => $form,
+						'field' => 'description',
+						'translations' => $translations,
+						'translationModel' => $translationModel,
+						'isWysiwyg' => true
+					]); ?>
+					
+					<?= Yii::$app->controller->renderPartial('//translation/field', [
+						'model' => $model,
+						'form' => $form,
+						'field' => 'copyright',
+						'translations' => $translations,
+						'translationModel' => $translationModel
+					]); ?>
+   
+    				<?= $form->field($model, 'order')->textInput()->hint(Yii::t('app', 'If necessary, use a number to sort the images among themselves.')) ?>
+				</div>
+			</div>
+			
+		</div>
+		
+		<?= Yii::$app->controller->renderPartial('//common/_saveColumn', ['form' => $form, 'model' => $model, 'showLangSwitch' => true]) ?>
+   		
+   	</div>
 
     <?php ActiveForm::end(); ?>
 

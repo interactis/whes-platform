@@ -2,11 +2,10 @@
 
 use yii\helpers\Html;
 
-/* @var $this yii\web\View */
-/* @var $model common\models\Media */
-
-$this->title = Yii::t('app', 'Create Media');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Media'), 'url' => ['index']];
+$this->title = Yii::t('app', 'Add Image');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Heritages'), 'url' => ['heritage/index']];
+$this->params['breadcrumbs'][] = ['label' => $heritage->short_name, 'url' => ['heritage/update', 'id' => $heritage->id]];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Images'), 'url' => ['media/heritage', 'id' => $heritage->id]];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="media-create">

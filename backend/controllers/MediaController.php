@@ -39,11 +39,11 @@ class MediaController extends Controller
                         }
                     ],
                     [
-                        'actions' => ['heritage'],
+                        'actions' => ['heritage', 'create-heritage-media'],
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action) {
-                            return $this->_isHeritageOwnerOrAdmin();
+                            return $this->_isHeritageOwnerOrAdmin(Yii::$app->request->get('id'));
                         }
                     ],
                     [
@@ -51,7 +51,7 @@ class MediaController extends Controller
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action) {
-                            return $this->_isContentOwnerOrAdmin();
+                            return $this->_isContentOwnerOrAdmin(Yii::$app->request->get('id'));
                         }
                     ]
                 ],
@@ -77,31 +77,46 @@ class MediaController extends Controller
     	$heritage = $this->_findHeritage($id);
     	
         return $this->render('heritage', [
-        	'model' => $heritage,
+        	'heritage' => $heritage,
             'models' => $heritage->media,
         ]);
-        
     }
-    
-    public function actionContent($id)
+	
+    public function actionCreateHeritageMedia($id)
+    {
+    	$heritage = $this->_findHeritage($id);
+        $model = new Media();
+        $model->heritage_id = $heritage->id;
+        
+        $post = Yii::$app->request->post();
+		if ($model->load($post))
+        {
+        	if ($model->validateTranslations($post) && $model->validate())
+        	{
+        		$model->createThumbs(Yii::getAlias('@frontend/web/img/'), 'filename');
+        		
+        		if ($model->save(false) && $model->saveTranslations($post)) {
+        			Yii::$app->getSession()->setFlash(
+        				'success',
+        				'<span class="glyphicon glyphicon-ok-sign"></span> Your changes have been saved.'
+        			);
+        			return $this->redirect(['heritage', 'id' => $heritage->id]);	
+            	}
+       		}
+        }
+
+        return $this->render('create', [
+        	'heritage' => $heritage,
+            'model' => $model,
+        ]);
+    }
+	
+	public function actionContent($id)
     {
     	$content = $this->_findContent($id);
     	
         return $this->render('index', [
             'models' => $content->media,
-        ]);
-    }
-	
-    public function actionCreateHeritageMedia()
-    {
-        $model = new Media();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['index', 'id' => $model->id]);
-        }
-
-        return $this->render('create', [
-            'model' => $model,
         ]);
     }
 	
@@ -133,7 +148,6 @@ class MediaController extends Controller
 
         throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
     }
-    
     
     private function _findHeritage($id)
     {
@@ -167,7 +181,7 @@ class MediaController extends Controller
 			return $this->_content;
     }
     
-    private function _isHeritageOwnerOrAdmin()
+    private function _isHeritageOwnerOrAdmin($id)
     {   
     	$user = Yii::$app->user->identity;
     	
@@ -177,7 +191,7 @@ class MediaController extends Controller
     	}
     	else
     	{
-    		$heritage = $this->_findHeritage(Yii::$app->request->get('id'));
+    		$heritage = $this->_findHeritage($id);
     		if ($heritage->id == $user->heritage_id)
     			return true;
     	}
@@ -185,7 +199,7 @@ class MediaController extends Controller
     	return false;
     }
     
-    private function _isContentOwnerOrAdmin()
+    private function _isContentOwnerOrAdmin($id)
     {   
     	$user = Yii::$app->user->identity;
     	
@@ -195,7 +209,7 @@ class MediaController extends Controller
     	}
     	else
     	{
-    		$content = $this->_findContent(Yii::$app->request->get('id'));
+    		$content = $this->_findContent($id);
     		if ($content->heritage_id == $user->heritage_id)
     			return true;
     	}

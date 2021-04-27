@@ -11,6 +11,8 @@ use common\models\Heritage;
  */
 class HeritageSearch extends Heritage
 {
+	public $name;
+	
     /**
      * {@inheritdoc}
      */
@@ -20,6 +22,7 @@ class HeritageSearch extends Heritage
             [['id', 'priority', 'created_at', 'updated_at'], 'integer'],
             [['geom'], 'safe'],
             [['published', 'hidden'], 'boolean'],
+            [['name'], 'safe'],
         ];
     }
 
@@ -42,12 +45,25 @@ class HeritageSearch extends Heritage
     public function search($params)
     {
         $query = Heritage::find();
+        $query->leftJoin('heritage_translation', 'heritage_translation.heritage_id = heritage.id');
+        $query->groupBy(['heritage.id', 'heritage_translation.name']);
 
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort'=> [
+				'defaultOrder' => ['id' => SORT_DESC]
+			],
+            'pagination' => [
+				'pageSize' => 50,
+			]
         ]);
+        
+        $dataProvider->sort->attributes['name'] = [
+			'asc' => ['heritage_translation.name' => SORT_ASC],
+			'desc' => ['heritage_translation.name' => SORT_DESC],
+		];
 
         $this->load($params);
 
@@ -67,7 +83,7 @@ class HeritageSearch extends Heritage
             'updated_at' => $this->updated_at,
         ]);
 
-        $query->andFilterWhere(['ilike', 'geom', $this->geom]);
+        $query->andFilterWhere(['ilike', 'heritage_translation.name', $this->name]);
 
         return $dataProvider;
     }

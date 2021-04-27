@@ -27,14 +27,14 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'geom',
-            'priority',
+            'name',
             'published:boolean',
             'hidden:boolean',
-            //'created_at',
-            //'updated_at',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+            	'class' => 'yii\grid\ActionColumn',
+            	'template' => '{update} {delete}'
+            ]
         ],
     ]); ?>
 

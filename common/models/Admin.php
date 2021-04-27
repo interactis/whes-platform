@@ -33,6 +33,8 @@ class Admin extends ActiveRecord implements IdentityInterface
     const ROLE_SUPER_ADMIN = 1;
     const ROLE_ADMIN = 2;
     const ROLE_EDITOR = 3;
+    
+    public $password;
 
     /**
      * {@inheritdoc}
@@ -58,10 +60,31 @@ class Admin extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
+        	['password', 'string', 'min' => 8, 'max' => 30],
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_INACTIVE, self::STATUS_DELETED]],
            	['heritage_id', 'exist', 'skipOnError' => true, 'targetClass' => Heritage::className(), 'targetAttribute' => ['heritage_id' => 'id']],
+           	['password', 'required', 'on' => 'create'],
+           	['role', 'integer'],
+           	['password_hash', 'safe'],
+           	
+           	['email', 'trim'],
+            ['email', 'required'],
+            ['email', 'email'],
+            ['email', 'string', 'max' => 255],
+            ['email', 'validateEmail'],
         ];
+    }
+    
+    public function validateEmail($attribute, $params)
+    {
+    	$model = Admin::find()
+    		->where(['lower(email)' => strtolower($this->$attribute)])
+    		->andWhere(['!=', 'id', $this->id])
+    		->one();
+
+    	if ($model)
+			$this->addError($attribute, Yii::t('app', 'This email address has already been taken.'));
     }
     
     public function attributeLabels()
@@ -202,6 +225,16 @@ class Admin extends ActiveRecord implements IdentityInterface
         $this->password_reset_token = null;
     }
     
+    /**
+     * Gets query for [[Content]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getHeritage()
+    {
+        return $this->hasOne(Heritage::className(), ['id' => 'heritage_id']);
+    }
+    
     public function isAdmin()
     {
         if ($this->role == self::ROLE_ADMIN OR $this->role == self::ROLE_SUPER_ADMIN)
@@ -220,5 +253,14 @@ class Admin extends ActiveRecord implements IdentityInterface
         }
         else
         	return false;
+    }
+    
+    public function getRoles()
+    {
+    	return [
+    		3 => Yii::t('app', 'Editor (Heritage)'),
+    		2 => Yii::t('app', 'Admin (WHES)'),
+			1 => Yii::t('app', 'Super Admin (Tech)')
+		];
     }
 }

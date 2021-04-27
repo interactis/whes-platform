@@ -27,9 +27,14 @@ class AdminController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
+                        'actions' => ['index', 'create', 'update', 'delete'],
                         'allow' => true,
                         'roles' => ['@'],
-                    ],
+                        'matchCallback' => function ($rule, $action) {
+                        	$user = Yii::$app->user->identity;
+                            return $user->isAdmin();
+                        }
+                    ]
                 ],
             ],
             'verbs' => [
@@ -58,15 +63,21 @@ class AdminController extends Controller
 
     /**
      * Creates a new Admin model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
         $model = new Admin();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+		$model->scenario = 'create';
+		
+        if ($model->load(Yii::$app->request->post()) && $model->save())
+        {
+        	Yii::$app->getSession()->setFlash(
+				'success',
+				'<span class="glyphicon glyphicon-ok-sign"></span> Your changes have been saved.'
+			);
+			
+            return $this->redirect(['update', 'id' => $model->id]);
         }
 
         return $this->render('create', [
@@ -76,7 +87,6 @@ class AdminController extends Controller
 
     /**
      * Updates an existing Admin model.
-     * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -85,8 +95,14 @@ class AdminController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post()) && $model->save())
+        {
+        	Yii::$app->getSession()->setFlash(
+				'success',
+				'<span class="glyphicon glyphicon-ok-sign"></span> Your changes have been saved.'
+			);
+					
+            return $this->redirect(['update', 'id' => $model->id]);
         }
 
         return $this->render('update', [

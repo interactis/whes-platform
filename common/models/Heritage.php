@@ -5,6 +5,7 @@ namespace common\models;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use common\models\helpers\HelperModel;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "heritage".
@@ -134,5 +135,15 @@ class Heritage extends HelperModel
     public function getMedia()
     {
         return $this->hasMany(Media::className(), ['heritage_id' => 'id']);
+    }
+    
+    public static function getHeritages()
+    {
+        $models = Heritage::find()
+        	->joinWith('heritageTranslations')
+        	->where(['language_id' => Yii::$app->params['preferredLanguageId']])
+        	->orderBy(['short_name' => SORT_ASC])
+        	->all();
+        return ArrayHelper::map($models, 'id', 'short_name');
     }
 }

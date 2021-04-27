@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use common\models\Heritage;
 
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\AdminSearch */
@@ -28,10 +29,29 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'email:email',
-            'heritage_id',
-            'role',
+            
+            [
+                'attribute' => 'heritage_id',
+                'value' => function ($model) {
+                	if (isset($model->heritage))
+                    	return $model->heritage->short_name;
+                },
+                'filter' => Heritage::getHeritages(),
+            ],
+            
+            [
+                'attribute' => 'role',
+                'value' => function ($model) {
+                    return $model->roles[$model->role];
+                },
+                'filter' => $searchModel->roles,
+            ],
+            
+            [
+            	'class' => 'yii\grid\ActionColumn',
+            	'template' => '{update} {delete}'
+            ]
 
-            ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
 

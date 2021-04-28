@@ -68,13 +68,13 @@ class ArticleController extends HelperController
 
         if ($model->load($post) && $contentModel->load($post))
         { 
-        	if ($model->validateTranslations($post) && $model->validate() && $contentModel->validate())
+        	if ($model->validateTranslations() && $model->validate() && $contentModel->validate())
         	{
         		$contentModel->save(false);
     			$model->content_id = $contentModel->id;	
         		if ($model->save(false)	&&
-        			$model->saveTranslations($post) &&
-        			// $model->saveTags($post, 'Article') &&
+        			$model->saveTranslations() &&
+        			$model->saveTags('Article') &&
         			$model->generateSlugs()
         		)
         		{   					
@@ -95,17 +95,37 @@ class ArticleController extends HelperController
     
     public function actionUpdate($id)
     {
-        $model = $this->findModel($id);
+    	$model = $this->findModel($id);
+        $contentModel = $model->content;
+        $post = Yii::$app->request->post();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load($post) && $contentModel->load($post))
+        { 
+        	if ($model->validateTranslations() && $model->validate() && $contentModel->validate())
+        	{
+        	
+        		if ($contentModel->save(false) &&
+        			$model->save(false)	&&
+        			$model->saveTranslations() &&
+        			$model->saveTags('Article') &&
+        			$model->generateSlugs()
+        		)
+        		{   					
+					Yii::$app->getSession()->setFlash(
+						'success',
+						'<span class="glyphicon glyphicon-ok-sign"></span> Your changes have been saved.'
+					);
+					return $this->redirect(['update', 'id' => $model->id]);
+				}
+       		}
         }
-
+       
         return $this->render('update', [
             'model' => $model,
+            'contentModel' => $contentModel,
         ]);
     }
-  
+    
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();

@@ -103,11 +103,11 @@ class MediaController extends Controller
         $post = Yii::$app->request->post();
 		if ($model->load($post))
         {
-        	if ($model->validateTranslations($post) && $model->validate())
+        	if ($model->validateTranslations() && $model->validate())
         	{
         		$model->createThumbs(Yii::getAlias('@frontend/web/img/'));
         		
-        		if ($model->save(false) && $model->saveTranslations($post))
+        		if ($model->save(false) && $model->saveTranslations())
         		{
         			Yii::$app->getSession()->setFlash(
         				'success',
@@ -143,11 +143,11 @@ class MediaController extends Controller
         $post = Yii::$app->request->post();
 		if ($model->load($post))
         {
-        	if ($model->validateTranslations($post) && $model->validate())
+        	if ($model->validateTranslations() && $model->validate())
         	{
         		$model->createThumbs(Yii::getAlias('@frontend/web/img/'));
         		
-        		if ($model->save(false) && $model->saveTranslations($post))
+        		if ($model->save(false) && $model->saveTranslations())
         		{
         			Yii::$app->getSession()->setFlash(
         				'success',
@@ -171,11 +171,11 @@ class MediaController extends Controller
         $post = Yii::$app->request->post();
 		if ($model->load($post))
         {
-        	if ($model->validateTranslations($post) && $model->validate())
+        	if ($model->validateTranslations() && $model->validate())
         	{
         		$model->createThumbs(Yii::getAlias('@frontend/web/img/'));
         		
-        		if ($model->save(false) && $model->saveTranslations($post))
+        		if ($model->save(false) && $model->saveTranslations())
         		{
         			Yii::$app->getSession()->setFlash(
         				'success',

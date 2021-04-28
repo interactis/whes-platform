@@ -78,10 +78,10 @@ class HeritageController extends Controller
 		
 		if ($model->load($post))
 		{
-        	if ($model->validateTranslations($post) && $model->validate())
+        	if ($model->validateTranslations() && $model->validate())
         	{
         		if ($model->save(false)	&&
-        			$model->saveTranslations($post) &&
+        			$model->saveTranslations() &&
         			$model->generateSlugs('short_name')
         		)
         		{        						
@@ -112,10 +112,10 @@ class HeritageController extends Controller
 		
 		if ($model->load($post))
 		{
-        	if ($model->validateTranslations($post) && $model->validate())
+        	if ($model->validateTranslations() && $model->validate())
         	{
         		if ($model->save(false)	&&
-        			$model->saveTranslations($post) &&
+        			$model->saveTranslations() &&
         			$model->generateSlugs('short_name')
         		)
         		{        						

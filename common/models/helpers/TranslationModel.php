@@ -100,8 +100,10 @@ class TranslationModel extends \yii\db\ActiveRecord
      * @param $post array
      * @return bool
      */
-    public function validateTranslations($post, $index = false)
+    public function validateTranslations($index = false)
     {    
+    	$post = Yii::$app->request->post();
+    	
     	if ($index !== false)
     	{
     		$postFields = $post[$this->getTranslationTableNameOnly()][$index];
@@ -165,7 +167,7 @@ class TranslationModel extends \yii\db\ActiveRecord
         */
         
         // apply individual field validation rules (defined in model)
-    	return $this->saveTranslations($post, false, $index);
+    	return $this->saveTranslations(false, $index);
     }
     
     private function _setAvailableLanguages($languageId, $field)
@@ -203,8 +205,10 @@ class TranslationModel extends \yii\db\ActiveRecord
      * @param $save boolean (if false: Only apply validation without saving)
      * @return bool
      */
-    public function saveTranslations($post, $save = true, $index = false)
+    public function saveTranslations($save = true, $index = false)
     {    
+    	$post = Yii::$app->request->post();
+    	
     	if ($index !== false) {
     		$postFields = $post[$this->getTranslationTableNameOnly()][$index];
     	}

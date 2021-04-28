@@ -35,8 +35,17 @@ class HelperController extends Controller
     	}
     	else
     	{
-    		if ($user->heritage_id == Yii::$app->request->get('id'))
-    			return true;
+    		if (Yii::$app->request->get('id') !== null)
+    		{
+				if ($user->heritage_id == Yii::$app->request->get('id'))
+					return true;
+    		}
+    		
+    		if (Yii::$app->request->post('id') !== null)
+    		{
+				if ($user->heritage_id == Yii::$app->request->post('id'))
+					return true;
+    		}
     	}
     	
     	return false;

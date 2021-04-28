@@ -5,6 +5,7 @@ namespace common\models;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use common\models\helpers\TranslationModel;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "tag".
@@ -83,5 +84,15 @@ class Tag extends TranslationModel
     public function getTagTranslations()
     {
         return $this->hasMany(TagTranslation::className(), ['tag_id' => 'id']);
+    }
+    
+    public static function getTagList()
+    {
+    	$models = Tag::find()
+    		->joinWith('tagTranslations')
+    		->orderBy('title')
+    		->all();
+    		
+        return ArrayHelper::map($models, 'id', 'title');
     }
 }

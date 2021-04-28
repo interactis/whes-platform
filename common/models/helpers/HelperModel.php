@@ -20,21 +20,35 @@ class HelperModel extends TranslationModel
 		];
     }
     
-    public function saveTags($post, $contentType)
+    public function saveTags()
     {
-    	$contentId = $this->content->id;
-        ContentTag::deleteAll(['content_id' => $contentId]);
+        ContentTag::deleteAll(['content_id' => $this->content_id]);
+    	
+		$tagIds = [];
+		foreach ($this->tags as $tagId)
+		{
+			// $tag = $this->_saveTag($title);
+			$tagIds[] = [$this->content_id, $tagId];
+		}
+		Yii::$app->db->createCommand()->batchInsert('content_tag', ['content_id', 'tag_id'], $tagIds)->execute();
         
-        if (isset($post[$contentType]['tags']))
-        {
-        	$tagIds = [];
-        	foreach ($post[$contentType]['tags'] as $tagId)
-        		$tagIds[] = [$contentId, $tagId];
-        	
-        	Yii::$app->db->createCommand()->batchInsert('content_tag', ['content_id', 'tag_id'], $tagIds)->execute();
-        }
         return true;
     }
+    
+    /*
+    private function _saveTag($title)
+    {
+    	$tag = Tag::findOne(['title' => $title]);
+    	if (!$tag)
+    	{
+    		$tag = new Tag();
+    		$tag->active = $title;
+    		$tag->save();
+    		// save tage translations here (title)
+    	}
+    	return $tag;
+    }
+    */
     
     public function generateSlugs($field = 'title')
     {

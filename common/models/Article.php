@@ -49,7 +49,7 @@ class Article extends HelperModel
             [['content_id', 'created_at', 'updated_at'], 'default', 'value' => null],
             [['content_id', 'created_at', 'updated_at'], 'integer'],
             [['content_id'], 'exist', 'skipOnError' => true, 'targetClass' => Content::className(), 'targetAttribute' => ['content_id' => 'id']],
-            // [['tags'], 'required'],
+            [['tags'], 'required'],
         ];
     }
 

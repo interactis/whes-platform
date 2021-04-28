@@ -34,6 +34,11 @@ class Poi extends HelperModel
         return 'poi';
     }
     
+    public static function pluralName()
+    {
+        return Yii::t('app', 'Points of Interest');
+    }
+    
     /**
      * {@inheritdoc}
      */

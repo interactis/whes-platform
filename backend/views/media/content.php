@@ -1,17 +1,20 @@
 <?php
 use yii\helpers\Html;
 
+$type = $content->types[$content->type];
+$contentModel = $content->{$type};
+
 $this->title = Yii::t('app', 'Images');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Heritages'), 'url' => ['heritage/index']];
-$this->params['breadcrumbs'][] = ['label' => $heritage->short_name, 'url' => ['heritage/update', 'id' => $heritage->id]];
+$this->params['breadcrumbs'][] = ['label' => $contentModel->pluralName(), 'url' => [$type .'/index']];
+$this->params['breadcrumbs'][] = ['label' => $contentModel->title, 'url' => [$type .'/update', 'id' => $contentModel->id]];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="media-index">
 
-    <h1><?= $heritage->name ?></h1>
+    <h1><?= $contentModel->title ?></h1>
     
-    <?= Yii::$app->controller->renderPartial('//common/_navPills', ['model' => $heritage, 'active' => 2]) ?>
+    <?= Yii::$app->controller->renderPartial('//common/_navPills', ['model' => $contentModel, 'active' => 2]) ?>
 
     <div class="row">
 		<div class="col-md-10 col-lg-8">
@@ -29,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
     	</div>
     	<div class="col-md-2 col-lg-4">
     		<div class="fixed">
-    			<?= Html::a(Yii::t('app', 'Add Image'), ['create-heritage-media', 'id' => $heritage->id], ['class' => 'btn btn-success']) ?>
+    			<?= Html::a(Yii::t('app', 'Add Image'), ['create-heritage-media', 'id' => $contentModel->id], ['class' => 'btn btn-success']) ?>
     		</div>
     	</div>
     </div>

@@ -89,9 +89,9 @@ class Content extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getArticles()
+    public function getArticle()
     {
-        return $this->hasMany(Article::className(), ['content_id' => 'id']);
+        return $this->hasOne(Article::className(), ['content_id' => 'id']);
     }
 
     /**
@@ -170,9 +170,9 @@ class Content extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getPois()
+    public function getPoi()
     {
-        return $this->hasMany(Poi::className(), ['content_id' => 'id']);
+        return $this->hasOne(Poi::className(), ['content_id' => 'id']);
     }
 
     /**
@@ -180,9 +180,9 @@ class Content extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getRoutes()
+    public function getRoute()
     {
-        return $this->hasMany(Route::className(), ['content_id' => 'id']);
+        return $this->hasOne(Route::className(), ['content_id' => 'id']);
     }
 
     /**
@@ -193,5 +193,14 @@ class Content extends \yii\db\ActiveRecord
     public function getSuppliers()
     {
         return $this->hasMany(Supplier::className(), ['content_id' => 'id']);
+    }
+    
+    public function getTypes()
+    {
+    	return [
+    		1 => 'poi',
+    		2 => 'route',
+			3 => 'article'
+		];
     }
 }

@@ -30,6 +30,11 @@ class Article extends HelperModel
         return 'article';
     }
     
+    public static function pluralName()
+    {
+    	return Yii::t('app', 'Articles');
+    }
+    
     /**
      * {@inheritdoc}
      */

@@ -46,6 +46,11 @@ class Route extends HelperModel
         return 'route';
     }
     
+    public static function pluralName()
+    {
+    	return Yii::t('app', 'Routes');
+    }
+    
     /**
      * {@inheritdoc}
      */

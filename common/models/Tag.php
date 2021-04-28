@@ -117,8 +117,12 @@ class Tag extends TranslationModel
 		$tagIds = [];
 		foreach ($this->tags as $tagId)
 		{
-			if ($this->id != $tagId)
-				$tagIds[] = [$this->tag_id, $tagId];
+			if ($this->id != $tagId && is_numeric($tagId))
+			{
+				if (Tag::findOne($tagId))
+					$tagIds[] = [$this->tag_id, $tagId];
+			}
+				
 		}
 		Yii::$app->db->createCommand()->batchInsert('related_tag', ['tag_id', 'related_tag_id'], $tagIds)->execute();
         

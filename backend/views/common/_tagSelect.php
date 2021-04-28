@@ -9,7 +9,7 @@ use kartik\select2\Select2;
 	<?= Html::activeLabel($model, 'tags') ?>
 	
 	<?= Select2::widget([
-		'name' => $name .'['. $field .']',
+		'name' => ucfirst($model->tableName()) .'[tags]',
 		'value' => $tagValue,
 		'data' => Tag::getTagList(),
 		'maintainOrder' => true,

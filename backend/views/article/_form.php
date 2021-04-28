@@ -80,9 +80,7 @@ $user = Yii::$app->user->identity;
 					
 					<?= Yii::$app->controller->renderPartial('//common/_tagSelect', [
 						'model' => $model,
-						'name' => 'Content',
-						'field' => 'tags',
-						'tagValue' => $tagValue,
+						'tagValue' => $tagValue
 					]); ?>
 					
 					<?= $form->field($contentModel, 'priority')->dropDownList($model->priorities)

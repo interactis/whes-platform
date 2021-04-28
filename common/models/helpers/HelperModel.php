@@ -4,6 +4,7 @@ namespace common\models\helpers;
 use Yii;
 use yii\base\UnknownPropertyException;
 use yii\helpers\ArrayHelper;
+use common\models\Tag;
 use common\models\ContentTag;
 
 
@@ -27,8 +28,11 @@ class HelperModel extends TranslationModel
 		$tagIds = [];
 		foreach ($this->tags as $tagId)
 		{
-			// $tag = $this->_saveTag($title);
-			$tagIds[] = [$this->content_id, $tagId];
+			if (is_numeric($tagId))
+			{
+				if (Tag::findOne($tagId))
+					$tagIds[] = [$this->content_id, $tagId];
+			}
 		}
 		Yii::$app->db->createCommand()->batchInsert('content_tag', ['content_id', 'tag_id'], $tagIds)->execute();
         

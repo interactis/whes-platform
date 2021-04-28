@@ -37,8 +37,6 @@ if (isset($model->relatedTags))
 					
 					<?= Yii::$app->controller->renderPartial('//common/_tagSelect', [
 						'model' => $model,
-						'name' => 'Tag',
-						'field' => 'tags',
 						'tagValue' => $tagValue,
 					]); ?>
 					

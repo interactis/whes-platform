@@ -4,10 +4,12 @@ namespace common\models\helpers;
 use Yii;
 use yii\base\UnknownPropertyException;
 use yii\helpers\ArrayHelper;
+use common\models\ContentTag;
 
 
 class HelperModel extends TranslationModel
 {	
+    public $tags = [];
     
     public function getPriorities()
     {
@@ -16,6 +18,22 @@ class HelperModel extends TranslationModel
 			2 => Yii::t('app', 'Medium'),
 			1 => Yii::t('app', 'High'),
 		];
+    }
+    
+    public function saveTags($post, $contentType)
+    {
+    	$contentId = $this->content->id;
+        ContentTag::deleteAll(['content_id' => $contentId]);
+        
+        if (isset($post[$contentType]['tags']))
+        {
+        	$tagIds = [];
+        	foreach ($post[$contentType]['tags'] as $tagId)
+        		$tagIds[] = [$contentId, $tagId];
+        	
+        	Yii::$app->db->createCommand()->batchInsert('content_tag', ['content_id', 'tag_id'], $tagIds)->execute();
+        }
+        return true;
     }
     
     public function generateSlugs($field = 'title')

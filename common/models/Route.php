@@ -68,6 +68,7 @@ class Route extends HelperModel
             [['print_available'], 'boolean'],
             [['arrival_station', 'arrival_url', 'departure_station', 'departure_url'], 'string', 'max' => 255],
             [['content_id'], 'exist', 'skipOnError' => true, 'targetClass' => Content::className(), 'targetAttribute' => ['content_id' => 'id']],
+            [['tags'], 'required'],
         ];
     }
 

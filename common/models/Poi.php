@@ -55,6 +55,7 @@ class Poi extends HelperModel
             [['geom'], 'string'],
             [['arrival_station', 'arrival_url'], 'string', 'max' => 255],
             [['content_id'], 'exist', 'skipOnError' => true, 'targetClass' => Content::className(), 'targetAttribute' => ['content_id' => 'id']],
+            [['tags'], 'required'],
         ];
     }
 

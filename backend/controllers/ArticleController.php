@@ -66,19 +66,18 @@ class ArticleController extends HelperController
         $contentModel = $this->newContentModel(Content::TYPE_ARTICLE);
         $post = Yii::$app->request->post();
 
-        if ($model->load($post))
+        if ($model->load($post) && $contentModel->load($post))
         { 
-        	if ($model->validateTranslations($post) && $model->validate())
+        	if ($model->validateTranslations($post) && $model->validate() && $contentModel->validate())
         	{
-        		$contentModel->attributes .....;
         		$contentModel->save(false);
-    			$model->content_id = $contentModel->id;
-				
+    			$model->content_id = $contentModel->id;	
         		if ($model->save(false)	&&
         			$model->saveTranslations($post) &&
+        			// $model->saveTags($post, 'Article') &&
         			$model->generateSlugs()
         		)
-        		{        						
+        		{   					
 					Yii::$app->getSession()->setFlash(
 						'success',
 						'<span class="glyphicon glyphicon-ok-sign"></span> Your changes have been saved.'
@@ -90,6 +89,7 @@ class ArticleController extends HelperController
        
         return $this->render('create', [
             'model' => $model,
+            'contentModel' => $contentModel,
         ]);
     }
     

@@ -25,8 +25,6 @@ if (!$model->isNewRecord)
 				</div>
 				<div class="panel-body">
 
-					<?= $form->field($model, 'content_id')->hiddenInput()->label(false) ?>
-					
 					<?= Yii::$app->controller->renderPartial('//translation/field', [
 						'model' => $model,
 						'form' => $form,
@@ -58,8 +56,19 @@ if (!$model->isNewRecord)
 						'field' => 'description',
 						'translations' => $translations,
 						'translationModel' => $translationModel,
-						'isWysiwyg' => true
+						'isWysiwyg' => true,
+						'height' => 400
 					]); ?>
+					
+					<?= $form->field($contentModel, 'priority')->dropDownList($model->priorities)
+						->hint(Yii::t("app", "Influences where the article appears in filter and search results.")) ?>
+					
+					<?= $form->field($contentModel, 'published')->checkbox() ?>
+					
+					<?= $form->field($contentModel, 'hidden')->checkbox()
+						->hint(Yii::t("app", "If hidden, the article won't be shown in overviews but it will still be available via direct link.")) ?>
+					
+					<?= $form->field($model, 'content_id')->hiddenInput()->label(false) ?>
 				
 				</div>
 			</div>

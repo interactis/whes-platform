@@ -20,7 +20,7 @@ use common\models\helpers\HelperModel;
 class Article extends HelperModel
 {
 	public $translationFields = ['title', 'excerpt', 'description', 'youtube_id'];
-	public $requiredTranslationFields = ['title', 'excerpt', 'description'];
+	public $requiredTranslationFields = ['title', 'excerpt'];
 	
     /**
      * {@inheritdoc}
@@ -49,6 +49,7 @@ class Article extends HelperModel
             [['content_id', 'created_at', 'updated_at'], 'default', 'value' => null],
             [['content_id', 'created_at', 'updated_at'], 'integer'],
             [['content_id'], 'exist', 'skipOnError' => true, 'targetClass' => Content::className(), 'targetAttribute' => ['content_id' => 'id']],
+            // [['tags'], 'required'],
         ];
     }
 

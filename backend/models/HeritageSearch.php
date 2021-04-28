@@ -75,7 +75,7 @@ class HeritageSearch extends Heritage
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'id' => $this->id,
+            'heritage.id' => $this->id,
             'priority' => $this->priority,
             'published' => $this->published,
             'hidden' => $this->hidden,

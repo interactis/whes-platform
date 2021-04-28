@@ -20,7 +20,7 @@ use yii\helpers\ArrayHelper;
  */
 class Tag extends TranslationModel
 {
-	public $translationFields = ['title', 'description'];
+	public $translationFields = ['title'];
 	public $requiredTranslationFields = ['title'];
 	
     /**
@@ -75,7 +75,17 @@ class Tag extends TranslationModel
     {
         return $this->hasMany(ContentTag::className(), ['tag_id' => 'id']);
     }
-
+	
+	public function getRelatedTags()
+    {
+        return $this->hasMany(RelatedTag::className(), ['tag_id' => 'id']);
+    }
+    
+    public function getRelatingTags()
+    {
+        return $this->hasMany(RelatedTag::className(), ['related_tag_id' => 'id']);
+    }
+	
     /**
      * Gets query for [[TagTranslations]].
      *

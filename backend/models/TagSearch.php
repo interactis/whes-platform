@@ -4,12 +4,12 @@ namespace backend\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\Article;
+use common\models\Tag;
 
 /**
- * ArticleSearch represents the model behind the search form of `common\models\Article`.
+ * TagSearch represents the model behind the search form of `common\models\Tag`.
  */
-class ArticleSearch extends Article
+class TagSearch extends Tag
 {
 	public $title;
 	
@@ -19,7 +19,8 @@ class ArticleSearch extends Article
     public function rules()
     {
         return [
-            [['id', 'content_id', 'created_at', 'updated_at'], 'integer'],
+            [['id', 'created_at', 'updated_at'], 'integer'],
+            [['active'], 'boolean'],
             [['title'], 'safe'],
         ];
     }
@@ -42,9 +43,9 @@ class ArticleSearch extends Article
      */
     public function search($params)
     {
-        $query = Article::find();
-        $query->leftJoin('article_translation', 'article_translation.article_id = article.id');
-        $query->groupBy(['article.id', 'article_translation.title']);
+        $query = Tag::find();
+        $query->leftJoin('tag_translation', 'tag_translation.tag_id = tag.id');
+        $query->groupBy(['tag.id', 'tag_translation.title']);
 
         // add conditions that should always apply here
 
@@ -59,8 +60,8 @@ class ArticleSearch extends Article
         ]);
         
         $dataProvider->sort->attributes['title'] = [
-			'asc' => ['article_translation.title' => SORT_ASC],
-			'desc' => ['article_translation.title' => SORT_DESC],
+			'asc' => ['tag_translation.title' => SORT_ASC],
+			'desc' => ['tag_translation.title' => SORT_DESC],
 		];
 
         $this->load($params);
@@ -73,13 +74,13 @@ class ArticleSearch extends Article
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'article.id' => $this->id,
-            'content_id' => $this->content_id,
+            'tag.id' => $this->id,
+            'active' => $this->active,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ]);
         
-        $query->andFilterWhere(['ilike', 'article_translation.title', $this->title]);
+        $query->andFilterWhere(['ilike', 'tag_translation.title', $this->title]);
 
         return $dataProvider;
     }

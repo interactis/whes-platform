@@ -90,7 +90,7 @@ $user = Yii::$app->user->identity;
 							'maintainOrder' => true,
 							'showToggleAll' => false,
 							'options' => [
-								// 'placeholder' => Yii::t('app', 'Select tags ...'), 
+								'placeholder' => Yii::t('app', 'Select tags'), 
 								'multiple' => true
 							],
 							'pluginOptions' => [

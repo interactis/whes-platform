@@ -4,6 +4,7 @@ namespace common\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
+use common\models\helpers\HelperModel;
 
 /**
  * This is the model class for table "page".
@@ -16,8 +17,11 @@ use yii\behaviors\TimestampBehavior;
  * @property Media[] $media
  * @property PageTranslation[] $pageTranslations
  */
-class Page extends \yii\db\ActiveRecord
+class Page extends HelperModel
 {
+	public $translationFields = ['title', 'description'];
+	public $requiredTranslationFields = ['title', 'description'];
+	
     /**
      * {@inheritdoc}
      */

@@ -4,6 +4,7 @@ namespace common\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
+use common\models\helpers\HelperModel;
 
 /**
  * This is the model class for table "route".
@@ -32,8 +33,11 @@ use yii\behaviors\TimestampBehavior;
  * @property Content $content
  * @property RouteTranslation[] $routeTranslations
  */
-class Route extends \yii\db\ActiveRecord
+class Route extends HelperModel
 {
+	public $translationFields = ['title','description', 'youtube_id', 'catering', 'options', 'remarks'];
+	public $requiredTranslationFields = ['title', 'description'];
+	
     /**
      * {@inheritdoc}
      */

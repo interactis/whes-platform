@@ -4,6 +4,7 @@ namespace common\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
+use common\models\helpers\TranslationModel;
 
 /**
  * This is the model class for table "tag".
@@ -16,8 +17,11 @@ use yii\behaviors\TimestampBehavior;
  * @property ContentTag[] $contentTags
  * @property TagTranslation[] $tagTranslations
  */
-class Tag extends \yii\db\ActiveRecord
+class Tag extends TranslationModel
 {
+	public $translationFields = ['title', 'description'];
+	public $requiredTranslationFields = ['title'];
+	
     /**
      * {@inheritdoc}
      */

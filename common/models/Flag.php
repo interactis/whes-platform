@@ -4,6 +4,7 @@ namespace common\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
+use common\models\helpers\TranslationModel;
 
 /**
  * This is the model class for table "flag".
@@ -19,8 +20,11 @@ use yii\behaviors\TimestampBehavior;
  * @property FlagGroup $flagGroup
  * @property FlagTranslation[] $flagTranslations
  */
-class Flag extends \yii\db\ActiveRecord
+class Flag extends TranslationModel
 {
+	public $translationFields = ['title', 'disclaimer'];
+	public $requiredTranslationFields = ['title'];
+	
     /**
      * {@inheritdoc}
      */

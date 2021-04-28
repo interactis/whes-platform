@@ -4,6 +4,7 @@ namespace common\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
+use common\models\helpers\HelperModel;
 
 /**
  * This is the model class for table "article".
@@ -16,8 +17,11 @@ use yii\behaviors\TimestampBehavior;
  * @property Content $content
  * @property ArticleTranslation[] $articleTranslations
  */
-class Article extends \yii\db\ActiveRecord
+class Article extends HelperModel
 {
+	public $translationFields = ['title', 'excerpt', 'description', 'youtube_id'];
+	public $requiredTranslationFields = ['title', 'excerpt', 'description'];
+	
     /**
      * {@inheritdoc}
      */

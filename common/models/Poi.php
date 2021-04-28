@@ -4,6 +4,7 @@ namespace common\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
+use common\models\helpers\HelperModel;
 
 /**
  * This is the model class for table "poi".
@@ -20,8 +21,11 @@ use yii\behaviors\TimestampBehavior;
  * @property Content $content
  * @property PoiTranslation[] $poiTranslations
  */
-class Poi extends \yii\db\ActiveRecord
+class Poi extends HelperModel
 {
+	public $translationFields = ['title','description', 'youtube_id', 'remarks'];
+	public $requiredTranslationFields = ['title', 'description'];
+	
     /**
      * {@inheritdoc}
      */

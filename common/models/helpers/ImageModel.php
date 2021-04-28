@@ -17,7 +17,7 @@ class ImageModel extends TranslationModel
 	 /**
      * Image upload handling
      */
-    public function createThumbs($frontendPath, $imageName = "image_name", $imageFile = "image_file", $useByName = false, $byName = '')
+    public function createThumbs($frontendPath, $imageName = "filename", $imageFile = "image_file", $useByName = false, $byName = '')
     {	    	
     	if ($useByName)
     	{
@@ -135,10 +135,11 @@ class ImageModel extends TranslationModel
     	];
     }
     
-    public function removeThumbs($imageName = "image_name", $frontendPath)
+    public function removeThumbs($imageName = "filename")
     {
     	if (!empty($this->$imageName))
     	{
+    		$frontendPath = Yii::getAlias('@frontend/web/img/');
 			$modes = $this->getModes($frontendPath);
 			$imageFormats = \Yii::$app->params['imageFormats'];
 			$types = ['crop', 'ratio'];

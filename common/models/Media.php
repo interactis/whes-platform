@@ -117,7 +117,7 @@ class Media extends ImageModel
     {
         return $this->hasOne(Page::className(), ['id' => 'page_id']);
     }
-
+	
     /**
      * Gets query for [[MediaTranslations]].
      *
@@ -126,5 +126,17 @@ class Media extends ImageModel
     public function getMediaTranslations()
     {
         return $this->hasMany(MediaTranslation::className(), ['media_id' => 'id']);
+    }
+    
+    public function getContentType()
+    {
+    	if (!empty($this->page_id))
+    		return 'page';
+    	
+    	if (!empty($this->heritage_id))
+    		return 'heritage';
+    	
+    	if (!empty($this->content_id))
+    		return 'content';
     }
 }

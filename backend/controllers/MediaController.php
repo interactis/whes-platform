@@ -19,25 +19,14 @@ class MediaController extends Controller
 {
 	private $_heritage;
 	private $_content;
+	private $_page;
 	
-    /**
-     * {@inheritdoc}
-     */
     public function behaviors()
     {
         return [
         	'access' => [
                 'class' => AccessControl::className(),
                 'rules' => [
-                    [
-                        'actions' => ['page'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                        'matchCallback' => function ($rule, $action) {
-                        	$user = Yii::$app->user->identity;
-                            return $user->isAdmin();
-                        }
-                    ],
                     [
                         'actions' => ['heritage', 'create-heritage-media'],
                         'allow' => true,
@@ -47,11 +36,41 @@ class MediaController extends Controller
                         }
                     ],
                     [
-                        'actions' => ['content'],
+                        'actions' => ['content', 'create-content-media'],
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action) {
                             return $this->_isContentOwnerOrAdmin(Yii::$app->request->get('id'));
+                        }
+                    ],
+                    /*
+                    [
+                        'actions' => ['page'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action) {
+                        	$user = Yii::$app->user->identity;
+                            return $user->isAdmin();
+                        }
+                    ],
+                    */
+                    [
+                        'actions' => ['update', 'delete'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action) {
+                            $model = $this->findModel(Yii::$app->request->get('id'));
+                            switch ($model->contentType)
+                            {
+								case 'heritage':
+									return $this->_isHeritageOwnerOrAdmin($model->heritage_id);
+									break;
+								case 'content':
+									return $this->_isContentOwnerOrAdmin($model->content_id);
+									break;
+								default:
+									return $user->isAdmin();
+							}
                         }
                     ]
                 ],
@@ -63,13 +82,6 @@ class MediaController extends Controller
                 ],
             ],
         ];
-    }
-	
-	public function actionPage($id)
-    {
-        return $this->render('index', [
-            'model' => $this->findPageModels($id),
-        ]);
     }
 	
     public function actionHeritage($id)
@@ -93,9 +105,10 @@ class MediaController extends Controller
         {
         	if ($model->validateTranslations($post) && $model->validate())
         	{
-        		$model->createThumbs(Yii::getAlias('@frontend/web/img/'), 'filename');
+        		$model->createThumbs(Yii::getAlias('@frontend/web/img/'));
         		
-        		if ($model->save(false) && $model->saveTranslations($post)) {
+        		if ($model->save(false) && $model->saveTranslations($post))
+        		{
         			Yii::$app->getSession()->setFlash(
         				'success',
         				'<span class="glyphicon glyphicon-ok-sign"></span> Your changes have been saved.'
@@ -115,8 +128,39 @@ class MediaController extends Controller
     {
     	$content = $this->_findContent($id);
     	
-        return $this->render('index', [
+        return $this->render('content', [
+        	'content' => $content,
             'models' => $content->media,
+        ]);
+    }
+	
+    public function actionCreateContentMedia($id)
+    {
+    	$content = $this->_findContent($id);
+        $model = new Media();
+        $model->content_id = $content->id;
+        
+        $post = Yii::$app->request->post();
+		if ($model->load($post))
+        {
+        	if ($model->validateTranslations($post) && $model->validate())
+        	{
+        		$model->createThumbs(Yii::getAlias('@frontend/web/img/'));
+        		
+        		if ($model->save(false) && $model->saveTranslations($post))
+        		{
+        			Yii::$app->getSession()->setFlash(
+        				'success',
+        				'<span class="glyphicon glyphicon-ok-sign"></span> Your changes have been saved.'
+        			);
+        			return $this->redirect(['content', 'id' => $content->id]);	
+            	}
+       		}
+        }
+
+        return $this->render('create', [
+        	'content' => $content,
+            'model' => $model,
         ]);
     }
 	
@@ -124,29 +168,65 @@ class MediaController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        $post = Yii::$app->request->post();
+		if ($model->load($post))
+        {
+        	if ($model->validateTranslations($post) && $model->validate())
+        	{
+        		$model->createThumbs(Yii::getAlias('@frontend/web/img/'));
+        		
+        		if ($model->save(false) && $model->saveTranslations($post))
+        		{
+        			Yii::$app->getSession()->setFlash(
+        				'success',
+        				'<span class="glyphicon glyphicon-ok-sign"></span> Your changes have been saved.'
+        			);
+        			return $this->redirect([$model->contentType, 'id' => $model->id]);	
+            	}
+       		}
         }
 
         return $this->render('update', [
-            'model' => $model,
+            'model' => $model
         ]);
     }
 	
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        $model->removeThumbs();
+        $model->delete();
 
-        return $this->redirect(['index']);
+        return $this->redirect([$model->contentType]);
     }
 	
     protected function findModel($id)
     {
-        if (($model = Media::findOne($id)) !== null) {
-            return $model;
-        }
-
-        throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
+    	if (!empty($this->_heritage))
+    		return $this->_heritage;
+        
+    	if (!empty($this->_content))
+        	return $this->_content;
+        
+		if (($model = Media::findOne($id)) !== null)
+		{
+			switch ($model->contentType)
+			{
+				case 'heritage':
+					$this->_heritage = $model;
+					break;
+				case 'content':
+					$this->_content = $model;
+					break;
+				case 'page':
+					$this->_page = $model;
+					break;
+			}
+			
+			return $model;
+		}
+		else
+        	throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
     }
     
     private function _findHeritage($id)

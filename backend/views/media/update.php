@@ -2,16 +2,25 @@
 
 use yii\helpers\Html;
 
-/* @var $this yii\web\View */
-/* @var $model common\models\Media */
+$contentType = $model->contentType;
+$contentModel = $model->{$contentType};
 
-$this->title = Yii::t('app', 'Update Media: {name}', [
-    'name' => $model->id,
-]);
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Media'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = Yii::t('app', 'Update');
+switch ($contentType)
+{
+	case 'heritage':
+		$contentTitle = $contentModel->short_name;
+		break;
+	default:
+		$contentTitle = $contentModel->title;
+}
+
+$this->title = Yii::t('app', 'Update Image');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Heritages'), 'url' => ['heritage/index']];
+$this->params['breadcrumbs'][] = ['label' => $contentTitle, 'url' => [$contentType .'/update', 'id' => $contentModel->id]];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Images'), 'url' => ['media/heritage', 'id' => $contentModel->id]];
+$this->params['breadcrumbs'][] = $this->title;
 ?>
+
 <div class="media-update">
 
     <h1><?= Html::encode($this->title) ?></h1>

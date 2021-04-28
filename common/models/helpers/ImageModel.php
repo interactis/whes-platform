@@ -11,7 +11,7 @@ use Imagine\Image\ManipulatorInterface;
  * This is the ImageModel class
  *
  */
-class ImageModel extends \yii\db\ActiveRecord
+class ImageModel extends TranslationModel
 {
 
 	 /**
@@ -163,18 +163,18 @@ class ImageModel extends \yii\db\ActiveRecord
 		}
     }
     
-    public function getImageHtml($format, $class, $alt, $frontendUrl, $imageName = "image_name", $type = 'crop')
+    public function getImageHtml($format, $class, $alt, $imageName = "filename", $type = 'crop')
     {
-    	$url = $this->getImageUrl($format, $frontendUrl, $imageName, $type);
+    	$url = $this->getImageUrl($format, $imageName, $type);
 		return '<img src="'. $url .'" class="'. $class .'" alt="'. $alt .'">';		
 	}
 	
-	public function getImageUrl($format, $frontendUrl, $imageName = "image_name", $type = 'crop')
+	public function getImageUrl($format, $imageName = "filename", $type = 'crop')
     {
-    	$url = $frontendUrl ."img/layout/placeholder/". $format ."/placeholder.jpg";
+    	$url = Yii::$app->params['frontendUrl'] ."img/layout/placeholder/". $format ."/placeholder.jpg";
     	if (!empty($this->$imageName))
     	{
-    		$url = $frontendUrl ."img/". $this->tableName() ."/". $type ."/". $format ."/". $this->$imageName;
+    		$url = Yii::$app->params['frontendUrl'] ."img/". $this->tableName() ."/". $type ."/". $format ."/". $this->$imageName;
     	}
 		return $url;		
 	}

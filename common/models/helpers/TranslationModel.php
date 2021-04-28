@@ -12,7 +12,7 @@ use yii\web\UploadedFile;
  * Helper model which queries translations and adds it to the object if called.
  *
  */
-class TranslationModel extends ImageModel
+class TranslationModel extends \yii\db\ActiveRecord
 {	
 	private $_mediaSet = [];
 	

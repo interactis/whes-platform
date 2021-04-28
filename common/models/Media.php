@@ -4,7 +4,7 @@ namespace common\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
-use common\models\helpers\HelperModel;
+use common\models\helpers\ImageModel;
 
 /**
  * This is the model class for table "media".
@@ -24,7 +24,7 @@ use common\models\helpers\HelperModel;
  * @property Page $page
  * @property MediaTranslation[] $mediaTranslations
  */
-class Media extends HelperModel
+class Media extends ImageModel
 {
 	public $translationFields = ['title', 'description', 'copyright'];
 	public $requiredTranslationFields = ['title', 'description'];

@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
     	</div>
     	<div class="col-md-2 col-lg-4">
     		<div class="fixed">
-    			<?= Html::a(Yii::t('app', 'Add Image'), ['create-heritage-media', 'id' => $contentModel->id], ['class' => 'btn btn-success']) ?>
+    			<?= Html::a(Yii::t('app', 'Add Image'), ['create-content-media', 'id' => $contentModel->id], ['class' => 'btn btn-success']) ?>
     		</div>
     	</div>
     </div>

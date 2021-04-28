@@ -86,7 +86,7 @@ $this->title = 'Dashboard';
                 	</a>
                 </p>
                 <p class="lead">
-                	<a href="/route">
+                	<a href="/article">
                 		Articles
                 	</a>
                 </p>

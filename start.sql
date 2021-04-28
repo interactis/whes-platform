@@ -418,6 +418,16 @@ updated_at INTEGER,
 CONSTRAINT flag_pkey PRIMARY KEY (id)
 );
 
+CREATE TABLE related_tag
+(
+id SERIAL,
+tag_id INTEGER,
+related_tag_id INTEGER,
+created_at INTEGER,
+updated_at INTEGER,
+CONSTRAINT related_tag_pkey PRIMARY KEY (id)
+);
+
 ALTER TABLE article ADD FOREIGN KEY (content_id) REFERENCES content (id) ON DELETE CASCADE;
 
 ALTER TABLE exhibit ADD FOREIGN KEY (content_id) REFERENCES content (id) ON DELETE CASCADE;
@@ -515,6 +525,11 @@ ALTER TABLE supplier_translation ADD FOREIGN KEY (supplier_id) REFERENCES suppli
 ALTER TABLE supplier_translation ADD FOREIGN KEY (language_id) REFERENCES language (id) ON DELETE CASCADE;
 
 ALTER TABLE flag ADD FOREIGN KEY (flag_group_id) REFERENCES flag_group (id) ON DELETE CASCADE;
+
+ALTER TABLE related_tag ADD FOREIGN KEY (tag_id) REFERENCES tag (id) ON DELETE CASCADE;
+
+ALTER TABLE related_tag ADD FOREIGN KEY (related_tag_id) REFERENCES tag (id) ON DELETE CASCADE;
+
 
 
 

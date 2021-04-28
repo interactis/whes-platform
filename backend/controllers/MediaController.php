@@ -181,7 +181,8 @@ class MediaController extends Controller
         				'success',
         				'<span class="glyphicon glyphicon-ok-sign"></span> Your changes have been saved.'
         			);
-        			return $this->redirect([$model->contentType, 'id' => $model->id]);	
+        			$contentType = $model->contentType;
+        			return $this->redirect([$contentType, 'id' => $model->{$contentType}->id]);	
             	}
        		}
         }
@@ -196,8 +197,9 @@ class MediaController extends Controller
         $model = $this->findModel($id);
         $model->removeThumbs();
         $model->delete();
-
-        return $this->redirect([$model->contentType]);
+        
+		$contentType = $model->contentType;
+		return $this->redirect([$contentType, 'id' => $model->{$contentType}->id]);	
     }
 	
     protected function findModel($id)

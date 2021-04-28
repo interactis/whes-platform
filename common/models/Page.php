@@ -68,7 +68,8 @@ class Page extends \yii\db\ActiveRecord
      */
     public function getMedia()
     {
-        return $this->hasMany(Media::className(), ['page_id' => 'id']);
+        return $this->hasMany(Media::className(), ['page_id' => 'id'])
+        	->orderBy(['order' => SORT_ASC, 'id' => SORT_ASC]);
     }
 
     /**

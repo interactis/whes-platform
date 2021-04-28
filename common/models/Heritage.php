@@ -134,7 +134,8 @@ class Heritage extends HelperModel
      */
     public function getMedia()
     {
-        return $this->hasMany(Media::className(), ['heritage_id' => 'id']);
+        return $this->hasMany(Media::className(), ['heritage_id' => 'id'])
+        	->orderBy(['order' => SORT_ASC, 'id' => SORT_ASC]);
     }
     
     public static function getHeritages()

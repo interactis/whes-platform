@@ -156,7 +156,8 @@ class Content extends \yii\db\ActiveRecord
      */
     public function getMedia()
     {
-        return $this->hasMany(Media::className(), ['content_id' => 'id']);
+        return $this->hasMany(Media::className(), ['content_id' => 'id'])
+        	->orderBy(['order' => SORT_ASC, 'id' => SORT_ASC]);
     }
 
     /**

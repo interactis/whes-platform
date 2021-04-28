@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use common\models\ArticleTranslation;
+use common\models\Heritage;
 
 $translations = $model->articleTranslations;
 $translationModel = new ArticleTranslation();
@@ -10,6 +11,8 @@ $translationModel = new ArticleTranslation();
 $viewUrl = false;
 if (!$model->isNewRecord)
 	$viewUrl = Yii::$app->params['frontendUrl'] .'article/'. $model->slug;
+
+$user = Yii::$app->user->identity;
 ?>
 
 <div class="article-form">
@@ -59,6 +62,16 @@ if (!$model->isNewRecord)
 						'isWysiwyg' => true,
 						'height' => 400
 					]); ?>
+					
+					<?php
+    				if ($user->isAdmin())
+					{
+						echo $form->field($contentModel, 'heritage_id')->dropDownList(
+							Heritage::getHeritages(),
+							['prompt' => Yii::t('app', 'Please select')]
+						);
+					}
+					?>
 					
 					<?= $form->field($contentModel, 'priority')->dropDownList($model->priorities)
 						->hint(Yii::t("app", "Influences where the article appears in filter and search results.")) ?>

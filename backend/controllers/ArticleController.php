@@ -26,12 +26,12 @@ class ArticleController extends HelperController
                 'class' => AccessControl::className(),
                 'rules' => [
                 	[
-						'actions' => ['index'],
+						'actions' => ['index', 'create'],
 						'allow' => true,
 						'roles' => ['@']
 					],
 					[
-						'actions' => ['create', 'update', 'delete'],
+						'actions' => ['update', 'delete'],
 						'allow' => true,
 						'roles' => ['@'],
 						'matchCallback' => function ($rule, $action) {

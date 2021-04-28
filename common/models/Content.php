@@ -61,6 +61,7 @@ class Content extends \yii\db\ActiveRecord
         return [
             [['heritage_id', 'type', 'priority', 'created_at', 'updated_at'], 'default', 'value' => null],
             [['heritage_id', 'type', 'priority', 'created_at', 'updated_at'], 'integer'],
+            [['heritage_id'], 'required'],
             [['published', 'hidden'], 'boolean'],
             [['heritage_id'], 'exist', 'skipOnError' => true, 'targetClass' => Heritage::className(), 'targetAttribute' => ['heritage_id' => 'id']],
         ];
@@ -73,7 +74,7 @@ class Content extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'heritage_id' => Yii::t('app', 'Heritage ID'),
+            'heritage_id' => Yii::t('app', 'Heritage'),
             'type' => Yii::t('app', 'Type'),
             'priority' => Yii::t('app', 'Priority'),
             'published' => Yii::t('app', 'Published'),

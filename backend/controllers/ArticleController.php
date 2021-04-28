@@ -59,15 +59,35 @@ class ArticleController extends HelperController
             'dataProvider' => $dataProvider,
         ]);
     }
-  
+    
     public function actionCreate()
     {
         $model = new Article();
+        $contentModel = $this->newContentModel(Content::TYPE_ARTICLE);
+        $post = Yii::$app->request->post();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load($post))
+        { 
+        	if ($model->validateTranslations($post) && $model->validate())
+        	{
+        		$contentModel->attributes .....;
+        		$contentModel->save(false);
+    			$model->content_id = $contentModel->id;
+				
+        		if ($model->save(false)	&&
+        			$model->saveTranslations($post) &&
+        			$model->generateSlugs()
+        		)
+        		{        						
+					Yii::$app->getSession()->setFlash(
+						'success',
+						'<span class="glyphicon glyphicon-ok-sign"></span> Your changes have been saved.'
+					);
+					return $this->redirect(['update', 'id' => $model->id]);
+				}
+       		}
         }
-
+       
         return $this->render('create', [
             'model' => $model,
         ]);

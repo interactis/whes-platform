@@ -3,6 +3,7 @@ namespace backend\components;
 
 use Yii;
 use yii\web\Controller;
+use common\models\Content;
 
 class HelperController extends Controller
 {
@@ -39,6 +40,13 @@ class HelperController extends Controller
     	}
     	
     	return false;
+    }
+    
+    public function newContentModel($type)
+    {
+    	$model = new Content();
+    	$model->type = $type;
+    	return $model;		
     }
     
 }

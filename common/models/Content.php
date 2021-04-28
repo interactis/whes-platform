@@ -31,6 +31,10 @@ use yii\behaviors\TimestampBehavior;
  */
 class Content extends \yii\db\ActiveRecord
 {
+	const TYPE_POI = 1;
+    const TYPE_ROUTE = 2;
+    const TYPE_ARTICLE = 3;
+	
     /**
      * {@inheritdoc}
      */

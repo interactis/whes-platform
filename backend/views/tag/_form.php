@@ -1,10 +1,15 @@
 <?php
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
 use common\models\TagTranslation;
 
 $translations = $model->tagTranslations;
 $translationModel = new TagTranslation();
+
+$tagValue = [];
+if (isset($model->relatedTags))
+	$tagValue = ArrayHelper::map($model->relatedTags, 'related_tag_id', 'related_tag_id');
 ?>
 
 <div class="tag-form">
@@ -27,6 +32,30 @@ $translationModel = new TagTranslation();
 						'translations' => $translations,
 						'translationModel' => $translationModel
 					]); ?>
+					
+					<hr />
+					
+					<?= Yii::$app->controller->renderPartial('//common/_tagSelect', [
+						'model' => $model,
+						'name' => 'Tag',
+						'field' => 'tags',
+						'tagValue' => $tagValue,
+					]); ?>
+					
+					<?php if (count($model->relatingTags) > 0): ?>
+						<label><?= Yii::t('app', 'Relating Tags') ?></label>
+						<p>
+							<?php
+							foreach($model->relatingTags as $rel)
+							{
+								$tag = $rel->tag;
+								echo Html::a($tag->title, ['tag/update', 'id' => $tag->id]);
+							}
+							?>
+						</p>
+					<?php endif; ?>
+					
+					<hr />
 					
 					<?= $form->field($model, 'active')->checkbox() ?>
 

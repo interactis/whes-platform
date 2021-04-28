@@ -2,11 +2,9 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use kartik\select2\Select2;
 use yii\helpers\ArrayHelper;
 use common\models\ArticleTranslation;
 use common\models\Heritage;
-use common\models\Tag;
 
 $translations = $model->articleTranslations;
 $translationModel = new ArticleTranslation();
@@ -16,7 +14,7 @@ if (!$model->isNewRecord)
 	$viewUrl = Yii::$app->params['frontendUrl'] .'article/'. $model->slug;
 
 $tagValue = [];
-if (isset($model->content->tagMasters))
+if (isset($model->content->contentTags))
 	$tagValue = ArrayHelper::map($model->content->contentTags, 'tag_id', 'tag_id');
 
 $user = Yii::$app->user->identity;
@@ -80,26 +78,12 @@ $user = Yii::$app->user->identity;
 					}
 					?>
 					
-					<div class="form-group">
-						<?php
-						echo Html::activeLabel($model, 'tags');
-						echo Select2::widget([
-							'name' => 'Audio[tags]',
-							'value' => $tagValue,
-							'data' => Tag::getTagList(),
-							'maintainOrder' => true,
-							'showToggleAll' => false,
-							'options' => [
-								'placeholder' => Yii::t('app', 'Select tags'), 
-								'multiple' => true
-							],
-							'pluginOptions' => [
-								'tags' => true,
-								'maximumInputLength' => 20
-							]
-						]);
-						?>
-					</div>
+					<?= Yii::$app->controller->renderPartial('//common/_tagSelect', [
+						'model' => $model,
+						'name' => 'Content',
+						'field' => 'tags',
+						'tagValue' => $tagValue,
+					]); ?>
 					
 					<?= $form->field($contentModel, 'priority')->dropDownList($model->priorities)
 						->hint(Yii::t("app", "Influences where the article appears in filter and search results.")) ?>

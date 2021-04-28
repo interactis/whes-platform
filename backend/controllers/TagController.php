@@ -73,7 +73,7 @@ class TagController extends Controller
 		{
         	if ($model->validateTranslations() && $model->validate())
         	{
-        		if ($model->save(false)	&& $model->saveTranslations())
+        		if ($model->save(false)	&& $model->saveTranslations() && $model->saveTags())
         		{        						
 					Yii::$app->getSession()->setFlash(
 						'success',
@@ -104,7 +104,7 @@ class TagController extends Controller
 		{
         	if ($model->validateTranslations() && $model->validate())
         	{
-        		if ($model->save(false)	&& $model->saveTranslations())
+        		if ($model->save(false)	&& $model->saveTranslations() && $model->saveTags())
         		{        						
 					Yii::$app->getSession()->setFlash(
 						'success',

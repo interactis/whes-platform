@@ -23,6 +23,8 @@ class Tag extends TranslationModel
 	public $translationFields = ['title'];
 	public $requiredTranslationFields = ['title'];
 	
+	public $tags = [];
+	
     /**
      * {@inheritdoc}
      */
@@ -50,6 +52,7 @@ class Tag extends TranslationModel
             [['active'], 'boolean'],
             [['created_at', 'updated_at'], 'default', 'value' => null],
             [['created_at', 'updated_at'], 'integer'],
+            [['tags'], 'safe'],
         ];
     }
 
@@ -61,6 +64,7 @@ class Tag extends TranslationModel
         return [
             'id' => Yii::t('app', 'ID'),
             'active' => Yii::t('app', 'Active'),
+            'tags' => Yii::t('app', 'Related Tags'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
         ];
@@ -104,5 +108,20 @@ class Tag extends TranslationModel
     		->all();
     		
         return ArrayHelper::map($models, 'id', 'title');
+    }
+    
+    public function saveTags()
+    {
+        RelatedTag::deleteAll(['tag_id' => $this->id]);
+    	
+		$tagIds = [];
+		foreach ($this->tags as $tagId)
+		{
+			if ($this->id != $tagId)
+				$tagIds[] = [$this->tag_id, $tagId];
+		}
+		Yii::$app->db->createCommand()->batchInsert('related_tag', ['tag_id', 'related_tag_id'], $tagIds)->execute();
+        
+        return true;
     }
 }

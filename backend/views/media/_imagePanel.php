@@ -7,7 +7,7 @@ use yii\helpers\Html;
 		<h3>
 			<?= Yii::t('app', 'Image') .' '. $count  ?>
 			<p class="pull-right">
-				<?= Html::a(Yii::t('app', '<span class="glyphicon glyphicon-pencil"></span>'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary btn-xs', 'title' => 'update group']) ?>
+				<?= Html::a(Yii::t('app', '<span class="glyphicon glyphicon-pencil"></span>'), ['update-'. $type .'-media', 'id' => $model->id], ['class' => 'btn btn-primary btn-xs', 'title' => 'update group']) ?>
 				<?= Html::a(Yii::t('app', '<span class="glyphicon glyphicon-trash"></span>'), ['delete', 'id' => $model->id], [
 					'class' => 'btn btn-danger btn-xs',
 					'title' => 'delete group',

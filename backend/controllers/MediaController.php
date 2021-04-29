@@ -55,7 +55,7 @@ class MediaController extends Controller
                     ],
                     */
                     [
-                        'actions' => ['update', 'delete'],
+                        'actions' => ['update-heritage-media', 'update-content-media', 'delete'],
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action) {
@@ -118,7 +118,7 @@ class MediaController extends Controller
        		}
         }
 
-        return $this->render('create', [
+        return $this->render('createHeritageMedia', [
         	'heritage' => $heritage,
             'model' => $model,
         ]);
@@ -158,13 +158,13 @@ class MediaController extends Controller
        		}
         }
 
-        return $this->render('create', [
+        return $this->render('createContentMedia', [
         	'content' => $content,
             'model' => $model,
         ]);
     }
 	
-    public function actionUpdate($id)
+	public function actionUpdateHeritageMedia($id)
     {
         $model = $this->findModel($id);
 
@@ -181,13 +181,39 @@ class MediaController extends Controller
         				'success',
         				'<span class="glyphicon glyphicon-ok-sign"></span> Your changes have been saved.'
         			);
-        			$contentType = $model->contentType;
-        			return $this->redirect([$contentType, 'id' => $model->{$contentType}->id]);	
+        			return $this->redirect(['heritage', 'id' => $model->heritage_id]);	
             	}
        		}
         }
 
-        return $this->render('update', [
+        return $this->render('updateHeritageMedia', [
+            'model' => $model
+        ]);
+    }
+	
+    public function actionUpdateContentMedia($id)
+    {
+        $model = $this->findModel($id);
+
+        $post = Yii::$app->request->post();
+		if ($model->load($post))
+        {
+        	if ($model->validateTranslations() && $model->validate())
+        	{
+        		$model->createThumbs(Yii::getAlias('@frontend/web/img/'));
+        		
+        		if ($model->save(false) && $model->saveTranslations())
+        		{
+        			Yii::$app->getSession()->setFlash(
+        				'success',
+        				'<span class="glyphicon glyphicon-ok-sign"></span> Your changes have been saved.'
+        			);
+        			return $this->redirect(['content', 'id' => $model->content_id]);	
+            	}
+       		}
+        }
+
+        return $this->render('updateContentMedia', [
             'model' => $model
         ]);
     }

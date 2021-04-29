@@ -26,7 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
     		
     		foreach($models as $i => $model)
     		{
-    			echo $this->render('_imagePanel', ['model' => $model, 'count' => $i+1]);
+    			echo $this->render('_imagePanel', ['model' => $model, 'type' => 'content', 'count' => $i+1]);
     		}
 			?>
     	</div>

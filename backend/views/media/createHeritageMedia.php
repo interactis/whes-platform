@@ -1,5 +1,4 @@
 <?php
-
 use yii\helpers\Html;
 
 $this->title = Yii::t('app', 'Add Image');

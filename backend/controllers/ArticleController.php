@@ -128,7 +128,13 @@ class ArticleController extends HelperController
     
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        foreach ($model->content->media as $media)
+        {
+        	$media->removeThumbs();
+        }
+        
+        $model->delete();
 
         return $this->redirect(['index']);
     }

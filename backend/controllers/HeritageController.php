@@ -142,7 +142,13 @@ class HeritageController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        foreach ($model->media as $media)
+        {
+        	$media->removeThumbs();
+        }
+        
+        $model->delete();
 
         return $this->redirect(['index']);
     }

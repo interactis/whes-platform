@@ -72,6 +72,7 @@ class Route extends HelperModel
             [['profile', 'geom'], 'string'],
             [['print_available'], 'boolean'],
             [['arrival_station', 'arrival_url', 'departure_station', 'departure_url'], 'string', 'max' => 255],
+            [['arrival_url', 'departure_url'], 'url'],
             [['content_id'], 'exist', 'skipOnError' => true, 'targetClass' => Content::className(), 'targetAttribute' => ['content_id' => 'id']],
             [['tags'], 'required'],
         ];

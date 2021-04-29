@@ -23,8 +23,8 @@ $nav = [
 		'title' => 'SBB'
 	],
 	[
-		'slug' => 'map',
-		'title' => 'Map'
+		'slug' => 'geo',
+		'title' => 'Geo'
 	],
 	[
 		'slug' => 'visibility',
@@ -154,9 +154,9 @@ $user = Yii::$app->user->identity;
 				</div>
 			</div>
 			
-			<div id="map" class="panel panel-default">
+			<div id="geo" class="panel panel-default">
 				<div class="panel-heading">
-					<h3>Map</h3>
+					<h3>Geo</h3>
 				</div>
 				<div class="panel-body">
 					

@@ -7,7 +7,7 @@ $contentModel = $content->{$type};
 $this->title = Yii::t('app', 'Add Image');
 $this->params['breadcrumbs'][] = ['label' => $contentModel->pluralName(), 'url' => [$type .'/index']];
 $this->params['breadcrumbs'][] = ['label' => $contentModel->title, 'url' => [$type .'/update', 'id' => $contentModel->id]];
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Images'), 'url' => ['media/content', 'id' => $contentModel->id]];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Images'), 'url' => ['media/content', 'id' => $content->id]];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="media-create">

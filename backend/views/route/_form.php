@@ -9,6 +9,29 @@ use common\models\Heritage;
 $translations = $model->routeTranslations;
 $translationModel = new RouteTranslation();
 
+$nav = [
+	[
+		'slug' => 'info',
+		'title' => 'Info'
+	],
+	[
+		'slug' => 'key-figures',
+		'title' => 'Key Figures'
+	],
+	[
+		'slug' => 'sbb',
+		'title' => 'SBB'
+	],
+	[
+		'slug' => 'map',
+		'title' => 'Map'
+	],
+	[
+		'slug' => 'visibility',
+		'title' => 'Visibility'
+	]
+];
+
 $viewUrl = false;
 if (!$model->isNewRecord)
 	$viewUrl = Yii::$app->params['frontendUrl'] .'route/'. $model->slug;
@@ -27,9 +50,9 @@ $user = Yii::$app->user->identity;
     <div class="row">
     	<div class="col-md-10 col-lg-8">
     	
-			<div id="arcticle" class="panel panel-default">
+			<div id="info" class="panel panel-default">
 				<div class="panel-heading">
-					<h3>Route</h3>
+					<h3>Info</h3>
 				</div>
 				<div class="panel-body">
 
@@ -86,8 +109,16 @@ $user = Yii::$app->user->identity;
 						'isWysiwyg' => true
 					]); ?>
 					
-					<?= $form->field($model, 'difficulty') ?>
-					
+					<?= $form->field($model, 'difficulty') ?>			
+				
+				</div>
+			</div>
+			
+			<div id="key-figures" class="panel panel-default">
+				<div class="panel-heading">
+					<h3>Key Figures</h3>
+				</div>
+				<div class="panel-body">
 					<?= $form->field($model, 'distance_in_km') ?>
 					
 					<?= $form->field($model, 'duration_in_min') ?>
@@ -103,15 +134,40 @@ $user = Yii::$app->user->identity;
 					<?= $form->field($model, 'ascent') ?>
 					
 					<?= $form->field($model, 'descent') ?>
-					
+				</div>
+			</div>
+			
+			<div id="sbb" class="panel panel-default">
+				<div class="panel-heading">
+					<h3>SBB</h3>
+				</div>
+				<div class="panel-body">
 					<?= $form->field($model, 'arrival_station') ?>
 					
-					<?= $form->field($model, 'arrival_url') ?>
+					<?= $form->field($model, 'arrival_url')
+						->hint(Yii::t('app', 'How to deep link to SBB timetable:') .' <a href="/downloads/Deep_Linking_SBB_Fahrplan.pdf" target="_blank"><span class="glyphicon glyphicon-download"></span> SBB Deep Linking</a>') ?>
 					
 					<?= $form->field($model, 'departure_station') ?>
 					
-					<?= $form->field($model, 'departure_url') ?>
+					<?= $form->field($model, 'departure_url')
+						->hint(Yii::t('app', 'How to deep link to SBB timetable:') .' <a href="/downloads/Deep_Linking_SBB_Fahrplan.pdf" target="_blank"><span class="glyphicon glyphicon-download"></span> SBB Deep Linking</a>') ?>
+				</div>
+			</div>
+			
+			<div id="map" class="panel panel-default">
+				<div class="panel-heading">
+					<h3>Map</h3>
+				</div>
+				<div class="panel-body">
 					
+				</div>
+			</div>
+			
+			<div id="visibility" class="panel panel-default">
+				<div class="panel-heading">
+					<h3>Visibility</h3>
+				</div>
+				<div class="panel-body">
 					<?php
     				if ($user->isAdmin())
 					{
@@ -134,13 +190,19 @@ $user = Yii::$app->user->identity;
 					
 					<?= $form->field($contentModel, 'hidden')->checkbox()
 						->hint(Yii::t("app", "If hidden, the route won't be shown in overviews but it will still be available via direct link.")) ?>
-				
 				</div>
+				
 			</div>
 			
 		</div>
 		
-		<?= Yii::$app->controller->renderPartial('//common/_saveColumn', ['form' => $form, 'model' => $model, 'showLangSwitch' => true, 'viewUrl' => $viewUrl]) ?>
+		<?= Yii::$app->controller->renderPartial('//common/_saveColumn', [
+			'form' => $form,
+			'model' => $model,
+			'showLangSwitch' => true,
+			'viewUrl' => $viewUrl,
+			'nav' => $nav
+		]) ?>
    		
    	</div>
 

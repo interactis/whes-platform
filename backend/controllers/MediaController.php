@@ -59,14 +59,22 @@ class MediaController extends Controller
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action) {
-                            $model = $this->findModel(Yii::$app->request->get('id'));
+                        	if (Yii::$app->request->get('id') !== null)
+    							$id = Yii::$app->request->get('id');
+    						
+    						if (Yii::$app->request->post('id') !== null)
+    							$id = Yii::$app->request->post('id');
+    						
+                            $model = $this->findModel($id);
+                            
+                           
                             switch ($model->contentType)
                             {
 								case 'heritage':
 									return $this->_isHeritageOwnerOrAdmin($model->heritage_id);
 									break;
 								case 'content':
-									return $this->_isContentOwnerOrAdmin($model->content_id);
+									return $this->_isContentOwnerOrAdmin($model->content->heritage_id);
 									break;
 								default:
 									return $user->isAdmin();

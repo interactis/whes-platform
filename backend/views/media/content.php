@@ -14,7 +14,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= $contentModel->title ?></h1>
     
-    <?= Yii::$app->controller->renderPartial('//common/_navPills', ['model' => $contentModel, 'active' => 2]) ?>
+    <?= Yii::$app->controller->renderPartial('//common/_navPills', [
+    	'model' => $contentModel,
+    	'active' => 2,
+    	'showSupplier' => true
+    ]) ?>
 
     <div class="row">
 		<div class="col-md-10 col-lg-8">

@@ -66,7 +66,7 @@ $this->title = 'Dashboard';
 				<div class="col-md-4 margin-bottom">
 					<div class="h1">Heritage</div>
 					<p class="lead">
-						<a href="/heritage/update/">
+						<a href="/heritage/update/<?= $user->heritage_id ?>">
 							Heritage Page
 						</a>
 					</p>

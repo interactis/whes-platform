@@ -2,6 +2,7 @@
 
 namespace backend\models;
 
+use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use common\models\Article;
@@ -55,6 +56,14 @@ class ArticleSearch extends Article
         $query->groupBy(['article.id', 'article_translation.title', 'content.priority', 'content.hidden', 'content.published', 'heritage_translation.short_name']);
 
         // add conditions that should always apply here
+        
+        $user = Yii::$app->user->identity;
+    	if (!$user->isAdmin())
+        {
+        	$query->where([
+        		'content.heritage_id' => $user->heritage_id
+        	]);
+        }
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,

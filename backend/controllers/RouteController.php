@@ -16,6 +16,8 @@ use yii\filters\VerbFilter;
  */
 class RouteController extends HelperController
 {
+	private $_model;
+	
     /**
      * {@inheritdoc}
      */
@@ -35,8 +37,15 @@ class RouteController extends HelperController
 						'allow' => true,
 						'roles' => ['@'],
 						'matchCallback' => function ($rule, $action) {
-							return $this->isOwnerOrAdmin();
-						}
+							if (Yii::$app->request->get('id') !== null)
+    							$id = Yii::$app->request->get('id');
+    						
+    						if (Yii::$app->request->post('id') !== null)
+    							$id = Yii::$app->request->post('id');
+    						
+                            $model = $this->findModel($id);
+                            return $this->isOwnerOrAdmin($model->content->heritage_id);
+                        }
 					]
 				]
 			],
@@ -138,13 +147,22 @@ class RouteController extends HelperController
 
         return $this->redirect(['index']);
     }
-
+	
     protected function findModel($id)
     {
-        if (($model = Route::findOne($id)) !== null) {
-            return $model;
-        }
+    	if (!empty($this->_model))
+    	{
+    		return $this->_model;
+    	}
+    	else
+    	{
+    		if (($model = Route::findOne($id)) !== null)
+    		{
+    			$this->_model = $model;
+				return $model;
+			}
 
-        throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
+			throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
+    	}
     }
 }

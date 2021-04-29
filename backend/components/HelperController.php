@@ -25,7 +25,7 @@ class HelperController extends Controller
 	    return true; // or false to not run the action
 	}
 	
-	public function isOwnerOrAdmin()
+	public function isOwnerOrAdmin($heritageId)
     {   
     	$user = Yii::$app->user->identity;
     	
@@ -35,17 +35,8 @@ class HelperController extends Controller
     	}
     	else
     	{
-    		if (Yii::$app->request->get('id') !== null)
-    		{
-				if ($user->heritage_id == Yii::$app->request->get('id'))
-					return true;
-    		}
-    		
-    		if (Yii::$app->request->post('id') !== null)
-    		{
-				if ($user->heritage_id == Yii::$app->request->post('id'))
-					return true;
-    		}
+    		if ($user->heritage_id == $heritageId)
+				return true;
     	}
     	
     	return false;

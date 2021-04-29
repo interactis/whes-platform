@@ -81,18 +81,18 @@ class ArticleSearch extends Article
 		];
 		
 		$dataProvider->sort->attributes['priority'] = [
-			'asc' => ['priority' => SORT_DESC],
-			'desc' => ['priority' => SORT_ASC],
+			'asc' => ['content.priority' => SORT_DESC],
+			'desc' => ['content.priority' => SORT_ASC],
 		];
 		
 		$dataProvider->sort->attributes['published'] = [
-			'asc' => ['published' => SORT_ASC],
-			'desc' => ['published' => SORT_DESC],
+			'asc' => ['content.published' => SORT_ASC],
+			'desc' => ['content.published' => SORT_DESC],
 		];
 		
 		$dataProvider->sort->attributes['hidden'] = [
-			'asc' => ['hidden' => SORT_ASC],
-			'desc' => ['hidden' => SORT_DESC],
+			'asc' => ['content.hidden' => SORT_ASC],
+			'desc' => ['content.hidden' => SORT_DESC],
 		];
 		
 		$dataProvider->sort->attributes['heritage'] = [
@@ -114,9 +114,9 @@ class ArticleSearch extends Article
             'content_id' => $this->content_id,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
-            'priority' => $this->priority,
-            'published' => $this->published,
-            'hidden' => $this->hidden,
+            'content.priority' => $this->priority,
+            'content.published' => $this->published,
+            'content.hidden' => $this->hidden,
         ]);
         
         $query->andFilterWhere(['ilike', 'article_translation.title', $this->title]);

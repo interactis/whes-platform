@@ -17,6 +17,7 @@ use yii\filters\VerbFilter;
  */
 class MediaController extends Controller
 {
+	private $_model;
 	private $_heritage;
 	private $_content;
 	private $_page;
@@ -67,14 +68,13 @@ class MediaController extends Controller
     						
                             $model = $this->findModel($id);
                             
-                           
                             switch ($model->contentType)
                             {
 								case 'heritage':
 									return $this->_isHeritageOwnerOrAdmin($model->heritage_id);
 									break;
 								case 'content':
-									return $this->_isContentOwnerOrAdmin($model->content->heritage_id);
+									return $this->_isContentOwnerOrAdmin($model->content_id);
 									break;
 								default:
 									return $user->isAdmin();
@@ -238,24 +238,21 @@ class MediaController extends Controller
 	
     protected function findModel($id)
     {
-    	if (!empty($this->_heritage))
-    		return $this->_heritage;
-        
-    	if (!empty($this->_content))
-        	return $this->_content;
+    	if (!empty($this->_model))
+    		return $this->_model;
         
 		if (($model = Media::findOne($id)) !== null)
 		{
 			switch ($model->contentType)
 			{
 				case 'heritage':
-					$this->_heritage = $model;
+					$this->_heritage = $model->heritage;
 					break;
 				case 'content':
-					$this->_content = $model;
+					$this->_content = $model->content;
 					break;
 				case 'page':
-					$this->_page = $model;
+					$this->_page = $model->page;
 					break;
 			}
 			

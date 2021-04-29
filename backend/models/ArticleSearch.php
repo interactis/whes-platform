@@ -12,6 +12,7 @@ use common\models\Article;
 class ArticleSearch extends Article
 {
 	public $title;
+	public $heritage;
 	public $priority;
 	public $published;
 	public $hidden;
@@ -22,8 +23,8 @@ class ArticleSearch extends Article
     public function rules()
     {
         return [
-            [['id', 'content_id', 'created_at', 'updated_at', 'priority'], 'integer'],
-            [['title'], 'safe'],
+            [['id', 'content_id', 'priority', 'created_at', 'updated_at'], 'integer'],
+            [['title', 'heritage'], 'safe'],
             [['published', 'hidden'], 'boolean']
         ];
     }
@@ -49,7 +50,9 @@ class ArticleSearch extends Article
         $query = Article::find();
         $query->leftJoin('article_translation', 'article_translation.article_id = article.id');
         $query->leftJoin('content', 'content.id = article.content_id');
-        $query->groupBy(['article.id', 'article_translation.title', 'content.priority', 'content.hidden', 'content.published']);
+        $query->leftJoin('heritage', 'heritage.id = content.heritage_id');
+        $query->leftJoin('heritage_translation', 'heritage_translation.heritage_id = heritage.id');
+        $query->groupBy(['article.id', 'article_translation.title', 'content.priority', 'content.hidden', 'content.published', 'heritage_translation.short_name']);
 
         // add conditions that should always apply here
 
@@ -82,6 +85,11 @@ class ArticleSearch extends Article
 			'asc' => ['hidden' => SORT_ASC],
 			'desc' => ['hidden' => SORT_DESC],
 		];
+		
+		$dataProvider->sort->attributes['heritage'] = [
+			'asc' => ['heritage_translation.short_name' => SORT_ASC],
+			'desc' => ['heritage_translation.short_name' => SORT_DESC],
+		];
 
         $this->load($params);
 
@@ -103,6 +111,7 @@ class ArticleSearch extends Article
         ]);
         
         $query->andFilterWhere(['ilike', 'article_translation.title', $this->title]);
+        $query->andFilterWhere(['ilike', 'heritage_translation.short_name', $this->heritage]);
 
         return $dataProvider;
     }

@@ -32,6 +32,12 @@ $boolFilter = [
             'id',
             'title',
             [
+                'attribute' => 'heritage',
+                'value' => function ($model) {
+                    return $model->content->heritage->short_name;
+                }
+            ],
+            [
                 'attribute' => 'priority',
                 'value' => function ($model) {
                     return $model->priorities[$model->content->priority];

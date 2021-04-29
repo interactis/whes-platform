@@ -109,7 +109,7 @@ $user = Yii::$app->user->identity;
 						'isWysiwyg' => true
 					]); ?>
 					
-					<?= $form->field($model, 'difficulty') ?>			
+					<?= $form->field($model, 'difficulty')->dropDownList($model->difficulties) ?>	
 				
 				</div>
 			</div>

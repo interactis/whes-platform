@@ -66,6 +66,7 @@ class Admin extends ActiveRecord implements IdentityInterface
            	['heritage_id', 'exist', 'skipOnError' => true, 'targetClass' => Heritage::className(), 'targetAttribute' => ['heritage_id' => 'id']],
            	['password', 'required', 'on' => 'create'],
            	['role', 'integer'],
+           	['role', 'in', 'range' => [self::ROLE_SUPER_ADMIN, self::ROLE_ADMIN, self::ROLE_EDITOR]],
            	['password_hash', 'safe'],
            	
            	['email', 'trim'],

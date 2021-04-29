@@ -38,6 +38,10 @@ class Route extends HelperModel
 	public $translationFields = ['title','description', 'youtube_id', 'catering', 'options', 'remarks'];
 	public $requiredTranslationFields = ['title', 'description'];
 	
+	const DIFFICULTY_EASY = 1;
+    const DIFFICULTY_MEDIUM = 2;
+    const DIFFICULTY_DIFFICULT = 3;
+	
     /**
      * {@inheritdoc}
      */
@@ -75,6 +79,7 @@ class Route extends HelperModel
             [['arrival_url', 'departure_url'], 'url'],
             [['content_id'], 'exist', 'skipOnError' => true, 'targetClass' => Content::className(), 'targetAttribute' => ['content_id' => 'id']],
             [['tags'], 'required'],
+            ['difficulty', 'in', 'range' => [self::DIFFICULTY_EASY, self::DIFFICULTY_MEDIUM, self::DIFFICULTY_DIFFICULT]],
         ];
     }
 
@@ -125,5 +130,14 @@ class Route extends HelperModel
     public function getRouteTranslations()
     {
         return $this->hasMany(RouteTranslation::className(), ['route_id' => 'id']);
+    }
+    
+    public function getDifficulties()
+    {
+    	return [
+    		1 => Yii::t('app', 'Easy'),
+    		2 => Yii::t('app', 'Medium'),
+			3 => Yii::t('app', 'Difficult')
+		];
     }
 }

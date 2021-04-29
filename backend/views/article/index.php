@@ -9,6 +9,11 @@ use yii\grid\GridView;
 
 $this->title = Yii::t('app', 'Articles');
 $this->params['breadcrumbs'][] = $this->title;
+
+$boolFilter = [
+	1 => Yii::t('app', 'Yes'),
+	0 => Yii::t('app', 'No')
+]
 ?>
 <div class="article-index">
 
@@ -26,8 +31,27 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'title',
-            'content_id',
-
+            [
+                'attribute' => 'priority',
+                'value' => function ($model) {
+                    return $model->priorities[$model->content->priority];
+                },
+                'filter' => $searchModel->priorities,
+            ],
+            [
+                'attribute' => 'published',
+                'value' => function ($model) {
+                    return ($model->content->published ? Yii::t('app', 'Yes') :  Yii::t('app', 'No'));
+                },
+                'filter' => $boolFilter,
+            ],
+			[
+                'attribute' => 'hidden',
+                'value' => function ($model) {
+                    return ($model->content->hidden ? Yii::t('app', 'Yes') :  Yii::t('app', 'No'));
+                },
+                'filter' => $boolFilter,
+            ],
             [
             	'class' => 'yii\grid\ActionColumn',
             	'template' => '{update} {delete}'

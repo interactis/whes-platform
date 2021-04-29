@@ -9,7 +9,59 @@ use yii\grid\GridView;
 
 $this->title = Yii::t('app', 'Routes');
 $this->params['breadcrumbs'][] = $this->title;
+
+$boolFilter = [
+	1 => Yii::t('app', 'Yes'),
+	0 => Yii::t('app', 'No')
+];
+
+$colums = [
+	['class' => 'yii\grid\SerialColumn'],
+	'id',
+	'title'
+];
+
+$user = Yii::$app->user->identity;
+if ($user->isAdmin())
+{
+	array_push($colums,
+		[
+			'attribute' => 'heritage',
+			'value' => function ($model) {
+				return $model->content->heritage->short_name;
+			}
+		]);
+}
+
+array_push($colums,
+	[
+		'attribute' => 'priority',
+		'value' => function ($model) {
+			return $model->priorities[$model->content->priority];
+		},
+		'filter' => $searchModel->priorities,
+	],
+	[
+		'attribute' => 'published',
+		'value' => function ($model) {
+			return ($model->content->published ? Yii::t('app', 'Yes') :  Yii::t('app', 'No'));
+		},
+		'filter' => $boolFilter,
+	],
+	[
+		'attribute' => 'hidden',
+		'value' => function ($model) {
+			return ($model->content->hidden ? Yii::t('app', 'Yes') :  Yii::t('app', 'No'));
+		},
+		'filter' => $boolFilter,
+	],
+	[
+		'class' => 'yii\grid\ActionColumn',
+		'template' => '{update} {delete}'
+	]
+);
 ?>
+
 <div class="route-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
@@ -21,18 +73,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
-            'title',
-            'content_id',
-
-            [
-            	'class' => 'yii\grid\ActionColumn',
-            	'template' => '{update} {delete}'
-            ]
-        ],
+        'columns' => $colums,
     ]); ?>
 
 

@@ -4,6 +4,7 @@ namespace common\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
+use common\models\helpers\TranslationModel;
 
 /**
  * This is the model class for table "supplier".
@@ -25,8 +26,11 @@ use yii\behaviors\TimestampBehavior;
  * @property Content $content
  * @property SupplierTranslation[] $supplierTranslations
  */
-class Supplier extends \yii\db\ActiveRecord
+class Supplier extends TranslationModel
 {
+	public $translationFields = ['name', 'name_affix', 'remarks'];
+	public $requiredTranslationFields = ['name'];
+	
     /**
      * {@inheritdoc}
      */
@@ -55,9 +59,12 @@ class Supplier extends \yii\db\ActiveRecord
             [['content_id', 'created_at', 'updated_at'], 'integer'],
             [['geom'], 'string'],
             [['street', 'address_addition', 'url', 'email'], 'string', 'max' => 255],
-            [['street_number', 'zip'], 'string', 'max' => 10],
+            [['street_number'], 'string', 'max' => 10],
+            [['zip'], 'string', 'min' => 4, 'max' => 8],
             [['city'], 'string', 'max' => 150],
-            [['phone'], 'string', 'max' => 50],
+            [['phone'], 'string', 'min' => 8, 'max' => 20],
+            [['email'], 'email'],
+            [['url'], 'url'],
             [['content_id'], 'exist', 'skipOnError' => true, 'targetClass' => Content::className(), 'targetAttribute' => ['content_id' => 'id']],
         ];
     }
@@ -75,7 +82,7 @@ class Supplier extends \yii\db\ActiveRecord
             'address_addition' => Yii::t('app', 'Address Addition'),
             'zip' => Yii::t('app', 'Zip'),
             'city' => Yii::t('app', 'City'),
-            'url' => Yii::t('app', 'Url'),
+            'url' => Yii::t('app', 'URL'),
             'email' => Yii::t('app', 'Email'),
             'phone' => Yii::t('app', 'Phone'),
             'geom' => Yii::t('app', 'Geom'),

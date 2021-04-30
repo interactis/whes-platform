@@ -86,7 +86,7 @@ class SupplierController extends Controller
        		}
         }
 
-        return $this->render('create', [
+        return $this->render('supplier', [
         	'content' => $content,
             'model' => $model,
         ]);
@@ -112,7 +112,8 @@ class SupplierController extends Controller
        		}
         }
 
-        return $this->render('update', [
+        return $this->render('supplier', [
+        	'content' => $model->content,
             'model' => $model
         ]);
     }

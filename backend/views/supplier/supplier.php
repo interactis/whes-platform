@@ -9,11 +9,11 @@ $this->params['breadcrumbs'][] = ['label' => $contentModel->pluralName(), 'url' 
 $this->params['breadcrumbs'][] = ['label' => $contentModel->title, 'url' => [$type .'/update', 'id' => $contentModel->id]];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="supplier-create">
+<div class="supplier-update">
 
     <h1><?= $contentModel->title ?></h1>
     
-     <?= Yii::$app->controller->renderPartial('//common/_contentNavPills', [
+    <?= Yii::$app->controller->renderPartial('//common/_contentNavPills', [
     	'model' => $content,
     	'active' => 3,
     	'showSupplier' => true

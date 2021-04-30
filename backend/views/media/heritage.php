@@ -11,7 +11,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= $heritage->name ?></h1>
     
-    <?= Yii::$app->controller->renderPartial('//common/_navPills', ['model' => $heritage, 'active' => 2]) ?>
+    <?= Yii::$app->controller->renderPartial('//common/_navPills', [
+    	'model' => $heritage,
+    	'active' => 2
+    ]) ?>
 
     <div class="row">
 		<div class="col-md-10 col-lg-8">

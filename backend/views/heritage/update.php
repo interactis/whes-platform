@@ -13,7 +13,10 @@ $this->params['breadcrumbs'][] = $model->short_name;
 
     <h1><?= Html::encode($this->title) ?></h1>
     
-    <?= Yii::$app->controller->renderPartial('//common/_navPills', ['model' => $model, 'active' => 1]) ?>
+    <?= Yii::$app->controller->renderPartial('//common/_navPills', [
+    	'model' => $model,
+    	'active' => 1
+    ]) ?>
 
     <?= $this->render('_form', [
         'model' => $model,

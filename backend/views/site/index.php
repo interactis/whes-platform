@@ -25,13 +25,13 @@ $this->title = 'Dashboard';
 				<div class="col-md-4 margin-bottom">
 					<div class="h1">Meta Data</div>
 					<p class="lead">
-						<a  href="/flag">
-							Flags
+						<a  href="/tag">
+							Tags
 						</a>
 					</p>
 					<p class="lead">
-						<a  href="/tag">
-							Tags
+						<a  href="/flag">
+							Flags
 						</a>
 					</p>
 				</div>

@@ -2,7 +2,11 @@
 use yii\helpers\Html;
 
 $this->title = Yii::t('app', 'Images');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Heritages'), 'url' => ['heritage/index']];
+
+$user = Yii::$app->user->identity;
+if ($user->isAdmin())
+	$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Heritages'), 'url' => ['heritage/index']];
+
 $this->params['breadcrumbs'][] = ['label' => $heritage->short_name, 'url' => ['heritage/update', 'id' => $heritage->id]];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

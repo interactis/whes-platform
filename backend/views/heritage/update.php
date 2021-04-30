@@ -6,7 +6,11 @@ use yii\helpers\Html;
 /* @var $model common\models\Heritage */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Heritages'), 'url' => ['index']];
+
+$user = Yii::$app->user->identity;
+if ($user->isAdmin())
+	$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Heritages'), 'url' => ['index']];
+
 $this->params['breadcrumbs'][] = $model->short_name;
 ?>
 <div class="heritage-update">

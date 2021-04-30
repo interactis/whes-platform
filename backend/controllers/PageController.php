@@ -46,14 +46,24 @@ class PageController extends Controller
 	
     public function actionUpdate($id)
     {
-        $model = $this->findModel($id);
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+    	$model = $this->findModel($id);
+        $post = Yii::$app->request->post();
+		
+		if ($model->load($post))
+        {
+        	if ($model->validateTranslations() && $model->validate())
+        	{
+        		if ($model->save(false) && $model->saveTranslations($post)) {
+        			Yii::$app->getSession()->setFlash(
+        				'success',
+        				'<span class="glyphicon glyphicon-ok-sign"></span> Your changes have been saved.'
+        			);
+            	}
+       		}
         }
 
         return $this->render('update', [
-            'model' => $model,
+            'model' => $model
         ]);
     }
 	

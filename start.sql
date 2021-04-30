@@ -29,16 +29,6 @@ code VARCHAR(6) NOT NULL UNIQUE ,
 CONSTRAINT exhibition_code_pkey PRIMARY KEY (id)
 );
 
-CREATE TABLE content_flag
-(
-id SERIAL,
-content_id INTEGER,
-flag_id INTEGER,
-created_at INTEGER,
-updated_at INTEGER,
-CONSTRAINT content_flag_pkey PRIMARY KEY (id)
-);
-
 CREATE TABLE heritage
 (
 id SERIAL,
@@ -74,6 +64,14 @@ code_count INTEGER,
 created_at INTEGER,
 updated_at INTEGER,
 CONSTRAINT exhibition_code_series_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE language
+(
+id SERIAL,
+code VARCHAR(4),
+name VARCHAR(150),
+CONSTRAINT language_pkey PRIMARY KEY (id)
 );
 
 CREATE TABLE article_translation
@@ -284,12 +282,14 @@ updated_at INTEGER,
 CONSTRAINT content_valid_time_pkey PRIMARY KEY (id)
 );
 
-CREATE TABLE language
+CREATE TABLE content_flag
 (
 id SERIAL,
-code VARCHAR(4),
-name VARCHAR(150),
-CONSTRAINT language_pkey PRIMARY KEY (id)
+content_id INTEGER,
+flag_id INTEGER,
+created_at INTEGER,
+updated_at INTEGER,
+CONSTRAINT content_flag_pkey PRIMARY KEY (id)
 );
 
 CREATE TABLE flag_group
@@ -339,6 +339,7 @@ CREATE TABLE page_translation
 (
 id SERIAL,
 page_id INTEGER,
+language_id INTEGER,
 slug VARCHAR(255),
 title VARCHAR(255),
 description TEXT,
@@ -434,10 +435,6 @@ ALTER TABLE exhibit ADD FOREIGN KEY (content_id) REFERENCES content (id) ON DELE
 
 ALTER TABLE exhibition_code ADD FOREIGN KEY (exhibition_code_series_id) REFERENCES exhibition_code_series (id) ON DELETE CASCADE;
 
-ALTER TABLE content_flag ADD FOREIGN KEY (content_id) REFERENCES content (id) ON DELETE CASCADE;
-
-ALTER TABLE content_flag ADD FOREIGN KEY (flag_id) REFERENCES flag (id) ON DELETE CASCADE;
-
 ALTER TABLE admin ADD FOREIGN KEY (heritage_id) REFERENCES heritage (id) ON DELETE CASCADE;
 
 ALTER TABLE exhibition_code_series ADD FOREIGN KEY (heritage_id) REFERENCES heritage (id) ON DELETE CASCADE;
@@ -498,6 +495,10 @@ ALTER TABLE content_valid_time ADD FOREIGN KEY (valid_time_id) REFERENCES valid_
 
 ALTER TABLE content_valid_time ADD FOREIGN KEY (content_id) REFERENCES content (id) ON DELETE CASCADE;
 
+ALTER TABLE content_flag ADD FOREIGN KEY (content_id) REFERENCES content (id) ON DELETE CASCADE;
+
+ALTER TABLE content_flag ADD FOREIGN KEY (flag_id) REFERENCES flag (id) ON DELETE CASCADE;
+
 ALTER TABLE content ADD FOREIGN KEY (heritage_id) REFERENCES heritage (id) ON DELETE CASCADE;
 
 ALTER TABLE flag_group_translation ADD FOREIGN KEY (flag_group_id) REFERENCES flag_group (id) ON DELETE CASCADE;
@@ -505,6 +506,8 @@ ALTER TABLE flag_group_translation ADD FOREIGN KEY (flag_group_id) REFERENCES fl
 ALTER TABLE flag_group_translation ADD FOREIGN KEY (language_id) REFERENCES language (id) ON DELETE CASCADE;
 
 ALTER TABLE page_translation ADD FOREIGN KEY (page_id) REFERENCES page (id) ON DELETE CASCADE;
+
+ALTER TABLE page_translation ADD FOREIGN KEY (language_id) REFERENCES language (id) ON DELETE CASCADE;
 
 CREATE INDEX page_translation_slug_idx ON page_translation(slug);
 
@@ -533,9 +536,30 @@ ALTER TABLE related_tag ADD FOREIGN KEY (related_tag_id) REFERENCES tag (id) ON 
 
 
 
+
 /* Insert data */
 
 INSERT INTO language (code, name) VALUES ('de', 'Deutsch');
 INSERT INTO language (code, name) VALUES ('en', 'English');
 INSERT INTO language (code, name) VALUES ('fr', 'Français');
 INSERT INTO language (code, name) VALUES ('it', 'Italiano');
+
+
+INSERT INTO page (name, created_at, updated_at) VALUES ('Homepage', 1619796019, 1619796019);
+INSERT INTO page (name) VALUES ('About');
+INSERT INTO page (name) VALUES ('Legal Notice');
+
+INSERT INTO page_translation (page_id, language_id) VALUES (1, 1);
+INSERT INTO page_translation (page_id, language_id) VALUES (1, 2);
+INSERT INTO page_translation (page_id, language_id) VALUES (1, 3);
+INSERT INTO page_translation (page_id, language_id) VALUES (1, 4);
+
+INSERT INTO page_translation (page_id, language_id) VALUES (2, 1);
+INSERT INTO page_translation (page_id, language_id) VALUES (2, 2);
+INSERT INTO page_translation (page_id, language_id) VALUES (2, 3);
+INSERT INTO page_translation (page_id, language_id) VALUES (2, 4);
+
+INSERT INTO page_translation (page_id, language_id) VALUES (3, 1);
+INSERT INTO page_translation (page_id, language_id) VALUES (3, 2);
+INSERT INTO page_translation (page_id, language_id) VALUES (3, 3);
+INSERT INTO page_translation (page_id, language_id) VALUES (3, 4);

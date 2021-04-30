@@ -11,15 +11,20 @@ $this->title = 'Dashboard';
 				<div class="col-md-4 margin-bottom">
 					<div class="h1">Pages</div>
 					<p class="lead">
-						Homepage
+						<a  href="/page/update/1">
+							Homepage
+						</a>
 					</p>
 					<p class="lead">
-						About Us
+						<a  href="/page/update/2">
+							About
+						</a>
 					</p>
 					<p class="lead">
-						Legal Notice
+						<a  href="/page/update/3">
+							Legal Notice
+						</a>
 					</p>
-				
 				</div>
 			
 				<div class="col-md-4 margin-bottom">

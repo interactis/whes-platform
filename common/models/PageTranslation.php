@@ -17,6 +17,7 @@ use yii\behaviors\TimestampBehavior;
  * @property int|null $updated_at
  *
  * @property Page $page
+ * @property Language $language
  */
 class PageTranslation extends \yii\db\ActiveRecord
 {
@@ -76,5 +77,15 @@ class PageTranslation extends \yii\db\ActiveRecord
     public function getPage()
     {
         return $this->hasOne(Page::className(), ['id' => 'page_id']);
+    }
+    
+    /**
+     * Gets query for [[Language]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getLanguage()
+    {
+        return $this->hasOne(Language::className(), ['id' => 'language_id']);
     }
 }

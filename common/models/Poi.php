@@ -59,6 +59,7 @@ class Poi extends HelperModel
             [['content_id', 'created_at', 'updated_at'], 'integer'],
             [['geom'], 'string'],
             [['arrival_station', 'arrival_url'], 'string', 'max' => 255],
+            [['arrival_url'], 'url'],
             [['content_id'], 'exist', 'skipOnError' => true, 'targetClass' => Content::className(), 'targetAttribute' => ['content_id' => 'id']],
             [['tags'], 'required'],
         ];
@@ -72,8 +73,8 @@ class Poi extends HelperModel
         return [
             'id' => Yii::t('app', 'ID'),
             'content_id' => Yii::t('app', 'Content ID'),
-            'arrival_station' => Yii::t('app', 'Arrival Station'),
-            'arrival_url' => Yii::t('app', 'Arrival Url'),
+            'arrival_station' => Yii::t('app', 'Arrival Station Name'),
+            'arrival_url' => Yii::t('app', 'Arrival Station URL'),
             'geom' => Yii::t('app', 'Geom'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),

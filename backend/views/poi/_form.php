@@ -15,10 +15,6 @@ $nav = [
 		'title' => 'Info'
 	],
 	[
-		'slug' => 'key-figures',
-		'title' => 'Key Figures'
-	],
-	[
 		'slug' => 'sbb',
 		'title' => 'SBB'
 	],
@@ -85,55 +81,12 @@ $user = Yii::$app->user->identity;
 					<?= Yii::$app->controller->renderPartial('//translation/field', [
 						'model' => $model,
 						'form' => $form,
-						'field' => 'catering',
-						'translations' => $translations,
-						'translationModel' => $translationModel,
-						'isWysiwyg' => true
-					]); ?>
-					
-					<?= Yii::$app->controller->renderPartial('//translation/field', [
-						'model' => $model,
-						'form' => $form,
-						'field' => 'options',
-						'translations' => $translations,
-						'translationModel' => $translationModel,
-						'isWysiwyg' => true
-					]); ?>
-					
-					<?= Yii::$app->controller->renderPartial('//translation/field', [
-						'model' => $model,
-						'form' => $form,
 						'field' => 'remarks',
 						'translations' => $translations,
 						'translationModel' => $translationModel,
 						'isWysiwyg' => true
 					]); ?>
-					
-					<?= $form->field($model, 'difficulty')->dropDownList($model->difficulties) ?>	
 				
-				</div>
-			</div>
-			
-			<div id="key-figures" class="panel panel-default">
-				<div class="panel-heading">
-					<h3>Key Figures</h3>
-				</div>
-				<div class="panel-body">
-					<?= $form->field($model, 'distance_in_km') ?>
-					
-					<?= $form->field($model, 'duration_in_min') ?>
-					
-					<?= $form->field($model, 'min_altitude') ?>
-					
-					<?= $form->field($model, 'max_altitude') ?>
-					
-					<?= $form->field($model, 'start_altitude') ?>
-					
-					<?= $form->field($model, 'end_altitude') ?>
-					
-					<?= $form->field($model, 'ascent') ?>
-					
-					<?= $form->field($model, 'descent') ?>
 				</div>
 			</div>
 			
@@ -145,11 +98,6 @@ $user = Yii::$app->user->identity;
 					<?= $form->field($model, 'arrival_station') ?>
 					
 					<?= $form->field($model, 'arrival_url')
-						->hint(Yii::t('app', 'How to deep link to SBB timetable:') .' <a href="/downloads/Deep_Linking_SBB_Fahrplan.pdf" target="_blank"><span class="glyphicon glyphicon-download"></span> SBB Deep Linking</a>') ?>
-					
-					<?= $form->field($model, 'departure_station') ?>
-					
-					<?= $form->field($model, 'departure_url')
 						->hint(Yii::t('app', 'How to deep link to SBB timetable:') .' <a href="/downloads/Deep_Linking_SBB_Fahrplan.pdf" target="_blank"><span class="glyphicon glyphicon-download"></span> SBB Deep Linking</a>') ?>
 				</div>
 			</div>

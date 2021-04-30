@@ -190,9 +190,9 @@ class Content extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getSuppliers()
+    public function getSupplier()
     {
-        return $this->hasMany(Supplier::className(), ['content_id' => 'id']);
+        return $this->hasOne(Supplier::className(), ['content_id' => 'id']);
     }
     
     public function getTypes()

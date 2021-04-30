@@ -6,7 +6,6 @@ use Yii;
 use common\models\Media;
 use common\models\Heritage;
 use common\models\Content;
-use backend\models\MediaSearch;
 use yii\web\Controller;
 use yii\filters\AccessControl;
 use yii\web\NotFoundHttpException;
@@ -256,6 +255,7 @@ class MediaController extends Controller
 					break;
 			}
 			
+			$this->_model = $model;
 			return $model;
 		}
 		else

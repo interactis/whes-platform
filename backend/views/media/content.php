@@ -8,16 +8,20 @@ $this->title = Yii::t('app', 'Images');
 $this->params['breadcrumbs'][] = ['label' => $contentModel->pluralName(), 'url' => [$type .'/index']];
 $this->params['breadcrumbs'][] = ['label' => $contentModel->title, 'url' => [$type .'/update', 'id' => $contentModel->id]];
 $this->params['breadcrumbs'][] = $this->title;
+
+$showSupplier = true;
+if ($type == 'article')
+	$showSupplier = false;
 ?>
 
 <div class="media-index">
 
     <h1><?= $contentModel->title ?></h1>
     
-    <?= Yii::$app->controller->renderPartial('//common/_navPills', [
-    	'model' => $contentModel,
+    <?= Yii::$app->controller->renderPartial('//common/_contentNavPills', [
+    	'model' => $content,
     	'active' => 2,
-    	'showSupplier' => true
+    	'showSupplier' => $showSupplier
     ]) ?>
 
     <div class="row">

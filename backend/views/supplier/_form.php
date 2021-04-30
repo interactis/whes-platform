@@ -15,9 +15,9 @@ $translationModel = new SupplierTranslation();
      <div class="row">
     	<div class="col-md-10 col-lg-8">
     	
-			<div id="info" class="panel panel-default">
+			<div id="supplier" class="panel panel-default">
 				<div class="panel-heading">
-					<h3>Info</h3>
+					<h3>Supplier</h3>
 				</div>
 				<div class="panel-body">
 

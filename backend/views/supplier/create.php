@@ -1,17 +1,23 @@
 <?php
-
 use yii\helpers\Html;
 
-/* @var $this yii\web\View */
-/* @var $model common\models\Supplier */
+$type = $content->types[$content->type];
+$contentModel = $content->{$type};
 
-$this->title = Yii::t('app', 'Create Supplier');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Suppliers'), 'url' => ['index']];
+$this->title = Yii::t('app', 'Supplier');
+$this->params['breadcrumbs'][] = ['label' => $contentModel->pluralName(), 'url' => [$type .'/index']];
+$this->params['breadcrumbs'][] = ['label' => $contentModel->title, 'url' => [$type .'/update', 'id' => $contentModel->id]];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="supplier-create">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1><?= $contentModel->title ?></h1>
+    
+     <?= Yii::$app->controller->renderPartial('//common/_contentNavPills', [
+    	'model' => $content,
+    	'active' => 3,
+    	'showSupplier' => true
+    ]) ?>
 
     <?= $this->render('_form', [
         'model' => $model,

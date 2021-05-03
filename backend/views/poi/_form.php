@@ -52,15 +52,6 @@ $user = Yii::$app->user->identity;
 					<h3>Info</h3>
 				</div>
 				<div class="panel-body">
-				
-					<div id="geo" class="panel panel-default">
-						<div class="panel-heading">
-							<h3>Geo</h3>
-						</div>
-						<div class="panel-body">
-							<?= PoiWidget::widget(['model' => $model, 'attribute' => 'geom', 'value' => $model->geom, 'created' => $model->isNewRecord]) ?>
-						</div>
-					</div>
 
 					<?= Yii::$app->controller->renderPartial('//translation/field', [
 						'model' => $model,
@@ -112,7 +103,17 @@ $user = Yii::$app->user->identity;
 				</div>
 			</div>
 			
-			
+			<div id="geo" class="panel panel-default">
+				<div class="panel-heading">
+					<h3>Geo</h3>
+				</div>
+				<div class="panel-body">
+				
+					<div class="hint-block margin-bottom-sm"><?= Yii::t('app', 'Click on the map to position the point of interest') ?>:</div>
+					
+					<?= PoiWidget::widget(['model' => $model, 'attribute' => 'geom', 'value' => $model->geom, 'created' => $model->isNewRecord]) ?>
+				</div>
+			</div>
 			
 			<div id="visibility" class="panel panel-default">
 				<div class="panel-heading">

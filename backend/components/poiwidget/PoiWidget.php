@@ -10,7 +10,14 @@ use common\models\Poi;
 class PoiWidget extends InputWidget
 {
 
-    private $assetBundle;
+    private $_assetBundle;
+    
+    // default = Bern
+    private $_defaultLatLong = [
+    	'lat' => 596998,
+    	'long' => 201562,
+    ];
+    
     public $value = '';
     public $created = false;
 
@@ -37,11 +44,11 @@ class PoiWidget extends InputWidget
             'longitude' => $geom['longitude'],
             'model' => $this->model,
             'attribute' => $this->attribute,
-            'value' => ($this->created) ? '645500,150000' : sprintf('%s,%s', $geom['latitude'], $geom['longitude']),
+            'value' => ($this->created) ? implode(',', $this->_defaultLatLong) : sprintf('%s,%s', $geom['latitude'], $geom['longitude']),
             'created' => $this->created,
-            'markerImgUrl' => sprintf('%s/%s', $this->assetBundle->baseUrl, 'images/locate.png'),
-            'pinImgUrl' => sprintf('%s/%s', $this->assetBundle->baseUrl, 'images/pin.png'),
-            'baseUrl' => $this->assetBundle->baseUrl,
+            'markerImgUrl' => sprintf('%s/%s', $this->_assetBundle->baseUrl, 'images/locate.png'),
+            'pinImgUrl' => sprintf('%s/%s', $this->_assetBundle->baseUrl, 'images/pin.png'),
+            'baseUrl' => $this->_assetBundle->baseUrl,
         );
     }
 
@@ -67,8 +74,8 @@ class PoiWidget extends InputWidget
             }
             
         } else {  // Default coordinates: aletschgletscher.
-            $latitude = 645500;
-            $longitude = 150000;
+            $latitude = $this->_defaultLatLong['lat'];
+            $longitude = $this->_defaultLatLong['long'];
         }
         return array('latitude' => $latitude, 'longitude' => $longitude);
     }
@@ -79,6 +86,6 @@ class PoiWidget extends InputWidget
     public function registerAssetBundle()
     {
         $view = $this->getView();
-        $this->assetBundle = PoiAsset::register($view);
+        $this->_assetBundle = PoiAsset::register($view);
     }
 }

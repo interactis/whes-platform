@@ -39,6 +39,8 @@ class Route extends HelperModel
 	public $translationFields = ['title','description', 'youtube_id', 'catering', 'options', 'remarks'];
 	public $requiredTranslationFields = ['title', 'description'];
 	
+	public $geomUpload;
+	
 	const DIFFICULTY_EASY = 1;
     const DIFFICULTY_MEDIUM = 2;
     const DIFFICULTY_DIFFICULT = 3;

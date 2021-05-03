@@ -5,6 +5,7 @@ use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use common\models\RouteTranslation;
 use common\models\Heritage;
+use kartik\file\FileInput;
 
 $translations = $model->routeTranslations;
 $translationModel = new RouteTranslation();
@@ -159,7 +160,15 @@ $user = Yii::$app->user->identity;
 					<h3>Geo</h3>
 				</div>
 				<div class="panel-body">
-					
+					<?= $form->field($model, 'geomUpload')->widget(FileInput::classname(), [
+						// 'options' => ['accept' => 'image/*'],
+						'pluginOptions' => [
+							'showPreview' => false,
+							'showCaption' => true,
+							'showRemove' => true,
+							'showUpload' => false
+						]
+					]) ?>
 				</div>
 			</div>
 			

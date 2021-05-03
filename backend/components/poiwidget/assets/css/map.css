@@ -1,0 +1,33 @@
+/* place the slider over the map. */
+#map {
+    position: relative;
+}
+#search {
+    position: absolute;
+    top: 7rem;
+    left: 1rem;
+    height: 22px;
+    width: 22px;
+    z-index: 2;
+    background: rgba(51, 51, 51, 0.5) url('../images/search.png') no-repeat top left;
+}
+#search-outer {
+    position: absolute;
+    left: 22px;
+    display: none;
+    background: rgb(51, 51, 51);
+    padding: 10px 20px;
+    color: #fff;
+}
+#search-input {
+    color: #000;
+}
+.ui-autocomplete-category {
+    z-index: 2;
+}
+#slider-id {
+    position: absolute;
+    top: 11rem;
+    left: 1.5rem;
+    z-index: 2;
+}

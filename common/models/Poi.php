@@ -5,6 +5,7 @@ namespace common\models;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use common\models\helpers\HelperModel;
+use common\components\SwissGeometryBehavior;
 
 /**
  * This is the model class for table "poi".
@@ -46,6 +47,11 @@ class Poi extends HelperModel
     {
         return [
             TimestampBehavior::className(),
+            [
+                'class' => SwissGeometryBehavior::className(),
+                'type' => SwissGeometryBehavior::GEOMETRY_POINT,
+                'attribute' => 'geom',
+            ],
         ];
     }
 
@@ -57,7 +63,6 @@ class Poi extends HelperModel
         return [
             [['content_id', 'created_at', 'updated_at'], 'default', 'value' => null],
             [['content_id', 'created_at', 'updated_at'], 'integer'],
-            [['geom'], 'string'],
             [['arrival_station', 'arrival_url'], 'string', 'max' => 255],
             [['arrival_url'], 'url'],
             [['content_id'], 'exist', 'skipOnError' => true, 'targetClass' => Content::className(), 'targetAttribute' => ['content_id' => 'id']],
@@ -79,6 +84,15 @@ class Poi extends HelperModel
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
         ];
+    }
+    
+    /**
+     * @param $geom
+     * Store array to postgis geometry field.
+     */
+    public function setGeom($geom)
+    {
+        $this->geom = $geom;
     }
 
     /**

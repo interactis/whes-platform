@@ -5,6 +5,7 @@ namespace common\models;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use common\models\helpers\HelperModel;
+use common\components\SwissGeometryBehavior;
 
 /**
  * This is the model class for table "route".
@@ -62,6 +63,11 @@ class Route extends HelperModel
     {
         return [
             TimestampBehavior::className(),
+            [
+                'class' => SwissGeometryBehavior::className(),
+                'type' => SwissGeometryBehavior::GEOMETRY_LINESTRING,
+                'attribute' => 'geom',
+            ],
         ];
     }
 

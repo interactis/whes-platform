@@ -63,7 +63,7 @@ class Flag extends TranslationModel
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'flag_group_id' => Yii::t('app', 'Flag Group ID'),
+            'flag_group_id' => Yii::t('app', 'Flag Group'),
             'hidden' => Yii::t('app', 'Hidden'),
             'order' => Yii::t('app', 'Order'),
             'created_at' => Yii::t('app', 'Created At'),

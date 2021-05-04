@@ -1,11 +1,11 @@
 <?php
-
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use common\models\FlagTranslation;
+use common\models\FlagGroup;
 
-/* @var $this yii\web\View */
-/* @var $model common\models\Flag */
-/* @var $form yii\widgets\ActiveForm */
+$translations = $model->flagTranslations;
+$translationModel = new FlagTranslation();
 ?>
 
 <div class="flag-form">
@@ -20,12 +20,34 @@ use yii\widgets\ActiveForm;
 					<h3>Flag</h3>
 				</div>
 				<div class="panel-body">
-
-					<?= $form->field($model, 'flag_group_id')->textInput() ?>
+				
+					<?= Yii::$app->controller->renderPartial('//translation/field', [
+						'model' => $model,
+						'form' => $form,
+						'field' => 'title',
+						'translations' => $translations,
+						'translationModel' => $translationModel
+					]) ?>
 					
-					<?= $form->field($model, 'order')->textInput() ?>
+					<?= $form->field($model, 'flag_group_id')->textInput()->dropDownList(
+							FlagGroup::getFlagGroups(),
+							['prompt' => Yii::t('app', 'Please select')]
+						) ?>
 					
-					<?= $form->field($model, 'hidden')->checkbox() ?>
+					<?= Yii::$app->controller->renderPartial('//translation/field', [
+						'model' => $model,
+						'form' => $form,
+						'field' => 'disclaimer',
+						'translations' => $translations,
+						'translationModel' => $translationModel,
+						'isWysiwyg' => true
+					]) ?>
+					
+					<?= $form->field($model, 'order')->textInput()
+						->hint(Yii::t('app', 'If necessary, use a number to sort the flags among themselves.')) ?>
+					
+					<?= $form->field($model, 'hidden')->checkbox()
+						->hint(Yii::t("app", "If hidden, the flag won't be shown in the frontend views.")) ?>
 
 				</div>
 			</div>

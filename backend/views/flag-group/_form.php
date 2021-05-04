@@ -1,11 +1,10 @@
 <?php
-
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use common\models\FlagGroupTranslation;
 
-/* @var $this yii\web\View */
-/* @var $model common\models\FlagGroup */
-/* @var $form yii\widgets\ActiveForm */
+$translations = $model->flagGroupTranslations;
+$translationModel = new FlagGroupTranslation();
 ?>
 
 <div class="flag-group-form">
@@ -21,9 +20,19 @@ use yii\widgets\ActiveForm;
 				</div>
 				<div class="panel-body">
 				
-					<?= $form->field($model, 'order')->textInput() ?>
+					<?= Yii::$app->controller->renderPartial('//translation/field', [
+						'model' => $model,
+						'form' => $form,
+						'field' => 'title',
+						'translations' => $translations,
+						'translationModel' => $translationModel
+					]); ?>
+				
+					<?= $form->field($model, 'order')->textInput()
+						->hint(Yii::t('app', 'If necessary, use a number to sort the flags groups among themselves.')) ?>
 
-					<?= $form->field($model, 'hidden')->checkbox() ?>
+					<?= $form->field($model, 'hidden')->checkbox()
+						->hint(Yii::t("app", "If hidden, the flag group won't be shown in the frontend views.")) ?>
 				
 				</div>
 			</div>

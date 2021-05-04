@@ -52,6 +52,7 @@ class Flag extends TranslationModel
             [['flag_group_id', 'order', 'created_at', 'updated_at'], 'default', 'value' => null],
             [['flag_group_id', 'order', 'created_at', 'updated_at'], 'integer'],
             [['hidden'], 'boolean'],
+            [['flag_group_id'], 'required'],
             [['flag_group_id'], 'exist', 'skipOnError' => true, 'targetClass' => FlagGroup::className(), 'targetAttribute' => ['flag_group_id' => 'id']],
         ];
     }

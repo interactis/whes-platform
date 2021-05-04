@@ -64,7 +64,8 @@ $translationModel = new MediaTranslation();
 						'translationModel' => $translationModel
 					]); ?>
    
-    				<?= $form->field($model, 'order')->textInput()->hint(Yii::t('app', 'If necessary, use a number to sort the images among themselves.')) ?>
+    				<?= $form->field($model, 'order')->textInput()
+    					->hint(Yii::t('app', 'If necessary, use a number to sort the images among themselves.')) ?>
 				</div>
 			</div>
 			

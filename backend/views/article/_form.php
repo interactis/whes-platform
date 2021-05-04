@@ -2,7 +2,6 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use yii\helpers\ArrayHelper;
 use common\models\ArticleTranslation;
 use common\models\Heritage;
 
@@ -15,6 +14,10 @@ $nav = [
 		'title' => 'Info'
 	],
 	[
+		'slug' => 'meta',
+		'title' => 'Meta Data'
+	],
+	[
 		'slug' => 'visibility',
 		'title' => 'Visibility'
 	]
@@ -23,10 +26,6 @@ $nav = [
 $viewUrl = false;
 if (!$model->isNewRecord)
 	$viewUrl = Yii::$app->params['frontendUrl'] .'article/'. $model->slug;
-
-$tagValue = [];
-if (isset($model->content->contentTags))
-	$tagValue = ArrayHelper::map($model->content->contentTags, 'tag_id', 'tag_id');
 
 $user = Yii::$app->user->identity;
 ?>
@@ -84,6 +83,11 @@ $user = Yii::$app->user->identity;
 				</div>
 			</div>
 			
+			<?= Yii::$app->controller->renderPartial('//common/_metaForm', [
+				'model' => $model,
+				'form' => $form
+			]) ?>
+			
 			<div id="visibility" class="panel panel-default">
 				<div class="panel-heading">
 					<h3>Visibility</h3>
@@ -98,11 +102,6 @@ $user = Yii::$app->user->identity;
 						);
 					}
 					?>
-					
-					<?= Yii::$app->controller->renderPartial('//common/_tagSelect', [
-						'model' => $model,
-						'tagValue' => $tagValue
-					]); ?>
 					
 					<?= $form->field($contentModel, 'priority')->dropDownList($model->priorities)
 						->hint(Yii::t("app", "Influences where the route appears in filter and search results.")) ?>

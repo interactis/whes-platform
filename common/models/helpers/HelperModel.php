@@ -5,12 +5,15 @@ use Yii;
 use yii\base\UnknownPropertyException;
 use yii\helpers\ArrayHelper;
 use common\models\Tag;
+use common\models\Flag;
 use common\models\ContentTag;
+use common\models\ContentFlag;
 
 
 class HelperModel extends TranslationModel
 {	
     public $tags = [];
+    public $flags = [];
     
     public function getPriorities()
     {
@@ -35,6 +38,24 @@ class HelperModel extends TranslationModel
 			}
 		}
 		Yii::$app->db->createCommand()->batchInsert('content_tag', ['content_id', 'tag_id'], $tagIds)->execute();
+        
+        return true;
+    }
+    
+    public function saveFlags()
+    {
+        ContentFlag::deleteAll(['content_id' => $this->content_id]);
+    	
+		$flagIds = [];
+		foreach ($this->flags as $flagId)
+		{
+			if (is_numeric($flagId))
+			{
+				if (Flag::findOne($flagId))
+					$flagIds[] = [$this->content_id, $flagId];
+			}
+		}
+		Yii::$app->db->createCommand()->batchInsert('content_flag', ['content_id', 'flag_id'], $flagIds)->execute();
         
         return true;
     }

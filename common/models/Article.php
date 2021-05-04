@@ -54,7 +54,7 @@ class Article extends HelperModel
             [['content_id', 'created_at', 'updated_at'], 'default', 'value' => null],
             [['content_id', 'created_at', 'updated_at'], 'integer'],
             [['content_id'], 'exist', 'skipOnError' => true, 'targetClass' => Content::className(), 'targetAttribute' => ['content_id' => 'id']],
-            [['tags'], 'required'],
+            [['tags', 'flags'], 'required'],
         ];
     }
 
@@ -66,6 +66,7 @@ class Article extends HelperModel
         return [
             'id' => Yii::t('app', 'ID'),
             'content_id' => Yii::t('app', 'Content ID'),
+            'flags' =>  Yii::t('app', 'Filter Flags'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
         ];

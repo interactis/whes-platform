@@ -5,6 +5,7 @@ namespace common\models;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use common\models\helpers\TranslationModel;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "flag".
@@ -100,5 +101,15 @@ class Flag extends TranslationModel
     public function getFlagTranslations()
     {
         return $this->hasMany(FlagTranslation::className(), ['flag_id' => 'id']);
+    }
+    
+    public static function getFlagList()
+    {
+    	$models = Flag::find()
+    		->joinWith('flagTranslations')
+    		->orderBy('title')
+    		->all();
+    		
+        return ArrayHelper::map($models, 'id', 'title');
     }
 }

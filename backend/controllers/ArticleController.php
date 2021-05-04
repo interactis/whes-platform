@@ -116,7 +116,8 @@ class ArticleController extends HelperController
         		if ($contentModel->save(false) &&
         			$model->save(false)	&&
         			$model->saveTranslations() &&
-        			$model->saveTags('Article') &&
+        			$model->saveTags() &&
+        			$model->saveFlags() &&
         			$model->generateSlugs()
         		)
         		{   					

@@ -1,0 +1,48 @@
+.btn {
+	color: $white !important;
+	padding: 16px 24px;
+	text-decoration: none !important;
+	font-family: BRNebula-bold, sans-serif;
+	text-transform: uppercase;
+	border-radius: 24px;
+	line-height: 1;
+	letter-spacing: 0.13em;
+	font-size: 0.75rem;
+	
+	&.btn-primary {
+		background: $gray-dark;
+		border: 2px $gray-dark solid;
+	}
+	
+	&.btn-outline-primary {
+		border: 2px $gray-dark solid !important;
+		color: $gray-dark !important;
+		transition: all 0.17s;
+	}
+	
+	&:hover {
+		opacity: 0.8;
+	}
+	
+	&.btn-outline-primary:hover,
+	&.btn-outline-primary:active,
+	&.btn-outline-primary:focus
+	 {
+		background: $gray-dark;
+		color: $white !important;
+	}
+	
+	&:active,
+	&:focus {
+		background: $gray !important;
+		border-color: $gray !important;
+		box-shadow:none !important;
+    	outline:0px !important;
+	}
+	
+	@include media-breakpoint-up(md) {
+		font-size: 0.875rem;
+		border-radius: 26px;
+	}
+	
+}

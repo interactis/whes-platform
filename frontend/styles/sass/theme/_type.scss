@@ -1,0 +1,125 @@
+h1, .h1,
+h2, .h2,
+h3, .h3 {
+	-ms-hyphens: manual !important;
+	-webkit-hyphens: manual !important;
+	hyphens: manual !important;
+	
+	&.brush {
+		font-family: Quickbrush;
+	}
+	&.no-hyphens {
+		hyphens: none !important;
+	}
+	
+}
+
+h1, .h1 {
+	font-size: 3.5625rem;
+	line-height: 1;
+    hyphens: none;
+    margin: 30px 0;
+    //white-space: nowrap;
+	@include media-breakpoint-up(xl) {
+		font-size: 5rem;
+	}
+}
+
+h2, .h2 {
+	font-size: 2rem;
+	line-height: 1.2;
+	margin-bottom: 0;
+	@include media-breakpoint-up(md) {
+		font-size: 2rem;
+	}
+}
+
+h5, .h5 {
+	margin: 0;
+	font-size: 0.875rem;
+	text-transform: uppercase;
+}
+
+p {
+	hyphens: auto;
+	line-height: 1.6;
+	letter-spacing: 0.02em;
+	font-weight: normal;
+	font-size: 1.0625rem;
+	
+	&.lead,
+	.lead & {
+		font-size: 1.3125rem;
+		font-family: BRNebula-light, sans-serif;
+	}
+	
+	@include media-breakpoint-up(md) {
+		font-size: 1.1875rem;
+		
+		&.lead,
+		.lead & {
+			font-size: 1.375em;
+		}
+	}
+}
+
+a:link,
+a:visited {
+	color: $body-color;
+	text-decoration: underline;
+}
+
+a:hover,
+a:active {
+	color: $primary;
+	// text-decoration: none !important;
+	transition: 0.2s;
+}
+
+.logo {
+	font-family: BRNebula-Bold, sans-serif;
+	text-transform: uppercase;
+	line-height: 1;
+	font-size: 1.4375rem;
+}
+
+label,
+.label {
+	font-family: BRNebula-Black, sans-serif;
+	font-size: 0.75rem;
+	letter-spacing: 0.06rem;
+	display: inline-block;
+	font-weight: normal;
+	padding: 0;
+	border-radius: 0;
+	color: inherit;
+	white-space: normal;
+	text-align: left;
+	line-height: 1.4;
+		
+	@include media-breakpoint-up(md) {
+		font-size: 0.813rem;
+		
+	}
+}
+
+.label {
+	text-transform: uppercase;
+	hyphens: auto !important;
+	padding-bottom: 12px;
+	border-bottom: 2px solid $body-color;
+}
+
+.small {
+	font-size: 0.75rem;
+	@include media-breakpoint-up(md) {
+		font-size: 0.875rem;
+	}
+}
+
+.strong,
+strong,
+b {
+	font-family: $headings-font-family;
+	font-weight: normal;
+}

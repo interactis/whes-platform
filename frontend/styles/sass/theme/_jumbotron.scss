@@ -1,0 +1,121 @@
+.jumbotron-container {
+	position: relative;
+	
+	.jumbotron {
+		display: none;
+		position: relative;
+		padding:0;
+		min-height: 720px;
+		overflow: hidden;
+		margin-bottom: 0;
+		.img-bg {
+			position: relative;
+			background-position-x: center;
+			background-repeat: no-repeat;
+			background-size: cover;
+			min-height: 720px;
+			filter: grayscale(1);
+		}
+	
+		@include media-breakpoint-up(lg) {
+			display: block;
+		}
+	}
+	
+	.jumbotron-cards {
+		padding-left: 24px;
+		padding-right: 24px;
+	}
+	
+	.preview-container {
+		.card {
+			margin-top: 0 !important;
+			padding-top: 30px;
+			margin-bottom: 60px !important;
+			
+			.lead {
+				display: block;
+			}
+		}
+	}
+	
+	@include media-breakpoint-up(sm) {
+		.jumbotron-cards {
+			padding-left: 0px;
+			padding-right: 0px;
+			margin-bottom: 45px;
+		}
+	}
+	
+	@include media-breakpoint-up(md) {
+		&.preview .card {
+			margin-bottom: 90px !important;
+			.h2 {
+				font-size: 2.75rem;
+			}
+		}
+	}
+	
+	@include media-breakpoint-up(lg) {
+	
+		&.preview {
+			margin-bottom: 240px;
+		}
+		
+		.jumbotron-cards {
+			position: relative;
+			top: -750px;
+			.container {
+				position: relative;
+			}
+		
+			.card {
+				position: absolute;
+				width: 320px;
+				top: 0;
+				right: 0;
+				
+				.img-container {
+					top: -90px;
+					height: 240px;
+				}
+			}
+		
+			.card-1 {
+				top: -270px;
+			}
+		
+			.card-2 {
+				top: -150px;
+				right: 350px;
+			}
+		}
+		
+		.preview-container {
+			position: relative;
+			top: -600px;
+			
+			.container {
+				position: relative;
+			}
+
+			.card {
+				position: absolute;
+				padding: 60px 30px;
+				width: 620px;
+				min-height: 560px;
+				
+				.card-body {
+					padding: 15px 45px 30px;
+				}
+				
+				.h2 {
+					font-size: 3.5rem;
+					margin-bottom: 60px;
+				}
+				
+			}
+		}
+	}
+}
+

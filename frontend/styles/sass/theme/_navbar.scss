@@ -1,0 +1,122 @@
+.navbar {
+	position: absolute;
+	top: 0px;
+	width: 100%;
+	padding: 24px;
+	z-index: $zindex-fixed;
+	
+	.navbar-brand {
+		padding: 0;
+		.logo {
+			width: 90px;
+			// font-size: 1.6875rem;
+		}
+	}
+	
+	a.navbar-brand {
+		text-decoration: none !important;
+	}
+	
+	.nav-item {
+		a:link,
+		a:visited,
+		a:active,
+		a:hover,
+		a:visited {
+			text-decoration: none;
+			color: $body-color !important;
+		}
+	}
+	
+	.navbar-toggler {
+		position: absolute;
+		top: 0;
+		right: 0;
+		padding: 18px;
+		border: none;
+		
+		&.toggler-close {
+			z-index: $zindex-fixed;
+		}
+	}
+	
+	@include media-breakpoint-up(lg) {
+	
+		.navbar-collapse {
+			margin-left: 70px;
+		}
+		
+		.nav-item {
+			margin-right: 30px;
+			
+			&.active {
+				border-bottom: 2px solid $gray-dark;
+			}
+		}
+		
+		.social {
+			display: none;
+		}
+	
+	}
+	
+	@include media-breakpoint-up(lg) {
+		.navbar-brand {
+			.logo {
+				// font-size: 1.4375rem;
+			}
+		}
+	}
+	
+	@include media-breakpoint-down(md) {
+		.navbar-collapse {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			background: white;
+			padding: 0;
+			font-size: 3.375rem;
+			font-family: $headings-font-family;
+		}
+		
+		.navbar-collapse.collapse.show {
+    		height: 100vh;
+		}
+		
+		.navbar-nav {
+			padding: 90px 24px 24px 24px;
+			height: 100vh;
+			overflow: scroll;
+			-webkit-overflow-scrolling: touch;
+		}
+		
+		.nav-item {
+			line-height: 1;
+			margin-bottom: 30px;
+			&.active {
+				border-bottom: 2px solid $gray-dark;
+			}
+			
+			a:link,
+			a:visited,
+			a:active,
+			a:hover,
+			a:visited {
+				color: $body-color !important;
+			}
+		}
+		
+		.social {
+			margin-top: 30px;
+			a:link,
+			a:visited,
+			a:active,
+			a:visited {
+				text-decoration: none;
+				margin-right: 14px;
+			}
+			//border-top: 2px $gray solid;
+		}
+	}
+}

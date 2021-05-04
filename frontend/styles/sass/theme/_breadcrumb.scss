@@ -1,0 +1,63 @@
+.breadcrumb {
+	position: absolute;
+	display: block;
+	width: 300px;
+	z-index: 1;
+	background: none;
+	bottom: 0;
+	margin: 0 24px;
+	height: 0;
+	padding: 0 34px;
+	white-space: nowrap;
+	font-size: 0.875rem;
+	transform: rotate(-90deg);
+	transform-origin: top left;
+	
+	&.right {
+		right: 18px;
+		bottom: 300px;
+		left: auto;
+		transform-origin: top right;
+	}
+	
+	opacity: 0;
+	-webkit-animation: fadein 0.5s; /* Safari, Chrome and Opera > 12.1 */
+	  -moz-animation: fadein 0.5s; /* Firefox < 16 */
+	   -ms-animation: fadein 0.5s; /* Internet Explorer */
+		-o-animation: fadein 0.5s; /* Opera < 12.1 */
+		  animation: fadein 0.5s;
+
+	-webkit-animation-fill-mode:forwards;
+	 -moz-animation-fill-mode:forwards;
+	  -ms-animation-fill-mode:forwards;
+	   -o-animation-fill-mode:forwards;
+		  animation-fill-mode:forwards;
+
+	-webkit-animation-delay: 0.3s;
+	 -moz-animation-delay: 0.3s;
+	  -ms-animation-delay: 0.3s;
+	   -o-animation-delay: 0.3s;
+		  animation-delay: 0.3s;
+	
+	@include media-breakpoint-down(sm) {
+		display: none;
+	}
+}
+
+.breadcrumb > li {
+	display: inline;
+}
+
+.breadcrumb > li + li:before {
+  padding-left: 8px;
+  color: $body-color;
+  content: "/\00a0";
+}
+
+.breadcrumb a {
+	@include colorsSecondary;
+	text-decoration: none;
+}
+.breadcrumb > .active {
+  color: $body-color;
+}

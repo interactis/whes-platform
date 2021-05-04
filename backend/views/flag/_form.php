@@ -29,11 +29,6 @@ $translationModel = new FlagTranslation();
 						'translationModel' => $translationModel
 					]) ?>
 					
-					<?= $form->field($model, 'flag_group_id')->textInput()->dropDownList(
-							FlagGroup::getFlagGroups(),
-							['prompt' => Yii::t('app', 'Please select')]
-						) ?>
-					
 					<?= Yii::$app->controller->renderPartial('//translation/field', [
 						'model' => $model,
 						'form' => $form,

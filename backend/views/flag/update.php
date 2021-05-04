@@ -1,16 +1,14 @@
 <?php
-
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Flag */
 
-$this->title = Yii::t('app', 'Update Flag: {name}', [
-    'name' => $model->id,
-]);
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Flags'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = Yii::t('app', 'Update');
+$this->title = $model->title;
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Flag Groups'), 'url' => ['flag-group/index']];
+$this->params['breadcrumbs'][] = ['label' => $flagGroup->title, 'url' => ['flag-group/update', 'id' => $flagGroup->id]];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Flags'), 'url' => ['index', 'id' => $flagGroup->id]];
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="flag-update">
 

@@ -6,7 +6,9 @@ use yii\helpers\Html;
 /* @var $model common\models\Flag */
 
 $this->title = Yii::t('app', 'Create Flag');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Flags'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Flag Groups'), 'url' => ['flag-group/index']];
+$this->params['breadcrumbs'][] = ['label' => $flagGroup->title, 'url' => ['flag-group/update', 'id' => $flagGroup->id]];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Flags'), 'url' => ['index', 'id' => $flagGroup->id]];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="flag-create">

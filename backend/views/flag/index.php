@@ -8,17 +8,22 @@ use yii\grid\GridView;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = Yii::t('app', 'Flags');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Flag Groups'), 'url' => ['flag-group/index']];
+$this->params['breadcrumbs'][] = ['label' => $flagGroup->title, 'url' => ['flag-group/update', 'id' => $flagGroup->id]];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="flag-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
+    <h1><?= $flagGroup->title ?></h1>
+	
+	<?= Yii::$app->controller->renderPartial('//common/_flagNavPills', [
+    	'model' => $flagGroup,
+    	'active' => 2
+    ]) ?>
+	
     <p>
-        <?= Html::a(Yii::t('app', 'Create Flag'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('app', 'Create Flag'), ['create', 'id' => $flagGroup->id], ['class' => 'btn btn-success']) ?>
     </p>
-
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -27,13 +32,14 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'flag_group_id',
-            'hidden:boolean',
+            'title',
             'order',
-            'created_at',
-            //'updated_at',
+            'hidden:boolean',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+            	'class' => 'yii\grid\ActionColumn',
+            	'template' => '{update} {delete}'
+            ]
         ],
     ]); ?>
 

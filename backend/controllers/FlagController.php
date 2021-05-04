@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use Yii;
 use common\models\Flag;
+use common\models\FlagGroup;
 use backend\models\FlagSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -45,17 +46,21 @@ class FlagController extends Controller
     }
 
     /**
-     * Lists all Flag models.
+     * Lists all Flag models of a Flag Group.
      * @return mixed
      */
-    public function actionIndex()
+    public function actionIndex($id)
     {
+    	$flagGroup = $this->_findFlagGroup($id);
+    	
         $searchModel = new FlagSearch();
+        $searchModel->flag_group_id = $flagGroup->id;
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'flagGroup' => $flagGroup
         ]);
     }
 
@@ -63,9 +68,11 @@ class FlagController extends Controller
      * Creates a new Flag model.
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCreate($id)
     {
+    	$flagGroup = $this->_findFlagGroup($id);
         $model = new Flag();
+        $model->flag_group_id = $flagGroup->id;
         $post = Yii::$app->request->post();
 		
 		if ($model->load($post))
@@ -85,6 +92,7 @@ class FlagController extends Controller
 
         return $this->render('create', [
             'model' => $model,
+            'flagGroup' => $flagGroup
         ]);
     }
 
@@ -97,6 +105,7 @@ class FlagController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+		$flagGroup = $model->flagGroup;
 		$post = Yii::$app->request->post();
 		
 		if ($model->load($post))
@@ -116,6 +125,7 @@ class FlagController extends Controller
 
         return $this->render('update', [
             'model' => $model,
+            'flagGroup' => $model->flagGroup
         ]);
     }
 
@@ -147,5 +157,15 @@ class FlagController extends Controller
         }
 
         throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
+    }
+    
+    private function _findFlagGroup($id)
+    {
+		if (($model = FlagGroup::findOne($id)) !== null)
+		{
+			return $model;
+		}
+		else
+			throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
     }
 }

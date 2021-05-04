@@ -83,7 +83,8 @@ class ArticleController extends HelperController
     			$model->content_id = $contentModel->id;	
         		if ($model->save(false)	&&
         			$model->saveTranslations() &&
-        			$model->saveTags('Article') &&
+        			$model->saveTags() &&
+        			$model->saveFlags() &&
         			$model->generateSlugs()
         		)
         		{   					

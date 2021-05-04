@@ -86,7 +86,7 @@ class Route extends HelperModel
             [['arrival_station', 'arrival_url', 'departure_station', 'departure_url'], 'string', 'max' => 255],
             [['arrival_url', 'departure_url'], 'url'],
             [['content_id'], 'exist', 'skipOnError' => true, 'targetClass' => Content::className(), 'targetAttribute' => ['content_id' => 'id']],
-            [['tags'], 'required'],
+            [['tags', 'flags'], 'required'],
             ['difficulty', 'in', 'range' => [self::DIFFICULTY_EASY, self::DIFFICULTY_MEDIUM, self::DIFFICULTY_DIFFICULT]],
         ];
     }
@@ -115,6 +115,7 @@ class Route extends HelperModel
             'departure_url' => Yii::t('app', 'Departure Station URL'),
             'geom' => Yii::t('app', 'Geom'),
             'print_available' => Yii::t('app', 'Print Available'),
+            'flags' =>  Yii::t('app', 'Filter Flags'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
         ];

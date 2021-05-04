@@ -86,7 +86,8 @@ class PoiController extends HelperController
     			$model->content_id = $contentModel->id;	
         		if ($model->save(false)	&&
         			$model->saveTranslations() &&
-        			$model->saveTags('Poi') &&
+        			$model->saveTags() &&
+        			$model->saveFlags() &&
         			$model->generateSlugs()
         		)
         		{   					
@@ -122,7 +123,8 @@ class PoiController extends HelperController
         		if ($contentModel->save(false) &&
         			$model->save(false)	&&
         			$model->saveTranslations() &&
-        			$model->saveTags('Poi') &&
+        			$model->saveTags() &&
+        			$model->saveFlags() &&
         			$model->generateSlugs()
         		)
         		{   					

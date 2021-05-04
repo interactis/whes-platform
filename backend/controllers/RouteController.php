@@ -83,7 +83,8 @@ class RouteController extends HelperController
     			$model->content_id = $contentModel->id;	
         		if ($model->save(false)	&&
         			$model->saveTranslations() &&
-        			$model->saveTags('Route') &&
+        			$model->saveTags() &&
+        			$model->saveFlags() &&
         			$model->generateSlugs()
         		)
         		{   					
@@ -116,7 +117,8 @@ class RouteController extends HelperController
         		if ($contentModel->save(false) &&
         			$model->save(false)	&&
         			$model->saveTranslations() &&
-        			$model->saveTags('Route') &&
+        			$model->saveTags() &&
+        			$model->saveFlags() &&
         			$model->generateSlugs()
         		)
         		{   					

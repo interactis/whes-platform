@@ -1,5 +1,5 @@
 .btn {
-	color: $white !important;
+	color: white !important;
 	padding: 16px 24px;
 	text-decoration: none !important;
 	font-family: BRNebula-bold, sans-serif;
@@ -29,7 +29,7 @@
 	&.btn-outline-primary:focus
 	 {
 		background: $gray-dark;
-		color: $white !important;
+		color: white !important;
 	}
 	
 	&:active,

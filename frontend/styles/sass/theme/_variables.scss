@@ -10,44 +10,22 @@
 // Color system
 //
 
-$primary: #F2A2A2; // red
-$secondary: #F7D2D2; // light red
-$primary-green: #9EC1B3; // green
-$secondary-green: #E2F7EB; // light green
-$primary-blue: #96CCD9; // blue
-$secondary-blue: #cae8f1; // light blue
-$primary-yellow: #DBC884; // yellow
-$secondary-yellow: #F0EDD0; // light yellow
+$primary: #A60100; // red
+$secondary: #C90C0F; // light red
 
-$gray: #747471;
-$gray-dark: #31312B;
+$gray: #707070;
+$gray-dark: #333333;
 $gray-light: #D9D8D7;
 $gray-lighter: #F2F2F2;
-$white: #FDFDFD;
 $alert-color: #ed7b7b;
 
 $body-color: $gray-dark;
-$headings-color: $gray-dark;
+$headings-color: $gray;
 
 $font-family-base: BRNebula-Regular, sans-serif;
 $headings-font-family: BRNebula-Bold, sans-serif;
 $font-size-base: 1rem;
 
-$border-radius:     0;
-$border-radius-lg:  0;
-$border-radius-sm:  0;
-
-$grid-breakpoints: (
-	xs: 0,
-	sm: 576px,
-	md: 768px,
-	lg: 992px,
-	xl: 1290px
-) !default;
-
-$container-max-widths: (
-  sm: 540px,
-  md: 720px,
-  lg: 960px,
-  xl: 1202px
-) !default;
+// $border-radius:     0;
+// $border-radius-lg:  0;
+// $border-radius-sm:  0;

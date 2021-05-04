@@ -1,121 +1,226 @@
-.jumbotron-container {
+.jumbotron {
 	position: relative;
-	
-	.jumbotron {
-		display: none;
-		position: relative;
-		padding:0;
-		min-height: 720px;
-		overflow: hidden;
-		margin-bottom: 0;
-		.img-bg {
-			position: relative;
-			background-position-x: center;
-			background-repeat: no-repeat;
-			background-size: cover;
-			min-height: 720px;
-			filter: grayscale(1);
-		}
-	
-		@include media-breakpoint-up(lg) {
-			display: block;
-		}
+	padding:0;
+  	min-height: 460px;
+  	overflow: hidden;
+  	// background: #fda428;
+  	// background-image: radial-gradient(#efb754, black);
+  	
+	margin-bottom: 60px;
+	@include media-breakpoint-up(sm) {
+		margin-bottom: 90px;
 	}
 	
-	.jumbotron-cards {
-		padding-left: 24px;
-		padding-right: 24px;
+	&.with-filter {
+		margin-bottom: 320px;
+		@include media-breakpoint-up(sm) {
+			margin-bottom: 260px;
+		}
+		@include media-breakpoint-up(md) {
+			margin-bottom: 230px;
+		}
+		@include media-breakpoint-up(xl) {
+			margin-bottom: 90px;
+		}
 	}
-	
-	.preview-container {
-		.card {
-			margin-top: 0 !important;
-			padding-top: 30px;
-			margin-bottom: 60px !important;
-			
-			.lead {
-				display: block;
+  	
+  	.img-bg {
+  		position: relative;
+		background-position-x: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		min-height: 460px;
+  	}
+  	
+	.carousel-inner {
+		position: absolute;
+		min-height: 460px;
+		.carousel-control-prev,
+		.carousel-control-next {
+			position: absolute !important;
+			display: inline-block;
+			opacity: 1;
+						
+  			.carousel-control-prev-icon,
+			.carousel-control-next-icon {
+				height: 90%;
+				margin-bottom: 300px;
+				background-image: url('/img/layout/chevron-l.svg');
+			}
+			.carousel-control-next-icon {
+				background-image: url('/img/layout/chevron-r.svg');
 			}
 		}
 	}
 	
-	@include media-breakpoint-up(sm) {
-		.jumbotron-cards {
-			padding-left: 0px;
-			padding-right: 0px;
-			margin-bottom: 45px;
+	&.no-title {
+		min-height: 383px;
+		.img-bg {
+			min-height: 383px;
+		}
+		.carousel-inner {
+			min-height: 383px;
 		}
 	}
-	
+  	
+  	@include media-breakpoint-up(sm) {
+		min-height: 590px;
+		.img-bg,
+		.carousel-inner {
+			min-height: 590px;
+		}
+		
+		&.no-title {
+			min-height: 463px;
+			.img-bg,
+			.carousel-inner {
+				min-height: 463px;
+			}
+		}
+	}
 	@include media-breakpoint-up(md) {
-		&.preview .card {
-			margin-bottom: 90px !important;
-			.h2 {
-				font-size: 2.75rem;
+		min-height: 720px;
+		.img-bg,
+		.carousel-inner {
+			min-height: 720px;
+		}
+		
+		&.no-title {
+			min-height: 573px;
+			.img-bg,
+			.carousel-inner {
+				min-height: 573px;
 			}
 		}
 	}
 	
 	@include media-breakpoint-up(lg) {
+		min-height: 850px;
+		.img-bg,
+		.carousel-inner {
+			min-height: 850px;
+		}
+		
+		&.no-title {
+			min-height: 703px;
+			.img-bg,
+			.carousel-inner {
+				min-height: 703px;
+			}
+		}
+	}
 	
-		&.preview {
-			margin-bottom: 240px;
+	.mice-page & {
+		.img-bg {
+			background-position: center;
 		}
 		
-		.jumbotron-cards {
-			position: relative;
-			top: -750px;
-			.container {
-				position: relative;
+		@include media-breakpoint-up(xl) {
+			min-height: 950px;
+			.img-bg {
+				min-height: 950px;
 			}
 		
-			.card {
-				position: absolute;
-				width: 320px;
-				top: 0;
-				right: 0;
-				
-				.img-container {
-					top: -90px;
-					height: 240px;
+			&.no-title {
+				min-height: 803px;
+				.img-bg {
+					min-height: 803px;
 				}
 			}
+		}
+	}
+	
+	.footer {
+		position: absolute;
+		bottom:0 !important;
+		width: 100%;
 		
-			.card-1 {
-				top: -270px;
-			}
+		.footer-content {
+			position: absolute;
+			bottom: 0;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, 0);
+		}
 		
-			.card-2 {
-				top: -150px;
-				right: 350px;
+		&.mountains {
+			.transition {
+				background-image: url("../img/layout/mountains.svg");
+				background-repeat: repeat-x;
+				height: 50px;
 			}
 		}
 		
-		.preview-container {
-			position: relative;
-			top: -600px;
+		&.diagonal {
+			.transition {
+				background-image: url("../img/layout/diagonal.svg");
+				background-repeat: no-repeat;
+				background-size: 100% 100%;
+				height: 40px;
+				@include media-breakpoint-up(sm) {
+					height: 60px;
+				}
+				@include media-breakpoint-up(md) {
+					height: 90px;
+				}
+			}
+		}
+		
+		.title-box {
+			top: 90px;
+			margin: 0;
+			padding: 0;
+			background-image: url("../img/layout/box-bg.svg");
+			background-repeat: no-repeat;
+			background-size: auto 100%;
+			background-position: right;
 			
-			.container {
-				position: relative;
+			h2 {
+				display: inline;
+				small {
+					margin: 0;
+					color: $primary;
+					font-size: 0.56em;
+				
+				}
 			}
-
-			.card {
-				position: absolute;
-				padding: 60px 30px;
-				width: 620px;
-				min-height: 560px;
+			.titel-index {
+				display: inline-block;
+				font-family: $headings-font-family;
+				color: $primary;
+				margin-left: 3px;
+				margin-right: 8px;
+				font-size: 22px;
 				
-				.card-body {
-					padding: 15px 45px 30px;
+				@include media-breakpoint-up(sm) {
+					margin-left: 6px;
+					margin-right: 16px;
+					font-size: 36px;
 				}
-				
-				.h2 {
-					font-size: 3.5rem;
-					margin-bottom: 60px;
+				@include media-breakpoint-up(md) {
+					margin-left: 6px;
+					margin-right: 18px;
+					font-size: 40px;
 				}
-				
+			}
+		}
+		
+		.spacer {
+			background: white;
+			margin-top: -1px; //avoid spacing
+			margin-bottom: -1px; //avoid spacing
+			height: 80px;
+			
+			&.small {
+				height: 3px;
+			}
+			
+			@include media-breakpoint-up(sm) {
+				height: 130px;
+			}
+			@include media-breakpoint-up(md) {
+				height: 150px;
 			}
 		}
 	}
 }
-

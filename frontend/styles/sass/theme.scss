@@ -1,4 +1,4 @@
-@import "theme/theme_variables";  // <--------- Add your variables into this file. Also add variables to overwrite Bootstrap variables here
+@import "theme/_variables";  // <--------- Add your variables into this file. Also add variables to overwrite Bootstrap variables here
 @import "assets/bootstrap4";// <--------- Loads Bootstrap4.
 
 //Optional files - If you don´t use the corresponding scripts/fonts comment em out
@@ -11,11 +11,9 @@
 @import "theme/functions";
 @import "theme/theme";
 @import "theme/navbar";
-@import "theme/header";
 @import "theme/jumbotron";
 @import "theme/buttons";
 @import "theme/card";
-@import "theme/article";
 @import "theme/breadcrumb";
 @import "theme/forms";
 @import "theme/alert";

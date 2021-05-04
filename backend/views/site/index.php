@@ -35,7 +35,7 @@ $this->title = 'Dashboard';
 						</a>
 					</p>
 					<p class="lead">
-						<a  href="/flag">
+						<a  href="/flag-group">
 							Flags
 						</a>
 					</p>

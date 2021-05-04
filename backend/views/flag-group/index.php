@@ -17,9 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a(Yii::t('app', 'Create Flag Group'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
+    
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -27,12 +25,14 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
+            'title',
             'order',
             'hidden:boolean',
-            'created_at',
-            'updated_at',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+            	'class' => 'yii\grid\ActionColumn',
+            	'template' => '{update} {delete}'
+            ]
         ],
     ]); ?>
 

@@ -11,6 +11,8 @@ use common\models\FlagGroup;
  */
 class FlagGroupSearch extends FlagGroup
 {
+	public $title;
+	
     /**
      * {@inheritdoc}
      */
@@ -19,6 +21,7 @@ class FlagGroupSearch extends FlagGroup
         return [
             [['id', 'order', 'created_at', 'updated_at'], 'integer'],
             [['hidden'], 'boolean'],
+            [['title'], 'safe'],
         ];
     }
 
@@ -41,12 +44,25 @@ class FlagGroupSearch extends FlagGroup
     public function search($params)
     {
         $query = FlagGroup::find();
+        $query->leftJoin('flag_group_translation', 'flag_group_translation.flag_group_id = flag_group.id');
+        $query->groupBy(['flag_group.id', 'flag_group_translation.title']);
 
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort'=> [
+				'defaultOrder' => ['order' => SORT_ASC]
+			],
+            'pagination' => [
+				'pageSize' => 50,
+			]
         ]);
+        
+        $dataProvider->sort->attributes['title'] = [
+			'asc' => ['flag_group_translation.title' => SORT_ASC],
+			'desc' => ['flag_group_translation.title' => SORT_DESC],
+		];
 
         $this->load($params);
 
@@ -58,13 +74,15 @@ class FlagGroupSearch extends FlagGroup
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'id' => $this->id,
+            'flag_group.id' => $this->id,
             'order' => $this->order,
             'hidden' => $this->hidden,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ]);
-
+		
+		$query->andFilterWhere(['ilike', 'flag_group_translation.title', $this->title]);
+		
         return $dataProvider;
     }
 }

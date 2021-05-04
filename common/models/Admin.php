@@ -240,6 +240,16 @@ class Admin extends ActiveRecord implements IdentityInterface
         return $this->hasOne(Heritage::className(), ['id' => 'heritage_id']);
     }
     
+    public function isSuperAdmin()
+    {
+        if ($this->role == self::ROLE_SUPER_ADMIN)
+        {
+        	return true;
+        }
+        else
+        	return false;
+    }
+    
     public function isAdmin()
     {
         if ($this->role == self::ROLE_ADMIN OR $this->role == self::ROLE_SUPER_ADMIN)

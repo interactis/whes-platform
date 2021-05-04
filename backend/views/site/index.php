@@ -34,11 +34,15 @@ $this->title = 'Dashboard';
 							Tags
 						</a>
 					</p>
-					<p class="lead">
-						<a  href="/flag-group">
-							Flags
-						</a>
-					</p>
+					
+					<?php if ($user->isSuperAdmin()): ?>
+						<p class="lead">
+							<a  href="/flag-group">
+								Flags
+							</a>
+						</p>
+					<?php endif; ?>
+					
 				</div>
 			
 				<div class="col-md-4 margin-bottom">

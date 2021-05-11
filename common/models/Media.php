@@ -27,7 +27,7 @@ use common\models\helpers\ImageModel;
 class Media extends ImageModel
 {
 	public $translationFields = ['title', 'description', 'copyright'];
-	public $requiredTranslationFields = ['title', 'description'];
+	public $requiredTranslationFields = ['title'];
 	
 	public $image_file;
 	

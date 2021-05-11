@@ -97,7 +97,11 @@ Configure the application in the following config files:
 php /path/to/web-application/yii migrate
 ```
 
-2. Use `/start.sql` as a starting point. Or ask info@interactis.ch for an export of the productive database and import it.
+2. Install PostGIS: https://postgis.net/install/
+
+3. Activate PostGIS in the created database by executing this SQL command (e.g. using pgAdmin): `CREATE EXTENSION postgis;`
+
+4. Use `/start.sql` as a starting point. Or ask info@interactis.ch for an export of the productive database and import it.
 
 
 ### 7. Set document roots of your web server

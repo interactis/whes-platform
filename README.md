@@ -74,7 +74,7 @@ php /path/to/web-application/init
 
 ### 4. Create database
 
-1. Create a new Postgres database.
+Create a new Postgres database.
 
 
 ### 5. Configurations

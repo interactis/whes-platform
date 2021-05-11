@@ -3,8 +3,8 @@ return [
     'components' => [
         'db' => [
             'class' => 'yii\db\Connection',
-            'dsn' => 'pgsql:host=localhost;port=5432;dbname=whes',
-            'username' => '',
+            'dsn' => 'pgsql:host=localhost;port=5432;dbname=ourheritage',
+            'username' => 'whes',
             'password' => '',
             'charset' => 'utf8',
         ],

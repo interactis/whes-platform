@@ -72,16 +72,9 @@ Execute the `init` command and select `dev` or `prod` as environment:
 php /path/to/web-application/init
 ```
 
-### 4. Setup database
+### 4. Create database
 
 1. Create a new Postgres database.
-
-2. Execute the `yii migrate` command to apply the yii database migrations:
-```
-php /path/to/web-application/yii migrate
-```
-
-3. Use `/start.sql` as a starting point. Or ask info@interactis.ch for an export of the productive database and import it.
 
 
 ### 5. Configurations
@@ -97,7 +90,17 @@ Configure the application in the following config files:
 * console/config/params-local.php
 
 
-### 6. Set document roots of your web server
+### 6. Setup database
+
+1. Execute the `yii migrate` command to apply the yii database migrations:
+```
+php /path/to/web-application/yii migrate
+```
+
+2. Use `/start.sql` as a starting point. Or ask info@interactis.ch for an export of the productive database and import it.
+
+
+### 7. Set document roots of your web server
 
 * for backend /path/to/web-application/backend/web/ and using the URL https://admin.YOUR-DOMAIN.ch
 * for api /path/to/web-application/api/web/ and using the URL https://api.YOUR-DOMAIN.ch

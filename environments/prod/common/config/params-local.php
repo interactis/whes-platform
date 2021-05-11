@@ -4,5 +4,5 @@ return [
 	'backendUrl' => 'https://admin.ourheritage.ch/',
 	
     'trailPoiBuffer' => 200, // 200 m
-    'mapWmsUrl' => 'http://map.jungfraualetsch.ch/geoserver-unesco_aletsch-main/',
+    'mapWmsUrl' => 'https://sdi.cde.unibe.ch/geoserver/myswissalps/wms/',
 ];

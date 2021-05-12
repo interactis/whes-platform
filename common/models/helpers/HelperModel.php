@@ -80,19 +80,15 @@ class HelperModel extends TranslationModel
     	$translations = $this->_getTranslationsField();
     	foreach($this->$translations as $translation)
     	{
-    		if (empty($translation->slug)) {
-				$translation->slug = $this->_generateSlug($translation, $field);
-				$translation->save(false);
-    		}
+    		$translation->slug = $this->_generateSlug($translation, $field);
+			$translation->save(false);
     	}
-    	
     	return true;
     }
     
     private function _generateSlug($translation, $field, $i = 0)
     {
     	$text = $translation->{$field};
-    
     	$slug = $this->_slugify($text) .'-'. $i;
     	if ($i == 0)
     		$slug = $this->_slugify($text);

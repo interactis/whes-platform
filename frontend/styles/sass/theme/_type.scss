@@ -5,9 +5,6 @@ h3, .h3 {
 	-webkit-hyphens: manual !important;
 	hyphens: manual !important;
 	
-	&.brush {
-		font-family: Quickbrush;
-	}
 	&.no-hyphens {
 		hyphens: none !important;
 	}
@@ -74,40 +71,6 @@ a:active {
 	color: $primary;
 	// text-decoration: none !important;
 	transition: 0.2s;
-}
-
-.logo {
-	font-family: BRNebula-Bold, sans-serif;
-	text-transform: uppercase;
-	line-height: 1;
-	font-size: 1.4375rem;
-}
-
-label,
-.label {
-	font-family: BRNebula-Black, sans-serif;
-	font-size: 0.75rem;
-	letter-spacing: 0.06rem;
-	display: inline-block;
-	font-weight: normal;
-	padding: 0;
-	border-radius: 0;
-	color: inherit;
-	white-space: normal;
-	text-align: left;
-	line-height: 1.4;
-		
-	@include media-breakpoint-up(md) {
-		font-size: 0.813rem;
-		
-	}
-}
-
-.label {
-	text-transform: uppercase;
-	hyphens: auto !important;
-	padding-bottom: 12px;
-	border-bottom: 2px solid $body-color;
 }
 
 .small {

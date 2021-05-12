@@ -26,6 +26,8 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 
+<?= $this->render('_nav.php') ?>
+
 <div class="page">
 	<?= $content ?>
 </div>

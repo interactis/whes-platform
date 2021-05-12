@@ -95,7 +95,7 @@ class HelperModel extends TranslationModel
     	
     	$exists = $this->getTranslationTableName()::find()
     		->where(['slug' => $slug])
-    		->andWhere(['!=', 'id', $translation->id])
+    		->andWhere(['!=', $this->_getRelationIdField(), $this->id])
     		->one();
     	
     	if ($exists)

@@ -56,12 +56,7 @@
 					<?= Yii::t('app', 'Search') ?>
 				</a>
 				<div class="dropdown-menu dropdown-menu-right" aria-labelledby="searchDropdown">
-					<div class="input-group">
-						<input type="text" class="form-control" placeholder="<?= Yii::t('app', 'Search') ?>">
-						<div class="input-group-append">
-							<button class="btn btn-primary" type="button"><?= Yii::t('app', 'Search') ?></button>
-						</div>
-					</div>
+					<?= $this->render('_search.php') ?>
 				</div>
 			</li>
 			<li class="nav-item">

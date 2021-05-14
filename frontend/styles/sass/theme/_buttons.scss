@@ -10,13 +10,18 @@
 	font-size: 0.75rem;
 	
 	&.btn-primary {
+		background: $primary;
+		border: 2px $primary solid;
+	}
+	
+	&.btn-secondary {
 		background: $gray-dark;
 		border: 2px $gray-dark solid;
 	}
 	
 	&.btn-outline-primary {
-		border: 2px $gray-dark solid !important;
-		color: $gray-dark !important;
+		border: 2px $primary solid !important;
+		color: $primary !important;
 		transition: all 0.17s;
 	}
 	
@@ -28,7 +33,7 @@
 	&.btn-outline-primary:active,
 	&.btn-outline-primary:focus
 	 {
-		background: $gray-dark;
+		background: $primary;
 		color: white !important;
 	}
 	

@@ -10973,6 +10973,14 @@ html {
 .help-block  {
   color: #ed7b7b; }
 
+.overview-map-container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  overflow: scroll; }
+  .overview-map-container .overview-map {
+    width: 820px; }
+
 .alert-container {
   position: fixed;
   z-index: 10000;

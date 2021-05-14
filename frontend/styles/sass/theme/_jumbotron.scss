@@ -3,27 +3,12 @@
 	padding:0;
   	min-height: 460px;
   	overflow: hidden;
-  	// background: #fda428;
-  	// background-image: radial-gradient(#efb754, black);
-  	
 	margin-bottom: 60px;
+	
 	@include media-breakpoint-up(sm) {
 		margin-bottom: 90px;
 	}
 	
-	&.with-filter {
-		margin-bottom: 320px;
-		@include media-breakpoint-up(sm) {
-			margin-bottom: 260px;
-		}
-		@include media-breakpoint-up(md) {
-			margin-bottom: 230px;
-		}
-		@include media-breakpoint-up(xl) {
-			margin-bottom: 90px;
-		}
-	}
-  	
   	.img-bg {
   		position: relative;
 		background-position-x: center;
@@ -52,30 +37,12 @@
 			}
 		}
 	}
-	
-	&.no-title {
-		min-height: 383px;
-		.img-bg {
-			min-height: 383px;
-		}
-		.carousel-inner {
-			min-height: 383px;
-		}
-	}
   	
   	@include media-breakpoint-up(sm) {
 		min-height: 590px;
 		.img-bg,
 		.carousel-inner {
 			min-height: 590px;
-		}
-		
-		&.no-title {
-			min-height: 463px;
-			.img-bg,
-			.carousel-inner {
-				min-height: 463px;
-			}
 		}
 	}
 	@include media-breakpoint-up(md) {
@@ -84,14 +51,6 @@
 		.carousel-inner {
 			min-height: 720px;
 		}
-		
-		&.no-title {
-			min-height: 573px;
-			.img-bg,
-			.carousel-inner {
-				min-height: 573px;
-			}
-		}
 	}
 	
 	@include media-breakpoint-up(lg) {
@@ -99,34 +58,6 @@
 		.img-bg,
 		.carousel-inner {
 			min-height: 850px;
-		}
-		
-		&.no-title {
-			min-height: 703px;
-			.img-bg,
-			.carousel-inner {
-				min-height: 703px;
-			}
-		}
-	}
-	
-	.mice-page & {
-		.img-bg {
-			background-position: center;
-		}
-		
-		@include media-breakpoint-up(xl) {
-			min-height: 950px;
-			.img-bg {
-				min-height: 950px;
-			}
-		
-			&.no-title {
-				min-height: 803px;
-				.img-bg {
-					min-height: 803px;
-				}
-			}
 		}
 	}
 	
@@ -143,65 +74,23 @@
 			transform: translate(-50%, 0);
 		}
 		
-		&.mountains {
-			.transition {
-				background-image: url("../img/layout/mountains.svg");
-				background-repeat: repeat-x;
-				height: 50px;
-			}
-		}
 		
-		&.diagonal {
-			.transition {
-				background-image: url("../img/layout/diagonal.svg");
-				background-repeat: no-repeat;
-				background-size: 100% 100%;
-				height: 40px;
-				@include media-breakpoint-up(sm) {
-					height: 60px;
-				}
-				@include media-breakpoint-up(md) {
-					height: 90px;
-				}
-			}
-		}
-		
-		.title-box {
-			top: 90px;
-			margin: 0;
-			padding: 0;
-			background-image: url("../img/layout/box-bg.svg");
+		.transition {
+			background-image: url("../img/layout/swipe.png");
 			background-repeat: no-repeat;
-			background-size: auto 100%;
-			background-position: right;
-			
-			h2 {
-				display: inline;
-				small {
-					margin: 0;
-					color: $primary;
-					font-size: 0.56em;
-				
-				}
+			background-size: 100% 100%;
+			height: 50px;
+			@include media-breakpoint-up(sm) {
+				height: 60px;
 			}
-			.titel-index {
-				display: inline-block;
-				font-family: $headings-font-family;
-				color: $primary;
-				margin-left: 3px;
-				margin-right: 8px;
-				font-size: 22px;
-				
-				@include media-breakpoint-up(sm) {
-					margin-left: 6px;
-					margin-right: 16px;
-					font-size: 36px;
-				}
-				@include media-breakpoint-up(md) {
-					margin-left: 6px;
-					margin-right: 18px;
-					font-size: 40px;
-				}
+			@include media-breakpoint-up(md) {
+				height: 90px;
+			}
+			@include media-breakpoint-up(lg) {
+				height: 100px;
+			}
+			@include media-breakpoint-up(xl) {
+				height: 120px;
 			}
 		}
 		

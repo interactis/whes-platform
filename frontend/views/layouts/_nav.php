@@ -34,7 +34,7 @@
 				<div class="dropdown-menu dropdown-menu-right" aria-labelledby="langDropdown">
 					<a class="dropdown-item" href="#">Deutsch</a>
 					<a class="dropdown-item active" href="#">English</a>
-					<a class="dropdown-item" href="#">Francais</a>
+					<a class="dropdown-item" href="#">Français</a>
 					<a class="dropdown-item" href="#">Italiano</a>
 				</div>
 			</li>
@@ -44,7 +44,12 @@
 					<?= Yii::t('app', 'Search') ?>
 				</a>
 				<div class="dropdown-menu dropdown-menu-right" aria-labelledby="searchDropdown">
-					<a class="dropdown-item" href="#">Swiss Alps Jungfrau-Aletsch</a>
+					<div class="input-group">
+						<input type="text" class="form-control" placeholder="<?= Yii::t('app', 'Search') ?>">
+						<div class="input-group-append">
+							<button class="btn btn-primary" type="button"><?= Yii::t('app', 'Search') ?></button>
+						</div>
+					</div>
 				</div>
 			</li>
 			<li class="nav-item">

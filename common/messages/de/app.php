@@ -7,6 +7,6 @@ return [
 	"My Collection" => "Meine Sammlung",
 	
 	"Oops, this page doesn't exist." => "Ups, diese Seite existiert nicht.",
-	"To homepage" => "Zur Homepage",
+	"To Homepage" => "Zur Homepage",
 	
 ];

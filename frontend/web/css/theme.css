@@ -8440,6 +8440,32 @@ html {
 .spacer {
   margin-bottom: 60px; }
 
+.navbar .navbar-brand {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%); }
+
+.navbar .navbar-nav-left .nav-item {
+  margin-right: 24px; }
+
+.navbar .navbar-nav-right .nav-item {
+  margin-left: 24px; }
+
+.navbar .nav-item a {
+  text-decoration: none; }
+
+.navbar .nav-item.lang-dropdown {
+  padding-top: 40px;
+  vertical-align: bottom; }
+
+.navbar .icon {
+  display: block;
+  height: 40px;
+  margin: 0 auto;
+  text-align: center; }
+
 /*
 .navbar {
 	position: absolute;

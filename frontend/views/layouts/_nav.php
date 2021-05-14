@@ -1,18 +1,24 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  
+	
+	<a class="navbar-brand" href="/">
+		<?= $this->render('_svg/logo.php') ?>
+	</a>
+  	
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>
 
 	<div class="collapse navbar-collapse" id="main-nav">
-		<ul class="navbar-nav mr-auto">
+		<ul class="navbar-nav navbar-nav-left mr-auto">
 			<li class="nav-item active">
 				<a class="nav-link" href="/">
+					<?= $this->render('_svg/discover.php') ?>
 					<?= Yii::t('app', 'Discover') ?>
 				</a>
 			</li>
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" href="#" id="heritagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<?= $this->render('_svg/heritage.php') ?>
 					<?= Yii::t('app', 'Heritages') ?>
 				</a>
 				<div class="dropdown-menu" aria-labelledby="heritagesDropdown">
@@ -20,20 +26,21 @@
 				</div>
 			</li>
 		</ul>
-		<ul class="navbar-nav">
-			<li class="nav-item dropdown">
+		<ul class="navbar-nav navbar-nav-right">
+			<li class="nav-item dropdown lang-dropdown">
 				<a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					EN
 				</a>
 				<div class="dropdown-menu dropdown-menu-right" aria-labelledby="langDropdown">
-					<a class="dropdown-item" href="#">DE</a>
-					<a class="dropdown-item active" href="#">EN</a>
-					<a class="dropdown-item" href="#">FR</a>
-					<a class="dropdown-item" href="#">IT</a>
+					<a class="dropdown-item" href="#">Deutsch</a>
+					<a class="dropdown-item active" href="#">English</a>
+					<a class="dropdown-item" href="#">Francais</a>
+					<a class="dropdown-item" href="#">Italiano</a>
 				</div>
 			</li>
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<?= $this->render('_svg/search.php') ?>
 					<?= Yii::t('app', 'Search') ?>
 				</a>
 				<div class="dropdown-menu dropdown-menu-right" aria-labelledby="searchDropdown">
@@ -41,6 +48,7 @@
 				</div>
 			</li>
 			<li class="nav-item">
+				<?= $this->render('_svg/rucksack.php') ?>
 				<a class="nav-link" href="#"><?= Yii::t('app', 'My Collection') ?></a>
 			</li>
 		</ul>

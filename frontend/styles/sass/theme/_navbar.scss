@@ -1,3 +1,41 @@
+.navbar {
+	
+	.navbar-brand {
+		@include centerer;
+	}
+	
+	.navbar-nav-left {
+		.nav-item {
+			margin-right: 24px;
+		}
+	}
+	
+	.navbar-nav-right {
+		.nav-item {
+			margin-left: 24px;
+		}
+	}
+	
+	.nav-item {
+		
+		a {
+			text-decoration: none;
+		}
+		
+		&.lang-dropdown {
+			padding-top: 40px;
+			vertical-align: bottom;
+		}
+	}
+	.icon {
+		display: block;
+		height: 40px;
+		margin: 0 auto;
+		text-align: center;
+	}
+
+}
+
 /*
 .navbar {
 	position: absolute;

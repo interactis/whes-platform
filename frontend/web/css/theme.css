@@ -8442,154 +8442,82 @@ html {
 
 .navbar .navbar-brand {
   position: absolute;
-  top: 50%;
+  top: 0;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%); }
+  -webkit-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
+  width: 190px; }
+  .navbar .navbar-brand .logo {
+    width: 100%; }
 
-.navbar .navbar-nav-left .nav-item {
-  margin-right: 24px; }
+.navbar a {
+  text-decoration: none;
+  font-size: 1.1875rem; }
 
-.navbar .navbar-nav-right .nav-item {
-  margin-left: 24px; }
-
-.navbar .nav-item a {
-  text-decoration: none; }
-
-.navbar .nav-item.lang-dropdown {
-  padding-top: 40px;
-  vertical-align: bottom; }
+.navbar .navbar-toggler {
+  border: none;
+  padding-left: 0; }
 
 .navbar .icon {
-  display: block;
-  height: 40px;
-  margin: 0 auto;
-  text-align: center; }
+  width: 30px;
+  margin-right: 18px; }
 
-/*
-.navbar {
-	position: absolute;
-	top: 0px;
-	width: 100%;
-	padding: 24px;
-	z-index: $zindex-fixed;
-	
-	.navbar-brand {
-		padding: 0;
-		.logo {
-			width: 90px;
-			// font-size: 1.6875rem;
-		}
-	}
-	
-	a.navbar-brand {
-		text-decoration: none !important;
-	}
-	
-	.nav-item {
-		a:link,
-		a:visited,
-		a:active,
-		a:hover,
-		a:visited {
-			text-decoration: none;
-			color: $body-color !important;
-		}
-	}
-	
-	.navbar-toggler {
-		position: absolute;
-		top: 0;
-		right: 0;
-		padding: 18px;
-		border: none;
-		
-		&.toggler-close {
-			z-index: $zindex-fixed;
-		}
-	}
-	
-	@include media-breakpoint-up(lg) {
-	
-		.navbar-collapse {
-			margin-left: 70px;
-		}
-		
-		.nav-item {
-			margin-right: 30px;
-			
-			&.active {
-				border-bottom: 2px solid $gray-dark;
-			}
-		}
-		
-		.social {
-			display: none;
-		}
-	
-	}
-	
-	@include media-breakpoint-up(lg) {
-		.navbar-brand {
-			.logo {
-				// font-size: 1.4375rem;
-			}
-		}
-	}
-	
-	@include media-breakpoint-down(md) {
-		.navbar-collapse {
-			position: fixed;
-			top: 0;
-			left: 0;
-			width: 100%;
-			background: white;
-			padding: 0;
-			font-size: 3.375rem;
-			font-family: $headings-font-family;
-		}
-		
-		.navbar-collapse.collapse.show {
-    		height: 100vh;
-		}
-		
-		.navbar-nav {
-			padding: 90px 24px 24px 24px;
-			height: 100vh;
-			overflow: scroll;
-			-webkit-overflow-scrolling: touch;
-		}
-		
-		.nav-item {
-			line-height: 1;
-			margin-bottom: 30px;
-			&.active {
-				border-bottom: 2px solid $gray-dark;
-			}
-			
-			a:link,
-			a:visited,
-			a:active,
-			a:hover,
-			a:visited {
-				color: $body-color !important;
-			}
-		}
-		
-		.social {
-			margin-top: 30px;
-			a:link,
-			a:visited,
-			a:active,
-			a:visited {
-				text-decoration: none;
-				margin-right: 14px;
-			}
-			//border-top: 2px $gray solid;
-		}
-	}
-}
-*/
+@media (min-width: 992px) {
+  .navbar {
+    padding-bottom: 0; }
+    .navbar .navbar-brand {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+              transform: translate(-50%, -50%);
+      width: 230px; }
+    .navbar .navbar-nav-left {
+      padding-top: 0; }
+      .navbar .navbar-nav-left .nav-item {
+        margin-right: 24px; }
+    .navbar .navbar-nav-right .nav-item {
+      margin-left: 24px; }
+    .navbar .nav-item a {
+      text-decoration: none;
+      font-size: 1rem; }
+    .navbar .nav-item.lang-dropdown {
+      padding-top: 40px;
+      vertical-align: bottom; }
+    .navbar .nav-item.active {
+      border-bottom: 4px solid #A60100; }
+    .navbar .icon {
+      display: block;
+      height: 40px;
+      margin: 0 auto;
+      text-align: center; }
+    .navbar .lang-mobile-dropdown {
+      display: none; } }
+
+@media (max-width: 991.98px) {
+  .navbar .lang-dropdown {
+    display: none; }
+  .navbar .lang-mobile-dropdown {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    margin-top: 60px; }
+  .navbar .navbar-nav-left {
+    padding-top: 54px; }
+  .navbar .dropdown-menu:not(.language-mobile-dropdown-menu) {
+    background: none;
+    border: none; }
+    .navbar .dropdown-menu:not(.language-mobile-dropdown-menu) .dropdown-item {
+      padding: 0;
+      color: #969696; }
+      .navbar .dropdown-menu:not(.language-mobile-dropdown-menu) .dropdown-item:hover {
+        background: none; }
+      .navbar .dropdown-menu:not(.language-mobile-dropdown-menu) .dropdown-item.active {
+        background: none;
+        color: #333333; }
+  .navbar .language-mobile-dropdown-menu {
+    margin-right: 12px; } }
+
 .jumbotron {
   position: relative;
   padding: 0;

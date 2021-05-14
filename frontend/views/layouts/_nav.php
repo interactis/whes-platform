@@ -7,6 +7,18 @@
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>
+	
+	<div class="dropdown lang-mobile-dropdown">
+		<a class="nav-link dropdown-toggle" href="#" id="langMobileDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			EN
+		</a>
+		<div class="dropdown-menu dropdown-menu-right language-mobile-dropdown-menu" aria-labelledby="langMobileDropdown">
+			<a class="dropdown-item" href="#">Deutsch</a>
+			<a class="dropdown-item active" href="#">English</a>
+			<a class="dropdown-item" href="#">Français</a>
+			<a class="dropdown-item" href="#">Italiano</a>
+		</div>
+	</div>
 
 	<div class="collapse navbar-collapse" id="main-nav">
 		<ul class="navbar-nav navbar-nav-left mr-auto">
@@ -53,8 +65,10 @@
 				</div>
 			</li>
 			<li class="nav-item">
-				<?= $this->render('_svg/rucksack.php') ?>
-				<a class="nav-link" href="#"><?= Yii::t('app', 'My Collection') ?></a>
+				<a class="nav-link" href="#">
+					<?= $this->render('_svg/rucksack.php') ?>
+					<?= Yii::t('app', 'My Collection') ?>
+				</a>
 			</li>
 		</ul>
 		</div>

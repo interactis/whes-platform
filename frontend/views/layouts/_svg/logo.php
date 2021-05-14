@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="290.435" height="51.488" viewBox="0 0 290.435 51.488">
+<svg class="logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="290.435" height="51.488" viewBox="0 0 290.435 51.488">
   <defs>
     <clipPath id="clip-path">
       <rect id="Rechteck_7" data-name="Rechteck 7" width="290.435" height="51.488" transform="translate(0 0)"/>

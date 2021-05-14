@@ -1,3 +1,16 @@
+<?php
+use yii\helpers\Html;
+
+$currentLang = strtoupper(Yii::$app->language);
+
+$langLinks = [
+	Html::a('Deutsch', ['site/language', 'lang' => 'de'], ['class' => (Yii::$app->language == 'de' ? 'active ' : '') .'dropdown-item']),
+	Html::a('English', ['site/language', 'lang' => 'en'], ['class' => (Yii::$app->language == 'en' ? 'active ' : '') .'dropdown-item']),
+	Html::a('Français', ['site/language', 'lang' => 'fr'], ['class' => (Yii::$app->language == 'fr' ? 'active ' : '') .'dropdown-item']),
+	Html::a('Italiano', ['site/language', 'lang' => 'it'], ['class' => (Yii::$app->language == 'it' ? 'active ' : '') .'dropdown-item'])
+];
+?>
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 	
 	<a class="navbar-brand" href="/">
@@ -10,13 +23,12 @@
 	
 	<div class="dropdown lang-mobile-dropdown">
 		<a class="nav-link dropdown-toggle" href="#" id="langMobileDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			EN
+			<?= $currentLang ?>
 		</a>
 		<div class="dropdown-menu dropdown-menu-right language-mobile-dropdown-menu" aria-labelledby="langMobileDropdown">
-			<a class="dropdown-item" href="#">Deutsch</a>
-			<a class="dropdown-item active" href="#">English</a>
-			<a class="dropdown-item" href="#">Français</a>
-			<a class="dropdown-item" href="#">Italiano</a>
+			<?php foreach($langLinks as $link)
+				echo $link;
+			?>
 		</div>
 	</div>
 
@@ -41,13 +53,12 @@
 		<ul class="navbar-nav navbar-nav-right">
 			<li class="nav-item dropdown lang-dropdown">
 				<a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					EN
+					<?= $currentLang ?>
 				</a>
 				<div class="dropdown-menu dropdown-menu-right" aria-labelledby="langDropdown">
-					<a class="dropdown-item" href="#">Deutsch</a>
-					<a class="dropdown-item active" href="#">English</a>
-					<a class="dropdown-item" href="#">Français</a>
-					<a class="dropdown-item" href="#">Italiano</a>
+					<?php foreach($langLinks as $link)
+						echo $link;
+					?>
 				</div>
 			</li>
 			<li class="nav-item dropdown">

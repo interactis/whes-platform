@@ -36,6 +36,28 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
+        // disable yii jquery and css because it's already part of gulp app
+        'assetManager' => [
+            'bundles' => [
+                /*
+                'yii\web\JqueryAsset' => [
+                    'sourcePath' => null,   // do not publish the bundle
+                    'js' => [
+                        '/js/theme.min.js',  // use custom jquery
+                    ]
+                ],
+                */
+                'yii\bootstrap\BootstrapAsset' => [
+                    'sourcePath' => null,   // do not publish the bundle
+                    'css' => [
+                        '/css/theme.min.css',  // use custom bootstrap css
+                	]
+                ],
+                'yii\bootstrap\BootstrapPluginAsset' => [
+                	'js'=>[]
+                ],
+            ],
+        ],
     	'urlManager' => [
         	'showScriptName' => false,
     		'enablePrettyUrl' => true,
@@ -51,6 +73,11 @@ return [
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
     		],
 		],
+    ],
+    'bootstrap' => [
+        [
+            'class' => 'frontend\components\BootstrapSelector',
+        ],
     ],
     'params' => $params,
 ];

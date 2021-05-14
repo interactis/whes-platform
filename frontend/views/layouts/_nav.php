@@ -55,7 +55,7 @@
 					<?= $this->render('_svg/search.php') ?>
 					<?= Yii::t('app', 'Search') ?>
 				</a>
-				<div class="dropdown-menu dropdown-menu-right" aria-labelledby="searchDropdown">
+				<div class="dropdown-menu dropdown-menu-right search-dropdown-menu" aria-labelledby="searchDropdown">
 					<?= $this->render('_search.php') ?>
 				</div>
 			</li>

@@ -10520,26 +10520,14 @@ a.text-dark:hover, a.text-dark:focus {
 h1, .h1,
 h2, .h2,
 h3, .h3 {
-  -ms-hyphens: manual !important;
-  -webkit-hyphens: manual !important;
-  hyphens: manual !important; }
-  h1.no-hyphens, .h1.no-hyphens,
-  h2.no-hyphens, .h2.no-hyphens,
-  h3.no-hyphens, .h3.no-hyphens {
-    -webkit-hyphens: none !important;
-        -ms-hyphens: none !important;
-            hyphens: none !important; }
+  line-height: 1.1; }
 
 h1, .h1 {
   font-size: 3.5625rem;
-  line-height: 1;
-  -webkit-hyphens: none;
-      -ms-hyphens: none;
-          hyphens: none;
-  margin: 30px 0; }
+  margin: 0; }
   @media (min-width: 1200px) {
     h1, .h1 {
-      font-size: 5rem; } }
+      font-size: 4.7rem; } }
 
 h2, .h2 {
   font-size: 2rem;

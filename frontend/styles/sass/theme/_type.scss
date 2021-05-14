@@ -1,24 +1,14 @@
 h1, .h1,
 h2, .h2,
 h3, .h3 {
-	-ms-hyphens: manual !important;
-	-webkit-hyphens: manual !important;
-	hyphens: manual !important;
-	
-	&.no-hyphens {
-		hyphens: none !important;
-	}
-	
+	line-height: 1.1;
 }
 
 h1, .h1 {
 	font-size: 3.5625rem;
-	line-height: 1;
-    hyphens: none;
-    margin: 30px 0;
-    //white-space: nowrap;
+    margin: 0;
 	@include media-breakpoint-up(xl) {
-		font-size: 5rem;
+		font-size: 4.7rem;
 	}
 }
 

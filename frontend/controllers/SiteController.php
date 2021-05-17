@@ -6,6 +6,7 @@ use yii\base\InvalidArgumentException;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\web\Cookie;
+use common\models\Page;
 
 /**
  * Site controller
@@ -24,7 +25,9 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-        return $this->render('index');
+        return $this->render('index', [
+    		'model' => $this->_findPage(1)
+    	]);
     }
     
     public function actionContact()
@@ -62,6 +65,16 @@ class SiteController extends Controller
 			Yii::$app->response->cookies->add($languageCookie);
 		}
 		return $this->redirect(Yii::$app->request->referrer);
+    }
+    
+    private function _findPage($id)
+    {
+        $model = Page::findOne($id);
+		
+		if ($model !== null)
+            return $model;
+
+        throw new NotFoundHttpException();
     }
     
 }

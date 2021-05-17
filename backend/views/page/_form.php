@@ -5,6 +5,8 @@ use common\models\PageTranslation;
 
 $translations = $model->pageTranslations;
 $translationModel = new PageTranslation();
+
+$viewUrl = Yii::$app->params['frontendUrl'] . $model->slug;
 ?>
 
 <div class="page-form">
@@ -43,7 +45,12 @@ $translationModel = new PageTranslation();
 			</div>
 		</div>
 		
-		<?= Yii::$app->controller->renderPartial('//common/_saveColumn', ['form' => $form, 'model' => $model, 'showLangSwitch' => true]) ?>
+		<?= Yii::$app->controller->renderPartial('//common/_saveColumn', [
+			'form' => $form,
+			'model' => $model,
+			'viewUrl' => $viewUrl,
+			'showLangSwitch' => true
+		]) ?>
 		
 	</div>
 

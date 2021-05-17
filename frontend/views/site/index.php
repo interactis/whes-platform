@@ -8,7 +8,8 @@ $this->title = Yii::t('app', 'Our Heritage');
 
 	<?= Yii::$app->controller->renderPartial('//common/_jumbotron') ?>
 
-	<?= $this->render('_intro.php') ?>
-
+	<?= $this->render('_intro.php', [
+		'model' => $model
+	]) ?>
     
 </div>

@@ -5,13 +5,13 @@ use Yii;
 use yii\web\Controller;
 
 /**
- * Heritage controller
+ * Poi controller
  */
-class HeritageController extends Controller
+class PoiController extends Controller
 {
 
 	public $defaultAction = 'view';
-	
+
     public function actionView()
     {
         return $this->render('view');

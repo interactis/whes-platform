@@ -2,13 +2,15 @@ h1, .h1,
 h2, .h2,
 h3, .h3 {
 	line-height: 1.1;
+	font-weight: 300;
+	color: $primary;
 }
 
 h1, .h1 {
 	font-size: 3.5625rem;
     margin: 0;
 	@include media-breakpoint-up(xl) {
-		font-size: 4.7rem;
+		font-size: 3.8rem;
 	}
 }
 
@@ -52,14 +54,14 @@ p {
 
 a:link,
 a:visited {
-	color: $body-color;
-	text-decoration: underline;
+	color: $link-color;
+	text-decoration: none;
 }
 
 a:hover,
 a:active {
 	color: $primary;
-	// text-decoration: none !important;
+	text-decoration: underline;
 	transition: 0.2s;
 }
 
@@ -75,4 +77,8 @@ strong,
 b {
 	font-family: $headings-font-family;
 	font-weight: normal;
+}
+
+.label {
+	color: $gray;
 }

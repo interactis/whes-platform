@@ -102,7 +102,10 @@ if (!$model->isNewRecord)
 						'isWysiwyg' => true
 					]); ?>
 					
-					<?= $form->field($model, 'difficulty')->dropDownList($model->difficulties) ?>	
+					<?= $form->field($model, 'difficulty')->dropDownList(
+						$model->difficulties,
+						['prompt' => Yii::t('app', 'Please select')]	
+					) ?>	
 				
 				</div>
 			</div>

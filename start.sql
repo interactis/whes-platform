@@ -554,12 +554,12 @@ INSERT INTO page_translation (page_id, language_id) VALUES (1, 2);
 INSERT INTO page_translation (page_id, language_id) VALUES (1, 3);
 INSERT INTO page_translation (page_id, language_id) VALUES (1, 4);
 
-INSERT INTO page_translation (page_id, language_id) VALUES (2, 1);
-INSERT INTO page_translation (page_id, language_id) VALUES (2, 2);
-INSERT INTO page_translation (page_id, language_id) VALUES (2, 3);
-INSERT INTO page_translation (page_id, language_id) VALUES (2, 4);
+INSERT INTO page_translation (page_id, language_id, slug) VALUES (2, 1, 'about');
+INSERT INTO page_translation (page_id, language_id, slug) VALUES (2, 2, 'about');
+INSERT INTO page_translation (page_id, language_id, slug) VALUES (2, 3, 'about');
+INSERT INTO page_translation (page_id, language_id, slug) VALUES (2, 4, 'about');
 
-INSERT INTO page_translation (page_id, language_id) VALUES (3, 1);
-INSERT INTO page_translation (page_id, language_id) VALUES (3, 2);
-INSERT INTO page_translation (page_id, language_id) VALUES (3, 3);
-INSERT INTO page_translation (page_id, language_id) VALUES (3, 4);
+INSERT INTO page_translation (page_id, language_id, slug) VALUES (3, 1, 'terms');
+INSERT INTO page_translation (page_id, language_id, slug) VALUES (3, 2, 'terms');
+INSERT INTO page_translation (page_id, language_id, slug) VALUES (3, 3, 'terms');
+INSERT INTO page_translation (page_id, language_id, slug) VALUES (3, 4, 'terms');

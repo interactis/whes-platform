@@ -10801,6 +10801,10 @@ html {
       width: 390px;
       padding: 18px; } }
 
+@media (min-width: 1200px) {
+  .navbar .navbar-brand {
+    width: 260px; } }
+
 @media (max-width: 991.98px) {
   .navbar {
     padding-left: 24px;

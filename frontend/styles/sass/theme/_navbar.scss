@@ -79,7 +79,12 @@
 			width: 390px;
 			padding: 18px;
 		}
+	}
 	
+	@include media-breakpoint-up(xl) {
+		.navbar-brand {
+			width: 260px;
+		}
 	}
 	
 	@include media-breakpoint-down(md) {

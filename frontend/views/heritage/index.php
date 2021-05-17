@@ -3,6 +3,8 @@
 /* @var $this yii\web\View */
 
 $this->title = Yii::t('app', 'Our Heritage');
+
+$this->params['breadcrumbs'][] = 'Swiss Alps Jungfrau-Aletsch';
 ?>
 <div class="site-index">
 

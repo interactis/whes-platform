@@ -93,23 +93,5 @@
 				height: 120px;
 			}
 		}
-		
-		.spacer {
-			background: white;
-			margin-top: -1px; //avoid spacing
-			margin-bottom: -1px; //avoid spacing
-			height: 80px;
-			
-			&.small {
-				height: 3px;
-			}
-			
-			@include media-breakpoint-up(sm) {
-				height: 130px;
-			}
-			@include media-breakpoint-up(md) {
-				height: 150px;
-			}
-		}
 	}
 }

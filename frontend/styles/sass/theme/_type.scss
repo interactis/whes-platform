@@ -7,7 +7,7 @@ h3, .h3 {
 }
 
 h1, .h1 {
-	font-size: 3.5625rem;
+	font-size: 3rem;
     margin: 0;
 	@include media-breakpoint-up(xl) {
 		font-size: 3.8rem;
@@ -81,4 +81,5 @@ b {
 
 .label {
 	color: $gray;
+	font-weight: 300;
 }

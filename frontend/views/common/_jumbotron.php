@@ -53,7 +53,6 @@ if (isset($parallax) && $parallax)
 	
 	<div class="footer">
 		<div class="transition"></div>
-		<div class="spacer"></div>
 	</div>
 </div>
 

@@ -10525,7 +10525,7 @@ h3, .h3 {
   color: #A60100; }
 
 h1, .h1 {
-  font-size: 3.5625rem;
+  font-size: 3rem;
   margin: 0; }
   @media (min-width: 1200px) {
     h1, .h1 {
@@ -10588,7 +10588,8 @@ b {
   font-weight: normal; }
 
 .label {
-  color: #707070; }
+  color: #707070;
+  font-weight: 300; }
 
 html {
   font-size: 16px; }
@@ -10914,19 +10915,6 @@ html {
       @media (min-width: 1200px) {
         .jumbotron .footer .transition {
           height: 120px; } }
-    .jumbotron .footer .spacer {
-      background: white;
-      margin-top: -1px;
-      margin-bottom: -1px;
-      height: 80px; }
-      .jumbotron .footer .spacer.small {
-        height: 3px; }
-      @media (min-width: 576px) {
-        .jumbotron .footer .spacer {
-          height: 130px; } }
-      @media (min-width: 768px) {
-        .jumbotron .footer .spacer {
-          height: 150px; } }
 
 .btn {
   color: white !important;
@@ -10964,6 +10952,26 @@ html {
     .btn {
       font-size: 0.875rem;
       border-radius: 26px; } }
+
+.breadcrumb {
+  padding: 0;
+  padding-left: 6px;
+  background: white;
+  margin-bottom: 90px;
+  font-weight: 300; }
+  .breadcrumb a {
+    color: #707070; }
+  @media (max-width: 767.98px) {
+    .breadcrumb {
+      display: none; } }
+
+.breadcrumb > li + li:before {
+  padding-left: 8px;
+  color: #707070;
+  content: "/\00a0"; }
+
+.breadcrumb > .active {
+  color: #A60100; }
 
 .input-group {
   position: relative; }

@@ -8,6 +8,8 @@ return [
 	
 	"Map" => "Karte",
 	"Show map" => "Karte anzeigen",
+	"Trip Description" => "Wegbeschreibung",
+	"Schedule" => "Fahrplan",
 	
 	"Oops, this page doesn't exist." => "Ups, diese Seite existiert nicht.",
 	"To Homepage" => "Zur Homepage",

@@ -1,0 +1,31 @@
+.card {
+	border: none;
+	.card-header {
+		background: $primary;
+		border: none;
+		padding-top: 20px;
+		padding-bottom: 20px;
+		text-align: center;
+		.h4 {
+			color: white;
+		}
+	}
+	.card-body {
+		border: none;
+		background: $gray-lighter;
+		padding: 0;
+		
+		.trip-list {
+			margin: 0;
+			li {
+				padding: 18px;
+				
+				&.even {
+					background: $gray-light-bg;
+				}
+			}
+			
+		}
+	}
+}
+

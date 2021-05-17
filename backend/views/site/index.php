@@ -28,17 +28,24 @@ $this->title = 'Dashboard';
 				</div>
 			
 				<div class="col-md-4 margin-bottom">
-					<div class="h1">Meta Data</div>
-					<p class="lead">
-						<a  href="/tag">
-							Tags
-						</a>
-					</p>
 					
 					<?php if ($user->isSuperAdmin()): ?>
+						<div class="h1">Tags & Filters</div>
+						<p class="lead">
+							<a  href="/tag">
+								Tags
+							</a>
+						</p>
 						<p class="lead">
 							<a  href="/flag-group">
 								Filters
+							</a>
+						</p>
+					<?php else: ?>
+						<div class="h1">Tags</div>
+						<p class="lead">
+							<a  href="/tag">
+								Tags
 							</a>
 						</p>
 					<?php endif; ?>

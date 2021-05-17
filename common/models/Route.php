@@ -115,7 +115,7 @@ class Route extends HelperModel
             'departure_url' => Yii::t('app', 'Departure Station URL'),
             'geom' => Yii::t('app', 'Geom'),
             'print_available' => Yii::t('app', 'Print Available'),
-            'flags' =>  Yii::t('app', 'Filter Flags'),
+            'flags' =>  Yii::t('app', 'Filters'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
         ];

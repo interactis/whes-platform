@@ -81,7 +81,7 @@ class Poi extends HelperModel
             'arrival_station' => Yii::t('app', 'Arrival Station Name'),
             'arrival_url' => Yii::t('app', 'Arrival Station URL'),
             'geom' => Yii::t('app', 'Geom'),
-            'flags' =>  Yii::t('app', 'Filter Flags'),
+            'flags' =>  Yii::t('app', 'Filters'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
         ];

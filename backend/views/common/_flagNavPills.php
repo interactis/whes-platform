@@ -20,5 +20,5 @@ $this->registerJs($js, $this::POS_READY);
 
 <ul class="nav nav-tabs main-nav-tabs">
 	<li class="nav-tab <?= ($active == 1) ? 'active' : ''; ?>"><?= Html::a('<span class="glyphicon glyphicon-info-sign"></span> '. Yii::t('app', 'Info'), Yii::$app->urlManager->createUrl(['flag-group/update', 'id' => $model->id])) ?></li>
-	<li class="nav-tab <?= ($active == 2) ? 'active' : ''; ?>"><?= Html::a('<span class="glyphicon glyphicon-flag"></span> '. Yii::t('app', 'Flags'), Yii::$app->urlManager->createUrl(['flag/index', 'id' => $model->id])) ?></li>
+	<li class="nav-tab <?= ($active == 2) ? 'active' : ''; ?>"><?= Html::a('<span class="glyphicon glyphicon-filter"></span> '. Yii::t('app', 'Filters'), Yii::$app->urlManager->createUrl(['flag/index', 'id' => $model->id])) ?></li>
 </ul>

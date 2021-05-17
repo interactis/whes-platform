@@ -3,7 +3,6 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use common\models\PoiTranslation;
-use common\models\Heritage;
 use backend\components\poiwidget\PoiWidget;
 
 $translations = $model->poiTranslations;
@@ -23,8 +22,8 @@ $nav = [
 		'title' => 'Geo'
 	],
 	[
-		'slug' => 'meta',
-		'title' => 'Meta Data'
+		'slug' => 'relations',
+		'title' => 'Relations'
 	],
 	[
 		'slug' => 'visibility',
@@ -35,8 +34,6 @@ $nav = [
 $viewUrl = false;
 if (!$model->isNewRecord)
 	$viewUrl = Yii::$app->params['frontendUrl'] .'poi/'. $model->slug;
-
-$user = Yii::$app->user->identity;
 ?>
 
 <div class="poi-form">
@@ -114,8 +111,9 @@ $user = Yii::$app->user->identity;
 				</div>
 			</div>
 			
-			<?= Yii::$app->controller->renderPartial('//common/_metaForm', [
+			<?= Yii::$app->controller->renderPartial('//common/_relationsForm', [
 				'model' => $model,
+				'contentModel' => $contentModel,
 				'form' => $form
 			]) ?>
 			
@@ -124,16 +122,6 @@ $user = Yii::$app->user->identity;
 					<h3>Visibility</h3>
 				</div>
 				<div class="panel-body">
-					<?php
-    				if ($user->isAdmin())
-					{
-						echo $form->field($contentModel, 'heritage_id')->dropDownList(
-							Heritage::getHeritages(),
-							['prompt' => Yii::t('app', 'Please select')]
-						);
-					}
-					?>
-					
 					<?= $form->field($contentModel, 'priority')->dropDownList($model->priorities)
 						->hint(Yii::t("app", "Influences where the POI appears in filter and search results.")) ?>
 					

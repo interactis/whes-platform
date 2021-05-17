@@ -16,7 +16,7 @@ $translationModel = new FlagGroupTranslation();
     	
 			<div id="flag-group" class="panel panel-default">
 				<div class="panel-heading">
-					<h3>Flag Group</h3>
+					<h3>Filter Group</h3>
 				</div>
 				<div class="panel-body">
 				
@@ -29,10 +29,10 @@ $translationModel = new FlagGroupTranslation();
 					]); ?>
 				
 					<?= $form->field($model, 'order')->textInput()
-						->hint(Yii::t('app', 'If necessary, use a number to sort the flags groups among themselves.')) ?>
+						->hint(Yii::t('app', 'If necessary, use a number to sort the filter groups among themselves.')) ?>
 
 					<?= $form->field($model, 'hidden')->checkbox()
-						->hint(Yii::t("app", "If hidden, the flag group won't be shown in the frontend views.")) ?>
+						->hint(Yii::t("app", "If hidden, the filter group won't be shown in the frontend views.")) ?>
 				
 				</div>
 			</div>

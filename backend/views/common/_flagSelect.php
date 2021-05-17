@@ -15,7 +15,7 @@ use kartik\select2\Select2;
 		'maintainOrder' => true,
 		'showToggleAll' => false,
 		'options' => [
-			'placeholder' => Yii::t('app', 'Select flags'), 
+			'placeholder' => Yii::t('app', 'Select filters'), 
 			'multiple' => true
 		],
 		'pluginOptions' => [

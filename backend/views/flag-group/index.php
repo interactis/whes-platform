@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel backend\models\FlagGroupSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Flag Groups');
+$this->title = Yii::t('app', 'Filter Groups');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="flag-group-index">
@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a(Yii::t('app', 'Create Flag Group'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('app', 'Create Filter Group'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     
     <?= GridView::widget([

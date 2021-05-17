@@ -38,7 +38,7 @@ $this->title = 'Dashboard';
 					<?php if ($user->isSuperAdmin()): ?>
 						<p class="lead">
 							<a  href="/flag-group">
-								Flags
+								Filters
 							</a>
 						</p>
 					<?php endif; ?>

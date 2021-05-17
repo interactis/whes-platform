@@ -66,7 +66,7 @@ class Article extends HelperModel
         return [
             'id' => Yii::t('app', 'ID'),
             'content_id' => Yii::t('app', 'Content ID'),
-            'flags' =>  Yii::t('app', 'Filter Flags'),
+            'flags' =>  Yii::t('app', 'Filters'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
         ];

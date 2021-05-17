@@ -3,7 +3,6 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use common\models\RouteTranslation;
-use common\models\Heritage;
 use kartik\file\FileInput;
 
 $translations = $model->routeTranslations;
@@ -23,8 +22,8 @@ $nav = [
 		'title' => 'SBB'
 	],
 	[
-		'slug' => 'meta',
-		'title' => 'Meta Data'
+		'slug' => 'relations',
+		'title' => 'Relations'
 	],
 	[
 		'slug' => 'visibility',
@@ -35,8 +34,6 @@ $nav = [
 $viewUrl = false;
 if (!$model->isNewRecord)
 	$viewUrl = Yii::$app->params['frontendUrl'] .'route/'. $model->slug;
-
-$user = Yii::$app->user->identity;
 ?>
 
 <div class="route-form">
@@ -171,8 +168,9 @@ $user = Yii::$app->user->identity;
 			*/
 			?>
 			
-			<?= Yii::$app->controller->renderPartial('//common/_metaForm', [
+			<?= Yii::$app->controller->renderPartial('//common/_relationsForm', [
 				'model' => $model,
+				'contentModel' => $contentModel,
 				'form' => $form
 			]) ?>
 			
@@ -180,17 +178,7 @@ $user = Yii::$app->user->identity;
 				<div class="panel-heading">
 					<h3>Visibility</h3>
 				</div>
-				<div class="panel-body">
-					<?php
-    				if ($user->isAdmin())
-					{
-						echo $form->field($contentModel, 'heritage_id')->dropDownList(
-							Heritage::getHeritages(),
-							['prompt' => Yii::t('app', 'Please select')]
-						);
-					}
-					?>
-					
+				<div class="panel-body">				
 					<?= $form->field($contentModel, 'priority')->dropDownList($model->priorities)
 						->hint(Yii::t("app", "Influences where the route appears in filter and search results.")) ?>
 					

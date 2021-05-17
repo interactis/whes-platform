@@ -17,7 +17,7 @@ $translationModel = new FlagTranslation();
     	
 			<div id="flag" class="panel panel-default">
 				<div class="panel-heading">
-					<h3>Flag</h3>
+					<h3>Filter</h3>
 				</div>
 				<div class="panel-body">
 				

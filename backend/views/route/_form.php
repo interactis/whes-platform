@@ -120,10 +120,6 @@ if (!$model->isNewRecord && $model->content->published)
 					
 					<?= $form->field($model, 'duration_in_min') ?>
 					
-					<?= $form->field($model, 'min_altitude') ?>
-					
-					<?= $form->field($model, 'max_altitude') ?>
-					
 					<?= $form->field($model, 'start_altitude') ?>
 					
 					<?= $form->field($model, 'end_altitude') ?>
@@ -131,6 +127,11 @@ if (!$model->isNewRecord && $model->content->published)
 					<?= $form->field($model, 'ascent') ?>
 					
 					<?= $form->field($model, 'descent') ?>
+					
+					<?= $form->field($model, 'min_altitude') ?>
+					
+					<?= $form->field($model, 'max_altitude') ?>
+					
 				</div>
 			</div>
 			

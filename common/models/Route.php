@@ -102,8 +102,8 @@ class Route extends HelperModel
             'difficulty' => Yii::t('app', 'Difficulty'),
             'distance_in_km' => Yii::t('app', 'Distance in Km'),
             'duration_in_min' => Yii::t('app', 'Duration in Minutes'),
-            'min_altitude' => Yii::t('app', 'Min Altitude (Metres above Sea Level)'),
-            'max_altitude' => Yii::t('app', 'Max Altitude (Metres above Sea Level)'),
+            'min_altitude' => Yii::t('app', 'Lowest Point (Metres above Sea Level)'),
+            'max_altitude' => Yii::t('app', 'Highest Point (Metres above Sea Level)'),
             'start_altitude' => Yii::t('app', 'Start Altitude (Metres above Sea Level)'),
             'end_altitude' => Yii::t('app', 'End Altitude (Metres above Sea Level)'),
             'ascent' => Yii::t('app', 'Ascent in Meters'),
@@ -184,5 +184,20 @@ class Route extends HelperModel
 			$minutesText = $minutes ." ". Yii::t('app', 'min.');
 				
 		return $hoursText . $minutesText;
+	}
+	
+	public function getDistanceText()
+	{
+		return number_format($this->distance_in_km, 0, ',', "'") .' km';
+	}
+	
+	public function getAltituteText($field)
+	{
+		return number_format($this->{$field}, 0, ',', "'") . ' '. Yii::t('app', 'm a.s.l.');
+	}
+	
+	public function getMetersText($field)
+	{
+		return number_format($this->{$field}, 0, ',', "'") .' m';
 	}
 }

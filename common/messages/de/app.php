@@ -34,6 +34,13 @@ return [
 	"hour" => "Std.",
 	"hours" => "Std.",
 	"min." => "Min.",
+	"Start Altitude" => "Starthöhe",
+	"End Altitude" => "Endhöhe",
+	"Ascent" => "Aufstieg",
+	"Descent" => "Abstieg",
+	"Lowest Point" => "Niedrigster Punkt",
+	"Highest Point" => "Höchster Punkt",
+	"m a.s.l." => "m ü. M.",
 	
 	"Oops, this page doesn't exist." => "Ups, diese Seite existiert nicht.",
 	"To Homepage" => "Zur Homepage",

@@ -8,6 +8,7 @@ return [
 	"UNESCO World Heritage" => "UNESCO Welterbe",
 	
 	"Point of Interest" => "Interessanter Ort",
+	"Interesting Facts" => "Wissenswertes",
 	
 	"Map" => "Karte",
 	"Show map" => "Karte anzeigen",

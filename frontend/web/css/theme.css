@@ -10586,7 +10586,8 @@ a:active {
 
 .strong,
 strong,
-b {
+b,
+.excerpt p {
   font-weight: 700; }
 
 .label {

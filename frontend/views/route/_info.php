@@ -17,6 +17,8 @@
 					
 					<?= $this->render('/common/_youtube', ['model' => $model]) ?>
 					
+					<?= $this->render('_figures', ['model' => $model]) ?>
+					
 					<?= $this->render('_catering', ['model' => $model]) ?>
 					
 					<?= $this->render('_options', ['model' => $model]) ?>

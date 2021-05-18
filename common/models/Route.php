@@ -160,4 +160,29 @@ class Route extends HelperModel
 			];
 		}
     }
+    
+    public function getDifficultyText()
+    {
+    	return $this->difficulties[$this->difficulty];
+    }
+    
+    public function getDurationText()
+	{
+		$hours = floor($this->duration_in_min / 60);
+   	 	$minutes = ($this->duration_in_min % 60);
+		
+		$hoursText = '';
+		if ($hours > 0)
+		{
+			$hoursText = $hours ." ". Yii::t('app', 'hour') .' ';
+			if ($hours > 1)
+				$hoursText = $hours ." ". Yii::t('app', 'hours') .' ';
+		}
+		
+		$minutesText = '';
+		if ($minutes > 0)
+			$minutesText = $minutes ." ". Yii::t('app', 'min.');
+				
+		return $hoursText . $minutesText;
+	}
 }

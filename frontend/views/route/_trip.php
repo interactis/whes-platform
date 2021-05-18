@@ -17,16 +17,14 @@
 					<div><?= Yii::t('app', 'to') ?> <?= $model->arrival_station ?></div>
 				</li>
 				
-				<li class="even">
-					<div class="h3"><?= $model->title ?></div>
-					<div>
-						<?= Yii::t('app', 'Route') ?>
-						<?= (!empty($model->difficulty) ? '<span class="thin">'. $model->difficulties[$model->difficulty] .'</thin>' : '') ?>
-					</div>
-				</li>
-				
-				
 				<?php if (!empty($model->departure_station)): ?>
+					<li class="even">
+						<div class="h3"><?= $model->title ?></div>
+						<div>
+							<?= Yii::t('app', 'Route') ?>
+							<?= (!empty($model->difficulty) ? '<span class="thin">'. $model->difficultyText .'</thin>' : '') ?>
+						</div>
+					</li>
 					<li>
 						<?php if (!empty($model->departure_url)): ?>
 							<a class="btn btn-primary btn-sm pull-right" href="<?= $model->departure_url ?>" target="_blank">

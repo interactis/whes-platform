@@ -5,48 +5,48 @@
 		<dl class="row">
 			
 			<?php if (!empty($model->difficulty)): ?>
-				<dt class="col-4"><?= Yii::t('app', 'Difficulty') ?></dt>
-				<dd class="col-8"><?= $model->difficultyText ?></dd>
+				<dt class="col-5 col-sm-4"><?= Yii::t('app', 'Difficulty') ?></dt>
+				<dd class="col-7 col-sm-8"><?= $model->difficultyText ?></dd>
 			<?php endif; ?>
 			
 			<?php if (!empty($model->distance_in_km)): ?>
-				<dt class="col-4"><?= Yii::t('app', 'Distance') ?></dt>
-				<dd class="col-8"><?= $model->distanceText ?></dd>
+				<dt class="col-5 col-sm-4"><?= Yii::t('app', 'Distance') ?></dt>
+				<dd class="col-7 col-sm-8"><?= $model->distanceText ?></dd>
 			<?php endif; ?>
 			
 			<?php if (!empty($model->duration_in_min)): ?>
-				<dt class="col-4"><?= Yii::t('app', 'Duration') ?></dt>
-				<dd class="col-8"><?= $model->durationText ?></dd>
+				<dt class="col-5 col-sm-4"><?= Yii::t('app', 'Duration') ?></dt>
+				<dd class="col-7 col-sm-8"><?= $model->durationText ?></dd>
 			<?php endif; ?>
 			
 			<?php if (!empty($model->start_altitude)): ?>
-				<dt class="col-4"><?= Yii::t('app', 'Start Altitude') ?></dt>
-				<dd class="col-8"><?= $model->getAltituteText('start_altitude') ?></dd>
+				<dt class="col-5 col-sm-4"><?= Yii::t('app', 'Start Altitude') ?></dt>
+				<dd class="col-7 col-sm-8"><?= $model->getAltituteText('start_altitude') ?></dd>
 			<?php endif; ?>
 			
 			<?php if (!empty($model->end_altitude)): ?>
-				<dt class="col-4"><?= Yii::t('app', 'End Altitude') ?></dt>
-				<dd class="col-8"><?= $model->getAltituteText('end_altitude') ?></dd>
+				<dt class="col-5 col-sm-4"><?= Yii::t('app', 'End Altitude') ?></dt>
+				<dd class="col-7 col-sm-8"><?= $model->getAltituteText('end_altitude') ?></dd>
 			<?php endif; ?>
 			
 			<?php if (!empty($model->ascent)): ?>
-				<dt class="col-4"><?= Yii::t('app', 'Ascent') ?></dt>
-				<dd class="col-8"><?= $model->getMetersText('ascent') ?></dd>
+				<dt class="col-5 col-sm-4"><?= Yii::t('app', 'Ascent') ?></dt>
+				<dd class="col-7 col-sm-8"><?= $model->getMetersText('ascent') ?></dd>
 			<?php endif; ?>
 			
 			<?php if (!empty($model->descent)): ?>
-				<dt class="col-4"><?= Yii::t('app', 'Descent') ?></dt>
-				<dd class="col-8"><?= $model->getMetersText('descent') ?></dd>
+				<dt class="col-5 col-sm-4"><?= Yii::t('app', 'Descent') ?></dt>
+				<dd class="col-7 col-sm-8"><?= $model->getMetersText('descent') ?></dd>
 			<?php endif; ?>
 			
 			<?php if (!empty($model->min_altitude)): ?>
-				<dt class="col-4"><?= Yii::t('app', 'Lowest Point') ?></dt>
-				<dd class="col-8"><?= $model->getAltituteText('min_altitude') ?></dd>
+				<dt class="col-5 col-sm-4"><?= Yii::t('app', 'Lowest Point') ?></dt>
+				<dd class="col-7 col-sm-8"><?= $model->getAltituteText('min_altitude') ?></dd>
 			<?php endif; ?>
 			
 			<?php if (!empty($model->max_altitude)): ?>
-				<dt class="col-4"><?= Yii::t('app', 'Highest Point') ?></dt>
-				<dd class="col-8"><?= $model->getAltituteText('max_altitude') ?></dd>
+				<dt class="col-5 col-sm-4"><?= Yii::t('app', 'Highest Point') ?></dt>
+				<dd class="col-7 col-sm-8"><?= $model->getAltituteText('max_altitude') ?></dd>
 			<?php endif; ?>
 			
   		</dl>

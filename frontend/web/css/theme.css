@@ -10578,9 +10578,11 @@ a:active {
   -webkit-transition: 0.2s;
   transition: 0.2s; }
 
+dl,
 .small {
   font-size: 0.75rem; }
   @media (min-width: 768px) {
+    dl,
     .small {
       font-size: 0.875rem; } }
 

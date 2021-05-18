@@ -10,8 +10,17 @@
 					<?= $model->title ?>
 				</h1>
 			  
-				<div class="margin-bottom-lg ">
-					<?= $model->description ?>
+			  	<div class="margin-bottom-lg">
+					<div class="margin-bottom-md">
+						<?= $model->description ?>
+					</div>
+				
+					<?php if (!empty($model->remarks)): ?>
+						<div class="small margin-bottom-md">
+							<div class="h3 margin-bottom-sm"><?= Yii::t('app', 'Remarks') ?></div>
+							<?= $model->remarks ?>
+						</div>
+					<?php endif; ?>
 				</div>
 		   </div>
 		   <div class="col-md-5 col-lg-4 offset-lg-1">

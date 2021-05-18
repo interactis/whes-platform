@@ -51,6 +51,10 @@ p {
 			font-size: 1.375em;
 		}
 	}
+	
+	.small & {
+		font-size: 1rem;
+	}
 }
 
 a:link,

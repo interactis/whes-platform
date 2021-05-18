@@ -10563,6 +10563,8 @@ p {
       p.lead,
       .lead p {
         font-size: 1.375em; } }
+  .small p {
+    font-size: 1rem; }
 
 a:link,
 a:visited {

@@ -5,6 +5,7 @@ return [
 	"Heritages" => "Welterbe",
 	"Search" => "Suchen",
 	"My Collection" => "Meine Sammlung",
+	"UNESCO World Heritage" => "UNESCO Welterbe",
 	
 	"Map" => "Karte",
 	"Show map" => "Karte anzeigen",

@@ -32,7 +32,7 @@ $nav = [
 ];
 
 $viewUrl = false;
-if (!$model->isNewRecord)
+if (!$model->isNewRecord && $model->published)
 	$viewUrl = Yii::$app->params['frontendUrl'] .'poi/'. $model->slug;
 ?>
 

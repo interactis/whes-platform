@@ -13,13 +13,12 @@
 				</div>
 			</div>
 			<div class="col-md-7 offset-lg-1">
-		   		<div class="label">UNESCO Welterbe</div>
+		   		<div class="label"><?= Yii::t('app', 'UNESCO World Heritage') ?></div>
 				<h1 class="margin-bottom-md">
-					Swiss Alps Jungfrau-Aletsch
+					<?= $model->name ?>
 				</h1>
-			  
 				<div class="margin-bottom-lg ">
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+					<?= $model->description ?>
 				</div>
 		   </div>
 		</div>

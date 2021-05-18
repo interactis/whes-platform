@@ -18,7 +18,7 @@
 				</li>
 				
 				<?php if (!empty($model->directions)): ?>
-					<li class="even">
+					<li>
 						<?= $model->directions ?>
 					</li>
 				<?php endif; ?>

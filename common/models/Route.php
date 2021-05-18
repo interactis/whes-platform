@@ -36,7 +36,7 @@ use common\components\SwissGeometryBehavior;
  */
 class Route extends HelperModel
 {
-	public $translationFields = ['title','description', 'youtube_id', 'catering', 'options', 'remarks'];
+	public $translationFields = ['title','description', 'youtube_id', 'catering', 'options', 'directions', 'remarks'];
 	public $requiredTranslationFields = ['title', 'description'];
 	
 	public $geomUpload;

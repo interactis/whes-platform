@@ -17,6 +17,7 @@ use yii\behaviors\TimestampBehavior;
  * @property string|null $youtube_id
  * @property string|null $catering
  * @property string|null $options
+ * @property string|null $directions
  * @property string|null $remarks
  * @property int|null $created_at
  * @property int|null $updated_at
@@ -52,7 +53,7 @@ class RouteTranslation extends \yii\db\ActiveRecord
         return [
             [['route_id', 'language_id', 'created_at', 'updated_at'], 'default', 'value' => null],
             [['route_id', 'language_id', 'created_at', 'updated_at'], 'integer'],
-            [['description', 'catering', 'options', 'remarks'], 'string'],
+            [['description', 'catering', 'options', 'directions', 'remarks'], 'string'],
             [['slug', 'title', 'youtube_id'], 'string', 'max' => 255],
             [['language_id'], 'exist', 'skipOnError' => true, 'targetClass' => Language::className(), 'targetAttribute' => ['language_id' => 'id']],
             [['route_id'], 'exist', 'skipOnError' => true, 'targetClass' => Route::className(), 'targetAttribute' => ['route_id' => 'id']],
@@ -74,6 +75,7 @@ class RouteTranslation extends \yii\db\ActiveRecord
             'youtube_id' => Yii::t('app', 'YouTube ID'),
             'catering' => Yii::t('app', 'Restaurants / Catering Options'),
             'options' => Yii::t('app', 'Route Options'),
+            'directions' => Yii::t('app', 'Direction Instructions (optional)'),
             'remarks' => Yii::t('app', 'Remarks'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),

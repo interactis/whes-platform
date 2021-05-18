@@ -145,6 +145,15 @@ if (!$model->isNewRecord && $model->content->published)
 					<?= $form->field($model, 'arrival_url')
 						->hint(Yii::t('app', 'How to deep link to SBB timetable:') .' <a href="/downloads/Deep_Linking_SBB_Fahrplan.pdf" target="_blank"><span class="glyphicon glyphicon-download"></span> SBB Deep Linking</a>') ?>
 					
+					<?= $this->render('/translation/field', [
+						'model' => $model,
+						'form' => $form,
+						'field' => 'directions',
+						'translations' => $translations,
+						'translationModel' => $translationModel,
+						'isWysiwyg' => true
+					]); ?>
+					
 					<?= $form->field($model, 'departure_station') ?>
 					
 					<?= $form->field($model, 'departure_url')

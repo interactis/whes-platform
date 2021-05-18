@@ -11001,7 +11001,7 @@ html {
       margin: 0; }
       .card .card-body .trip-list li {
         padding: 18px; }
-        .card .card-body .trip-list li.even {
+        .card .card-body .trip-list li:nth-child(even) {
           background: #f9f9f9; }
       .card .card-body .trip-list p {
         font-size: 1rem;

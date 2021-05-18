@@ -17,8 +17,14 @@
 					<div><?= Yii::t('app', 'to') ?> <?= $model->arrival_station ?></div>
 				</li>
 				
+				<?php if (!empty($model->directions)): ?>
+					<li>
+						<?= $model->directions ?>
+					</li>
+				<?php endif; ?>
+				
 				<?php if (!empty($model->departure_station)): ?>
-					<li class="even">
+					<li>
 						<div class="h3"><?= $model->title ?></div>
 						<div>
 							<?= Yii::t('app', 'Route') ?>

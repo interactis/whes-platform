@@ -10872,22 +10872,22 @@ html {
         background-image: url("/img/layout/chevron-r.svg"); }
   @media (min-width: 576px) {
     .jumbotron {
-      min-height: 590px; }
+      min-height: 463px; }
       .jumbotron .img-bg,
       .jumbotron .carousel-inner {
-        min-height: 590px; } }
+        min-height: 463px; } }
   @media (min-width: 768px) {
     .jumbotron {
-      min-height: 720px; }
+      min-height: 573px; }
       .jumbotron .img-bg,
       .jumbotron .carousel-inner {
-        min-height: 720px; } }
+        min-height: 573px; } }
   @media (min-width: 992px) {
     .jumbotron {
-      min-height: 850px; }
+      min-height: 703px; }
       .jumbotron .img-bg,
       .jumbotron .carousel-inner {
-        min-height: 850px; } }
+        min-height: 703px; } }
   .jumbotron .footer {
     position: absolute;
     bottom: 0 !important;

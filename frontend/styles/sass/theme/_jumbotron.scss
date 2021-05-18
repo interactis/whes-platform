@@ -39,25 +39,25 @@
 	}
   	
   	@include media-breakpoint-up(sm) {
-		min-height: 590px;
+		min-height: 463px;
 		.img-bg,
 		.carousel-inner {
-			min-height: 590px;
+			min-height: 463px;
 		}
 	}
 	@include media-breakpoint-up(md) {
-		min-height: 720px;
+		min-height: 573px;
 		.img-bg,
 		.carousel-inner {
-			min-height: 720px;
+			min-height: 573px;
 		}
 	}
 	
 	@include media-breakpoint-up(lg) {
-		min-height: 850px;
+		min-height: 703px;
 		.img-bg,
 		.carousel-inner {
-			min-height: 850px;
+			min-height: 703px;
 		}
 	}
 	

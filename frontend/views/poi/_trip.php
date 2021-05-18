@@ -8,7 +8,7 @@
 			<ul class="trip-list list-unstyled">
 				<li>
 					<?php if (!empty($model->arrival_url)): ?>
-						<a class="btn btn-primary btn-sm pull-right" href="https://www.sbb.ch/" target="_blank">
+						<a class="btn btn-primary btn-sm pull-right" href="<?= $model->arrival_url ?>" target="_blank">
 							<?= Yii::t('app', 'Schedule') ?>
 						</a>
 					<?php endif; ?>
@@ -22,19 +22,6 @@
 						<?= $model->directions ?>
 					</li>
 				<?php endif; ?>
-				
-				<?php
-				/*
-				<li class="even">
-					<a class="btn btn-primary btn-sm pull-right" href="https://www.sbb.ch/" target="_blank">
-						<?= Yii::t('app', 'Schedule') ?>
-					</a>
-					<div class="h3"><?= Yii::t('app', 'Return trip') ?></div>
-					<div><?= Yii::t('app', 'from') ?> Jungfraujoch</div>
-				</li>
-				*/
-				?>
-			
 			</ul>
 		</div>
 	</div>

@@ -141,12 +141,23 @@ class Route extends HelperModel
         return $this->hasMany(RouteTranslation::className(), ['route_id' => 'id']);
     }
     
-    public function getDifficulties()
+    public function getDifficulties($uppercase = false)
     {
-    	return [
-    		1 => Yii::t('app', 'Easy'),
-    		2 => Yii::t('app', 'Medium'),
-			3 => Yii::t('app', 'Difficult')
-		];
+    	if ($uppercase)
+    	{
+			return [
+				1 => Yii::t('app', 'Easy'),
+				2 => Yii::t('app', 'Medium'),
+				3 => Yii::t('app', 'Difficult')
+			];
+		}
+		else
+		{
+			return [
+				1 => Yii::t('app', 'easy'),
+				2 => Yii::t('app', 'medium'),
+				3 => Yii::t('app', 'difficult')
+			];
+		}
     }
 }

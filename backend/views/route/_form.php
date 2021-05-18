@@ -104,7 +104,7 @@ if (!$model->isNewRecord && $model->content->published)
 					]); ?>
 					
 					<?= $form->field($model, 'difficulty')->dropDownList(
-						$model->difficulties,
+						$model->getDifficulties(true),
 						['prompt' => Yii::t('app', 'Please select')]	
 					) ?>	
 				

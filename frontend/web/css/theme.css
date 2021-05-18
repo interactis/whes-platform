@@ -10590,6 +10590,9 @@ b,
 .excerpt p {
   font-weight: 700; }
 
+.thin {
+  font-weight: 300; }
+
 .label {
   color: #707070;
   font-weight: 300; }

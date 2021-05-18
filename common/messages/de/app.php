@@ -8,6 +8,7 @@ return [
 	"UNESCO World Heritage" => "UNESCO Welterbe",
 	
 	"Point of Interest" => "Interessanter Ort",
+	"Route" => "Route",
 	"Interesting Facts" => "Wissenswertes",
 	
 	"Map" => "Karte",
@@ -22,6 +23,10 @@ return [
 	"Provider" => "Anbieter",
 	"Catering" => "Verpflegung",
 	"Alternative Routes" => "Alternative Routen",
+	
+	"easy" => "leicht",
+	"medium" => "mittel",
+	"difficult" => "schwer",
 	
 	"Oops, this page doesn't exist." => "Ups, diese Seite existiert nicht.",
 	"To Homepage" => "Zur Homepage",

@@ -16,7 +16,7 @@
 					</div>
 					
 					<?= $this->render('/common/_youtube', ['model' => $model]) ?>
-				
+					
 					<?= $this->render('/common/_remarks', ['model' => $model]) ?>
 					
 					<?= $this->render('/common/_supplier', ['model' => $content]) ?>

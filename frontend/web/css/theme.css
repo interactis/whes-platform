@@ -10587,8 +10587,7 @@ a:active {
 .strong,
 strong,
 b {
-  font-family: "Open Sans", sans-serif;
-  font-weight: normal; }
+  font-weight: 700; }
 
 .label {
   color: #707070;

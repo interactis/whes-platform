@@ -65,7 +65,8 @@ $translationModel = new SupplierTranslation();
 
 					<?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
-					<?= $form->field($model, 'phone')->textInput(['maxlength' => true]) ?>
+					<?= $form->field($model, 'phone')->textInput(['maxlength' => true])
+						->hint(Yii::t('app', 'Please use the country code (+41 ...) to make it easier for foreign visitors.')) ?>
 					
 					<?= Yii::$app->controller->renderPartial('//translation/field', [
 						'model' => $model,

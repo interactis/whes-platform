@@ -15,10 +15,12 @@ class PoiController extends Controller
     public function actionView($slug)
     {
     	$model = $this->findModel($slug);
-    	$heritage = $model->content->heritage;
+    	$content = $model->content;
+    	$heritage = $content->heritage;
     	
         return $this->render('view', [
     		'model' => $this->findModel($slug),
+    		'content' => $content,
     		'heritage' => $heritage
     	]);
     }

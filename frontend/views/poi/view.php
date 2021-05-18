@@ -7,10 +7,14 @@ $this->title = $model->title;
 $this->params['breadcrumbs'][] = ['label' => $heritage->short_name, 'url' => ['/heritage/view', 'slug' => $heritage->slug]];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="site-index">
+<div class="poi-view">
 
-	<?= Yii::$app->controller->renderPartial('//common/_jumbotron', ['models' => $model->content->media]) ?>
+	<?= Yii::$app->controller->renderPartial('//common/_jumbotron', ['models' => $content->media]) ?>
 
-	<?= $this->render('_info.php', ['model' => $model, 'heritage' => $heritage]) ?>
+	<?= $this->render('_info.php', [
+		'model' => $model,
+		'content' => $content,
+		'heritage' => $heritage
+	]) ?>
 
 </div>

@@ -15,17 +15,15 @@
 						<?= $model->description ?>
 					</div>
 				
-					<?php if (!empty($model->remarks)): ?>
-						<div class="small margin-bottom-md">
-							<div class="h3 margin-bottom-sm"><?= Yii::t('app', 'Remarks') ?></div>
-							<?= $model->remarks ?>
-						</div>
-					<?php endif; ?>
+					<?= $this->render('/common/_remarks', ['model' => $model]) ?>
+					
+					<?= $this->render('/common/_supplier', ['model' => $content]) ?>
+					
 				</div>
 		   </div>
 		   <div class="col-md-5 col-lg-4 offset-lg-1">
 				
-				<?= Yii::$app->controller->renderPartial('//common/_heritageMap') ?>
+				<?= $this->render('/common/_heritageMap') ?>
 				
 				<?= $this->render('_trip.php', ['model' => $model]) ?>
 				

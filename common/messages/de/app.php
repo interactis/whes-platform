@@ -18,6 +18,7 @@ return [
 	"to" => 'bis',
 	"from" => 'ab',
 	"Remarks" => "Bemerkungen",
+	"Provider" => "Anbieter",
 	
 	"Oops, this page doesn't exist." => "Ups, diese Seite existiert nicht.",
 	"To Homepage" => "Zur Homepage",

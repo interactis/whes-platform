@@ -6,7 +6,7 @@ $this->title = $model->short_name;
 
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="site-index">
+<div class="heritage-view">
 
 	<?= Yii::$app->controller->renderPartial('//common/_jumbotron', ['models' => $model->media]) ?>
 

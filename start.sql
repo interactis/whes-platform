@@ -166,6 +166,7 @@ slug VARCHAR(255),
 title VARCHAR(255),
 description TEXT,
 youtube_id VARCHAR(255),
+directions TEXT,
 remarks TEXT,
 created_at INTEGER,
 updated_at INTEGER,
@@ -532,6 +533,7 @@ ALTER TABLE flag ADD FOREIGN KEY (flag_group_id) REFERENCES flag_group (id) ON D
 ALTER TABLE related_tag ADD FOREIGN KEY (tag_id) REFERENCES tag (id) ON DELETE CASCADE;
 
 ALTER TABLE related_tag ADD FOREIGN KEY (related_tag_id) REFERENCES tag (id) ON DELETE CASCADE;
+
 
 
 

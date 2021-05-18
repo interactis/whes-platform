@@ -10980,6 +10980,9 @@ html {
         padding: 18px; }
         .card .card-body .trip-list li.even {
           background: #f9f9f9; }
+      .card .card-body .trip-list p {
+        font-size: 1rem;
+        margin-bottom: 0; }
 
 .breadcrumb {
   padding: 0;

@@ -18,7 +18,7 @@
 				
 				<?= Yii::$app->controller->renderPartial('//common/_heritageMap') ?>
 				
-				<?= $this->render('_sbb.php') ?>
+				<?= $this->render('_trip.php', ['model' => $model]) ?>
 				
 			</div>
 		</div>

@@ -15,6 +15,7 @@ use yii\behaviors\TimestampBehavior;
  * @property string|null $title
  * @property string|null $description
  * @property string|null $youtube_id
+ * @property string|null $directions
  * @property string|null $remarks
  * @property int|null $created_at
  * @property int|null $updated_at
@@ -50,7 +51,7 @@ class PoiTranslation extends \yii\db\ActiveRecord
         return [
             [['poi_id', 'language_id', 'created_at', 'updated_at'], 'default', 'value' => null],
             [['poi_id', 'language_id', 'created_at', 'updated_at'], 'integer'],
-            [['description', 'remarks'], 'string'],
+            [['description', 'directions', 'remarks'], 'string'],
             [['slug', 'title', 'youtube_id'], 'string', 'max' => 255],
             [['language_id'], 'exist', 'skipOnError' => true, 'targetClass' => Language::className(), 'targetAttribute' => ['language_id' => 'id']],
             [['poi_id'], 'exist', 'skipOnError' => true, 'targetClass' => Poi::className(), 'targetAttribute' => ['poi_id' => 'id']],
@@ -70,6 +71,7 @@ class PoiTranslation extends \yii\db\ActiveRecord
             'title' => Yii::t('app', 'Title'),
             'description' => Yii::t('app', 'Description'),
             'youtube_id' => Yii::t('app', 'Youtube ID'),
+            'directions' => Yii::t('app', 'Direction Instructions (optional)'),
             'remarks' => Yii::t('app', 'Remarks'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),

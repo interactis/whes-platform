@@ -8,9 +8,8 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-index">
 
-	<?= Yii::$app->controller->renderPartial('//common/_jumbotron') ?>
+	<?= Yii::$app->controller->renderPartial('//common/_jumbotron', ['models' => $model->media]) ?>
 
 	<?= $this->render('_intro.php', ['model' => $model]) ?>
-
-    
+	
 </div>

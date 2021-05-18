@@ -10,30 +10,14 @@ if (isset($parallax) && $parallax)
 
 	<div class="carousel-inner">
 		
-		<div class="carousel-item active">
-			<div class="img-bg" style="background-image: url('/img/layout/_construction/sardona.jpg');"></div>
-		</div>
-		
-		<div class="carousel-item">
-			<div class="img-bg" style="background-image: url('/img/layout/_construction/saja.jpg');"></div>
-		</div>
-		
-		<a class="carousel-control-prev img-link" href="#top-carousel" role="button" data-slide="prev">
-			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-			<span class="sr-only">Previous</span>
-		</a>
-		<a class="carousel-control-next img-link" href="#top-carousel" role="button" data-slide="next">
-			<span class="carousel-control-next-icon" aria-hidden="true"></span>
-			<span class="sr-only">Next</span>
-		</a>
-		
 		<?php
-		/*
 		$i = 0;
-		foreach($model->$contenfulField as $i => $image): ?>
+		foreach($models as $i => $model):
+			$imgUrl = $model->getImageUrl(1600);
+			?>
 			<div class="carousel-item <?=  ($i == 0) ? 'active' : ''; ?>">
-				<img class="hidden" src="<?= \Yii::$app->helpers->getImgUrl($model, 1600, $contenfulField, $i) ?>"> <?php // preload images ?>
-				<div class="img-bg" style="background-image: url('<?= \Yii::$app->helpers->getImgUrl($model, 1600, $contenfulField, $i) ?>');"></div>
+				<img class="hidden" src="<?= $imgUrl ?>"> <?php // preload images ?>
+				<div class="img-bg" style="background-image: url('<?= $imgUrl ?>');"></div>
 			</div>
 		<?php endforeach; ?>
 		
@@ -47,8 +31,7 @@ if (isset($parallax) && $parallax)
 				<span class="sr-only">Next</span>
 			</a>
 		<?php endif; ?>
-		*/
-		?>
+		
 	</div>
 	
 	<div class="footer">

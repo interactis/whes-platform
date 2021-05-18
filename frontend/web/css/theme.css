@@ -10743,6 +10743,9 @@ html {
 .spacer {
   margin-bottom: 60px; }
 
+.hidden {
+  display: none; }
+
 .navbar .navbar-brand {
   position: absolute;
   top: 0;

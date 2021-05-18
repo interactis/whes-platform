@@ -1,11 +1,15 @@
 .overview-map-container {
-	position: absolute;
+	position: relative;
 	left: 0;
 	right: 0;
 	overflow: scroll;
+	-webkit-overflow-scrolling: touch;
+	-ms-overflow-style: none;  /* IE and Edge */
+  	scrollbar-width: none;  /* Firefox */
 	
 	.overview-map {
-		width: 820px;
+		width: 800px;
+		padding: 0 60px 30px;
 	}
 	
 }

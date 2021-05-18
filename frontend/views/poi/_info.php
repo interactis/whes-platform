@@ -9,18 +9,17 @@
 				<h1 class="margin-bottom-md">
 					<?= $model->title ?>
 				</h1>
-				
-				<?= $this->render('/common/_youtube', ['model' => $model]) ?>
 			  
 			  	<div class="margin-bottom-lg">
 					<div class="margin-bottom-md">
 						<?= $model->description ?>
 					</div>
+					
+					<?= $this->render('/common/_youtube', ['model' => $model]) ?>
 				
 					<?= $this->render('/common/_remarks', ['model' => $model]) ?>
 					
 					<?= $this->render('/common/_supplier', ['model' => $content]) ?>
-					
 				</div>
 		   </div>
 		   <div class="col-lg-4 offset-lg-1">

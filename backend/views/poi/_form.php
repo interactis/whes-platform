@@ -60,19 +60,20 @@ if (!$model->isNewRecord && $model->content->published)
 					<?= $this->render('/translation/field', [
 						'model' => $model,
 						'form' => $form,
-						'field' => 'youtube_id',
-						'translations' => $translations,
-						'translationModel' => $translationModel
-					]); ?>
-					
-					<?= $this->render('/translation/field', [
-						'model' => $model,
-						'form' => $form,
 						'field' => 'description',
 						'translations' => $translations,
 						'translationModel' => $translationModel,
 						'isWysiwyg' => true,
 						'height' => 400
+					]); ?>
+					
+					<?= $this->render('/translation/field', [
+						'model' => $model,
+						'form' => $form,
+						'field' => 'youtube_id',
+						'translations' => $translations,
+						'translationModel' => $translationModel,
+						'hint' => Yii::t('app', 'Use the last section of the YouTube video link right after <code>watch?v=</code><br />Example: <strong>www.youtube.com/watch?v=<code>uU4c2UX5Lz8</code></strong>')
 					]); ?>
 					
 					<?= $this->render('/translation/field', [

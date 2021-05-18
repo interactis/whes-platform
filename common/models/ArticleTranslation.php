@@ -70,7 +70,7 @@ class ArticleTranslation extends \yii\db\ActiveRecord
             'title' => Yii::t('app', 'Title'),
             'excerpt' => Yii::t('app', 'Excerpt'),
             'description' => Yii::t('app', 'Description'),
-            'youtube_id' => Yii::t('app', 'Youtube ID'),
+            'youtube_id' => Yii::t('app', 'YouTube ID'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
         ];

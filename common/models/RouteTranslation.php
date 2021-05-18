@@ -71,7 +71,7 @@ class RouteTranslation extends \yii\db\ActiveRecord
             'slug' => Yii::t('app', 'Slug'),
             'title' => Yii::t('app', 'Title'),
             'description' => Yii::t('app', 'Description'),
-            'youtube_id' => Yii::t('app', 'Youtube ID'),
+            'youtube_id' => Yii::t('app', 'YouTube ID'),
             'catering' => Yii::t('app', 'Restaurants / Catering Options'),
             'options' => Yii::t('app', 'Route Options'),
             'remarks' => Yii::t('app', 'Remarks'),

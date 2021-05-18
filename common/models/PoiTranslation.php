@@ -70,7 +70,7 @@ class PoiTranslation extends \yii\db\ActiveRecord
             'slug' => Yii::t('app', 'Slug'),
             'title' => Yii::t('app', 'Title'),
             'description' => Yii::t('app', 'Description'),
-            'youtube_id' => Yii::t('app', 'Youtube ID'),
+            'youtube_id' => Yii::t('app', 'YouTube ID'),
             'directions' => Yii::t('app', 'Direction Instructions (optional)'),
             'remarks' => Yii::t('app', 'Remarks'),
             'created_at' => Yii::t('app', 'Created At'),

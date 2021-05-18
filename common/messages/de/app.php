@@ -12,6 +12,8 @@ return [
 	"Trip Description" => "Wegbeschreibung",
 	"Schedule" => "Fahrplan",
 	
+	"Point of Interest" => "Interessanter Ort",
+	
 	"Oops, this page doesn't exist." => "Ups, diese Seite existiert nicht.",
 	"To Homepage" => "Zur Homepage",
 	

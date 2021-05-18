@@ -23,7 +23,7 @@ $nav = [
 ];
 
 $viewUrl = false;
-if (!$model->isNewRecord && $model->published)
+if (!$model->isNewRecord && $model->content->published)
 	$viewUrl = Yii::$app->params['frontendUrl'] .'article/'. $model->slug;
 ?>
 

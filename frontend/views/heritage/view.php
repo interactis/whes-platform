@@ -10,6 +10,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
 	<?= Yii::$app->controller->renderPartial('//common/_jumbotron', ['models' => $model->media]) ?>
 
-	<?= $this->render('_intro.php', ['model' => $model]) ?>
+	<?= $this->render('_info.php', ['model' => $model]) ?>
 	
 </div>

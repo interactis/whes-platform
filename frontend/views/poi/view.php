@@ -2,16 +2,15 @@
 
 /* @var $this yii\web\View */
 
-$this->title = Yii::t('app', 'Our Heritage');
+$this->title = $model->title;
 
-$this->params['breadcrumbs'][] = ['label' => 'Swiss Alps Jungfrau-Aletsch', 'url' => ['/heritage/view']];
-$this->params['breadcrumbs'][] = 'Jungfraujoch';
+$this->params['breadcrumbs'][] = ['label' => $heritage->short_name, 'url' => ['/heritage/view', 'slug' => $heritage->slug]];
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-index">
 
-	<?= Yii::$app->controller->renderPartial('//common/_jumbotron') ?>
+	<?= Yii::$app->controller->renderPartial('//common/_jumbotron', ['models' => $model->content->media]) ?>
 
-	<?= $this->render('_intro.php') ?>
+	<?= $this->render('_info.php', ['model' => $model, 'heritage' => $heritage]) ?>
 
-    
 </div>

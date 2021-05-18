@@ -1,5 +1,6 @@
 <?php
 use yii\helpers\Html;
+use common\models\Heritage;
 
 $currentLang = strtoupper(Yii::$app->language);
 
@@ -46,7 +47,12 @@ $langLinks = [
 					<?= Yii::t('app', 'Heritages') ?>
 				</a>
 				<div class="dropdown-menu" aria-labelledby="heritagesDropdown">
-					<a class="dropdown-item" href="/heritage">Swiss Alps Jungfrau-Aletsch</a>
+					<?php
+					foreach(Heritage::getActiveHeritages() as $heritage)
+					{
+						echo Html::a($heritage->name, ['heritage/view', 'slug' => $heritage->slug], ['class' => 'dropdown-item']);
+					}
+					?>
 				</div>
 			</li>
 		</ul>

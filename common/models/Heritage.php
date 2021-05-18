@@ -147,4 +147,17 @@ class Heritage extends HelperModel
         	->all();
         return ArrayHelper::map($models, 'id', 'short_name');
     }
+    
+    public static function getActiveHeritages()
+    {
+        return Heritage::find()
+        	->joinWith('heritageTranslations')
+        	->where([
+        		'language_id' => Yii::$app->params['preferredLanguageId'],
+        		'published'=> true,
+        		'hidden' => false
+        	])
+        	->orderBy(['short_name' => SORT_ASC])
+        	->all();
+    }
 }

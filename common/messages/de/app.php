@@ -20,6 +20,8 @@ return [
 	"from" => 'ab',
 	"Remarks" => "Bemerkungen",
 	"Provider" => "Anbieter",
+	"Catering" => "Verpflegung",
+	"Alternative Routes" => "Alternative Routen",
 	
 	"Oops, this page doesn't exist." => "Ups, diese Seite existiert nicht.",
 	"To Homepage" => "Zur Homepage",

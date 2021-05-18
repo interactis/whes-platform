@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
 	
-	<?= Yii::$app->controller->renderPartial('//common/_flagNavPills', [
+	<?= $this->render('/common/_flagNavPills', [
     	'model' => $model,
     	'active' => 1
     ]) ?>

@@ -29,12 +29,12 @@ $user = Yii::$app->user->identity;
 		}
 		?>
 	
-		<?= Yii::$app->controller->renderPartial('//common/_tagSelect', [
+		<?= $this->render('/common/_tagSelect', [
 			'model' => $model,
 			'tagValue' => $tagValue
 		]); ?>
 		
-		<?= Yii::$app->controller->renderPartial('//common/_flagSelect', [
+		<?= $this->render('/common/_flagSelect', [
 			'model' => $model,
 			'flagValue' => $flagValue
 		]); ?>

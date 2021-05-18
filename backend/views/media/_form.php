@@ -39,7 +39,7 @@ $translationModel = new MediaTranslation();
 					</div>
 					<br />
 				
-					<?= Yii::$app->controller->renderPartial('//translation/field', [
+					<?= $this->render('/translation/field', [
 						'model' => $model,
 						'form' => $form,
 						'field' => 'title',
@@ -47,7 +47,7 @@ $translationModel = new MediaTranslation();
 						'translationModel' => $translationModel
 					]); ?>
 					
-					<?= Yii::$app->controller->renderPartial('//translation/field', [
+					<?= $this->render('/translation/field', [
 						'model' => $model,
 						'form' => $form,
 						'field' => 'description',
@@ -56,7 +56,7 @@ $translationModel = new MediaTranslation();
 						'isWysiwyg' => true
 					]); ?>
 					
-					<?= Yii::$app->controller->renderPartial('//translation/field', [
+					<?= $this->render('/translation/field', [
 						'model' => $model,
 						'form' => $form,
 						'field' => 'copyright',
@@ -71,7 +71,7 @@ $translationModel = new MediaTranslation();
 			
 		</div>
 		
-		<?= Yii::$app->controller->renderPartial('//common/_saveColumn', ['form' => $form, 'model' => $model, 'showLangSwitch' => true]) ?>
+		<?= $this->render('/common/_saveColumn', ['form' => $form, 'model' => $model, 'showLangSwitch' => true]) ?>
    		
    	</div>
 

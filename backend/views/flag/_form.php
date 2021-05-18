@@ -21,7 +21,7 @@ $translationModel = new FlagTranslation();
 				</div>
 				<div class="panel-body">
 				
-					<?= Yii::$app->controller->renderPartial('//translation/field', [
+					<?= $this->render('/translation/field', [
 						'model' => $model,
 						'form' => $form,
 						'field' => 'title',
@@ -29,7 +29,7 @@ $translationModel = new FlagTranslation();
 						'translationModel' => $translationModel
 					]) ?>
 					
-					<?= Yii::$app->controller->renderPartial('//translation/field', [
+					<?= $this->render('/translation/field', [
 						'model' => $model,
 						'form' => $form,
 						'field' => 'disclaimer',
@@ -49,7 +49,7 @@ $translationModel = new FlagTranslation();
 			
 		</div>
 		
-		<?= Yii::$app->controller->renderPartial('//common/_saveColumn', ['form' => $form, 'model' => $model]) ?>
+		<?= $this->render('/common/_saveColumn', ['form' => $form, 'model' => $model]) ?>
    		
    	</div>
 

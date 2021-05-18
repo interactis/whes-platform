@@ -49,7 +49,7 @@ if (!$model->isNewRecord && $model->content->published)
 				</div>
 				<div class="panel-body">
 
-					<?= Yii::$app->controller->renderPartial('//translation/field', [
+					<?= $this->render('/translation/field', [
 						'model' => $model,
 						'form' => $form,
 						'field' => 'title',
@@ -57,7 +57,7 @@ if (!$model->isNewRecord && $model->content->published)
 						'translationModel' => $translationModel
 					]); ?>
 					
-					<?= Yii::$app->controller->renderPartial('//translation/field', [
+					<?= $this->render('/translation/field', [
 						'model' => $model,
 						'form' => $form,
 						'field' => 'youtube_id',
@@ -65,7 +65,7 @@ if (!$model->isNewRecord && $model->content->published)
 						'translationModel' => $translationModel
 					]); ?>
 					
-					<?= Yii::$app->controller->renderPartial('//translation/field', [
+					<?= $this->render('/translation/field', [
 						'model' => $model,
 						'form' => $form,
 						'field' => 'description',
@@ -75,7 +75,7 @@ if (!$model->isNewRecord && $model->content->published)
 						'height' => 400
 					]); ?>
 					
-					<?= Yii::$app->controller->renderPartial('//translation/field', [
+					<?= $this->render('/translation/field', [
 						'model' => $model,
 						'form' => $form,
 						'field' => 'remarks',
@@ -97,7 +97,7 @@ if (!$model->isNewRecord && $model->content->published)
 					<?= $form->field($model, 'arrival_url')
 						->hint(Yii::t('app', 'How to deep link to SBB timetable:') .' <a href="/downloads/Deep_Linking_SBB_Fahrplan.pdf" target="_blank"><span class="glyphicon glyphicon-download"></span> SBB Deep Linking</a>') ?>
 				
-					<?= Yii::$app->controller->renderPartial('//translation/field', [
+					<?= $this->render('/translation/field', [
 						'model' => $model,
 						'form' => $form,
 						'field' => 'directions',
@@ -121,7 +121,7 @@ if (!$model->isNewRecord && $model->content->published)
 				</div>
 			</div>
 			
-			<?= Yii::$app->controller->renderPartial('//common/_relationsForm', [
+			<?= $this->render('/common/_relationsForm', [
 				'model' => $model,
 				'contentModel' => $contentModel,
 				'form' => $form
@@ -145,7 +145,7 @@ if (!$model->isNewRecord && $model->content->published)
 			
 		</div>
 		
-		<?= Yii::$app->controller->renderPartial('//common/_saveColumn', [
+		<?= $this->render('/common/_saveColumn', [
 			'form' => $form,
 			'model' => $model,
 			'showLangSwitch' => true,

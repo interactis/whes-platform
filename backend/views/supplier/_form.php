@@ -21,7 +21,7 @@ $translationModel = new SupplierTranslation();
 				</div>
 				<div class="panel-body">
 
-					<?= Yii::$app->controller->renderPartial('//translation/field', [
+					<?= $this->render('/translation/field', [
 						'model' => $model,
 						'form' => $form,
 						'field' => 'name',
@@ -29,7 +29,7 @@ $translationModel = new SupplierTranslation();
 						'translationModel' => $translationModel
 					]); ?>
 					
-					<?= Yii::$app->controller->renderPartial('//translation/field', [
+					<?= $this->render('/translation/field', [
 						'model' => $model,
 						'form' => $form,
 						'field' => 'name_affix',
@@ -68,7 +68,7 @@ $translationModel = new SupplierTranslation();
 					<?= $form->field($model, 'phone')->textInput(['maxlength' => true])
 						->hint(Yii::t('app', 'Please use the country code (+41 ...) to make it easier for foreign visitors.')) ?>
 					
-					<?= Yii::$app->controller->renderPartial('//translation/field', [
+					<?= $this->render('/translation/field', [
 						'model' => $model,
 						'form' => $form,
 						'field' => 'remarks',
@@ -82,7 +82,7 @@ $translationModel = new SupplierTranslation();
 			
 		</div>
 		
-		<?= Yii::$app->controller->renderPartial('//common/_saveColumn', [
+		<?= $this->render('/common/_saveColumn', [
 			'form' => $form,
 			'model' => $model,
 			'showLangSwitch' => true,

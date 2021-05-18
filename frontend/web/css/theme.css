@@ -10624,6 +10624,22 @@ html {
   min-width: 100%;
   min-height: 100%; }
 
+.youtube-iframe {
+  width: 100%;
+  height: 266px; }
+  @media (min-width: 576px) {
+    .youtube-iframe {
+      height: 277px; } }
+  @media (min-width: 768px) {
+    .youtube-iframe {
+      height: 388px; } }
+  @media (min-width: 992px) {
+    .youtube-iframe {
+      height: 298px; } }
+  @media (min-width: 1200px) {
+    .youtube-iframe {
+      height: 357px; } }
+
 /*
 .footer {
 	position: absolute;

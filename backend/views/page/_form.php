@@ -21,7 +21,7 @@ $viewUrl = Yii::$app->params['frontendUrl'] . $model->slug;
 				</div>
 				<div class="panel-body">
 					
-					<?= Yii::$app->controller->renderPartial('//translation/field', [
+					<?= $this->render('/translation/field', [
 						'model' => $model,
 						'form' => $form,
 						'field' => 'title',
@@ -29,7 +29,7 @@ $viewUrl = Yii::$app->params['frontendUrl'] . $model->slug;
 						'translationModel' => $translationModel
 					]); ?>
 
-					<?= Yii::$app->controller->renderPartial('//translation/field', [
+					<?= $this->render('/translation/field', [
 						'model' => $model,
 						'form' => $form,
 						'field' => 'description',
@@ -45,7 +45,7 @@ $viewUrl = Yii::$app->params['frontendUrl'] . $model->slug;
 			</div>
 		</div>
 		
-		<?= Yii::$app->controller->renderPartial('//common/_saveColumn', [
+		<?= $this->render('/common/_saveColumn', [
 			'form' => $form,
 			'model' => $model,
 			'viewUrl' => $viewUrl,

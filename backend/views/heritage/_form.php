@@ -24,7 +24,7 @@ if (!$model->isNewRecord && $model->published)
 				</div>
 				<div class="panel-body">
 				
-					<?= Yii::$app->controller->renderPartial('//translation/field', [
+					<?= $this->render('/translation/field', [
 						'model' => $model,
 						'form' => $form,
 						'field' => 'name',
@@ -32,7 +32,7 @@ if (!$model->isNewRecord && $model->published)
 						'translationModel' => $translationModel
 					]); ?>
 					
-					<?= Yii::$app->controller->renderPartial('//translation/field', [
+					<?= $this->render('/translation/field', [
 						'model' => $model,
 						'form' => $form,
 						'field' => 'short_name',
@@ -41,7 +41,7 @@ if (!$model->isNewRecord && $model->published)
 						'hint' => Yii::t('app', 'Use the full name here if no short name is available.')
 					]); ?>
 					
-					<?= Yii::$app->controller->renderPartial('//translation/field', [
+					<?= $this->render('/translation/field', [
 						'model' => $model,
 						'form' => $form,
 						'field' => 'description',
@@ -50,7 +50,7 @@ if (!$model->isNewRecord && $model->published)
 						'isWysiwyg' => true
 					]); ?>
 					
-					<?= Yii::$app->controller->renderPartial('//translation/field', [
+					<?= $this->render('/translation/field', [
 						'model' => $model,
 						'form' => $form,
 						'field' => 'link_url',
@@ -58,7 +58,7 @@ if (!$model->isNewRecord && $model->published)
 						'translationModel' => $translationModel
 					]); ?>
 					
-					<?= Yii::$app->controller->renderPartial('//translation/field', [
+					<?= $this->render('/translation/field', [
 						'model' => $model,
 						'form' => $form,
 						'field' => 'link_text',
@@ -77,7 +77,7 @@ if (!$model->isNewRecord && $model->published)
 			
 		</div>
 		
-		<?= Yii::$app->controller->renderPartial('//common/_saveColumn', ['form' => $form, 'model' => $model, 'showLangSwitch' => true, 'viewUrl' => $viewUrl]) ?>
+		<?= $this->render('/common/_saveColumn', ['form' => $form, 'model' => $model, 'showLangSwitch' => true, 'viewUrl' => $viewUrl]) ?>
    		
    	</div>
 

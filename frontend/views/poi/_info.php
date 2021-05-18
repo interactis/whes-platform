@@ -9,6 +9,8 @@
 				<h1 class="margin-bottom-md">
 					<?= $model->title ?>
 				</h1>
+				
+				<?= $this->render('/common/_youtube', ['model' => $model]) ?>
 			  
 			  	<div class="margin-bottom-lg">
 					<div class="margin-bottom-md">

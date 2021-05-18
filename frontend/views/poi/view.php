@@ -9,7 +9,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="poi-view">
 
-	<?= Yii::$app->controller->renderPartial('//common/_jumbotron', ['models' => $content->media]) ?>
+	<?= $this->render('/common/_jumbotron', ['models' => $content->media]) ?>
 
 	<?= $this->render('_info.php', [
 		'model' => $model,

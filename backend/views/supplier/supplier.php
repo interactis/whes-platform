@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= $contentModel->title ?></h1>
     
-    <?= Yii::$app->controller->renderPartial('//common/_contentNavPills', [
+    <?= $this->render('/common/_contentNavPills', [
     	'model' => $content,
     	'active' => 3,
     	'showSupplier' => true

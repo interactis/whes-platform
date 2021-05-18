@@ -38,7 +38,7 @@ use common\models\Heritage;
 			
 		</div>
 		
-		<?= Yii::$app->controller->renderPartial('//common/_saveColumn', ['form' => $form, 'model' => $model]) ?>
+		<?= $this->render('/common/_saveColumn', ['form' => $form, 'model' => $model]) ?>
    		
    	</div>
 

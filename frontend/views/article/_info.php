@@ -15,6 +15,8 @@
 			  		<div class="excerpt margin-bottom-md">
 						<?= $model->excerpt ?>
 					</div>
+					
+					<?= $this->render('/common/_youtube', ['model' => $model]) ?>
 			  		
 					<div class="margin-bottom-md">
 						<?= $model->description ?>

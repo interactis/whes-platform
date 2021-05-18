@@ -25,7 +25,7 @@ if (isset($model->relatedTags))
 				</div>
 				<div class="panel-body">
 					
-					<?= Yii::$app->controller->renderPartial('//translation/field', [
+					<?= $this->render('/translation/field', [
 						'model' => $model,
 						'form' => $form,
 						'field' => 'title',
@@ -35,7 +35,7 @@ if (isset($model->relatedTags))
 					
 					<hr />
 					
-					<?= Yii::$app->controller->renderPartial('//common/_tagSelect', [
+					<?= $this->render('/common/_tagSelect', [
 						'model' => $model,
 						'tagValue' => $tagValue,
 					]); ?>
@@ -62,7 +62,7 @@ if (isset($model->relatedTags))
 			
 		</div>
 		
-		<?= Yii::$app->controller->renderPartial('//common/_saveColumn', ['form' => $form, 'model' => $model]) ?>
+		<?= $this->render('/common/_saveColumn', ['form' => $form, 'model' => $model]) ?>
    		
    	</div>
 

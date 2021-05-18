@@ -32,6 +32,27 @@ body {
 	}
 }
 
+.youtube-iframe {
+	width: 100%;
+	height: 266px;
+	
+	@include media-breakpoint-up(sm) {
+		height: 277px;
+	}
+	
+	@include media-breakpoint-up(md) {
+		height: 388px;
+	}
+	
+	@include media-breakpoint-up(lg) {
+		height: 298px;
+	}
+	
+	@include media-breakpoint-up(xl) {
+		height: 357px;
+	}
+}
+
 /*
 .footer {
 	position: absolute;

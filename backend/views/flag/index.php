@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= $flagGroup->title ?></h1>
 	
-	<?= Yii::$app->controller->renderPartial('//common/_flagNavPills', [
+	<?= $this->render('/common/_flagNavPills', [
     	'model' => $flagGroup,
     	'active' => 2
     ]) ?>

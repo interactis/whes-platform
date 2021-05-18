@@ -6,7 +6,9 @@ use yii\base\InvalidArgumentException;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\web\Cookie;
+use yii\db\Expression;
 use common\models\Page;
+use common\models\Heritage;
 
 /**
  * Site controller
@@ -26,7 +28,8 @@ class SiteController extends Controller
     public function actionIndex()
     {
         return $this->render('index', [
-    		'model' => $this->_findPage(1)
+    		'model' => $this->_findPage(1),
+    		'media' => $this->_randomMedia()
     	]);
     }
     
@@ -77,4 +80,24 @@ class SiteController extends Controller
         throw new NotFoundHttpException();
     }
     
+    private function _randomMedia()
+    {
+        $models = Heritage::find()
+        	->where([
+        		'published' => true,
+        		'hidden' => false
+        	])
+        	->orderBy(new Expression('random()'))
+        	->limit(6)
+        	->all();
+		
+		$media = [];
+		foreach($models as $model)
+		{
+			if (isset($model->media[0]))
+				$media[] = $model->media[0];
+		}
+		
+		return $media;
+    }
 }

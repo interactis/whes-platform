@@ -17,8 +17,20 @@
 				<h1 class="margin-bottom-md">
 					<?= $model->name ?>
 				</h1>
-				<div class="margin-bottom-lg ">
-					<?= $model->description ?>
+				
+				<div class="margin-bottom-lg">
+					<div class="margin-bottom-md">
+						<?= $model->description ?>
+					</div>
+				
+					<?php if (!empty($model->link_url) && !empty($model->link_text)): ?>
+						<div class="margin-bottom-md">
+							<a href="<?= $model->link_url ?>">
+								<i class="fa fa-chevron-right"></i>
+								<?= $model->link_text ?>
+							</a>
+						</div>
+					<?php endif; ?>
 				</div>
 		   </div>
 		</div>

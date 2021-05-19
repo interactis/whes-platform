@@ -30,7 +30,7 @@ class SiteController extends HelperController
         return $this->render('index', [
     		'model' => $this->_findPage(1),
     		'media' => $this->_randomMedia(),
-    		'content' => $this->findContent()
+    		'content' => $this->findContent(Yii::$app->params['showMaxContent'])
     	]);
     }
     

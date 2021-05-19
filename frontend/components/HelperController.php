@@ -25,22 +25,16 @@ class HelperController extends Controller
 	    return true; // or false to not run the action
 	}
 	
-    public function findContent()
+    public function findContent($limit = false, $offset = 0)
     {
     	$query = Content::find();
     	$query->joinWith(['article', 'poi', 'route']);
     	$query->where(['published' => true]);
-    	//$query->leftJoin('application_translation', 'application_translation.application_id = application.id');
-    	//$query->leftJoin('language', 'application_translation.language_id = language.id');
-    	//$query->where(['published' => true, 'language.code' => Yii::$app->language]);
-    		
-    	
-    	/*
-    	$query->orderBy(['order' => SORT_ASC])->offset($offset);
+    	$query->orderBy(['priority' => SORT_ASC]);
+    	$query->offset($offset);
     	
     	if ($limit)
     		$query->limit($limit);
-    	*/
     	
     	return $query->all();
     }

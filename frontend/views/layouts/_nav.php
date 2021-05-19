@@ -21,19 +21,20 @@ $langLinks = [
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>
-	
-	<div class="dropdown lang-mobile-dropdown">
-		<a class="nav-link dropdown-toggle" href="#" id="langMobileDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			<?= $currentLang ?>
-		</a>
-		<div class="dropdown-menu dropdown-menu-right language-mobile-dropdown-menu" aria-labelledby="langMobileDropdown">
-			<?php foreach($langLinks as $link)
-				echo $link;
-			?>
-		</div>
-	</div>
 
 	<div class="collapse navbar-collapse" id="main-nav">
+		
+		<div class="dropdown lang-mobile-dropdown pull-right">
+			<a class="nav-link dropdown-toggle" href="#" id="langMobileDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				<?= $currentLang ?>
+			</a>
+			<div class="dropdown-menu dropdown-menu-right language-mobile-dropdown-menu" aria-labelledby="langMobileDropdown">
+				<?php foreach($langLinks as $link)
+					echo $link;
+				?>
+			</div>
+		</div>
+		
 		<ul class="navbar-nav navbar-nav-left mr-auto">
 			<li class="nav-item <?= (($this->context->id == 'site' && $this->context->action->id == 'index') ? 'active' : '') ?>">
 				<a class="nav-link" href="/">
@@ -56,6 +57,7 @@ $langLinks = [
 				</div>
 			</li>
 		</ul>
+		
 		<ul class="navbar-nav navbar-nav-right">
 			<li class="nav-item dropdown lang-dropdown">
 				<a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -83,5 +85,6 @@ $langLinks = [
 				</a>
 			</li>
 		</ul>
-		</div>
+		
+	</div>
 </nav>

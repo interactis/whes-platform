@@ -18,7 +18,7 @@ class HeritageController extends HelperController
     	
     	return $this->render('view', [
     		'model' => $model,
-    		'content' => $this->findContent($model->id, Yii::$app->params['showMaxContent'])
+    		'content' => $this->findContent($model->id)
     	]);
     }
  

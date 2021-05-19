@@ -96,7 +96,7 @@ $user = Yii::$app->user->identity;
 				<div class="panel-body">
 					<?php if ($user->isAdmin()): ?>
 						<?= $form->field($contentModel, 'featured')->checkbox()
-							->hint(Yii::t("app", "Featurings can only be set by admins (not editors). Featured items are displayed in the very first place in filter and search results, regardless the priority (see checkbox below).")) ?>
+							->hint(Yii::t("app", "Featured items are displayed first on the homepage and in search results (can only be set by admins).")) ?>
 					<?php endif; ?>
 					
 					<?= $form->field($contentModel, 'priority')->dropDownList($model->priorities)

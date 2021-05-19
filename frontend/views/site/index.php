@@ -10,6 +10,6 @@ $this->title = Yii::t('app', 'Our Heritage');
 
 	<?= $this->render('_intro.php', ['model' => $model]) ?>
 	
-	<?= $this->render('_filter.php', ['model' => $model, 'content' => $content]) ?>
+	<?= $this->render('_filter.php', ['content' => $content]) ?>
     
 </div>

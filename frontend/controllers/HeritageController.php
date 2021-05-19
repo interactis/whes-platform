@@ -2,7 +2,7 @@
 namespace frontend\controllers;
 
 use Yii;
-use yii\web\Controller;
+use frontend\components\HelperController;
 use common\models\Heritage;
 use yii\web\NotFoundHttpException;
 
@@ -10,12 +10,15 @@ use yii\web\NotFoundHttpException;
  * Heritage controller
  */
  
-class HeritageController extends Controller
+class HeritageController extends HelperController
 {
     public function actionView($slug)
     {
+    	$model = $this->findModel($slug);
+    	
     	return $this->render('view', [
-    		'model' => $this->findModel($slug),
+    		'model' => $model,
+    		'content' => $this->findContent($model->id, Yii::$app->params['showMaxContent'])
     	]);
     }
  

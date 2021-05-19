@@ -30,7 +30,11 @@ class HelperController extends Controller
     	$query = Content::find();
     	$query->joinWith(['article', 'poi', 'route']);
     	$query->where(['published' => true]);
-    	$query->orderBy(['priority' => SORT_ASC]);
+    	$query->orderBy([
+    		'featured' => SORT_DESC,
+    		'priority' => SORT_ASC,
+    		'created_at' => SORT_DESC
+    	]);
     	$query->offset($offset);
     	
     	if ($limit)

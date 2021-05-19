@@ -30,7 +30,15 @@ if ($user->isAdmin())
 			'value' => function ($model) {
 				return $model->content->heritage->short_name;
 			}
-		]);
+		],
+		[
+			'attribute' => 'featured',
+			'value' => function ($model) {
+				return ($model->content->featured ? Yii::t('app', 'Yes') :  Yii::t('app', 'No'));
+			},
+			'filter' => $boolFilter,
+		]
+	);
 }
 
 array_push($colums,

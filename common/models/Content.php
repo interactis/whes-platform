@@ -13,6 +13,7 @@ use yii\behaviors\TimestampBehavior;
  * @property int|null $type
  * @property int|null $priority
  * @property bool|null $published
+ * @property bool|null $featured
  * @property bool|null $hidden
  * @property int|null $created_at
  * @property int|null $updated_at
@@ -62,7 +63,7 @@ class Content extends \yii\db\ActiveRecord
             [['heritage_id', 'type', 'priority', 'created_at', 'updated_at'], 'default', 'value' => null],
             [['heritage_id', 'type', 'priority', 'created_at', 'updated_at'], 'integer'],
             [['heritage_id'], 'required'],
-            [['published', 'hidden'], 'boolean'],
+            [['published', 'featured', 'hidden'], 'boolean'],
             [['heritage_id'], 'exist', 'skipOnError' => true, 'targetClass' => Heritage::className(), 'targetAttribute' => ['heritage_id' => 'id']],
         ];
     }
@@ -78,6 +79,7 @@ class Content extends \yii\db\ActiveRecord
             'type' => Yii::t('app', 'Type'),
             'priority' => Yii::t('app', 'Priority'),
             'published' => Yii::t('app', 'Published'),
+            'featured' => Yii::t('app', 'Featured'),
             'hidden' => Yii::t('app', 'Hidden'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),

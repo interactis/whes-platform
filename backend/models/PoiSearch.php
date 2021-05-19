@@ -16,6 +16,7 @@ class PoiSearch extends Poi
 	public $heritage;
 	public $priority;
 	public $published;
+	public $featured;
 	public $hidden;
 	
     /**
@@ -26,7 +27,7 @@ class PoiSearch extends Poi
         return [
             [['id', 'content_id', 'priority', 'created_at', 'updated_at'], 'integer'],
             [['title', 'heritage'], 'safe'],
-            [['published', 'hidden'], 'boolean']
+            [['published', 'featured', 'hidden'], 'boolean']
         ];
     }
 
@@ -53,7 +54,7 @@ class PoiSearch extends Poi
         $query->leftJoin('content', 'content.id = poi.content_id');
         $query->leftJoin('heritage', 'heritage.id = content.heritage_id');
         $query->leftJoin('heritage_translation', 'heritage_translation.heritage_id = heritage.id');
-        $query->groupBy(['poi.id', 'poi_translation.title', 'content.priority', 'content.hidden', 'content.published', 'heritage_translation.short_name']);
+        $query->groupBy(['poi.id', 'poi_translation.title', 'content.priority', 'content.hidden', 'content.featured', 'content.published', 'heritage_translation.short_name']);
 
         // add conditions that should always apply here
         
@@ -90,6 +91,11 @@ class PoiSearch extends Poi
 			'desc' => ['content.published' => SORT_DESC],
 		];
 		
+		$dataProvider->sort->attributes['featured'] = [
+			'asc' => ['content.featured' => SORT_ASC],
+			'desc' => ['content.featured' => SORT_DESC],
+		];
+		
 		$dataProvider->sort->attributes['hidden'] = [
 			'asc' => ['content.hidden' => SORT_ASC],
 			'desc' => ['content.hidden' => SORT_DESC],
@@ -116,6 +122,7 @@ class PoiSearch extends Poi
             'updated_at' => $this->updated_at,
             'content.priority' => $this->priority,
             'content.published' => $this->published,
+            'content.featured' => $this->featured,
             'content.hidden' => $this->hidden,
         ]);
         

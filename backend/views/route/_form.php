@@ -34,6 +34,8 @@ $nav = [
 $viewUrl = false;
 if (!$model->isNewRecord && $model->content->published)
 	$viewUrl = Yii::$app->params['frontendUrl'] .'route/'. $model->slug;
+
+$user = Yii::$app->user->identity;
 ?>
 
 <div class="route-form">
@@ -197,7 +199,12 @@ if (!$model->isNewRecord && $model->content->published)
 				<div class="panel-heading">
 					<h3>Visibility</h3>
 				</div>
-				<div class="panel-body">				
+				<div class="panel-body">
+					<?php if ($user->isAdmin()): ?>
+						<?= $form->field($contentModel, 'featured')->checkbox()
+							->hint(Yii::t("app", "Featurings can only be set by admins (not editors). Featured items are displayed in the very first place in filter and search results, regardless the priority (see checkbox below).")) ?>
+					<?php endif; ?>
+								
 					<?= $form->field($contentModel, 'priority')->dropDownList($model->priorities)
 						->hint(Yii::t("app", "Influences where the route appears in filter and search results.")) ?>
 					

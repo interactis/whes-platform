@@ -5,6 +5,9 @@ h4, .h4 {
 	line-height: 1.1;
 	font-weight: 300;
 	color: $primary;
+	a:hover {
+		text-decoration: none;
+	}
 }
 
 h1, .h1 {

@@ -21,7 +21,11 @@ if (strlen($description) > $maxLenght)
 			</a>
 		</div>
 		<div class="card-body small">
-			<div class="h3 card-title"><?= $model->title ?></div>
+			<div class="h3 card-title">
+				<a href="<?= $url ?>">
+					<?= $model->title ?>
+				</a>
+			</div>
 			<p class="card-text"><?= $description ?></p>
 			<a href="<?= $url ?>">
 				<i class="fa fa-chevron-right"></i> 

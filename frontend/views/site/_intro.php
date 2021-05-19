@@ -12,7 +12,7 @@
 		</div>
 	</div>
 	 
-	<div class="overview-map-container text-center margin-bottom-lg">
+	<div class="overview-map-container text-center">
 		<img class="overview-map" src="/img/layout/map.svg">
 	</div>
 </div>

@@ -10,6 +10,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
 	<?= $this->render('/common/_jumbotron', ['models' => $model->media]) ?>
 
-	<?= $this->render('_info.php', ['model' => $model]) ?>
+	<?= $this->render('_intro.php', ['model' => $model]) ?>
 	
 </div>

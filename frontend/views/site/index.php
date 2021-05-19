@@ -8,8 +8,8 @@ $this->title = Yii::t('app', 'Our Heritage');
 
 	<?= $this->render('/common/_jumbotron', ['models' => $media, 'showCaption' => false]) ?>
 
-	<?= $this->render('_info.php', [
-		'model' => $model
-	]) ?>
+	<?= $this->render('_intro.php', ['model' => $model]) ?>
+	
+	<?= $this->render('_filter.php', ['model' => $model]) ?>
     
 </div>

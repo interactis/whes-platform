@@ -4,16 +4,16 @@ namespace frontend\controllers;
 use Yii;
 use yii\base\InvalidArgumentException;
 use yii\web\BadRequestHttpException;
-use yii\web\Controller;
 use yii\web\Cookie;
 use yii\db\Expression;
+use frontend\components\HelperController;
 use common\models\Page;
 use common\models\Heritage;
 
 /**
  * Site controller
  */
-class SiteController extends Controller
+class SiteController extends HelperController
 {
     
     public function actions()
@@ -29,7 +29,8 @@ class SiteController extends Controller
     {
         return $this->render('index', [
     		'model' => $this->_findPage(1),
-    		'media' => $this->_randomMedia()
+    		'media' => $this->_randomMedia(),
+    		'content' => $this->findContent()
     	]);
     }
     

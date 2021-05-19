@@ -12,6 +12,8 @@ return [
 	"Interesting Facts" => "Wissenswertes",
 	
 	"Info Filter" => "Info-Filter",
+	"No informations found." => "Keine Informationen gefunden.",
+	"Please select other filters." => "Bitte andere Filter wählen.",
 	
 	"Map" => "Karte",
 	"Show map" => "Karte anzeigen",
@@ -26,6 +28,7 @@ return [
 	"Restaurants" => "Verpflegung",
 	"Alternative Routes" => "Alternative Routen",
 	"Short Info" => "Kurzinfo",
+	"Learn more" => "Mehr erfahren",
 	
 	"Difficulty" => "Schwierigkeit",
 	"easy" => "leicht",

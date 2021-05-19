@@ -10764,6 +10764,12 @@ html {
     .margin-bottom-lg {
       margin-bottom: 120px; } }
 
+.margin-top-lg {
+  margin-top: 60px; }
+  @media (min-width: 768px) {
+    .margin-top-lg {
+      margin-top: 120px; } }
+
 .no-margin {
   margin: 0 !important; }
 

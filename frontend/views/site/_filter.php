@@ -18,21 +18,18 @@ $filterSet = false;
 	</div>
 
 	<div class="collapse" id="info-filter">
-		
 		<div class="container">
 			<br /><br />
 			<div class="h4 margin-bottom">Under Construction</div>
 			<p class="small">Hier erscheinen in Kürze die Filter.</p>
 			<br /><br />
 		</div>
-		
 		<hr />
-		
 	</div>
 	
 	<div class="section-wrapper margin-top-lg"> 
          <div id="info" class="container margin-bottom-lg">
-            <?php // $this->render('_content.php', ['models' => $contents]) ?>
+            <?= $this->render('_previews.php', ['models' => $content]) ?>
          </div>
 	</div>
 </div>

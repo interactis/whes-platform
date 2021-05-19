@@ -203,4 +203,9 @@ class Content extends \yii\db\ActiveRecord
 			3 => 'article'
 		];
     }
+    
+    public function getTypeText()
+    {
+    	return $this->getTypes()[$this->type];
+    }
 }

@@ -1,8 +1,10 @@
 <?php if (count($models) < 1): ?>
-	<div class="h4 margin-bottom-lg"><?= Yii::t('app', 'No results found.') ?> <?= Yii::t('app', 'Please select other filters.') ?></div>
+	<a href="/" class="btn btn-primary">
+		<span><?= Yii::t('app', 'To Homepage') ?></span>
+	</a>
 <?php endif; ?>
-
-<div class="row fade-in">	
+	
+<div class="row fade-in">
 	<?php
 	foreach($models as $content)
 	{

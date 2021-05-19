@@ -62,6 +62,7 @@ return [
         	'showScriptName' => false,
     		'enablePrettyUrl' => true,
     		'rules' => [
+    			'search' =>'search/index',
     			'<slug:[\w\-]+>' =>'heritage/view',
     			'article/<slug:[\w\-]+>' =>'article/view',
     			//'artikel/<slug:[\w\-]+>' => 'article/view',

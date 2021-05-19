@@ -12,7 +12,10 @@ return [
 	"Interesting Facts" => "Wissenswertes",
 	
 	"Info Filter" => "Info-Filter",
-	"No informations found." => "Keine Informationen gefunden.",
+	"No results found." => "Keine Resultate gefunden.",
+	"1 result found." => "1 Resultat gefunden.",
+	"{count} results found." => "{count} Resultate gefunden.",
+	"Search term" => "Suchbegriff",
 	"Please select other filters." => "Bitte andere Filter wählen.",
 	
 	"Map" => "Karte",

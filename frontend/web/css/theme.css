@@ -10972,8 +10972,7 @@ html {
 
 .collapse-title {
   position: relative;
-  background: #F2F2F2;
-  color: #333333;
+  background: #333333;
   margin-bottom: 2px; }
   .collapse-title:hover {
     cursor: pointer; }
@@ -10992,28 +10991,17 @@ html {
     transition: transform 150ms ease, -webkit-transform 150ms ease;
     -webkit-transform: rotate(90deg);
             transform: rotate(90deg);
-    width: 30px; }
+    width: 18px; }
   .collapse-title.collapsed .handle {
     -webkit-transform: rotate(0deg);
             transform: rotate(0deg); }
   .collapse-title .h2,
   .collapse-title .h4 {
-    margin: 24px 0 24px 44px;
+    color: white;
+    margin: 24px 0 24px 36px;
     -ms-hyphens: auto;
         hyphens: auto;
     -webkit-hyphens: auto; }
-  @media (min-width: 576px) {
-    .collapse-title .handle {
-      width: 36px; }
-    .collapse-title .h2,
-    .collapse-title .h4 {
-      margin-left: 50px; } }
-  @media (min-width: 768px) {
-    .collapse-title .handle {
-      width: 42px; }
-    .collapse-title .h2,
-    .collapse-title .h4 {
-      margin-left: 60px; } }
   .collapse-title.collapse-title-sm {
     height: 48px;
     margin-bottom: 0; }
@@ -11021,7 +11009,7 @@ html {
       width: 30px;
       margin: 9px 0 0 0; }
     .collapse-title.collapse-title-sm .h4 {
-      margin: 12px 0 0 42px; }
+      margin: 12px 0 0 44px; }
 
 .collapse-sm {
   margin: 0 !important; }
@@ -11049,22 +11037,6 @@ html {
       font-size: 1.1rem; }
   .collapse-wrapper .h4 .icon {
     width: 22px; }
-  .collapse-wrapper .property.rating .h3 {
-    margin-left: 33px; }
-    .collapse-wrapper .property.rating .h3 .icon {
-      position: absolute;
-      width: 33px;
-      left: -33px; }
-  .collapse-wrapper .property.rating .description {
-    padding-left: 33px; }
-  .collapse-wrapper .sub-property.rating .h4 {
-    margin-left: 27px; }
-    .collapse-wrapper .sub-property.rating .h4 .icon {
-      position: absolute;
-      width: 27px;
-      left: -27px; }
-  .collapse-wrapper .sub-property.rating .description {
-    padding-left: 27px; }
   .collapse-wrapper .collapse-section p:last-child {
     margin-bottom: 0; }
   .collapse-sm .collapse-wrapper {

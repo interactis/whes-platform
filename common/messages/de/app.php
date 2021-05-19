@@ -11,6 +11,8 @@ return [
 	"Route" => "Route",
 	"Interesting Facts" => "Wissenswertes",
 	
+	"Info Filter" => "Info-Filter",
+	
 	"Map" => "Karte",
 	"Show map" => "Karte anzeigen",
 	"Trip Description" => "Wegbeschreibung",

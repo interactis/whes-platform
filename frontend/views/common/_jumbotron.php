@@ -4,6 +4,9 @@ use yii\widgets\Breadcrumbs;
 $class = "";
 if (isset($parallax) && $parallax)
 	$class = 'parallax';
+
+if (!isset($showCaption))
+	$showCaption = true;
 ?>
 
 <div id="top-carousel" class="jumbotron carousel slide <?= $class ?>" data-ride="carousel" data-touch="true">
@@ -16,8 +19,23 @@ if (isset($parallax) && $parallax)
 			$imgUrl = $model->getImageUrl(1600);
 			?>
 			<div class="carousel-item <?=  ($i == 0) ? 'active' : ''; ?>">
-				<img class="hidden" src="<?= $imgUrl ?>"> <?php // preload images ?>
+				<img class="hidden" src="<?= $imgUrl ?>" alt="<?= $model->title ?>"> <?php // preload images ?>
 				<div class="img-bg" style="background-image: url('<?= $imgUrl ?>');"></div>
+				
+				<div class="carousel-caption">
+					<div class="container">
+						<div class="caption">
+							<?php
+							if ($showCaption && !empty($model->description))
+								echo $model->description;
+							?>
+				
+							<?php if (!empty($model->copyright)): ?>
+								<div class="thin copyright">&copy; <?= $model->copyright ?></div>
+							<?php endif; ?>
+						</div>
+					</div>
+				</div>
 			</div>
 		<?php endforeach; ?>
 		

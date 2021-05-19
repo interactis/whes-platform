@@ -71,6 +71,8 @@ a:active {
 }
 
 dl,
+.carousel-caption,
+.carousel-caption p,
 .small {
 	font-size: 0.75rem;
 	@include media-breakpoint-up(md) {

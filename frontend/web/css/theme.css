@@ -10579,10 +10579,14 @@ a:active {
   transition: 0.2s; }
 
 dl,
+.carousel-caption,
+.carousel-caption p,
 .small {
   font-size: 0.75rem; }
   @media (min-width: 768px) {
     dl,
+    .carousel-caption,
+    .carousel-caption p,
     .small {
       font-size: 0.875rem; } }
 
@@ -10896,6 +10900,29 @@ html {
       .jumbotron .carousel-inner .carousel-control-prev .carousel-control-next-icon,
       .jumbotron .carousel-inner .carousel-control-next .carousel-control-next-icon {
         background-image: url("/img/layout/chevron-r.svg"); }
+    .jumbotron .carousel-inner::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      height: 320px;
+      width: 100%;
+      background-image: linear-gradient(to bottom, rgba(250, 0, 0, 0) 0px, rgba(0, 0, 0, 0.7) 100%); }
+    .jumbotron .carousel-inner .carousel-caption {
+      text-align: left;
+      bottom: 60px;
+      padding: 0;
+      left: 0 !important;
+      right: 0 !important; }
+      .jumbotron .carousel-inner .carousel-caption .copyright {
+        opacity: 0.4; }
+      @media (min-width: 576px) {
+        .jumbotron .carousel-inner .carousel-caption {
+          bottom: 68px; } }
+      @media (min-width: 768px) {
+        .jumbotron .carousel-inner .carousel-caption {
+          bottom: 96px; }
+          .jumbotron .carousel-inner .carousel-caption .caption {
+            width: 600px; } }
   @media (min-width: 576px) {
     .jumbotron {
       min-height: 463px; }

@@ -1,0 +1,128 @@
+.map-full {
+	background: rgba(#6EAAE6, 0.3);
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	min-width: 100%;
+	min-height: 100%;
+	z-index: 0;
+}
+
+.map-controls {
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	margin: rem-calc(0 8 78 0);
+	div {
+		padding-bottom: rem-calc(8);
+	}
+	.btn {
+		&:hover {
+			//background: darken($gray-lighter, 3%);
+			//color: $gray-darker;
+			box-shadow: none;
+		}
+	}
+	.search {
+		display: none;
+	}
+	
+	@include media-breakpoint-down(md) {
+		margin-bottom: rem-calc(90);
+		.zoom {
+		  display: none;
+		}
+		.search {
+		  display: inline-block;
+		}
+		/*
+		.btn {
+		  @include button-size($padding-base-vertical, $padding-base-horizontal, $font-size-base, $line-height-base, $btn-border-radius-base);
+		}
+		*/
+	}
+	
+	.glyphicon {
+		font-size: 1.3em;
+	}
+}
+
+.map-settings {
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	right: 0;
+	height: 100%;
+	background: $gray-light;
+	padding-top:rem-calc(84);
+	.container {
+		width: 0;
+		transition: width 0.25s ease-out;
+		overflow: hidden;
+		padding: 0;
+		div {
+			padding: rem-calc(24 24 0 24);
+		}
+	}
+	.collapse-sidebar {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		margin: rem-calc(0 0 48 -43);
+		width: 43px;
+		padding: rem-calc(4 11 4 3);
+		border-right: none;
+		border-radius: 2px 0 0 2px;
+		&:hover {
+			background: darken($gray-light, 3%);
+			color: $gray-dark;
+			box-shadow: none;
+		}
+	}
+	&.in {
+		.container {
+			width: 210px;
+			transition: width 0.25s ease-in;
+		}
+		.collapse-sidebar {
+			.glyphicon {
+				transform: rotate(180deg);
+			}
+		}
+	}
+	
+	@include media-breakpoint-down(md) {
+		padding-top:rem-calc(54);
+		.collapse-sidebar {
+		  margin: rem-calc(0 0 58 -48);
+		  padding: rem-calc(6 12 6 4);
+		  width: 48px;
+		}
+	}
+	ul {
+		padding: 0;
+	}
+	li {
+		list-style: none;
+	}
+}
+
+/*
+#layer-slider {
+  padding: 0;
+
+  .noUi-handle, .noUi-base, .noUi-origin, .ui-slider-handle {
+    padding: 0;
+  }
+
+  .ui-slider-inner-label {
+    position: absolute;
+    top: rem-calc(30);
+    text-shadow: none;
+    padding: 0;
+    font-size: $font-size-base;
+  }
+}
+*/

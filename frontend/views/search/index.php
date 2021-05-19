@@ -3,7 +3,7 @@ $this->title = Yii::t('app', 'Search');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<div class="container margin-top-lg">
+<div class="search-view container margin-top-lg">
 	<div class="h1 margin-bottom">
 		<?php
 		$count = count($models);
@@ -28,5 +28,4 @@ $this->params['breadcrumbs'][] = $this->title;
 	<?php endif; ?>
 	
 	<?= $this->render('_previews.php', ['models' => $models]) ?>
-	
 </div>

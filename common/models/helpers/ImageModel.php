@@ -172,11 +172,16 @@ class ImageModel extends TranslationModel
 	
 	public function getImageUrl($format, $imageName = "filename", $type = 'crop')
     {
-    	$url = Yii::$app->params['frontendUrl'] ."img/layout/placeholder/". $format ."/placeholder.jpg";
     	if (!empty($this->$imageName))
     	{
-    		$url = Yii::$app->params['frontendUrl'] ."img/". $this->tableName() ."/". $type ."/". $format ."/". $this->$imageName;
+    		return Yii::$app->params['frontendUrl'] ."img/". $this->tableName() ."/". $type ."/". $format ."/". $this->$imageName;
     	}
-		return $url;		
+    	else
+			return Media::getPlaceholderUrl($format);		
+	}
+	
+	public static function getPlaceholderUrl($format)
+	{
+		return Yii::$app->params['frontendUrl'] ."img/layout/placeholder/". $format ."/placeholder.jpg";
 	}
 }

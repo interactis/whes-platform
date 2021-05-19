@@ -10540,6 +10540,9 @@ h2, .h2 {
     h2, .h2 {
       font-size: 2rem; } }
 
+h3, .h3 {
+  line-height: 1.3; }
+
 h5, .h5 {
   margin: 0;
   font-size: 0.875rem;
@@ -11152,6 +11155,49 @@ html {
       .card .card-body .trip-list p {
         font-size: 1rem;
         margin-bottom: 0; }
+
+.preview-card {
+  border: none;
+  margin-bottom: 30px; }
+  .preview-card .card-header {
+    border-radius: 24px;
+    background: none; }
+    .preview-card .card-header.img-header {
+      position: relative;
+      padding: 0;
+      height: 260px;
+      overflow: hidden; }
+      .preview-card .card-header.img-header img {
+        min-height: 100%;
+        min-width: 100%;
+        height: 260px;
+        width: auto;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%); }
+      @media (min-width: 1200px) {
+        #featured .preview-card .card-header.img-header {
+          height: 324px; }
+          #featured .preview-card .card-header.img-header img {
+            height: 324px; } }
+      .preview-card .card-header.img-header .footer {
+        position: absolute;
+        bottom: 0 !important;
+        width: 100%; }
+  .preview-card .card-body {
+    background: none;
+    font-size: 1em;
+    margin: 24px 0;
+    padding: 0; }
+    .preview-card .card-body p {
+      font-weight: 300; }
+  .preview-card .card-text {
+    margin-bottom: 24px !important; }
+  @media (min-width: 576px) {
+    .preview-card {
+      margin-bottom: 45px; } }
 
 .breadcrumb {
   padding: 0;

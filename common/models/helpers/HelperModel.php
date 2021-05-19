@@ -4,6 +4,7 @@ namespace common\models\helpers;
 use Yii;
 use yii\base\UnknownPropertyException;
 use yii\helpers\ArrayHelper;
+use common\models\Media;
 use common\models\Tag;
 use common\models\Flag;
 use common\models\ContentTag;

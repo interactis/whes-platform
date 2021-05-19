@@ -91,4 +91,9 @@ class Article extends HelperModel
     {
         return $this->hasMany(ArticleTranslation::className(), ['article_id' => 'id']);
     }
+    
+    public function getLabel()
+    {
+        return Yii::t('app', 'Interesting Facts');
+    }
 }

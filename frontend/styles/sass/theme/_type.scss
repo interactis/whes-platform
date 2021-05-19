@@ -5,7 +5,8 @@ h4, .h4 {
 	line-height: 1.1;
 	font-weight: 300;
 	color: $primary;
-	a:hover {
+	a:hover,
+	a:active {
 		text-decoration: none;
 	}
 }

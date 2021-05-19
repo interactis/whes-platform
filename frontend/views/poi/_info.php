@@ -3,7 +3,7 @@
 		<div class="row">
 			<div class="col-lg-7">
 		   		<div class="label">
-		   			<?= Yii::t('app', 'Point of Interest') ?><br />
+		   			<?= $model->label ?><br />
 		   			<em><?= $heritage->short_name ?></em>
 		   		</div>
 				<h1 class="margin-bottom-md">

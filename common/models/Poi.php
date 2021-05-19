@@ -125,4 +125,9 @@ class Poi extends HelperModel
     {
         return $this->hasMany(PoiTranslation::className(), ['poi_id' => 'id']);
     }
+    
+    public function getLabel()
+    {
+        return Yii::t('app', 'Point of Interest');
+    }
 }

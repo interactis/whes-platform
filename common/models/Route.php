@@ -141,6 +141,11 @@ class Route extends HelperModel
         return $this->hasMany(RouteTranslation::className(), ['route_id' => 'id']);
     }
     
+    public function getLabel()
+    {
+        return Yii::t('app', 'Route');
+    }
+    
     public function getDifficulties($uppercase = false)
     {
     	if ($uppercase)

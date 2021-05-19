@@ -10524,10 +10524,18 @@ h4, .h4 {
   line-height: 1.1;
   font-weight: 300;
   color: #A60100; }
-  h1 a:hover, .h1 a:hover,
-  h2 a:hover, .h2 a:hover,
-  h3 a:hover, .h3 a:hover,
-  h4 a:hover, .h4 a:hover {
+  h1 a:hover,
+  h1 a:active, .h1 a:hover,
+  .h1 a:active,
+  h2 a:hover,
+  h2 a:active, .h2 a:hover,
+  .h2 a:active,
+  h3 a:hover,
+  h3 a:active, .h3 a:hover,
+  .h3 a:active,
+  h4 a:hover,
+  h4 a:active, .h4 a:hover,
+  .h4 a:active {
     text-decoration: none; }
 
 h1, .h1 {

@@ -604,28 +604,28 @@
             function _drawAllInformationLayer() {
                 $.getJSON(settings.allDataUrl, function(data) {
                     $.each(data.pois, function(key, val) {
-                        if (!(val.permaId in iconFeatureReference) && $.isNumeric(val.geom[0]) && $.isNumeric(val.geom[1])) {
+                        if (!(val.id in iconFeatureReference) && $.isNumeric(val.geom[0]) && $.isNumeric(val.geom[1])) {
                             var poiFeature = new ol.Feature({
                                 geometry: new ol.geom.Point([val.geom[0], val.geom[1]]),
-                                identifier: val.permaId,
+                                identifier: val.id,
                                 type: 'poi',
-                                poiType: val.type
+                                poiType: 1
                             });
                             allInformationSource.addFeature(poiFeature);
-                            iconFeatureReference[val.permaId] = poiFeature;
+                            iconFeatureReference[val.id] = poiFeature;
                         }
                     });
-                    $.each(data.trails, function(key, val) {
-                        if (!(val.permaId in trailFeatureReference)) {
+                    $.each(data.routes, function(key, val) {
+                        if (!(val.id in trailFeatureReference)) {
                             var trail = new ol.Feature({
                                 geometry: new ol.geom.LineString(val.geom),
-                                identifier: val.permaId,
+                                identifier: val.id,
                                 type: 'trail',
                                 isAllLayer: true
                             });
                             trail.setStyle(disabledTrailStyle());
                             trailSource.addFeature(trail);
-                            trailFeatureReference[val.permaId] = trail;
+                            trailFeatureReference[val.id] = trail;
                         }
                     });
                 });

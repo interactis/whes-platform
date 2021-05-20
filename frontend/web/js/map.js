@@ -11,7 +11,7 @@ $(function() {
             clusterImage: bgMap.data('cluster-url'),
             locationImage: bgMap.data('location-url'),
             zoom: ($(window).width() < 500) ? 10 : 11.5,
-            allDataUrl: '/rucksack/ajax-get-all-pois/'
+            allDataUrl: '/map/get-all-markers/'
         });
 
         var mapItems = $('.map-item');

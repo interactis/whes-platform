@@ -11257,24 +11257,24 @@ html {
 
 .map-controls {
   position: fixed;
-  right: 0;
-  bottom: 0;
-  margin: rem-calc(0 8 78 0); }
-  .map-controls div {
-    padding-bottom: rem-calc(8); }
-  .map-controls .btn:hover {
-    -webkit-box-shadow: none;
-            box-shadow: none; }
+  right: 12px;
+  bottom: 90px;
+  margin: 0; }
+  .map-controls .btn {
+    width: 30px;
+    height: 30px;
+    border-radius: none;
+    background: #A60100; }
+    .map-controls .btn:focus {
+      background: #A60100 !important;
+      border: none; }
+  .map-controls .locate-me {
+    margin-bottom: 12px; }
   .map-controls .search {
     display: none; }
   @media (max-width: 991.98px) {
     .map-controls {
-      margin-bottom: rem-calc(90);
-      /*
-		.btn {
-		  @include button-size($padding-base-vertical, $padding-base-horizontal, $font-size-base, $line-height-base, $btn-border-radius-base);
-		}
-		*/ }
+      margin-bottom: 90px; }
       .map-controls .zoom {
         display: none; }
       .map-controls .search {

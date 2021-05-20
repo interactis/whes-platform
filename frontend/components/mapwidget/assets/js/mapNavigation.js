@@ -26,6 +26,6 @@ jQuery(function($) {
 
     // move zoom elements - easier than re-attaching custom elements.
     $('.ol-zoom').children().addClass('btn btn-default').appendTo('.zoom');
-    $('.ol-zoom-in').addClass('btn btn-default btn-sm zoom-in').html('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>');
-    $('.ol-zoom-out').addClass('btn btn-default btn-sm zoom-out').html('<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>');
+    $('.ol-zoom-in').addClass('btn btn-default btn-sm zoom-in').html('<i class="fa fa-plus"></i>');
+    $('.ol-zoom-out').addClass('btn btn-default btn-sm zoom-out').html('<i class="fa fa-minus"></i>');
 });

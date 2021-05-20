@@ -23,8 +23,7 @@ return [
 	"View" => "Ansicht",
 	"Display" => "Anzeige",
 	"Hiking Trail Network" => "Wanderwegnetz",
-	"World Heritage Perimeter" => "Welterbeperimeter",
-	
+	"World Heritages" => "Welterbe",
 	
 	"Trip Description" => "Wegbeschreibung",
 	"Schedule" => "Fahrplan",

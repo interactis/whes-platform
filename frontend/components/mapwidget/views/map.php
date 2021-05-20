@@ -19,16 +19,27 @@ $this->registerJs($js, $this::POS_HEAD);
      data-disabled-ambassador-highlight-url="<?= $highlightDisabledAmbassador ?>"></div>
 
 <div class="map-controls">
+    
+    <?php
+    /*
     <div>
         <a class="btn btn-default btn-sm search" data-toggle="modal" data-target="#where-to-go-modal">
             <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
         </a>
     </div>
+    */
+    ?>
+    
+    <?php
+    /*
     <div>
         <a class="btn btn-default btn-sm locate-me" title="<?= Yii::t('app', 'Meinen Standort anzeigen') ?>">
-        	<i class="fa fa-chevron-right"></i>
+        	<i class="fa fa-map-marker"></i>
         </a>
     </div>
+    */
+    ?>
+    
     <div class="zoom btn-group-vertical"></div>
 </div>
 
@@ -59,7 +70,7 @@ $this->registerJs($js, $this::POS_HEAD);
 			</li>
 			<li class="toggle-perimeter">
 				<input type="checkbox" checked="checked" id="perimeter-layer">&nbsp;
-				<label for="perimeter-layer"><?= Yii::t('app', 'World Heritage Perimeter'); ?></label>
+				<label for="perimeter-layer"><?= Yii::t('app', 'World Heritages'); ?></label>
 			</li>
 		</ul>
 	</div>

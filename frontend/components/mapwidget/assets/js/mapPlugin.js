@@ -645,6 +645,7 @@
                 }));
             }
             function locateUser() {
+            	
                 if (currentPosition === null) {
                     var location = new ol.Geolocation({
                         projection: 'EPSG:21781',

@@ -43,7 +43,7 @@ $this->registerJs($js, $this::POS_HEAD);
                 <p><?= Yii::t('app', 'Bitte erlauben Sie den Zugriff auf Ihren Standort, um diesen hier anzuzeigen.') ?></p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal"><?= Yii::t('app', 'Schliessen') ?></button>
+                <button type="button" class="btn btn-default" data-dismiss="modal"><?= Yii::t('app', 'Close') ?></button>
             </div>
         </div>
     </div>
@@ -51,24 +51,24 @@ $this->registerJs($js, $this::POS_HEAD);
 
 <div class="map-settings">
 	<div class="margin-bottom">
-		<h4 class="margin-bottom-sm"><?= Yii::t('app', 'Anzeige'); ?></h4>
+		<h4 class="margin-bottom-sm"><?= Yii::t('app', 'Display'); ?></h4>
 		<ul class="list-unstyled">
 			<li class="toggle-hike">
 				<input type="checkbox" id="hike-layer">&nbsp;
-				<label for="hike-layer"><?= Yii::t('app', 'Wanderwegnetz'); ?></label>
+				<label for="hike-layer"><?= Yii::t('app', 'Hiking Trail Network'); ?></label>
 			</li>
 			<li class="toggle-perimeter">
 				<input type="checkbox" checked="checked" id="perimeter-layer">&nbsp;
-				<label for="perimeter-layer"><?= Yii::t('app', 'Welterbeperimeter'); ?></label>
+				<label for="perimeter-layer"><?= Yii::t('app', 'World Heritage Perimeter'); ?></label>
 			</li>
 		</ul>
 	</div>
 	<div>
-		<h4 class="margin-bottom-sm"><?= Yii::t('app', 'Ansicht'); ?></h4>
+		<h4 class="margin-bottom-sm"><?= Yii::t('app', 'View'); ?></h4>
 		<div id="layer-slider">
-			<span class="label ui-slider-inner-label" style="left: 0px; top: 24px;"><?= Yii::t('app', 'Ortho'); ?></span>
+			<span class="label ui-slider-inner-label" style="left: 0px; top: 24px;">Ortho</span>
 			<div class="ui-slider-handle"></div>
-			<span class="label ui-slider-inner-label" style="right:0px; top: 24px;"><?= Yii::t('app', 'Topo'); ?></span>
+			<span class="label ui-slider-inner-label" style="right:0px; top: 24px;">Topo</span>
 		</div>
 	</div>
 	<div class="sidebar-handle">

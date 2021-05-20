@@ -20,6 +20,12 @@ return [
 	
 	"Map" => "Karte",
 	"Show map" => "Karte anzeigen",
+	"View" => "Ansicht",
+	"Display" => "Anzeige",
+	"Hiking Trail Network" => "Wanderwegnetz",
+	"World Heritage Perimeter" => "Welterbeperimeter",
+	
+	
 	"Trip Description" => "Wegbeschreibung",
 	"Schedule" => "Fahrplan",
 	"Journey" => "Anreise",

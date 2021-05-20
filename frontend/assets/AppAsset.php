@@ -15,6 +15,7 @@ class AppAsset extends AssetBundle
         'css/theme.min.css',
     ];
     public $js = [
+    	'js/map.js?v=1.0',
     	'js/theme.js',
     ];
     public $depends = [

@@ -26,12 +26,10 @@ $this->registerJs($js, $this::POS_HEAD);
     </div>
     <div>
         <a class="btn btn-default btn-sm locate-me" title="<?= Yii::t('app', 'Meinen Standort anzeigen') ?>">
-            <span class="glyphicon glyphicon-screenshot" aria-hidden="true"></span>
+        	<i class="fa fa-chevron-right"></i>
         </a>
     </div>
-    <div class="zoom btn-group-vertical">
-        
-    </div>
+    <div class="zoom btn-group-vertical"></div>
 </div>
 
 <div class="modal fade" tabindex="-1" role="dialog" id="location-disabled">
@@ -51,44 +49,31 @@ $this->registerJs($js, $this::POS_HEAD);
     </div>
 </div>
 
-
 <div class="map-settings">
-    <div class="container">
-        <div>
-            <h4><?= Yii::t('app', 'Anzeige'); ?></h4>
-            <ul class="unstyled">
-                <li class="toggle-hike">
-                    <input type="checkbox" id="hike-layer">&nbsp;
-                    <label for="hike-layer"><?= Yii::t('app', 'Wanderwegnetz'); ?></label>
-                </li>
-                <li class="toggle-perimeter">
-                    <input type="checkbox" checked="checked" id="perimeter-layer">&nbsp;
-                    <label for="perimeter-layer"><?= Yii::t('app', 'Welterbeperimeter'); ?></label>
-                </li>
-            </ul>
-        </div>
-        <div>
-            <h4><?= Yii::t('app', 'Ansicht'); ?></h4>
-                <div id="layer-slider">
-                    <span class="ui-slider-inner-label" style="left: 0px"><?= Yii::t('app', 'Ortho'); ?></span>
-                    <div class="ui-slider-handle"></div>
-                    <span class="ui-slider-inner-label" style="right:0px;"><?= Yii::t('app', 'Topo'); ?></span>
-                </div>
-        </div>
-        <div>
-<!--            <h4>Ausflugsziele</h4>-->
-<!--            ... Für Familien-->
-        </div>
-        <div>
-<!--            <h4>Wanderungen</h4>-->
-<!--            ... Leicht Mittel Schwer-->
-        </div>
-    </div>
-    <div>
-        <a class="btn btn-default btn-sm collapse-sidebar">
-            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-        </a>
-    </div>
+	<div class="margin-bottom">
+		<h4 class="margin-bottom-sm"><?= Yii::t('app', 'Anzeige'); ?></h4>
+		<ul class="list-unstyled">
+			<li class="toggle-hike">
+				<input type="checkbox" id="hike-layer">&nbsp;
+				<label for="hike-layer"><?= Yii::t('app', 'Wanderwegnetz'); ?></label>
+			</li>
+			<li class="toggle-perimeter">
+				<input type="checkbox" checked="checked" id="perimeter-layer">&nbsp;
+				<label for="perimeter-layer"><?= Yii::t('app', 'Welterbeperimeter'); ?></label>
+			</li>
+		</ul>
+	</div>
+	<div>
+		<h4 class="margin-bottom-sm"><?= Yii::t('app', 'Ansicht'); ?></h4>
+		<div id="layer-slider">
+			<span class="label ui-slider-inner-label" style="left: 0px; top: 24px;"><?= Yii::t('app', 'Ortho'); ?></span>
+			<div class="ui-slider-handle"></div>
+			<span class="label ui-slider-inner-label" style="right:0px; top: 24px;"><?= Yii::t('app', 'Topo'); ?></span>
+		</div>
+	</div>
+	<div class="sidebar-handle">
+		<i class="fa fa-chevron-left"></i>
+	</div>
 </div>
 
 <!-- Modal «Wo soll es hingehen?» -->

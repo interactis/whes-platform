@@ -1,3 +1,4 @@
+.map-view,
 .map-full {
 	position: fixed;
 	top: 0;
@@ -7,6 +8,10 @@
 	min-width: 100%;
 	min-height: 100%;
 	z-index: 0;
+}
+
+.map-view {
+	overflow: hidden;
 }
 
 .map-controls {

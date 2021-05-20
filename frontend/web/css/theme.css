@@ -11241,6 +11241,7 @@ html {
 .help-block  {
   color: #ed7b7b; }
 
+.map-view,
 .map-full {
   position: fixed;
   top: 0;
@@ -11250,6 +11251,9 @@ html {
   min-width: 100%;
   min-height: 100%;
   z-index: 0; }
+
+.map-view {
+  overflow: hidden; }
 
 .map-controls {
   position: fixed;

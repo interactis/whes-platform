@@ -295,6 +295,10 @@ function hideModal() {
     });
 }
 
+$("#map-info-modal").on("click", ".close-preview", function() {
+	$('#map-info-modal').removeClass('in');
+});
+
 $('.sidebar-handle').on('click', function() {
 	$('.map-settings').toggleClass('in');
 });

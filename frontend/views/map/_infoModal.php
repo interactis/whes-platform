@@ -7,7 +7,10 @@ $url = Url::toRoute([$type .'/view', 'slug' => $model->slug]);
 $img = $content->previewImage;
 ?>
 
-<div class="card preview-card map-preview">	
+<div class="card preview-card map-preview fade-in">
+	<div class="close close-preview">
+		<i class="fa fa-close"></i>
+	</div>
 	<div class="row">
 		<div class="col-md-4 header-container">
 			<div class="card-header img-header class="col-sm-4">

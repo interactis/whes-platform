@@ -35,6 +35,21 @@
 		display: none;
 	}
 	
+	.close {
+		position: absolute;
+		top: 0;
+		right: 0;
+		padding: 6px;
+		margin: -14px -8px 0 0;
+		opacity: 1;
+		z-index: $zindex-fixed;
+		
+		color: $link-color;
+		&:hover {
+			cursor: pointer;
+		}
+	}
+	
 	.card,
 	.card-body {
 		margin: 0;

@@ -11275,6 +11275,17 @@ html {
   /* Firefox */ }
   #map-info-modal .header-container {
     display: none; }
+  #map-info-modal .close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 6px;
+    margin: -14px -8px 0 0;
+    opacity: 1;
+    z-index: 1030;
+    color: #A60100; }
+    #map-info-modal .close:hover {
+      cursor: pointer; }
   #map-info-modal .card,
   #map-info-modal .card-body {
     margin: 0; }

@@ -5,12 +5,6 @@ $type = $content->typeText;
 $model = $content->{$type};
 $url = Url::toRoute([$type .'/view', 'slug' => $model->slug]);
 $img = $content->previewImage;
-
-$maxLenght = 160;
-$description = strip_tags($model->description);
-
-if (strlen($description) > $maxLenght)
-	$description = substr($description, 0, strpos($description, ' ', $maxLenght)) .' ...';
 ?>
 
 <div class="col-md-6 col-lg-4 px-md-4 px-lg-3 px-xl-4">
@@ -32,7 +26,9 @@ if (strlen($description) > $maxLenght)
 					<?= $model->title ?>
 				</a>
 			</div>
-			<p class="card-text"><?= $description ?></p>
+			<div class="card-text">
+				<?= Yii::$app->helpers->shortenString($model->description) ?>
+			</div>
 			<a href="<?= $url ?>">
 				<i class="fa fa-chevron-right"></i> 
 				<?= Yii::t('app', 'Learn more') ?>

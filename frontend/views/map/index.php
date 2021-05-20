@@ -8,4 +8,4 @@ $this->title = Yii::t('app', 'Map');
 	<?= MapWidget::widget([]) ?>
 </div>
 
-<?php /* <span id="map-initial-icons" data-value="<?= $initialIcons ?>"></span> */ ?>
+<span id="map-initial-icons" data-value=""></span>

@@ -87,6 +87,8 @@ $this->registerJs($js, $this::POS_HEAD);
 	</div>
 </div>
 
+<div id="map-info-modal"></div>
+
 <!-- Modal «Wo soll es hingehen?» -->
 <div class="modal fade" id="where-to-go-modal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">

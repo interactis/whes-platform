@@ -11255,6 +11255,41 @@ html {
 .map-view {
   overflow: hidden; }
 
+#map-info-modal {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 320px;
+  margin-bottom: -320px;
+  -webkit-transition: margin 0.25s ease-out;
+  transition: margin 0.25s ease-out;
+  opacity: 0.95;
+  background: white;
+  padding: 24px;
+  z-index: 1030;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */ }
+  #map-info-modal .header-container {
+    display: none; }
+  #map-info-modal .card,
+  #map-info-modal .card-body {
+    margin: 0; }
+  @media (min-width: 768px) {
+    #map-info-modal {
+      width: 768px;
+      left: 50%;
+      -webkit-transform: translate(-50%, 0);
+              transform: translate(-50%, 0);
+      border-radius: 30px 30px 0 0; }
+      #map-info-modal .header-container {
+        display: inline-block; } }
+  #map-info-modal.in {
+    margin-bottom: 0; }
+
 .map-controls {
   position: fixed;
   right: 12px;
@@ -11290,10 +11325,10 @@ html {
   height: 100%;
   width: 300px;
   margin-right: -300px;
-  background: #f9f9f9;
   -webkit-transition: margin 0.25s ease-out;
   transition: margin 0.25s ease-out;
-  padding: 120px 30px 24px; }
+  padding: 120px 30px 24px;
+  background: #f9f9f9; }
   .map-settings .sidebar-handle {
     position: absolute;
     bottom: 24px;

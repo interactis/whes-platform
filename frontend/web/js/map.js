@@ -274,32 +274,19 @@ $(function() {
  * This function requires vendor.js to be fully loaded.
  */
 function loadInfoForElement(type, identifier) {
-    var modalDiv = $('#preview-' + type + '-' + identifier);
-    var modalContainer = $('main.main-container');
-
-    modalContainer.children('div.main-section').removeClass("in extended");
-    if (modalDiv.length) {
-        modalDiv.addClass('in extended');
-    } else {
-        // $('#preview-loading').addClass('in');
-        $.ajax({
-            method: 'POST',
-            url: '/rucksack/helper/ajax-more-info-modal',
-            data: {
-                contentType: type,
-                contentId: identifier,
-                _csrf : $('meta[name="csrf-token"]').attr("content")
-            }
-        }).done(function(data) {
-            modalContainer.append(data);
-            // when directly calling data.modal, the syles are not applied.
-            $('#preview-' + type + '-' + identifier).addClass('in extended');
-        });
-    }
-    // smaller than $screen-md-min
-    if ($(window).width() <= 992) {
-        $('.navbar-collapse').removeClass("in");
-    }
+    var modalContainer = $('#map-info-modal');
+    
+	$.ajax({
+		method: 'GET',
+		url: '/map/get-info-modal',
+		data: {
+			type: type,
+			id: identifier
+		}
+	}).done(function(data) {
+		modalContainer.html(data);
+		modalContainer.addClass('in');
+	});
 }
 
 function hideModal() {

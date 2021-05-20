@@ -25,6 +25,29 @@ class MapController extends HelperController
 		header('Content-type: ' . $content_type);
 		return json_encode($data, JSON_PRETTY_PRINT);
 	}
+	
+	public function actionGetInfoModal()
+	{
+		$request = Yii::$app->request->get();
+		$tableName = $request['type'];
+		$modelName = ucfirst($tableName);
+		$model = Poi::findOne([
+			'id' => $request['id']
+		]);
+		
+		if ($model !== null)
+		{
+			$this->layout = false;
+			return $this->render('_infoModal.php', [
+				'model' => $model,
+				'modelName' => $tableName,
+				'isMapModal' => true
+			]);
+		}
+		
+		return null;
+	}
+
 
     private function _getAllMarkers()
     {

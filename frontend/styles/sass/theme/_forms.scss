@@ -18,3 +18,87 @@
 .help-block {
 	color: $alert-color;
 }
+
+// Checkboxes
+
+.custom-control-input:checked ~ .custom-control-label {
+	&::before {
+    	border: 2px $primary solid !important;
+    }
+    &::after {
+		border: 2px $primary solid !important;
+    	background-image: url('/img/layout/checked.svg') !important;
+    	background-repeat: no-repeat;
+    	background-position: center;
+    	background-size: 14px;
+    }
+}
+
+.custom-control {
+	&.active {
+		color: $primary !important;
+	}
+	.custom-control-label::before,
+	.custom-control-label::after {
+		width: 28px !important;
+		height: 28px !important;
+		background: white;
+		border: 2px $gray-lighter solid;
+		border-radius: 50%;
+		#application-filter & {
+			border: 2px $gray-light solid;
+		}
+	}
+}
+
+.custom-control-sm {
+	
+	.custom-control-label {
+		margin-left: 20px !important;
+		font-family: $font-family-base;
+		font-weight: normal;
+		&:before,
+		&:after {
+			top: 0 !important;
+			left: -44px !important;
+		}
+		#application-filter & {
+			margin-top: 30px;
+		}
+	}
+}
+
+.custom-control-lg {
+	.custom-control-label {
+		margin-left: 20px !important;
+		margin-top: 30px;
+		font-size: 1.25rem !important;
+		&::before,
+		&:after {
+			margin-top: -5px !important;
+			left: -44px !important;
+		}
+	}
+}
+
+
+@include media-breakpoint-up(md) {
+	
+	.custom-control-lg {
+		.custom-control-label {
+			font-size: 1.38rem !important;
+			&::before,
+			&:after {
+				top: 8px !important;
+			}
+		}
+	}
+}
+
+.form-select {
+	margin-top: -12px !important;
+}
+
+.custom-select {
+	font-size: $font-size-base;
+}

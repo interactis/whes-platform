@@ -11241,6 +11241,60 @@ html {
 .help-block  {
   color: #ed7b7b; }
 
+.custom-control-input:checked ~ .custom-control-label::before {
+  border: 2px #A60100 solid !important; }
+
+.custom-control-input:checked ~ .custom-control-label::after {
+  border: 2px #A60100 solid !important;
+  background-image: url("/img/layout/checked.svg") !important;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 14px; }
+
+.custom-control.active {
+  color: #A60100 !important; }
+
+.custom-control .custom-control-label::before,
+.custom-control .custom-control-label::after {
+  width: 28px !important;
+  height: 28px !important;
+  background: white;
+  border: 2px #F2F2F2 solid;
+  border-radius: 50%; }
+  #application-filter .custom-control .custom-control-label::before, #application-filter
+  .custom-control .custom-control-label::after {
+    border: 2px #D9D8D7 solid; }
+
+.custom-control-sm .custom-control-label {
+  margin-left: 20px !important;
+  font-family: "Open Sans", sans-serif;
+  font-weight: normal; }
+  .custom-control-sm .custom-control-label:before, .custom-control-sm .custom-control-label:after {
+    top: 0 !important;
+    left: -44px !important; }
+  #application-filter .custom-control-sm .custom-control-label {
+    margin-top: 30px; }
+
+.custom-control-lg .custom-control-label {
+  margin-left: 20px !important;
+  margin-top: 30px;
+  font-size: 1.25rem !important; }
+  .custom-control-lg .custom-control-label::before, .custom-control-lg .custom-control-label:after {
+    margin-top: -5px !important;
+    left: -44px !important; }
+
+@media (min-width: 768px) {
+  .custom-control-lg .custom-control-label {
+    font-size: 1.38rem !important; }
+    .custom-control-lg .custom-control-label::before, .custom-control-lg .custom-control-label:after {
+      top: 8px !important; } }
+
+.form-select {
+  margin-top: -12px !important; }
+
+.custom-select {
+  font-size: 1rem; }
+
 .map-view,
 .map-full {
   position: fixed;

@@ -1,4 +1,8 @@
 <?php
+use common\models\FlagGroup;
+
+$filterGroups = FlagGroup::getActiveFlagGroups();
+
 $js = "var updateUrl = '/site/content-update';";
 $this->registerJs($js, $this::POS_HEAD);
 $filterSet = false;
@@ -19,10 +23,16 @@ $filterSet = false;
 
 	<div class="collapse" id="info-filter">
 		<div class="container">
-			<br /><br />
-			<div class="h4 margin-bottom">Under Construction</div>
-			<p class="small">Hier erscheinen in Kürze die Filter.</p>
-			<br /><br />
+			
+			<div class="container sub-filter">
+				<div class="row">
+					<?php foreach($filterGroups as $group): ?>
+						<div class="col col-12 col-lg-4 px-lg-0">
+							<?= $this->render('_filterGroup.php', ['model' => $group]) ?>
+						</div>
+					<?php endforeach; ?>
+				</div>
+			</div>
 		</div>
 		<hr />
 	</div>

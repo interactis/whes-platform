@@ -34,6 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'title',
             'order',
+            'label:boolean',
             'hidden:boolean',
 
             [

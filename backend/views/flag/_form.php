@@ -40,6 +40,9 @@ $translationModel = new FlagTranslation();
 					
 					<?= $form->field($model, 'order')->textInput()
 						->hint(Yii::t('app', 'If necessary, use a number to sort the flags among themselves.')) ?>
+						
+					<?= $form->field($model, 'label')->checkbox()
+						->hint(Yii::t("app", "Select if it should be used as a label.")) ?>
 					
 					<?= $form->field($model, 'hidden')->checkbox()
 						->hint(Yii::t("app", "If hidden, the flag won't be shown in the frontend views.")) ?>

@@ -415,6 +415,7 @@ CREATE TABLE flag
 (
 id SERIAL,
 flag_group_id INTEGER,
+label BOOLEAN DEFAULT false,
 hidden BOOLEAN DEFAULT false,
 "order" SMALLINT,
 created_at INTEGER,

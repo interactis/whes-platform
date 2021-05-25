@@ -77,6 +77,13 @@ class FlagGroup extends TranslationModel
     {
         return $this->hasMany(Flag::className(), ['flag_group_id' => 'id']);
     }
+    
+    public function getActiveFlags()
+    {
+        return $this->hasMany(Flag::className(), ['flag_group_id' => 'id'])
+        	->where(['hidden' => false])
+        	->orderBy(['order' => SORT_ASC]);
+    }
 
     /**
      * Gets query for [[FlagGroupTranslations]].
@@ -96,5 +103,13 @@ class FlagGroup extends TranslationModel
         	->orderBy(['title' => SORT_ASC])
         	->all();
         return ArrayHelper::map($models, 'id', 'title');
+    }
+    
+    public static function getActiveFlagGroups()
+    {
+        return FlagGroup::find()
+        	->where(['hidden' => false])
+        	->orderBy(['order' => SORT_ASC])
+        	->all();
     }
 }

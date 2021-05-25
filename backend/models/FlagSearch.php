@@ -20,7 +20,7 @@ class FlagSearch extends Flag
     {
         return [
             [['id', 'flag_group_id', 'order', 'created_at', 'updated_at'], 'integer'],
-            [['hidden'], 'boolean'],
+            [['hidden', 'label'], 'boolean'],
             [['title'], 'safe'],
         ];
     }
@@ -77,6 +77,7 @@ class FlagSearch extends Flag
             'flag.id' => $this->id,
             'flag_group_id' => $this->flag_group_id,
             'hidden' => $this->hidden,
+            'label' => $this->label,
             'order' => $this->order,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,

@@ -10,9 +10,21 @@ use common\models\Route;
 
 class MapController extends HelperController
 {   
+
+	private $_selectTypes = ['poi', 'route'];
+	
     public function actionIndex()
     {
-    	return $this->render('index');
+    	$model = false;
+    	if (isset($_GET['select']) && isset($_GET['id']) && is_numeric($_GET['id']))
+		{
+			if (is_numeric($_GET['id']) && in_array($_GET['select'], $this->_selectTypes))
+				$model = $this->_getInitialModel($_GET['select'], $_GET['id']);
+		}
+		
+    	return $this->render('index', [
+    		'model' => $model
+    	]);
     }
     
     public function actionGetAllMarkers()
@@ -47,8 +59,27 @@ class MapController extends HelperController
 		
 		return null;
 	}
+	
+	private function _getInitialModel($type, $id)
+	{
+		$className = '\\common\models\\'. ucfirst($type);
+		$className = new $className();
+		
+		$model = $className::find()
+			->joinWith('content')
+       		->andWhere([
+       			$type .'.id' => $id,
+       			'hidden' => false
+       		])
+       		->andWhere(['not', ['geom' => null]])
+        	->one();
+        
+        if ($model !== null)
+            return $model;
 
-
+        throw new NotFoundHttpException();
+	}
+	
     private function _getAllMarkers()
     {
         $pois = Poi::find()

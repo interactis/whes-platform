@@ -24,7 +24,10 @@
 		   </div>
 		   <div class="col-lg-4 offset-lg-1">
 				
-				<?= $this->render('/common/_heritageMap') ?>
+				<?= $this->render('/common/_heritageMap', [
+					'type' => 'poi',
+					'model' => $model
+				]) ?>
 				
 				<?= $this->render('_trip.php', ['model' => $model]) ?>
 				

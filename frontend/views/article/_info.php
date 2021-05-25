@@ -25,7 +25,10 @@
 				</div>
 		   </div>
 		   <div class="col-lg-4 offset-lg-1">
-				<?= $this->render('/common/_heritageMap') ?>
+				<?= $this->render('/common/_heritageMap', [
+					'type' => 'heritage',
+					'model' => $model->content->heritage
+				]) ?>
 			</div>
 		</div>
 	 </div>

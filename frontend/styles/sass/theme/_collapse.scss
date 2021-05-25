@@ -43,23 +43,32 @@
     &.collapse-title-sm {
 		height: 48px;
 		margin-bottom: 0;
+		
+		background: $gray-light-bg;
+		.h4 {
+			color: $primary;
+		}
+		
 		.handle {
-			width: 30px;
-			margin: 9px 0 0 0;
+			width: 14px;
+			margin: 12px 0 0 0;
 		}
 		
 		.h4 {
-			margin: 12px 0 0 44px;
+			margin: 10px 0 0 28px;
 		}	
 	}
 }
 
 .collapse-sm {
 	margin: 0 !important;
+	
+	/*
 	@include media-breakpoint-up(sm) {
 		border: 1px $gray-lighter solid;
 		border-top: none;
 	}
+	*/
 }
 
 .detail-collapse {

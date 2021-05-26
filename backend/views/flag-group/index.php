@@ -26,6 +26,12 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'title',
+            [
+				'attribute' => 'operator',
+				'value' => function ($model) {
+					return strtoupper($model->operator);
+				}
+			],
             'order',
             'hidden:boolean',
 

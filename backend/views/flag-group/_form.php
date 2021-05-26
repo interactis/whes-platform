@@ -27,7 +27,10 @@ $translationModel = new FlagGroupTranslation();
 						'translations' => $translations,
 						'translationModel' => $translationModel
 					]); ?>
-				
+					
+					<?= $form->field($model, 'operator')->dropDownList($model->operators)
+						->hint(Yii::t('app', 'Operator that is applied in combination with other filters.')) ?>
+					
 					<?= $form->field($model, 'order')->textInput()
 						->hint(Yii::t('app', 'If necessary, use a number to sort the filter groups among themselves.')) ?>
 

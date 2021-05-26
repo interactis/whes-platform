@@ -11,6 +11,7 @@ use yii\helpers\ArrayHelper;
  * This is the model class for table "flag_group".
  *
  * @property int $id
+ * @property bool|null $operator
  * @property int|null $order
  * @property bool|null $hidden
  * @property int|null $created_at
@@ -23,6 +24,10 @@ class FlagGroup extends TranslationModel
 {
 	public $translationFields = ['title'];
 	public $requiredTranslationFields = ['title'];
+	public $operators = [
+		'or' => 'OR',
+		'and' => 'AND'
+	];
 	
     /**
      * {@inheritdoc}
@@ -51,6 +56,8 @@ class FlagGroup extends TranslationModel
             [['order', 'created_at', 'updated_at'], 'default', 'value' => null],
             [['order', 'created_at', 'updated_at'], 'integer'],
             [['hidden'], 'boolean'],
+            ['operator', 'string', 'max' => 6],
+            ['operator', 'required']
         ];
     }
 
@@ -61,6 +68,7 @@ class FlagGroup extends TranslationModel
     {
         return [
             'id' => Yii::t('app', 'ID'),
+            'operator' => Yii::t('app', 'Operator'),
             'order' => Yii::t('app', 'Order'),
             'hidden' => Yii::t('app', 'Hidden'),
             'created_at' => Yii::t('app', 'Created At'),

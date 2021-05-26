@@ -21,7 +21,7 @@ class FlagSearch extends Flag
         return [
             [['id', 'flag_group_id', 'order', 'created_at', 'updated_at'], 'integer'],
             [['hidden', 'label'], 'boolean'],
-            [['title'], 'safe'],
+            [['title', 'operator'], 'safe'],
         ];
     }
 
@@ -84,6 +84,7 @@ class FlagSearch extends Flag
         ]);
         
         $query->andFilterWhere(['ilike', 'flag_translation.title', $this->title]);
+        $query->andFilterWhere(['ilike', 'operator', $this->operator]);
 
         return $dataProvider;
     }

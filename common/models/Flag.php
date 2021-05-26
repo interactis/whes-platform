@@ -13,6 +13,7 @@ use yii\helpers\ArrayHelper;
  * @property int $id
  * @property int|null $flag_group_id
  * @property bool|null $label
+ * @property bool|null $operator
  * @property bool|null $hidden
  * @property int|null $order
  * @property int|null $created_at
@@ -26,6 +27,10 @@ class Flag extends TranslationModel
 {
 	public $translationFields = ['title', 'disclaimer'];
 	public $requiredTranslationFields = ['title'];
+	public $operators = [
+		'or' => 'OR',
+		'and' => 'AND'
+	];
 	
     /**
      * {@inheritdoc}
@@ -54,8 +59,9 @@ class Flag extends TranslationModel
             [['flag_group_id', 'order', 'created_at', 'updated_at'], 'default', 'value' => null],
             [['flag_group_id', 'order', 'created_at', 'updated_at'], 'integer'],
             [['hidden', 'label'], 'boolean'],
-            [['flag_group_id'], 'required'],
+            [['flag_group_id', 'operator'], 'required'],
             [['flag_group_id'], 'exist', 'skipOnError' => true, 'targetClass' => FlagGroup::className(), 'targetAttribute' => ['flag_group_id' => 'id']],
+            ['operator', 'string', 'max' => 6]
         ];
     }
 
@@ -68,6 +74,7 @@ class Flag extends TranslationModel
             'id' => Yii::t('app', 'ID'),
             'flag_group_id' => Yii::t('app', 'Flag Group'),
             'label' => Yii::t('app', 'Label'),
+            'operator' => Yii::t('app', 'Operator'),
             'hidden' => Yii::t('app', 'Hidden'),
             'order' => Yii::t('app', 'Order'),
             'created_at' => Yii::t('app', 'Created At'),

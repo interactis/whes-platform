@@ -297,6 +297,7 @@ CONSTRAINT content_flag_pkey PRIMARY KEY (id)
 CREATE TABLE flag_group
 (
 id SERIAL,
+operator VARCHAR(6),
 "order" SMALLINT,
 hidden BOOLEAN DEFAULT false,
 created_at INTEGER,
@@ -416,8 +417,9 @@ CREATE TABLE flag
 id SERIAL,
 flag_group_id INTEGER,
 label BOOLEAN DEFAULT false,
-hidden BOOLEAN DEFAULT false,
+operator VARCHAR(6),
 "order" SMALLINT,
+hidden BOOLEAN DEFAULT false,
 created_at INTEGER,
 updated_at INTEGER,
 CONSTRAINT flag_pkey PRIMARY KEY (id)

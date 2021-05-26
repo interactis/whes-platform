@@ -4431,31 +4431,26 @@
 })));
 //# sourceMappingURL=bootstrap.js.map
 
-$('.article-filter').change(function() {
-	var text = $(this).find('option:selected').text();
-	var cancerType = $('#cancer-type-filter').val();
-	var topic = $('#topic-filter').val();
-	updateArticles(cancerType, topic);
-	gtag('event', 'filter_set', {'event_category': 'filter', 'event_label': text});
-	
+$('.filter-checkbox').change(function() {
+	updateContent();
 });
 
-var updateArticles = function(cancerType, topic) {
+var updateContent = function() {
+	var params = [];
+	$('.filter-checkbox').each(function() {
+		if ($(this).is(':checked')) {
+			var filterId = $(this).attr('id').substring(7);
+			params.push(filterId);
+		}		
+	});
+	
 	$.ajax({
-		url: articleUpdateUrl +'?cancerType='+ cancerType +'&topic='+ topic,
+		url: updateUrl +'?filters='+ params.join(),
 		beforeSend: function() {
 			// $('.filter-ajax-loader').show();
-		 },
+		},
 		success: function(data) {
-			$('#articles').html(data);
-			
-			$('.grid').masonry({
-			  itemSelector: '.card',
-			  gutter: 30
-			});
-			
-			smoothScrollTo('#filter');
-			//$('.filter-ajax-loader').hide();
+			$('#info').html(data);
 		}
 	});
 }

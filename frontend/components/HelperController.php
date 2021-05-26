@@ -25,7 +25,7 @@ class HelperController extends Controller
 	    return true; // or false to not run the action
 	}
 	
-    public function findContent($heritageId = false, $featured = false, $q = false, $limit = 'default', $offset = 0)
+    public function findContent($heritageId = false, $featured = false, $q = false, $limit = 'default', $offset = 0, $flagGroups = false)
     {
     	if ($limit == 'default')
     		$limit = Yii::$app->params['showMaxContent'];
@@ -35,7 +35,10 @@ class HelperController extends Controller
 			->leftJoin('poi', 'poi.content_id = content.id')
 			->leftJoin('route', 'route.content_id = content.id');
     	
-    	$query->where(['published' => true]);
+    	$query->where([
+    		'published' => true,
+    		'hidden' => false
+    	]);
     	
     	if ($heritageId)
     		$query->andWhere(['heritage_id' => $heritageId]);
@@ -58,6 +61,86 @@ class HelperController extends Controller
 				['route_translation.language_id' => \Yii::$app->params['preferredLanguageId']]
 			]);
     	}
+    	
+    	if ($flagGroups)
+    	{
+    		$query->joinWith('contentFlags');
+    		
+    		//$query->andWhere(['and', ['flag_id' => 5, 'flag_id' => 17]]);
+    		//$query->andFilterWhere(['in', 'flag_id', [17, 5]]);
+    		$query->andFilterWhere(['flag_id' => 17]);
+    		//$query->andFilterWhere(['flag_id' => 5]);
+    		
+    		/*
+    		$query->andFilterWhere([
+				'and',
+				[
+					'and',
+					['flag_id' => 5], // Besucherzentrum
+					['flag_id' => 17] // famlien
+				]
+			]);
+    		*/
+    		
+    		
+    		
+    		/*
+    		$query->andFilterWhere([
+				'or',
+				[
+					'or',
+					['flag_id' => 11], // Gönner
+					['flag_id' => 10], // Unser Erbe
+				]
+			]);
+    		*/
+    		
+    		/*
+    		$query->andFilterWhere([
+				'and',
+				[
+					'or',
+					['flag_id' => 5],
+					['flag_id' => 12],
+				],
+				[
+					'or',
+					['flag_id' => 8],
+					['flag_id' => 9],
+				],
+				[
+					'and',
+					['flag_id' => 17],
+					['flag_id' => 18],
+				]
+			]);
+    		
+    		$query->andFilterWhere([
+				'or',
+				[
+					'or',
+					['flag_id' => 11],
+					['flag_id' => 10],
+				]
+			]);
+    		*/
+    		
+    		/*
+    		$filterQuery = ['and'];
+    		
+    		foreach ($flagGroups as $id => $operator)
+    		{
+    			$filterQuery = ['and'];
+    			if ($operator == 'and')
+    				$filterQuery['and'] = [];
+    			
+    			$query->andWhere(['heritage_id' => $heritageId]);
+    			
+    		}
+    		*/
+    		
+    	}
+    	
     	
     	if ($featured)
     	{

@@ -1,5 +1,5 @@
 <?php
-$groupId = 'filter-'. $model->id;
+$groupId = 'filter-group-'. $model->id;
 ?>
 
 <div class="collapse-item">
@@ -22,10 +22,10 @@ $groupId = 'filter-'. $model->id;
 		<div class="collapse-wrapper">
 				
 			<?php foreach ($model->activeFlags as $flag):
-				$filterId = 'detail-filter-'. $flag->id;
+				$filterId = 'filter-'. $flag->id;
 				?>
 				<div class="custom-control custom-control-sm custom-checkbox">
-					<input value="" class="custom-control-input" id="<?= $filterId ?>" name="<?= $filterId ?>" type="checkbox">
+					<input value="" class="custom-control-input filter-checkbox" id="<?= $filterId ?>" name="<?= $filterId ?>" type="checkbox">
 					<label class="custom-control-label" for="<?= $filterId ?>"><?= $flag->title ?></label>
 				</div>
 			<?php endforeach; ?>

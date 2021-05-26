@@ -3,7 +3,7 @@ use common\models\FlagGroup;
 
 $filterGroups = FlagGroup::getActiveFlagGroups();
 
-$js = "var updateUrl = '/site/content-update';";
+$js = "var updateUrl = '/filter/content';";
 $this->registerJs($js, $this::POS_HEAD);
 $filterSet = false;
 ?>

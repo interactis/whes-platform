@@ -143,7 +143,7 @@ class Route extends HelperModel
     
     public function getLabel()
     {
-        return Yii::t('app', 'Route');
+    	return $this->getFlagLabel(Yii::t('app', 'Route'));
     }
     
     public function getDifficulties($uppercase = false)

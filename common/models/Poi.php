@@ -128,6 +128,6 @@ class Poi extends HelperModel
     
     public function getLabel()
     {
-        return Yii::t('app', 'Point of Interest');
+    	return $this->getFlagLabel(Yii::t('app', 'Point of Interest'));
     }
 }

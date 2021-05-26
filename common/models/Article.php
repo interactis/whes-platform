@@ -94,6 +94,6 @@ class Article extends HelperModel
     
     public function getLabel()
     {
-        return Yii::t('app', 'Interesting Facts');
+    	return $this->getFlagLabel(Yii::t('app', 'Good to Know'));
     }
 }

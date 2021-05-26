@@ -25,6 +25,18 @@ class HelperModel extends TranslationModel
 		];
     }
     
+    public function getFlagLabel($default)
+    {
+    	$contentFlags = $this->content->contentFlags;
+    	foreach($contentFlags as $contentFlag)
+    	{
+    		$flag = $contentFlag->flag;
+    		if ($flag->label && !$flag->hidden)
+    			return $flag->title;
+    	}
+        return $default;
+    }
+    
     public function saveTags()
     {
         ContentTag::deleteAll(['content_id' => $this->content_id]);

@@ -10,7 +10,7 @@ $filterSet = false;
 
 <div class="section" id="filter">
 	
-	<div class="collapse-title last collapsed" data-toggle="collapse" data-target="#info-filter" aria-expanded="true" aria-controls="course-filter">
+	<div class="collapse-title last" data-toggle="collapse" data-target="#info-filter" aria-expanded="true" aria-controls="course-filter">
 		<div class="container">
 			<div class="row title-content">
 				<div class="col">
@@ -21,13 +21,12 @@ $filterSet = false;
 		</div>
 	</div>
 
-	<div class="collapse" id="info-filter">
-		<div class="container">
-			
-			<div class="container sub-filter">
+	<div class="collapse show" id="info-filter">
+		<div class="collapse-wrapper">
+			<div class="container filter-groups">
 				<div class="row">
 					<?php foreach($filterGroups as $group): ?>
-						<div class="col col-12 col-lg-4 px-lg-0">
+						<div class="col col-12 col-lg-4">
 							<?= $this->render('_filterGroup.php', ['model' => $group]) ?>
 						</div>
 					<?php endforeach; ?>

@@ -43,6 +43,7 @@
     &.collapse-title-sm {
 		height: 48px;
 		margin-bottom: 0;
+		padding: 0 9px;
 		
 		background: $gray-light-bg;
 		.h4 {
@@ -55,26 +56,14 @@
 		}
 		
 		.h4 {
-			margin: 10px 0 0 28px;
-		}	
-	}
-}
-
-.collapse-sm {
-	margin: 0 !important;
-	
-	/*
-	@include media-breakpoint-up(sm) {
-		border: 1px $gray-lighter solid;
-		border-top: none;
-	}
-	*/
-}
-
-.detail-collapse {
-	@include media-breakpoint-down(xs) {
-		margin-left: -30px;
-		margin-right: -30px;
+			margin: 10px 0 0 31px;
+		}
+		
+		@include media-breakpoint-up(sm) {
+			padding: 0 18px;
+			
+		}
+		
 	}
 }
 
@@ -104,8 +93,14 @@
 	}
 	
 	.collapse-sm & {
-		padding: 0 0 30px;
+		padding: 12px 24px 36px;
+		
+		@include media-breakpoint-up(sm) {
+			padding-left: 16px;
+			padding-right: 16px;
+		}
 	}
+	
 	
 }
 
@@ -113,28 +108,18 @@
 	hr {
 		margin: 0;
 	}
-	.main-filter {
-		padding-top: 28px;
-		padding-bottom: 56px;
-	}
-	.subtypes-filter {
-		padding-top: 52px;
-		padding-bottom: 60px;
-	}
-	.sub-filter {
+	.filter-groups {
+		
 		.collapse-item {
 			margin-bottom: 2px;
 		}
 		
 		@include media-breakpoint-up(sm) {
-			padding-bottom: 52px;
+			padding-bottom: 24px;
 		}
 		
 		@include media-breakpoint-up(lg) {
 			padding-top: 18px;
-			.collapse-item {
-				padding-right: 2px;
-			}
 		}
 		
 		@include media-breakpoint-down(xs) {
@@ -148,13 +133,5 @@
 				margin-right: -15px;
 			}
 		}
-	}
-}
-
-.sub-properties {
-	margin-left: 18px;
-	font-size: 0.9em;
-	@include media-breakpoint-up(sm) {
-		margin-left: 24px;
 	}
 }

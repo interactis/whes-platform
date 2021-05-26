@@ -12,6 +12,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
 	<?= $this->render('_intro.php', ['model' => $model]) ?>
 	
-	<?= $this->render('_filter.php', ['content' => $content]) ?>
+	<?= $this->render('/common/_filter.php', ['content' => $content]) ?>
 	
 </div>

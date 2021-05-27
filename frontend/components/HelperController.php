@@ -65,7 +65,7 @@ class HelperController extends Controller
 			]);
     	}
     	
-    	if ($contentIds)
+    	if ($contentIds !== false)
     	{
     		$query->andWhere(['in', 'content.id', $contentIds]);
     	}
@@ -96,6 +96,9 @@ class HelperController extends Controller
     
     public function findFilterContent($filters)
     {
+    	if (empty($filters))
+    		return $this->findContent(false, true, false, 'default', 0);
+    	
     	$flagGroups = $this->_getFlagGroups($filters);
     	$contentIds = [];
     	
@@ -114,7 +117,6 @@ class HelperController extends Controller
 			}
     	}
     	
-    	
     	// Second: groups with AND operator and OR filters
     	$orIds = [];
     	$filteredOrIds = [];
@@ -130,8 +132,6 @@ class HelperController extends Controller
 			}
     		$filteredOrIds = $this->_filterIds(count($flagGroups['and']), $orIds);
     	}
-    	
-    	
     	
     	// Third: groups with AND operator and AND filters
     	$andIds = [];
@@ -151,7 +151,19 @@ class HelperController extends Controller
 			$filteredAndIds = $this->_filterIds($andFilterCount, $andIds);
 		}
     	
-    	$filteredIds = $this->_filterIds(2, array_merge($filteredOrIds, $filteredAndIds));
+    	$filteredIds = [];
+    	if (!empty($filteredOrIds) && !empty($filteredAndIds))
+    	{
+    		$filteredIds = $this->_filterIds(2, array_merge($filteredOrIds, $filteredAndIds));
+    	}
+    	else
+    	{
+    		if (!empty($filteredOrIds))
+    			$filteredIds = $filteredOrIds;
+    		
+    		if (!empty($filteredAndIds))
+    			$filteredIds = $filteredAndIds;
+    	}
     	
     	$contentIds = array_unique(array_merge($contentIds, $filteredIds));
     	

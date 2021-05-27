@@ -4,6 +4,9 @@ namespace frontend\components;
 use Yii;
 use yii\web\Controller;
 use common\models\Content;
+use common\models\Flag;
+use common\models\ContentFlag;
+use yii\helpers\ArrayHelper;
 
 class HelperController extends Controller
 {
@@ -90,4 +93,155 @@ class HelperController extends Controller
     	
     	return $query->all();
     }
+    
+    public function findFilterContent($filters)
+    {
+    	$flagGroups = $this->_getFlagGroups($filters);
+    	$contentIds = [];
+    	
+    	// First: groups with OR operator (always in results)
+    	if (isset($flagGroups['or']))
+    	{
+			foreach ($flagGroups['or'] as $group)
+			{
+				// AND not implemented yet for OR groups (implemented later if necessary)
+				
+				if (isset($group['or']))
+				{
+					$flagIds = $group['or'];
+					$contentIds = array_merge($contentIds, $this->_getContentIds($flagIds));
+				}
+			}
+    	}
+    	
+    	
+    	// Second: groups with AND operator and OR filters
+    	$orIds = [];
+    	$filteredOrIds = [];
+    	if (isset($flagGroups['and']))
+    	{
+			foreach ($flagGroups['and'] as $group)
+			{
+				if (isset($group['or']))
+				{
+					$flagIds = $group['or'];
+					$orIds = array_merge($orIds, $this->_getContentIds($flagIds));
+				}
+			}
+    		$filteredOrIds = $this->_filterIds(count($flagGroups['and']), $orIds);
+    	}
+    	
+    	
+    	
+    	// Third: groups with AND operator and AND filters
+    	$andIds = [];
+    	$filteredAndIds = [];
+    	$andFilterCount = 0;
+    	if (isset($flagGroups['and']))
+    	{
+			foreach ($flagGroups['and'] as $group)
+			{	
+				if (isset($group['and']))
+				{
+					$flagIds = $group['and'];
+					$andIds = array_merge($andIds, $this->_getContentIds($flagIds));
+					$andFilterCount = $andFilterCount+1;
+				}
+			}
+			$filteredAndIds = $this->_filterIds($andFilterCount, $andIds);
+		}
+    	
+    	$filteredIds = $this->_filterIds(2, array_merge($filteredOrIds, $filteredAndIds));
+    	
+    	$contentIds = array_unique(array_merge($contentIds, $filteredIds));
+    	
+    	return $this->findContent(false, true, false, 'default', 0, $contentIds);
+    }
+    
+    private function _filterIds($total, $ids)
+    {
+    	$counts = array_count_values($ids);
+    	
+    	$sameIds = [];
+    	foreach ($counts as $id => $count)
+    	{
+    		if ($count == $total)
+    			array_push($sameIds, $id);
+    	}
+    	
+    	return $sameIds;
+    }
+    
+    private function _getContentIds($flagIds)
+    {
+    	$models = ContentFlag::find()
+    		->where(['in', 'flag_id', $flagIds])
+    		->all();
+    	
+    	return array_values(ArrayHelper::map($models, 'id', 'content_id'));
+    }   
+    
+    private function _getFlagGroups($filters)
+    {
+    	$ids = explode(',', $filters);
+    	$flags = $this->_getFlags($ids);
+    	
+    	$flagGroups = [];
+    	foreach($flags as $flag)
+    	{
+    		$flagGroup = $flag->flagGroup;
+    		
+    		if (isset($flagGroups[$flagGroup->operator]))
+    		{	
+    			if (isset($flagGroups[$flagGroup->operator][$flagGroup->id][$flag->operator]))
+    			{
+    				array_push($flagGroups[$flagGroup->operator][$flagGroup->id][$flag->operator], $flag->id);
+    			}
+    			else
+    				$flagGroups[$flagGroup->operator][$flagGroup->id][$flag->operator] = [$flag->id];
+    		}
+    		else
+    		{			
+    			$flagGroups[$flagGroup->operator][$flagGroup->id] = [$flag->operator => [$flag->id]];
+    		}
+    	}
+    	
+		 /* Result array example:
+		 Array (
+			[and] => Array (
+				[2] => Array (
+					[or] => Array (
+						[0] => 5
+						[1] => 12
+					)
+					[and] => Array (
+						[0] => 17
+					)
+				)
+				[3] => Array (
+					[or] => Array (
+						[0] => 9
+						[1] => 8
+					)
+				)
+			)
+			[or] => Array (
+				[4] => Array (
+					[or] => Array (
+						[0] => 11
+					)
+				)
+			)
+		)
+		*/
+    	
+    	return $flagGroups;
+    }
+    
+	private function _getFlags($ids)
+	{
+		return Flag::find()
+			->where(['in', 'id', $ids])
+			->all();
+	}
 }

@@ -4444,6 +4444,8 @@ var updateContent = function() {
 		}		
 	});
 	
+	alert(updateUrl +'?filters='+ params.join());
+	
 	$.ajax({
 		url: updateUrl +'?filters='+ params.join(),
 		beforeSend: function() {

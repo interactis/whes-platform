@@ -6,6 +6,7 @@ use Yii;
 use yii\web\UploadedFile;
 use yii\imagine\Image;
 use Imagine\Image\ManipulatorInterface;
+use common\models\Media;
 
 /**
  * This is the ImageModel class

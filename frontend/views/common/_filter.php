@@ -3,7 +3,10 @@ use common\models\FlagGroup;
 
 $filterGroups = FlagGroup::getActiveFlagGroups();
 
-$js = "var updateUrl = '/filter/content';";
+$js = "var updateUrl = '/filter/content?heritageId=0&featured=1&limit=default&offset=0';";
+if (isset($heritageId))
+	$js = "var updateUrl = '/filter/content?heritageId=". $heritageId ."&featured=0&limit=default&offset=0';";
+
 $this->registerJs($js, $this::POS_HEAD);
 $filterSet = false;
 ?>

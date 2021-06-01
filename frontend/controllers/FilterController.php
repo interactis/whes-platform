@@ -8,14 +8,13 @@ use \yii\web\Cookie;
 class FilterController extends HelperController
 {   
 	
-    public function actionContent($filters)
+    public function actionContent($filters, $heritageId, $featured, $limit, $offset)
     {
     	$this->layout = false;
-    	
     	$this->_setFilterCookie($filters);
     	
     	return $this->render('/common/_previews', [
-            'models' => $this->findFilterContent($filters)
+            'models' => $this->findFilterContent($filters, $heritageId, $featured, $limit, $offset)
         ], false, true);
     }
     

@@ -4450,7 +4450,7 @@ var updateContent = function() {
 	});
 	
 	$.ajax({
-		url: updateUrl +'?filters='+ params.join(),
+		url: updateUrl +'&filters='+ params.join(),
 		beforeSend: function() {
 			// $('.filter-ajax-loader').show();
 		},

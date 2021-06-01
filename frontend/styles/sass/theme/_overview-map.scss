@@ -24,11 +24,21 @@
 			&:hover {
 				cursor: pointer;
 			}
-			
-			top: 30%;
-			left: 20%;
+			&:before {
+				content: '';
+				position: relative;
+				display: block;
+				width: 60px;
+				height: 60px;
+				box-sizing: border-box;
+				margin-left: -15px;
+				margin-top: -15px;
+				border-radius: 45px;
+				background-color: $primary;
+				opacity: 0.3;
+				animation: pulse-ring 1.25s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+			}	  
 		}
-		
 		
 		.map-img {
 			width: 100%;

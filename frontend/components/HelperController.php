@@ -129,6 +129,19 @@ class HelperController extends Controller
     	return $this->findContent(false, true, false, 'default', 0, $contentIds);
     }
     
+    public function getFilterCookie()
+    {
+    	$cookies = Yii::$app->request->cookies;
+    	$filters = $cookies->get('filters');
+    	
+    	if ($filters && !empty($filters->value))
+    	{
+    		return $filters;
+    	}
+    	else
+    		return false;
+    }
+    
     private function _getFilteredContentIds($groups, $groupOperator, $flagOperator, $filterIds = false, $countType = 'group')
     {
     	$contentIds = [];

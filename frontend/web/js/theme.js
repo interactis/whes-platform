@@ -4438,10 +4438,15 @@ $('.filter-checkbox').change(function() {
 var updateContent = function() {
 	var params = [];
 	$('.filter-checkbox').each(function() {
+		var customControl = $(this).closest('.custom-control');
 		if ($(this).is(':checked')) {
 			var filterId = $(this).attr('id').substring(7);
 			params.push(filterId);
-		}		
+			customControl.addClass('active');
+		}
+		else {
+			customControl.removeClass('active');
+		}
 	});
 	
 	$.ajax({

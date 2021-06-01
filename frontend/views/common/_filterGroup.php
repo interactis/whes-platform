@@ -23,24 +23,13 @@ $groupId = 'filter-group-'. $model->id;
 				
 			<?php foreach ($model->activeFlags as $flag):
 				$filterId = 'filter-'. $flag->id;
+				$active = in_array($flag->id, $filters);
 				?>
-				<div class="custom-control custom-control-sm custom-checkbox">
-					<input value="" class="custom-control-input filter-checkbox" id="<?= $filterId ?>" name="<?= $filterId ?>" type="checkbox">
+				<div class="custom-control custom-control-sm custom-checkbox <?= ($active ? "active" : ""); ?>">
+					<input value="" class="custom-control-input filter-checkbox" id="<?= $filterId ?>" name="<?= $filterId ?>" type="checkbox" <?= ($active ? "checked" : ""); ?>>
 					<label class="custom-control-label" for="<?= $filterId ?>"><?= $flag->title ?></label>
 				</div>
 			<?php endforeach; ?>
-			
-			
-			<?php
-			/*
-			foreach ($filterParams[$type .'s'] as $item): ?>
-				<div class="custom-control <?= ($item['selected'] == 1 ? "active" : ""); ?> custom-control-sm custom-checkbox">
-					<input value="<?= $item['slug'] ?>" class="custom-control-input <?= $type ?>-filter" id="<?= $type ?>-<?= $item['slug'] ?>" name="<?= $type ?>-<?= $item['slug'] ?>" type="checkbox" <?= ($item['selected'] == 1 ? "checked" : ""); ?>>
-					<label class="custom-control-label" for="<?= $type ?>-<?= $item['slug'] ?>"><?= $item['title'] ?></label>
-				</div>
-			<?php endforeach; ?>
-			*/
-			?>
 		
 		</div>
 	</div>

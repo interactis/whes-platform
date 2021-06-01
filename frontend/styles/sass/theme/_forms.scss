@@ -36,7 +36,9 @@
 
 .custom-control {
 	&.active {
-		color: $primary !important;
+		.custom-control-label {
+			color: $primary !important;
+		}
 	}
 	.custom-control-label::before,
 	.custom-control-label::after {

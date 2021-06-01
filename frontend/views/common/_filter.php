@@ -27,7 +27,7 @@ $filterSet = false;
 				<div class="row">
 					<?php foreach($filterGroups as $group): ?>
 						<div class="col col-12 col-lg-4">
-							<?= $this->render('_filterGroup.php', ['model' => $group]) ?>
+							<?= $this->render('_filterGroup.php', ['model' => $group, 'filters' => $filters]) ?>
 						</div>
 					<?php endforeach; ?>
 				</div>

@@ -27,10 +27,20 @@ class SiteController extends HelperController
 
     public function actionIndex()
     {
+    	$filters = $this->getFilterCookie();
+    	
+    	if ($filters)
+    	{
+    		$content = $this->findFilterContent($filters);
+    	}
+    	else
+    		$content = $this->findContent(false, true);
+    		
         return $this->render('index', [
     		'model' => $this->_findPage(1),
     		'media' => $this->_randomMedia(),
-    		'content' => $this->findContent(false, true)
+    		'content' => $content, 
+    		'filters' => explode(',', $filters)
     	]);
     }
     

@@ -96,7 +96,7 @@
 					$('#map-search-results').addClass('show');
 					
 					$.map(data.results, function(item) {
-						var li = '<li class="map-search-result" lat="'+ item.attrs.lat +'" lon="'+ item.attrs.lon +'">'+ item.attrs.label +'</li>';
+						var li = '<li class="map-search-result" y="'+ item.attrs.y +'" x="'+ item.attrs.x +'">'+ item.attrs.label +'</li>';
 						$('#map-search-results').append(li);
 					});
 					
@@ -111,12 +111,10 @@
         }
         
         $("#map-search-results").on("click", ".map-search-result", function() {
-        	var lat = $(this).attr('lat');
-        	var lon = $(this).attr('lon');
+        	var y = $(this).attr('y');
+        	var x = $(this).attr('x');
         	$('#map-search-results').removeClass('show');
-        	
-        	console.log(lat +' '+ lon);
-        	map.getView().setCenter([lat, lon]);
+        	map.getView().setCenter([parseFloat(y), parseFloat(x)]);
         });
 
         /**

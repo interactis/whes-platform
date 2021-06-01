@@ -15,10 +15,12 @@ class HeritageController extends HelperController
     public function actionView($slug)
     {
     	$model = $this->findModel($slug);
+    	$filters = $this->getFilterCookie();
     	
     	return $this->render('view', [
     		'model' => $model,
-    		'content' => $this->findContent($model->id)
+    		'content' => $this->findFilterContent($filters, $model->id, false),
+    		'filters' => explode(',', $filters)
     	]);
     }
  

@@ -93,11 +93,11 @@ class HelperController extends Controller
     	return $query->all();
     }
     
-    public function findFilterContent($filters)
+    public function findFilterContent($filters, $heritageId = false, $featured = true, $limit = 'default', $offset = 0)
     {
     	if (empty($filters))
-    		return $this->findContent(false, true, false, 'default', 0);
-    	
+    		return $this->findContent($heritageId, $featured, false, $limit, $offset);
+    	    	
     	$flagGroups = $this->_getFlagGroups($filters);
     	
     	// First: groups with OR operator (always in results)
@@ -126,7 +126,7 @@ class HelperController extends Controller
     	
     	$contentIds = array_unique(array_merge($contentIds, $filteredIds));
     	
-    	return $this->findContent(false, true, false, 'default', 0, $contentIds);
+    	return $this->findContent($heritageId, $featured, false, $limit, $offset, $contentIds);
     }
     
     public function getFilterCookie()

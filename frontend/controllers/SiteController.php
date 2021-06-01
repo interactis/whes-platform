@@ -29,17 +29,10 @@ class SiteController extends HelperController
     {
     	$filters = $this->getFilterCookie();
     	
-    	if ($filters)
-    	{
-    		$content = $this->findFilterContent($filters);
-    	}
-    	else
-    		$content = $this->findContent(false, true);
-    		
         return $this->render('index', [
     		'model' => $this->_findPage(1),
     		'media' => $this->_randomMedia(),
-    		'content' => $content, 
+    		'content' => $this->findFilterContent($filters), 
     		'filters' => explode(',', $filters)
     	]);
     }

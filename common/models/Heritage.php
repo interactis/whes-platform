@@ -160,4 +160,24 @@ class Heritage extends HelperModel
         	->orderBy(['short_name' => SORT_ASC])
         	->all();
     }
+    
+    public function getPreviewImage()
+    {
+    	$format = 600;
+    	if (isset($this->media[0]))
+    	{
+    		$media = $this->media[0];
+    		return [
+    			'url' => $media->getImageUrl($format),
+    			'alt' => $media->title
+    		];
+    	}
+    	else
+    	{
+    		return [
+    			'url' => Media::getPlaceholderUrl($format),
+    			'alt' => ''
+    		];
+		}
+	}
 }

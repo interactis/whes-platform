@@ -4431,6 +4431,10 @@
 })));
 //# sourceMappingURL=bootstrap.js.map
 
+$(function () {
+	$('[data-toggle="popover"]').popover()
+});
+
 $('.filter-checkbox').change(function() {
 	updateContent();
 });

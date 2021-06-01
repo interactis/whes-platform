@@ -11433,9 +11433,16 @@ html {
       border-radius: 50%;
       top: 30%;
       left: 20%; }
+      .overview-map-container .overview-map .poi:hover {
+        cursor: pointer; }
     .overview-map-container .overview-map .map-img {
       width: 100%;
       height: 100%; }
+
+.popover .h4 a {
+  color: #333333; }
+  .popover .h4 a:hover {
+    color: #A60100; }
 
 .alert-container {
   position: fixed;

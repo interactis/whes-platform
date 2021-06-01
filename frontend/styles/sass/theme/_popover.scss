@@ -1,0 +1,11 @@
+.popover {
+	.h4 {
+		a {
+			color: $body-color;
+			&:hover {
+				color: $link-color;
+			}
+		}
+		
+	}
+}

@@ -16,6 +16,7 @@ class AppAsset extends AssetBundle
     ];
     public $js = [
     	'js/map.js?v=1.0',
+    	'js/popper.min.js',
     	'js/theme.js',
     ];
     public $depends = [

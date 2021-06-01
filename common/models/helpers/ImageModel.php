@@ -29,6 +29,9 @@ class ImageModel extends TranslationModel
     		
     	if (!empty($this->$imageFile))
     	{
+    		print_r($this->$imageFile);
+    		exit;
+    		
     		// if an image exists remove thumbs first
     		$this->removeThumbs($imageName, $frontendPath);
     		$this->$imageName = $this->createImageName($imageFile);

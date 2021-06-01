@@ -34,6 +34,8 @@ CREATE TABLE heritage
 id SERIAL,
 geom GEOMETRY,
 priority SMALLINT,
+map_position_x REAL DEFAULT 0,
+map_position_y REAL DEFAULT 0,
 published BOOLEAN DEFAULT false,
 hidden BOOLEAN DEFAULT false,
 created_at INTEGER,

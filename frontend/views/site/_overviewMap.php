@@ -29,7 +29,7 @@ use common\models\Heritage;
 			?> 
 		
 			<div class="poi" 
-				style="top:5.5%; left: 50.34%;" 
+				style="top:<?= $model->map_position_y ?>%; left: <?= $model->map_position_x ?>%;" 
 				data-toggle="popover" 
 				data-placement="top" 
 				data-html="true" 

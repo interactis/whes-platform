@@ -12,6 +12,8 @@ use yii\helpers\ArrayHelper;
  *
  * @property int $id
  * @property string|null $geom
+ * @property int|null $map_position_x
+ * @property int|null $map_position_y
  * @property int|null $priority
  * @property bool|null $published
  * @property bool|null $hidden
@@ -58,6 +60,7 @@ class Heritage extends HelperModel
             [['priority', 'created_at', 'updated_at'], 'default', 'value' => null],
             [['priority', 'created_at', 'updated_at'], 'integer'],
             [['published', 'hidden'], 'boolean'],
+            [['map_position_x', 'map_position_y'],'number', 'min' => 0, 'max' => 100],
         ];
     }
 
@@ -69,6 +72,8 @@ class Heritage extends HelperModel
         return [
             'id' => Yii::t('app', 'ID'),
             'geom' => Yii::t('app', 'Geom'),
+            'map_position_x' => Yii::t('app', 'Overview Map X-Position (%)'),
+            'map_position_y' => Yii::t('app', 'Overview Map Y-Position (%)'),
             'priority' => Yii::t('app', 'Priority'),
             'published' => Yii::t('app', 'Published'),
             'hidden' => Yii::t('app', 'Hidden'),

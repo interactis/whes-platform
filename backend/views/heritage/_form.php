@@ -67,6 +67,16 @@ if (!$model->isNewRecord && $model->published)
 					]); ?>
 
 					<?php // $form->field($model, 'geom') ?>
+					
+					
+					<div class="row">
+						<div class="col-md-6">
+							<?= $form->field($model, 'map_position_x') ?>
+						</div>
+						<div class="col-md-6">
+							<?= $form->field($model, 'map_position_y') ?>
+						</div>
+					</div>
 
 					<?= $form->field($model, 'published')->checkbox() ?>
 

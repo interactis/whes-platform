@@ -34,7 +34,7 @@ class ImageModel extends TranslationModel
     		$this->$imageName = $this->createImageName($imageFile);
     	
     		// save original image
-    		$original = Yii::getAlias('@common/uploads/img/'. $this->tableName() .'/'. $this->$imageName);
+    		$original = Yii::getAlias('@common/uploads/img/test/'. $this->$imageName);
     		$this->$imageFile->saveAs($original);
     		chmod($original, 0777);
     			

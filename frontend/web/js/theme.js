@@ -4435,6 +4435,14 @@ $(function () {
 	$('[data-toggle="popover"]').popover()
 });
 
+$(document).on('click', function(){
+	$('[data-toggle="popover"]').popover('hide');
+});
+
+$('[data-toggle="popover"]').click(function(){
+	return false;
+});
+
 $('.filter-checkbox').change(function() {
 	updateContent();
 });

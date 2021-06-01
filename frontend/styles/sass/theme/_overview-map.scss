@@ -8,8 +8,31 @@
   	scrollbar-width: none;  /* Firefox */
 	
 	.overview-map {
+		position: relative;
 		width: 800px;
 		padding: 0 60px 30px;
+		margin: 0 auto;
+		
+		
+		.poi {
+			position: absolute;
+			background: $primary;
+			width: 30px;
+			height: 30px;
+			border-radius: 50%;
+			
+			top: 30%;
+			left: 20%;
+		}
+		
+		
+		.map-img {
+			width: 100%;
+			height: 100%;
+		}
+		
 	}
+	
+	
 	
 }

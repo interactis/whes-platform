@@ -28,4 +28,6 @@ return [
     		["width" => 1600, "height" => 900],
     	]
     ],
+    
+    'geoAdminSearchUrl' => 'https://api3.geo.admin.ch/rest/services/api/SearchServer',
 ];

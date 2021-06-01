@@ -74,55 +74,50 @@
             toggleMapSearch();
             e.stopPropagation();
         });
-
-        // search: input and autocomplete
-        $('#search-input').autocomplete({
-            autoFocus: true,
-            minLength: 2,
-            source: function(request, response) {
-                $.ajax({
-                    url: settings.searchUrl,
-                    dataType: 'json',
-                    data: {
-                        q: request.term
-                    },
-                    success: function(data) {
-                        response($.map(data, function(item) {
-                            if (item.geom !== null) {
-                                return {
-                                    label: item.title,
-                                    geom: item.geom,
-                                    id: item.id
-                                };
-                            }
-                        }));
-
-                    },
-                    error: function( jqXHR , textStatus, errorThrown) {
-                        console.log(jqXHR);
-                        console.log(textStatus);
-                        console.log(errorThrown);
-                    }
-                });
-            },
-            select: function(event, ui) {
-                map.getView().setCenter([ui.item.geom[0], ui.item.geom[1]]);
-                $('#search-button').click();
-                return false;
-            }
-        }).autocomplete( "instance" )._renderItem = function( ul, item ) {
-            return $("<li>", {'data-latitude': item.geom[0], 'data-longitude': item.geom[1]})
-                .append(item.label)
-                .appendTo(ul);
-        };
-        $("#search-input").keypress(function(event){
-            var keycode = (event.keyCode ? event.keyCode : event.which);
-            if (keycode == '13') {
-                event.preventDefault();
-                event.stopPropagation();
-            }
+        
+        $("#search-input").keyup(function(event) {
+            var q = $(this).val();
+          	if (q.length > 2) {
+          		$('#map-search-results').empty().removeClass('show');
+          		searchLocation(q);
+          	}
         });
-
+        
+        
+        function searchLocation(q)
+        {
+        	$.ajax({
+				url: settings.searchUrl +'?type=locations&origins=gazetteer',
+				dataType: 'json',
+				data: {
+					searchText: q
+				},
+				success: function(data) {
+					$('#map-search-results').addClass('show');
+					
+					$.map(data.results, function(item) {
+						var li = '<li class="map-search-result" lat="'+ item.attrs.lat +'" lon="'+ item.attrs.lon +'">'+ item.attrs.label +'</li>';
+						$('#map-search-results').append(li);
+					});
+					
+					$('#map-search-results').addClass('show');
+				},
+				error: function( jqXHR , textStatus, errorThrown) {
+					console.log(jqXHR);
+					console.log(textStatus);
+					console.log(errorThrown);
+				}
+			});
+        }
+        
+        $("#map-search-results").on("click", ".map-search-result", function() {
+        	var lat = $(this).attr('lat');
+        	var lon = $(this).attr('lon');
+        	$('#map-search-results').removeClass('show');
+        	
+        	console.log(lat +' '+ lon);
+        	map.getView().setCenter([lat, lon]);
+        });
 
         /**
          * Function to toggle the map search div.
@@ -144,6 +139,7 @@
             } else {
                 // Hide
                 searchdiv.hide();
+                $('#map-search-results').removeClass('show');
                 // If there is still some autocomplete suggestion (happens if nothing
                 // was found and the user clicked outside the search div), hide it!
                 $(".ui-autocomplete").hide();

@@ -8,8 +8,9 @@ use yii\helpers\Url;
         <a title="Suchen auf Karte" id="search-button"></a>
         <div id="search-outer">
             <div class="map-control-inner-div" style="cursor: default;">
-                <label for="whereto">Search:</label>
-                <input type="text" id="whereto" class="ui-autocomplete-input" autocomplete="off"><span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
+                <label for="whereto">Search</label>
+                <input type="text" id="search-input" autocomplete="off"><span role="status" aria-live="polite"></span>
+                <ul id="map-search-results"></ul>
             </div>
         </div>
     </div>
@@ -29,7 +30,7 @@ use yii\helpers\Url;
             longitude: parseInt("<?= $longitude ?>"),
             inputField: "<?= strtolower($model::tableName()) ?>-<?= $attribute ?>",
             iconImgSrc: "<?= $pinImgUrl ?>",
-            searchUrl: "<?= Url::toRoute(['poi/search']) ?>"
+            searchUrl: "<?= Yii::$app->params['geoAdminSearchUrl'] ?>"
         });
     });
 </script>

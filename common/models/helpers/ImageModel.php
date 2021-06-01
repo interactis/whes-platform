@@ -35,7 +35,9 @@ class ImageModel extends TranslationModel
     	
     		// save original image
     		$original = Yii::getAlias('@common/uploads/img/'. $this->tableName() .'/'. $this->$imageName);
-    		$this->$imageFile->saveAs($original);
+    		$test = $this->$imageFile->saveAs($original);
+    		print_r($test);
+    		exit;
     		chmod($original, 0777);
     			
 			// resize images

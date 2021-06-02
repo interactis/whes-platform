@@ -1,4 +1,8 @@
 .popover {
+	padding: 0 !important;
+	border-radius: 36px;
+	width: $popover-max-width;
+	
 	.h4 {
 		a {
 			color: $body-color;
@@ -8,4 +12,8 @@
 		}
 		
 	}
+}
+
+.popover-body {
+	padding: 12px;
 }

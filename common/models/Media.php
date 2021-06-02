@@ -65,7 +65,8 @@ class Media extends ImageModel
         
         	['image_file', 'image', 'extensions' => 'png, jpg',
         		'minWidth' => 1600, 'maxWidth' => 5000,
-        		'minHeight' => 600, 'maxHeight' => 5000
+        		'minHeight' => 600, 'maxHeight' => 5000,
+        		'maxSize' => 1024 * 1024 * 4 //4MB
     		],
         ];
     }

@@ -32,7 +32,8 @@
 				
 				<?= $this->render('/common/_heritageMap', [
 					'type' => 'trail',
-					'model' => $model
+					'model' => $model,
+					'heritage' => $heritage
 				]) ?>
 				
 				<?= $this->render('_trip.php', ['model' => $model]) ?>

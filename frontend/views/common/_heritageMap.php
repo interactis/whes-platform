@@ -13,6 +13,7 @@ switch ($model->tableName()) {
     		$url = Url::to(['map/index', 'select' => 'route', 'id' => $model->id]);
         break;
     case 'heritage':
+    	$heritage = $model;
     	// if (!empty($model->geom))
     		$url = Url::to(['map/index', 'select' => 'heritage', 'id' => $model->id]);
         break;
@@ -26,7 +27,7 @@ switch ($model->tableName()) {
 			<a href="<?= $url ?>" title="<?= Yii::t('app', 'Show map') ?>">
 				<img src="/img/layout/map.svg" class="map-img" alt="<?= Yii::t('app', 'Map') ?>">
 			</a>
-			<a class="poi" href="<?= $url ?>" title="<?= Yii::t('app', 'Show map') ?>" style="top:<?= $model->map_position_y ?>%; left: <?= $model->map_position_x ?>%;"></a>
+			<a class="poi" href="<?= $url ?>" title="<?= Yii::t('app', 'Show map') ?>" style="top:<?= $heritage->map_position_y ?>%; left: <?= $heritage->map_position_x ?>%;"></a>
 		</div>
 		
 		<a href="<?= $url ?>" title="<?= Yii::t('app', 'Show map') ?>">

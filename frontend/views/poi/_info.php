@@ -26,7 +26,8 @@
 				
 				<?= $this->render('/common/_heritageMap', [
 					'type' => 'poi',
-					'model' => $model
+					'model' => $model,
+					'heritage' => $heritage
 				]) ?>
 				
 				<?= $this->render('_trip.php', ['model' => $model]) ?>

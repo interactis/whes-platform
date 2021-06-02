@@ -23,13 +23,13 @@ switch ($model->tableName()) {
 	<div class="margin-bottom-lg text-center">
 		
 		<div class="heritage-map">
-			<a href="<?= $url ?>">
+			<a href="<?= $url ?>" title="<?= Yii::t('app', 'Show map') ?>">
 				<img src="/img/layout/map.svg" class="map-img" alt="<?= Yii::t('app', 'Map') ?>">
 			</a>
-			<div class="poi" style="top:<?= $model->map_position_y ?>%; left: <?= $model->map_position_x ?>%;"></div>
+			<a class="poi" href="<?= $url ?>" title="<?= Yii::t('app', 'Show map') ?>" style="top:<?= $model->map_position_y ?>%; left: <?= $model->map_position_x ?>%;"></a>
 		</div>
 		
-		<a href="<?= $url ?>">
+		<a href="<?= $url ?>" title="<?= Yii::t('app', 'Show map') ?>">
 			<i class="fa fa-map-marker"></i> 
 			<?= Yii::t('app', 'Show map') ?>
 		</a>

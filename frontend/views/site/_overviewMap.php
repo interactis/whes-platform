@@ -1,5 +1,4 @@
 <?php
-use yii\helpers\Url;
 use common\models\Heritage;
 ?>
 
@@ -9,33 +8,14 @@ use common\models\Heritage;
 			<img class="map-img" src="/img/layout/map.svg" alt="<?= Yii::t('app', 'Map') ?>">
 		
 			<?php
-			foreach(Heritage::getActiveHeritages() as $model):
-				$url = Url::toRoute(['heritage/view', 'slug' => $model->slug]);
-				$img = $model->previewImage;
-			
-				/*
-				$popoverContent = '<a class=\'img-link\' href=\''. $url .'\'>
-						<img class=\'img-fluid\' src=\''. $img['url'] .'\'>
-					</a>';
-				*/	
-				
-				$popoverContent = '<div class=\'h4\'>
-						<a href=\''. $url .'\'>'. $model->short_name .'</a>
-					</div>
-					<a href=\''. $url .'\'>
-						<i class=\'fa fa-chevron-right\'></i> 
-						'. Yii::t('app', 'Learn more') .'
-					</a>';
-				?> 
-		
+			foreach(Heritage::getActiveHeritages() as $model): ?>	
 				<div class="poi" 
 					style="top:<?= $model->map_position_y ?>%; left: <?= $model->map_position_x ?>%;" 
 					data-toggle="popover" 
 					data-placement="top" 
 					data-html="true" 
-					data-content="<?= $popoverContent ?>">
+					data-content="<?= $this->render('_popover', ['model' => $model]) ?>">
 				</div>
-			
 			<?php endforeach; ?>
 		</div>
 		

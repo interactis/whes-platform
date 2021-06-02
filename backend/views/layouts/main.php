@@ -38,9 +38,24 @@ AppAsset::register($this);
     $menuItems = [
         ['label' => 'Home', 'url' => ['/site/index']],
     ];
-    if (Yii::$app->user->isGuest) {
+    if (Yii::$app->user->isGuest)
+    {
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
-    } else {
+    }
+    else
+    {
+    	$menuItems = [
+			['label' => 'Home', 'url' => ['/site/index']],
+			['label' => 'Manage',
+				'items' => [
+					'<li class="dropdown-header">Content</li>',
+					 ['label' => 'Points of Interest', 'url' => ['/poi']],
+					 ['label' => 'Routes', 'url' => ['/route']],
+					 ['label' => 'Articles', 'url' => ['/article']],
+				]
+			],
+    	];
+    	
         $menuItems[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post')
             . Html::submitButton(

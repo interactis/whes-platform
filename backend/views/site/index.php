@@ -90,7 +90,7 @@ $this->title = 'Dashboard';
         	<?php endif; ?>
         	
             <div class="col-md-4 margin-bottom">
-                <div class="h1">Contents</div>
+                <div class="h1">Content</div>
                 <p class="lead">
                 	<a href="/poi">
                 		Points of Interest

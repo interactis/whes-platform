@@ -21,9 +21,14 @@ switch ($model->tableName()) {
 
 <?php if ($url): ?>
 	<div class="margin-bottom-lg text-center">
-		<a href="<?= $url ?>">
-			<img src="/img/layout/map.svg" class="img-fluid w-100" alt="<?= Yii::t('app', 'Map') ?>">
-		</a>
+		
+		<div class="heritage-map">
+			<a href="<?= $url ?>">
+				<img src="/img/layout/map.svg" class="map-img" alt="<?= Yii::t('app', 'Map') ?>">
+			</a>
+			<div class="poi" style="top:<?= $model->map_position_y ?>%; left: <?= $model->map_position_x ?>%;"></div>
+		</div>
+		
 		<a href="<?= $url ?>">
 			<i class="fa fa-map-marker"></i> 
 			<?= Yii::t('app', 'Show map') ?>

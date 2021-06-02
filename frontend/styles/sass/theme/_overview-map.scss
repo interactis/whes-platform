@@ -6,47 +6,52 @@
 	-webkit-overflow-scrolling: touch;
 	-ms-overflow-style: none;  /* IE and Edge */
   	scrollbar-width: none;  /* Firefox */
+  	
+  	.map-img-container {
+  		position: relative;
+  		margin: 0 60px 30px;
+  	}
+}
+
+.overview-map,
+.heritage-map {
+	position: relative;
+	width: 800px;
+	margin: 0 auto;
 	
-	.overview-map {
-		position: relative;
-		width: 800px;
-		padding: 0 60px 30px;
-		margin: 0 auto;
+	.poi {
+		position: absolute;
+		background: $primary;
+		width: 25px;
+		height: 25px;
+		border-radius: 50%;
 		
-		
-		.poi {
-			position: absolute;
-			background: $primary;
-			width: 30px;
-			height: 30px;
-			border-radius: 50%;
-			
-			&:hover {
-				cursor: pointer;
-			}
-			&:before {
-				content: '';
-				position: relative;
-				display: block;
-				width: 60px;
-				height: 60px;
-				box-sizing: border-box;
-				margin-left: -15px;
-				margin-top: -15px;
-				border-radius: 45px;
-				background-color: $primary;
-				opacity: 0.3;
-				animation: pulse-ring 1.25s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
-			}	  
+		&:hover {
+			cursor: pointer;
 		}
-		
-		.map-img {
-			width: 100%;
-			height: 100%;
-		}
-		
+		&:before {
+			content: '';
+			position: relative;
+			display: block;
+			width: 55px;
+			height: 55px;
+			box-sizing: border-box;
+			margin-left: -15px;
+			margin-top: -15px;
+			border-radius: 28px;
+			background-color: $primary;
+			opacity: 0.4;
+			animation: pulse-ring 1.25s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+		}	  
 	}
 	
-	
-	
+	.map-img {
+		width: 100%;
+		height: 100%;
+	}
+}
+
+.heritage-map {
+	width: 100%;
+	padding: 0;
 }

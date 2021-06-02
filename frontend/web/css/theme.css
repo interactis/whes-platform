@@ -11420,37 +11420,49 @@ html {
   /* IE and Edge */
   scrollbar-width: none;
   /* Firefox */ }
-  .overview-map-container .overview-map {
+  .overview-map-container .map-img-container {
     position: relative;
-    width: 800px;
-    padding: 0 60px 30px;
-    margin: 0 auto; }
-    .overview-map-container .overview-map .poi {
-      position: absolute;
-      background: #A60100;
-      width: 30px;
-      height: 30px;
-      border-radius: 50%; }
-      .overview-map-container .overview-map .poi:hover {
-        cursor: pointer; }
-      .overview-map-container .overview-map .poi:before {
-        content: '';
-        position: relative;
-        display: block;
-        width: 60px;
-        height: 60px;
-        -webkit-box-sizing: border-box;
-                box-sizing: border-box;
-        margin-left: -15px;
-        margin-top: -15px;
-        border-radius: 45px;
-        background-color: #A60100;
-        opacity: 0.3;
-        -webkit-animation: pulse-ring 1.25s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
-                animation: pulse-ring 1.25s cubic-bezier(0.215, 0.61, 0.355, 1) infinite; }
-    .overview-map-container .overview-map .map-img {
-      width: 100%;
-      height: 100%; }
+    margin: 0 60px 30px; }
+
+.overview-map,
+.heritage-map {
+  position: relative;
+  width: 800px;
+  margin: 0 auto; }
+  .overview-map .poi,
+  .heritage-map .poi {
+    position: absolute;
+    background: #A60100;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%; }
+    .overview-map .poi:hover,
+    .heritage-map .poi:hover {
+      cursor: pointer; }
+    .overview-map .poi:before,
+    .heritage-map .poi:before {
+      content: '';
+      position: relative;
+      display: block;
+      width: 55px;
+      height: 55px;
+      -webkit-box-sizing: border-box;
+              box-sizing: border-box;
+      margin-left: -15px;
+      margin-top: -15px;
+      border-radius: 28px;
+      background-color: #A60100;
+      opacity: 0.4;
+      -webkit-animation: pulse-ring 1.25s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+              animation: pulse-ring 1.25s cubic-bezier(0.215, 0.61, 0.355, 1) infinite; }
+  .overview-map .map-img,
+  .heritage-map .map-img {
+    width: 100%;
+    height: 100%; }
+
+.heritage-map {
+  width: 100%;
+  padding: 0; }
 
 .popover .h4 a {
   color: #333333; }

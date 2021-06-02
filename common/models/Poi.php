@@ -78,7 +78,7 @@ class Poi extends HelperModel
         return [
             'id' => Yii::t('app', 'ID'),
             'content_id' => Yii::t('app', 'Content ID'),
-            'arrival_station' => Yii::t('app', 'Arrival Station Name'),
+            'arrival_station' => Yii::t('app', 'SBB Arrival Station Name'),
             'arrival_url' => Yii::t('app', 'Arrival Station URL'),
             'geom' => Yii::t('app', 'Geom'),
             'flags' =>  Yii::t('app', 'Filters'),

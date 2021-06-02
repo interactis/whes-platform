@@ -17,4 +17,9 @@ class Helpers extends Component
 		return $string;
 	}
 	
+	public function getSbbLink($station, $formTo = 'nach')
+	{
+		return Yii::t('app', 'https://www.sbb.ch/en/buying/pages/fahrplan/fahrplan.xhtml') .'?'. $formTo .'='. urldecode($station);
+	}
+	
 }

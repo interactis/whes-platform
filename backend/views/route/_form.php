@@ -142,12 +142,8 @@ $user = Yii::$app->user->identity;
 					<h3>SBB</h3>
 				</div>
 				<div class="panel-body">
-					<?= $form->field($model, 'arrival_station') ?>
-					
-					<?= $form->field($model, 'arrival_url')
-						->hint(Yii::t('app', 'How to deep link to SBB timetable:') .' <a href="/downloads/Deep_Linking_SBB_Fahrplan.pdf" target="_blank"><span class="glyphicon glyphicon-download"></span> SBB Deep Linking</a>') ?>
-					
-					<hr />
+					<?= $form->field($model, 'arrival_station')
+						->hint('Please use the exact station name like on <a href="https://sbb.ch" target="_blank">sbb.ch</a>. Otherwise the link to the SBB time schedule will not work.') ?>
 					
 					<?= $this->render('/translation/field', [
 						'model' => $model,
@@ -161,10 +157,8 @@ $user = Yii::$app->user->identity;
 					
 					<hr />
 					
-					<?= $form->field($model, 'departure_station') ?>
-					
-					<?= $form->field($model, 'departure_url')
-						->hint(Yii::t('app', 'How to deep link to SBB timetable:') .' <a href="/downloads/Deep_Linking_SBB_Fahrplan.pdf" target="_blank"><span class="glyphicon glyphicon-download"></span> SBB Deep Linking</a>') ?>
+					<?= $form->field($model, 'departure_station')
+						->hint('Please use the exact station name like on <a href="https://sbb.ch" target="_blank">sbb.ch</a>. Otherwise the link to the SBB time schedule will not work.') ?>
 				</div>
 			</div>
 			

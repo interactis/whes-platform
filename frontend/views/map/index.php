@@ -34,4 +34,6 @@ if ($model): ?>
 		</span>
 	<?php endif; ?>
 	
+<?php else: ?>
+	<span id="map-initial-icons" data-value=""></span>
 <?php endif; ?>

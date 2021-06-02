@@ -24,7 +24,7 @@
 					<li>
 						<div class="h3"><?= $model->title ?></div>
 						<div>
-							<?= Yii::t('app', 'Route') ?>
+							<?= $model->label ?>
 							<?= (!empty($model->difficulty) ? '<span class="thin">'. $model->difficultyText .'</thin>' : '') ?>
 						</div>
 					</li>

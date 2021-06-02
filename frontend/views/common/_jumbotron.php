@@ -9,7 +9,7 @@ if (!isset($showCaption))
 	$showCaption = true;
 ?>
 
-<div id="top-carousel" class="jumbotron carousel slide <?= $class ?>" data-ride="carousel" data-touch="true">
+<div id="top-carousel" class="jumbotron carousel fade-in slide <?= $class ?>" data-ride="carousel" data-touch="true">
 
 	<div class="carousel-inner">
 		

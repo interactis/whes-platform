@@ -1,6 +1,6 @@
 
 <?php if (!empty($model->arrival_station)): ?>
-	<div class="card margin-bottom-lg">
+	<div class="card trip-card margin-bottom-lg">
 		<div class="card-header">
 			<div class="h4"><?= Yii::t('app', 'Trip Description') ?></div>
 		</div>

@@ -35,6 +35,7 @@ $translationModel = new MediaTranslation();
 									'showUpload' => false
 								]
 							]) ?>
+							<div class="hint-block">Please use meaningful filenames. The filename will be kept on upload. It has a positive effect on SEO (search engine optimization) if it is meaningful.</div>
 						</div>
 					</div>
 					<br />

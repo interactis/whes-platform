@@ -10,6 +10,10 @@ $('[data-toggle="popover"]').click(function(){
 	return false;
 });
 
+$('[data-toggle="popover"]').click(function(){
+	$('[data-toggle="popover"]').not(this).popover('hide');
+});
+
 $('.filter-checkbox').change(function() {
 	updateContent();
 });

@@ -94,15 +94,8 @@
 	
 	&.popover-card {
 		margin: 0;
-		
-		.card-header {
-			&.img-header {
-				height: 190px;
-				
-				@include media-breakpoint-up(md) {
-					height: 220px;
-				}
-			}
+		.img-header {
+			height: 190px;
 		}
 	}
 }

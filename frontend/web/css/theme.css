@@ -11187,11 +11187,8 @@ html {
       margin-bottom: 45px; } }
   .preview-card.popover-card {
     margin: 0; }
-    .preview-card.popover-card .card-header.img-header {
+    .preview-card.popover-card .img-header {
       height: 190px; }
-      @media (min-width: 768px) {
-        .preview-card.popover-card .card-header.img-header {
-          height: 220px; } }
 
 @media (min-width: 992px) {
   .trip-card {

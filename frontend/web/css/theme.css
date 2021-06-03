@@ -10673,13 +10673,13 @@ html {
   font-weight: 300; }
   #footer .logo {
     width: 200px; }
-  #footer .heritage-li {
-    margin-bottom: 6px; }
   #footer a:link,
   #footer a:visited {
     color: white; }
   #footer .small {
     font-weight: 300; }
+  #footer .heritage-li {
+    margin-bottom: 6px; }
   #footer .closing-row {
     position: relative; }
   #footer .social-links {

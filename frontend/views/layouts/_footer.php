@@ -16,8 +16,8 @@ $half = ceil($count/2);
 		</div>
 		
 		<div class="row margin-bottom-lg">
-			<div class="col-md-6">
-				<ul class="list-unstyled">
+			<div class="col-12 col-md-6">
+				<ul class="list-unstyled no-margin">
 					<?php
 					for ($i = 0; $i <= $half-1; $i++)
 					{
@@ -26,8 +26,8 @@ $half = ceil($count/2);
 					?>
 				</ul>
 			</div>
-			<div class="col-md-6">
-				<ul class="list-unstyled">
+			<div class="col-12 col-md-6">
+				<ul class="list-unstyled no-margin">
 					<?php
 					for ($i = $i; $i <= $count-1; $i++)
 					{

@@ -6,7 +6,9 @@ use common\models\PageTranslation;
 $translations = $model->pageTranslations;
 $translationModel = new PageTranslation();
 
-$viewUrl = Yii::$app->params['frontendUrl'] . $model->slug;
+$viewUrl = Yii::$app->params['frontendUrl'];
+if (!empty($slug))
+	$viewUrl .= 'site/'. $model->slug;
 ?>
 
 <div class="page-form">

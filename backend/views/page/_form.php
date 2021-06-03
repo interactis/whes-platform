@@ -7,7 +7,7 @@ $translations = $model->pageTranslations;
 $translationModel = new PageTranslation();
 
 $viewUrl = Yii::$app->params['frontendUrl'];
-if (!empty($slug))
+if (!empty($model->slug))
 	$viewUrl .= 'site/'. $model->slug;
 ?>
 

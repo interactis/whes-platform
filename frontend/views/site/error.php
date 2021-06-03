@@ -15,7 +15,7 @@ $this->title = Yii::t('app', "Oops, this page doesn't exist.");
 			 <header class="container">
 				<div class="row">
 				   	<div class="col-md-6">
-						<h2 class="entry-title margin-bottom">
+						<h2 class="margin-bottom">
 							<?= $this->title ?>
 						</h2>
 				   	</div>

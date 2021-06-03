@@ -22,7 +22,12 @@ $this->title = 'Dashboard';
 					</p>
 					<p class="lead">
 						<a  href="/page/update/3">
-							Legal Notice
+							Privacy Policy
+						</a>
+					</p>
+					<p class="lead">
+						<a  href="/page/update/4">
+							Contact
 						</a>
 					</p>
 				</div>

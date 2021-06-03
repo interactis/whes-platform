@@ -21,7 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
 			 </header>
 			 <div class="container small">
 			 	<div class="row">
-			 		<div class="col-md-10 col-lg-8">
+			 		<div class="col-md-10 col-lg-8 col-xl-7">
 						<?= $model->description ?>
 					</div>
 				</div>

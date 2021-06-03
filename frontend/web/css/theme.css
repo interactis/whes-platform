@@ -10537,6 +10537,11 @@ h4, .h4 {
   h4 a:active, .h4 a:hover,
   .h4 a:active {
     text-decoration: none; }
+  .ugc h1, .ugc .h1, .ugc
+  h2, .ugc .h2, .ugc
+  h3, .ugc .h3, .ugc
+  h4, .ugc .h4 {
+    margin-bottom: 12px; }
 
 h1, .h1 {
   font-size: 3rem;

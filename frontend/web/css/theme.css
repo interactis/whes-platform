@@ -10623,6 +10623,17 @@ label,
 html {
   font-size: 16px; }
 
+body {
+  height: 100vh;
+  margin: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column; }
+
 @media (max-width: 767.98px) {
   .container,
   .container-fluid,
@@ -10667,6 +10678,7 @@ html {
       height: 357px; } }
 
 #footer {
+  margin-top: auto;
   background: #333333;
   color: white;
   padding: 30px 0 30px;

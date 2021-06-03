@@ -32,11 +32,7 @@ AppAsset::register($this);
 	<?= $content ?>
 </div>
 
-<footer class="footer">
-    <div class="container">
-        
-    </div>
-</footer>
+<?= $this->render('_footer.php') ?>
 
 <?php $this->endBody() ?>
 </body>

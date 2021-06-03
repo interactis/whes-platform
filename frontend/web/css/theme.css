@@ -10666,89 +10666,24 @@ html {
     .youtube-iframe {
       height: 357px; } }
 
-/*
-.footer {
-	position: absolute;
-	display: flex;
-	width: 100%;
-	background: $gray-dark;
-	color: white;
-	padding: 30px 0;
-	font-size: 0.75rem;
-	//z-index: $zindex-fixed;
-	
-	.social,
-	.last {
-		align-self: flex-end;
-	}
-	
-	.logo {
-		width: 86px;
-		margin-bottom: 50px;
-	}
-	
-	a:link,
-	a:visited {
-		color: white;
-		text-decoration: none;
-		
-	}
-	
-	.social {
-		margin: 0 0 45px -6px;
-		.h5 {
-			width: 170px;
-			display: block;
-			margin-top: 18px;
-			svg {
-				width: 36px;
-				margin-top: -2px;
-			}
-		}
-	}
-	
-	.last {
-		a:link,
-		a:visited {
-			text-decoration: underline;
-		}
-	}
-	
-	@include media-breakpoint-up(sm) {
-		padding: 90px 0;
-		font-size: 0.875rem;
-		
-		.logo {
-			width: 120px;
-		}
-	}
-	
-	@include media-breakpoint-up(md) {
-		.logo {
-			margin-bottom: 60px;
-		}
-	}
-	
-	@include media-breakpoint-up(lg) {
-		.logo {
-			margin-bottom: 0;
-		}
-		
-		.social {
-			margin: 0 0 3px;
-			.h5 {
-				display: inline-block;
-			}
-		}
-		
-		.last {
-			margin-bottom: 3px;
-			text-align: right;
-		}
-		
-	}
-}
-*/
+#footer {
+  background: #333333;
+  color: white;
+  padding: 30px 0;
+  font-weight: 300; }
+  #footer .logo {
+    width: 200px; }
+  #footer .heritage-li {
+    margin-bottom: 6px; }
+  #footer a:link,
+  #footer a:visited {
+    color: white; }
+  @media (min-width: 576px) {
+    #footer {
+      padding: 90px 0; }
+      #footer .logo {
+        width: 260px; } }
+
 #cookie-info {
   position: fixed;
   background: white;

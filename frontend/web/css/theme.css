@@ -10669,7 +10669,7 @@ html {
 #footer {
   background: #333333;
   color: white;
-  padding: 30px 0;
+  padding: 30px 0 30px;
   font-weight: 300; }
   #footer .logo {
     width: 200px; }
@@ -10678,11 +10678,24 @@ html {
   #footer a:link,
   #footer a:visited {
     color: white; }
+  #footer .small {
+    font-weight: 300; }
+  #footer .social-links {
+    margin-bottom: 12px;
+    font-size: 1.4rem; }
+    #footer .social-links a {
+      margin-right: 6px; }
   @media (min-width: 576px) {
     #footer {
-      padding: 90px 0; }
+      padding-top: 90px; }
       #footer .logo {
         width: 260px; } }
+  @media (min-width: 768px) {
+    #footer .social-links {
+      margin-bottom: 0;
+      text-align: right; }
+      #footer .social-links a {
+        margin: 0 6px 0 0; } }
 
 #cookie-info {
   position: fixed;

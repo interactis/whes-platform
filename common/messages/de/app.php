@@ -55,6 +55,7 @@ return [
 	"Highest Point" => "Höchster Punkt",
 	"m a.s.l." => "m ü. M.",
 	
+	"Follow us on {socialMedia}" => "Folgen Sie uns auf {socialMedia}",
 	"Oops, this page doesn't exist." => "Ups, diese Seite existiert nicht.",
 	"To Homepage" => "Zur Homepage",
 	

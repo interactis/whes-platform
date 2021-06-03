@@ -38,16 +38,16 @@ $half = ceil($count/2);
 			</div>
 		</div>
 		
-		<div class="row">
+		<div class="row closing-row">
 			<div class="col-md-6 order-md-2 social-links">
 				<a href="https://www.instagram.com/worldheritageswitzerland/" target="_blank" title="<?= Yii::t('app', 'Follow us on {socialMedia}', ['socialMedia' => 'Instagram']) ?>"><i class="fa fa-instagram"></i></a>
 				<a href="https://www.facebook.com/worldheritageswitzerland/" target="_blank" title="<?= Yii::t('app', 'Follow us on {socialMedia}', ['socialMedia' => 'Facebook']) ?>"><i class="fa fa-facebook-square"></i></a>
 				<a href="https://www.youtube.com/user/UDSwitzerland" target="_blank" title="<?= Yii::t('app', 'Follow us on {socialMedia}', ['socialMedia' => 'YouTube']) ?>"><i class="fa fa-youtube-square"></i></a>
 			</div>
 			<div class="col-md-6 small">
-				<?= Html::a('About', ['site/about']) ?> &middot; 
-				<?= Html::a('Legal Terms', ['site/legal-terms']) ?> &middot;
-				<?= Html::a('Contact', ['site/contact']) ?>
+				<?= Html::a(Yii::t('app', 'About'), ['site/about']) ?> &middot; 
+				<?= Html::a(Yii::t('app', 'Privacy policy'), ['site/privacy-policy']) ?> &middot;
+				<?= Html::a(Yii::t('app', 'Contact'), ['site/contact']) ?>
 			</div>
 		</div>
     </div>

@@ -10680,6 +10680,8 @@ html {
     color: white; }
   #footer .small {
     font-weight: 300; }
+  #footer .closing-row {
+    position: relative; }
   #footer .social-links {
     margin-bottom: 12px;
     font-size: 1.4rem; }
@@ -10692,6 +10694,9 @@ html {
         width: 260px; } }
   @media (min-width: 768px) {
     #footer .social-links {
+      position: absolute;
+      bottom: 0;
+      right: 0;
       margin-bottom: 0;
       text-align: right; }
       #footer .social-links a {

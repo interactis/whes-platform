@@ -32,7 +32,11 @@ AppAsset::register($this);
 	<?= $content ?>
 </div>
 
-<?= $this->render('_footer.php') ?>
+
+<?php
+if ($this->context->id != 'map')
+	echo $this->render('_footer.php');
+?>
 
 <?php $this->endBody() ?>
 </body>

@@ -66,7 +66,6 @@ return [
     		'enablePrettyUrl' => true,
     		'rules' => [
     			'search' =>'search/index',
-    			'map/<select:[\w\-]+>/<id:\d+>' =>'map/index',
     			'map' =>'map/index',
     			
     			'<slug:[\w\-]+>' =>'heritage/view',

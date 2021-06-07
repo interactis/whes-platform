@@ -8,32 +8,4 @@ $this->title = Yii::t('app', 'Map');
 	<?= MapWidget::widget([]) ?>
 </div>
 
-<?php
-// prettify after map update (this is a quick and dirty adaption mysa map handling)
-if ($model): ?>
-
-	<?php if ($model->tableName() == 'poi'): ?>
-		<span id="map-initial-icons"
-			data-value="<?= $model->tableName() .'-'. $model->id ?>">
-		</span>
-		<span class="map-item"
-			data-content-type="poi"
-			data-id="<?= $model->id ?>"
-			data-geodata='{"latitude": <?= $model->geom[0] ?>, "longitude": <?= $model->geom[1] ?>}'>
-		</span>
-	<?php endif; ?>
-	
-	<?php if ($model->tableName() == 'route'): ?>
-		<span id="map-initial-icons"
-			data-value="trail-'. $model->id ?>">
-		</span>
-		<span class="map-item"
-			data-content-type="trail"
-			data-id="<?= $model->id ?>"
-			data-geodata='{"trail": <?= json_encode($model->geom) ?>}'>
-		</span>
-	<?php endif; ?>
-	
-<?php else: ?>
-	<span id="map-initial-icons" data-value=""></span>
-<?php endif; ?>
+<span id="map-initial-icons" data-value=""></span>

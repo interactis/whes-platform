@@ -5,6 +5,7 @@ namespace common\models;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use common\models\helpers\HelperModel;
+use common\components\SwissGeometryBehavior;
 use yii\helpers\ArrayHelper;
 
 /**
@@ -47,6 +48,11 @@ class Heritage extends HelperModel
     {
         return [
             TimestampBehavior::className(),
+            [
+                'class' => SwissGeometryBehavior::className(),
+                'type' => SwissGeometryBehavior::GEOMETRY_POINT,
+                'attribute' => 'geom',
+            ],
         ];
     }
 
@@ -56,7 +62,6 @@ class Heritage extends HelperModel
     public function rules()
     {
         return [
-            [['geom'], 'string'],
             [['priority', 'created_at', 'updated_at'], 'default', 'value' => null],
             [['priority', 'created_at', 'updated_at'], 'integer'],
             [['published', 'hidden'], 'boolean'],
@@ -80,6 +85,15 @@ class Heritage extends HelperModel
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
         ];
+    }
+    
+    /**
+     * @param $geom
+     * Store array to postgis geometry field.
+     */
+    public function setGeom($geom)
+    {
+        $this->geom = $geom;
     }
 
     /**

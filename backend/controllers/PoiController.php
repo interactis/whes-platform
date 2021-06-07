@@ -76,7 +76,7 @@ class PoiController extends HelperController
         $post = Yii::$app->request->post();
         
         // set geom field separately, as the postgis-behaviour doesn't work with $model->save()
-    	$post = $this->_setGeom($post, $model);
+    	$post = $this->setPointGeom($post, $model);
 
         if ($model->load($post) && $contentModel->load($post))
         { 
@@ -113,7 +113,7 @@ class PoiController extends HelperController
         $post = Yii::$app->request->post();
         
         // set geom field separately, as the postgis-behaviour doesn't work with $model->save()
-    	$post = $this->_setGeom($post, $model);
+    	$post = $this->setPointGeom($post, $model);
 
         if ($model->load($post) && $contentModel->load($post))
         { 
@@ -172,16 +172,5 @@ class PoiController extends HelperController
 
 			throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
     	}
-    }
-    
-    private function _setGeom($post, $model)
-    {
-        $geom = (isset($post['Poi']['geom'])) ? $post['Poi']['geom'] : false;
-        
-        if ($geom)
-            $model->setGeom(array_map('intval', explode(',', $post['Poi']['geom'])));
-        
-        unset($post['Poi']['geom']);
-        return $post;
     }
 }

@@ -5,25 +5,36 @@ use Yii;
 use frontend\components\HelperController;
 use yii\web\NotFoundHttpException;
 use yii\helpers\ArrayHelper;
+use common\models\Heritage;
 use common\models\Poi;
 use common\models\Route;
 
 class MapController extends HelperController
 {   
-
-	private $_selectTypes = ['poi', 'route'];
 	
-    public function actionIndex()
+	public function actionIndex()
     {
-    	$model = false;
-    	if (isset($_GET['select']) && isset($_GET['id']) && is_numeric($_GET['id']))
-		{
-			if (is_numeric($_GET['id']) && in_array($_GET['select'], $this->_selectTypes))
-				$model = $this->_getInitialModel($_GET['select'], $_GET['id']);
-		}
-		
-    	return $this->render('index', [
-    		'model' => $model
+    	return $this->render('index');
+    }
+	
+	public function actionHeritage($id)
+    {
+    	return $this->render('heritage', [
+    		'model' => $this->_getInitialHeritageModel($id)
+    	]);
+    }
+    
+    public function actionPoi($id)
+    {
+    	return $this->render('poi', [
+    		'model' => $this->_getInitialContentModel('poi', $id)
+    	]);
+    }
+    
+    public function actionRoute($id)
+    {
+    	return $this->render('route', [
+    		'model' => $this->_getInitialContentModel('route', $id)
     	]);
     }
     
@@ -60,14 +71,30 @@ class MapController extends HelperController
 		return null;
 	}
 	
-	private function _getInitialModel($type, $id)
+	private function _getInitialHeritageModel($id)
+	{
+		$model = Heritage::find()
+			->where([
+       			'id' => $id,
+       			'hidden' => false
+       		])
+       		->andWhere(['not', ['geom' => null]])
+        	->one();
+        
+        if ($model !== null)
+            return $model;
+
+        throw new NotFoundHttpException();
+	}
+	
+	private function _getInitialContentModel($type, $id)
 	{
 		$className = '\\common\models\\'. ucfirst($type);
 		$className = new $className();
 		
 		$model = $className::find()
 			->joinWith('content')
-       		->andWhere([
+       		->where([
        			$type .'.id' => $id,
        			'hidden' => false
        		])

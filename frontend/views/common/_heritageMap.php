@@ -4,18 +4,18 @@ use yii\helpers\Url;
 $url = false;
 
 switch ($model->tableName()) {
+	 case 'heritage':
+    	$heritage = $model;
+    	if (!empty($model->geom))
+    		$url = Url::to(['map/heritage', 'id' => $model->id]);
+        break;
     case 'poi':
     	if (!empty($model->geom))
-        	$url = Url::to(['map/index', 'select' => 'poi', 'id' => $model->id]);
+        	$url = Url::to(['map/poi', 'id' => $model->id]);
         break;
     case 'route':
     	if (!empty($model->geom))
-    		$url = Url::to(['map/index', 'select' => 'route', 'id' => $model->id]);
-        break;
-    case 'heritage':
-    	$heritage = $model;
-    	// if (!empty($model->geom))
-    		$url = Url::to(['map/index', 'select' => 'heritage', 'id' => $model->id]);
+    		$url = Url::to(['map/route', 'id' => $model->id]);
         break;
 }
 ?>

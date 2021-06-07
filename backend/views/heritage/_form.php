@@ -2,9 +2,25 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use common\models\HeritageTranslation;
+use backend\components\poiwidget\PoiWidget;
 
 $translations = $model->heritageTranslations;
 $translationModel = new HeritageTranslation();
+
+$nav = [
+	[
+		'slug' => 'info',
+		'title' => 'Info'
+	],
+	[
+		'slug' => 'geo',
+		'title' => 'Geo'
+	],
+	[
+		'slug' => 'visibility',
+		'title' => 'Visibility'
+	]
+];
 
 $viewUrl = false;
 if (!$model->isNewRecord && $model->published)
@@ -77,7 +93,26 @@ if (!$model->isNewRecord && $model->published)
 							<?= $form->field($model, 'map_position_y') ?>
 						</div>
 					</div>
-
+				</div>
+			</div>
+			
+			<div id="geo" class="panel panel-default">
+				<div class="panel-heading">
+					<h3>Geo</h3>
+				</div>
+				<div class="panel-body">
+				
+					<div class="hint-block margin-bottom-sm"><?= Yii::t('app', 'Click on the map to position the heritage') ?>:</div>
+					
+					<?= PoiWidget::widget(['model' => $model, 'attribute' => 'geom', 'value' => $model->geom, 'created' => $model->isNewRecord]) ?>
+				</div>
+			</div>
+			
+			<div id="visibility" class="panel panel-default">
+				<div class="panel-heading">
+					<h3>Visibility</h3>
+				</div>
+				<div class="panel-body">
 					<?= $form->field($model, 'published')->checkbox() ?>
 
 					<?= $form->field($model, 'hidden')->checkbox()->hint(Yii::t("app", "If hidden, the heritage won't be shown in overviews but it will still be available via direct link.")) ?>
@@ -87,8 +122,13 @@ if (!$model->isNewRecord && $model->published)
 			
 		</div>
 		
-		<?= $this->render('/common/_saveColumn', ['form' => $form, 'model' => $model, 'showLangSwitch' => true, 'viewUrl' => $viewUrl]) ?>
-   		
+   		<?= $this->render('/common/_saveColumn', [
+			'form' => $form,
+			'model' => $model,
+			'showLangSwitch' => true,
+			'viewUrl' => $viewUrl,
+			'nav' => $nav
+		]) ?>
    	</div>
 
     <?php ActiveForm::end(); ?>

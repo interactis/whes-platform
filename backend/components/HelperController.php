@@ -54,4 +54,16 @@ class HelperController extends Controller
     	return $model;		
     }
     
+    public function setPointGeom($post, $model)
+    {
+    	$type = ucfirst($model->tableName());
+        $geom = (isset($post[$type]['geom'])) ? $post[$type]['geom'] : false;
+        
+        if ($geom)
+            $model->setGeom(array_map('intval', explode(',', $post[$type]['geom'])));
+        
+        unset($post[$type]['geom']);
+        return $post;
+    }
+    
 }

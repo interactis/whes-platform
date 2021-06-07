@@ -5,7 +5,7 @@ namespace backend\controllers;
 use Yii;
 use common\models\Heritage;
 use backend\models\HeritageSearch;
-use yii\web\Controller;
+use backend\components\HelperController;
 use yii\filters\AccessControl;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -13,7 +13,7 @@ use yii\filters\VerbFilter;
 /**
  * HeritageController implements the CRUD actions for Heritage model.
  */
-class HeritageController extends Controller
+class HeritageController extends HelperController
 {
     /**
      * {@inheritdoc}
@@ -75,6 +75,9 @@ class HeritageController extends Controller
     {
         $model = new Heritage();
         $post = Yii::$app->request->post();
+        
+        // set geom field separately, as the postgis-behaviour doesn't work with $model->save()
+    	$post = $this->setPointGeom($post, $model);
 		
 		if ($model->load($post))
 		{
@@ -109,6 +112,9 @@ class HeritageController extends Controller
     {
         $model = $this->findModel($id);
 		$post = Yii::$app->request->post();
+		
+		// set geom field separately, as the postgis-behaviour doesn't work with $model->save()
+    	$post = $this->setPointGeom($post, $model);
 		
 		if ($model->load($post))
 		{

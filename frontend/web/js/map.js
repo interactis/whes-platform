@@ -82,13 +82,22 @@ $(function() {
             element.data('geodata')['longitude']
         );
     }
+    function addHeritage(element) {
+        map.centerTo(
+            element.data('geodata')['latitude'],
+            element.data('geodata')['longitude']
+        );     
+    }
     function selectPoi(element) {
         addPoi(element);
         map.highlightIcon(element.data('id'));
         map.centerMapToFeature(element.data('id'));
         loadInfoForElement('poi', element.data('id'));
     }
-
+    function selectHeritage(element) {
+    	addHeritage(element);
+        map.centerMapToFeature(element.data('id'));
+    }
     function trailHandle(that) {
         that.bind('click', function(event) {
             map.clearObjects();
@@ -173,8 +182,8 @@ $(function() {
                     selectTrail(element);
                     activateNavigationElement(element);
                 }
-                if (element.length !== 0 && splitted[0] == 'tag') {
-                    selectTag(element);
+                if (element.length !== 0 && splitted[0] == 'heritage') {
+                    selectHeritage(element);
                     activateNavigationElement(element);
                 }
                 if (splitted[0] == 'custom') {

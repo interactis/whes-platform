@@ -481,6 +481,10 @@
                 iconFeature.setStyle(defaultFeatureStyle());
                 vectorSource.addFeature(iconFeature);
             };
+            
+            this.centerTo = function(latitude, longitude) {
+                map.getView().setCenter([latitude, longitude]);
+            };
 
             // public function: highlight icon and center map.
             this.highlightIcon = function(id) {

@@ -99,33 +99,7 @@ class HelperController extends Controller
     		return $this->findContent($heritageId, $featured, false, $limit, $offset);
     	    	
     	$flagGroups = $this->_getFlagGroups($filters);
-    	
-    	// First: groups with OR operator (always in results)
-    	// AND ist not implemented yet for OR groups (implemented later if necessary)
-    	$contentIds = $this->_getFilteredContentIds($flagGroups, 'or', 'or');
-    	
-    	// Second: groups with AND operator and OR filters
-    	$orIds = $this->_getFilteredContentIds($flagGroups, 'and', 'or', true);
-    	
-    	// Third: groups with AND operator and AND filters
-    	$andIds = $this->_getFilteredContentIds($flagGroups, 'and', 'and', true, 'filter');
-    	
-    	$filteredIds = [];
-    	if (!empty($orIds) && !empty($andIds))
-    	{
-    		$filteredIds = $this->_filterIds(2, array_merge($orIds, $andIds));
-    	}
-    	else
-    	{
-    		if (!empty($orIds))
-    			$filteredIds = $orIds;
-    		
-    		if (!empty($andIds))
-    			$filteredIds = $andIds;
-    	}
-    	
-    	$contentIds = array_unique(array_merge($contentIds, $filteredIds));
-    	
+    	$contentIds = $this->_getFilteredContentIds($flagGroups);
     	return $this->findContent($heritageId, $featured, false, $limit, $offset, $contentIds);
     }
     
@@ -142,31 +116,35 @@ class HelperController extends Controller
     		return false;
     }
     
-    private function _getFilteredContentIds($groups, $groupOperator, $flagOperator, $filterIds = false, $countType = 'group')
+    private function _getFilteredContentIds($groups)
     {
     	$contentIds = [];
-    	$filterCount = 0;
-    	if (isset($groups[$groupOperator]))
-    	{
-			foreach ($groups[$groupOperator] as $group)
+    	
+    	//groups AND not implemented yet
+		foreach ($groups['or'] as $group)
+		{
+			$filterCount = 0;
+			$groupContentIds = [];
+			if (isset($group['or']))
 			{
-				if (isset($group[$flagOperator]))
-				{
-					$flagIds = $group[$flagOperator];
-					$contentIds = array_merge($contentIds, $this->_getContentIds($flagIds));
-					$filterCount = $filterCount+1;
-				}
+				$flagIds = $group['or'];
+				$groupContentIds = array_merge($groupContentIds, $this->_getContentIds($flagIds));
+				$filterCount = 1; // all OR filters count as 1
 			}
 			
-			if ($filterIds)
+			if (isset($group['and']))
 			{
-				$count = $filterCount;
-				if ($countType == 'group')
-					$count = count($groups[$groupOperator]);
-				
-				$contentIds = $this->_filterIds($count, $contentIds);
+				$flagIds = $group['and'];
+				$groupContentIds = array_merge($groupContentIds, $this->_getContentIds($flagIds));
+				$filterCount = $filterCount + count($flagIds);
 			}
-    	}
+			
+			if ($filterCount > 1)
+				$groupContentIds = $this->_filterIds($filterCount, $groupContentIds);
+			
+			$contentIds = array_merge($contentIds, $groupContentIds);
+		}
+		
     	return $contentIds;
     }
     

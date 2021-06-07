@@ -15,9 +15,9 @@ class AppAsset extends AssetBundle
         'css/theme.min.css',
     ];
     public $js = [
-    	'js/map.js?v=1.0',
+    	'js/map.js?v=1.1',
     	'js/popper.min.js',
-    	'js/theme.js',
+    	'js/theme.js?v=1.0',
     ];
     public $depends = [
         'yii\web\YiiAsset'

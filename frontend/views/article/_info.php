@@ -9,7 +9,7 @@
 					<?= $model->title ?>
 				</h1>
 			  
-			  	<div class="margin-bottom-lg">
+			  	<div class="margin-bottom-lg ugc">
 			  		
 			  		<div class="excerpt margin-bottom-md">
 						<?= $model->excerpt ?>

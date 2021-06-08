@@ -72,6 +72,21 @@ class SiteController extends HelperController
 		return $this->redirect(Yii::$app->request->referrer);
     }
     
+    public function actionCookie($ok)
+    {
+    	$this->layout = false;
+    	
+		if ($ok)
+		{
+			$cookie = new Cookie([
+    			'name' => 'okCookie',
+    			'value' => true,
+    			'expire' => time()+60*60*24*365,
+			]);
+			Yii::$app->response->cookies->add($cookie);
+		}
+    }
+    
     private function _findPage($id)
     {
         $model = Page::findOne($id);

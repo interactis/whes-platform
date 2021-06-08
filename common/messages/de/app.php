@@ -55,6 +55,8 @@ return [
 	"Highest Point" => "Höchster Punkt",
 	"m a.s.l." => "m ü. M.",
 	
+	"This might also interest you:" => "Das könnte Sie auch interessieren:",
+	
 	"About" => "Impressum",
 	"privacy policy" => "Datenschutzrichtlinien",
 	"Contact" => "Kontakt",

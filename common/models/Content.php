@@ -4,6 +4,7 @@ namespace common\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "content".
@@ -238,4 +239,53 @@ class Content extends \yii\db\ActiveRecord
     		];
 		}
 	}
+	
+	public function getRelatedContent()
+    {
+    	return ContentTag::find()
+    		->joinWith('content')
+			->select([
+        		'content_tag.content_id',
+        		'COUNT(content_tag.id) AS tag_count' // required for orderBy below
+    		])
+    		->where(['in', 'content_tag.tag_id', $this->tagIds])
+    		->andWhere(['!=', 'content_tag.content_id', $this->id])
+    		->andWhere(['published' => true, 'hidden' => false])
+    		->groupBy('content_tag.content_id')
+    		->orderBy(['tag_count' => SORT_DESC])
+    		->limit(9)
+    		->all();
+    }
+    
+    public function getTagIds()
+    {
+    	$tagIds = ArrayHelper::map($this->contentTags, 'tag_id', 'tag_id');
+    	return array_values($tagIds);
+    }
+    
+    /*
+    protected function getRelatedPois($tagIds, $excludePoiIds = [])
+	{
+		$query = TagMaster::find()
+			->select([
+        		'"TagMaster".poiId',
+        		'COUNT("TagMaster".id) AS tagcount' // required for orderBy below
+    		])
+    		->joinWith(['poi', 'poi.poiContents'])
+    		->with(['poi.mediaMasters'])
+    		->where(['in', '"TagMaster".tagId', $tagIds])
+    		->andWhere(['"Poi".status' => 3])
+    		->andWhere(['"PoiContent".languageId' => $this->getOption('languageId', $this->_languageId)])
+    		->andWhere(['not in', '"Poi".id', $excludePoiIds])
+    		->groupBy('"TagMaster".poiId')
+    		->orderBy(['tagcount' => SORT_DESC])
+    		->limit($this->getOption('limit', $this->_limit));
+    	
+    	// don't return current poi
+    	if ($this->model->tableName() == "Poi")
+    		$query = $query->andWhere(['not in', '"TagMaster".poiId', [$this->model->id]]);
+    		
+		return $query->all();
+	}
+	*/
 }

@@ -13,10 +13,14 @@ $this->params['breadcrumbs'][] = $this->title;
 
 	<?= $this->render('/common/_jumbotron', ['models' => $content->media]) ?>
 
-	<?= $this->render('_info.php', [
+	<?= $this->render('_info', [
 		'model' => $model,
 		'content' => $content,
 		'heritage' => $heritage
+	]) ?>
+	
+	<?= $this->render('/common/_relatedContent', [
+		'model' => $content
 	]) ?>
 
 </div>

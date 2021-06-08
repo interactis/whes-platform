@@ -30,7 +30,7 @@ $filterSet = false;
 				<div class="row">
 					<?php foreach($filterGroups as $group): ?>
 						<div class="col col-12 col-lg-4">
-							<?= $this->render('_filterGroup.php', ['model' => $group, 'filters' => $filters]) ?>
+							<?= $this->render('_filterGroup', ['model' => $group, 'filters' => $filters]) ?>
 						</div>
 					<?php endforeach; ?>
 				</div>
@@ -41,7 +41,7 @@ $filterSet = false;
 	
 	<div class="section-wrapper margin-top-lg"> 
          <div id="info" class="container margin-bottom-lg">
-            <?= $this->render('_previews.php', ['models' => $content]) ?>
+            <?= $this->render('_previews', ['models' => $content]) ?>
          </div>
 	</div>
 </div>

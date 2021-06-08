@@ -2,7 +2,10 @@
 use yii\helpers\Url;
 
 $type = $content->typeText;
-$model = $content->{$type};
+
+if (!isset($model))
+	$model = $content->{$type};
+
 $url = Url::toRoute([$type .'/view', 'slug' => $model->slug]);
 $img = $content->previewImage;
 ?>

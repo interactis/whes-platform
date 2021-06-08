@@ -30,4 +30,5 @@ return [
     ],
     
     'geoAdminSearchUrl' => 'https://api3.geo.admin.ch/rest/services/api/SearchServer',
+    'routePoiBuffer' => 200, // 200 m
 ];

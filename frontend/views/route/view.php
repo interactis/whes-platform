@@ -17,6 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
 		'heritage' => $heritage
 	]) ?>
 	
-	<?= $this->render('/common/_relatedContent', ['model' => $content]) ?>
+	
+	<?= $this->render('_routePois', ['model' => $model, 'content' => $content]) ?>
 
 </div>

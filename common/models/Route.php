@@ -206,4 +206,48 @@ class Route extends HelperModel
 	{
 		return number_format($this->{$field}, 0, ',', "'") .' m';
 	}
+	
+	public function getRoutePois()
+    {
+		if (!empty($this->geom))
+		{
+			return Poi::find()
+    			->joinWith('content')
+    			->where('ST_DWithin(geom, \''. $this->geom .'\', '. \Yii::$app->params['routePoiBuffer'] .')')
+    			->andWhere(['published' => true, 'hidden' => false])
+    			->limit(18)
+    			->all();
+    	}
+		
+    }
+    
+    private function _relatedContentQuery($includeHeritage = true, $excludeHeritage = false, $limit = 'default')
+    {
+    	if ($limit == 'default')
+    		$limit = $this->_relatedContentLimit;
+    	
+    	$query = ContentTag::find()
+    		->joinWith('content')
+			->select([
+        		'content_tag.content_id',
+        		'COUNT(content_tag.id) AS tag_count' // required for orderBy below
+    		])
+    		->where(['in', 'content_tag.tag_id', $this->tagIds])
+    		->andWhere(['!=', 'content_tag.content_id', $this->id])
+    		->andWhere(['published' => true, 'hidden' => false]);
+    	
+    	if ($includeHeritage)
+    		$query = $query->andWhere(['heritage_id' => $this->heritage_id]);
+    	
+    	if ($excludeHeritage)
+    		$query = $query->andWhere(['!=', 'heritage_id', $this->heritage_id]);
+    		
+    	$query = $query->groupBy('content_tag.content_id')
+    		->orderBy(['tag_count' => SORT_DESC])
+    		->limit(9)
+    		->all();
+    	
+    	
+    	return $query;
+    }
 }

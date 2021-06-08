@@ -56,6 +56,7 @@ return [
 	"m a.s.l." => "m ü. M.",
 	
 	"This might also interest you:" => "Das könnte Sie auch interessieren:",
+	"Along this route:" => "Entlang dieser Route:",
 	
 	"About" => "Impressum",
 	"privacy policy" => "Datenschutzrichtlinien",

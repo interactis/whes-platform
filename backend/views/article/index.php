@@ -28,7 +28,8 @@ if ($user->isAdmin())
 		[
 			'attribute' => 'heritage',
 			'value' => function ($model) {
-				return $model->content->heritage->short_name;
+				if (isset($model->content->heritage))
+					return $model->content->heritage->short_name;
 			}
 		],
 		[

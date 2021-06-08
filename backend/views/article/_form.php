@@ -114,6 +114,7 @@ $user = Yii::$app->user->identity;
 		<?= $this->render('/common/_saveColumn', [
 			'form' => $form,
 			'model' => $model,
+			'contentModel' => $contentModel,
 			'showLangSwitch' => true,
 			'viewUrl' => $viewUrl,
 			'nav' => $nav

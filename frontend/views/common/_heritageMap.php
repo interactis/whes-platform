@@ -1,6 +1,9 @@
 <?php
 use yii\helpers\Url;
 
+if (!isset($model))
+	return false;
+
 $url = false;
 
 switch ($model->tableName()) {

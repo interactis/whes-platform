@@ -143,7 +143,8 @@ class Route extends HelperModel
     
     public function getLabel()
     {
-    	return $this->getFlagLabel(Yii::t('app', 'Route'));
+    	return $this->getFlagLabel(Yii::t('app', 'Route')) .'<br />
+    		<em>'. $this->content->heritage->short_name .'</em>';
     }
     
     public function getDifficulties($uppercase = false)

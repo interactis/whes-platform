@@ -23,8 +23,7 @@ $img = $content->previewImage;
 			<div class="card-body small">
 		
 				<div class="label margin-bottom-sm">
-					<?= $model->label ?><br />
-					<em><?= $content->heritage->short_name ?></em>
+					<?= $model->label ?>
 				</div>
 		
 				<div class="h3 card-title">

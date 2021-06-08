@@ -62,7 +62,15 @@ class Content extends \yii\db\ActiveRecord
         return [
             [['heritage_id', 'type', 'priority', 'created_at', 'updated_at'], 'default', 'value' => null],
             [['heritage_id', 'type', 'priority', 'created_at', 'updated_at'], 'integer'],
-            [['heritage_id'], 'required'],
+    
+            [['heritage_id'], 'required', 'enableClientValidation' => false, 'when' => function($model) {
+            	if ($model->type == $this::TYPE_ARTICLE) {
+            		return false;
+            	}
+            	else
+            		return true;
+            }],
+            
             [['published', 'featured', 'hidden'], 'boolean'],
             [['heritage_id'], 'exist', 'skipOnError' => true, 'targetClass' => Heritage::className(), 'targetAttribute' => ['heritage_id' => 'id']],
         ];

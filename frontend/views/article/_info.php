@@ -3,8 +3,7 @@
 		<div class="row">
 			<div class="col-lg-7">
 		   		<div class="label">
-		   			<?= $model->label ?><br />
-		   			<em><?= $heritage->short_name ?></em>
+		   			<?= $model->label ?>
 		   		</div>
 				<h1 class="margin-bottom-md">
 					<?= $model->title ?>

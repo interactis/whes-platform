@@ -16,5 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
 		'content' => $content,
 		'heritage' => $heritage
 	]) ?>
+	
+	<?= $this->render('/common/_relatedContent', ['model' => $content]) ?>
 
 </div>

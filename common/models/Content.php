@@ -37,6 +37,8 @@ class Content extends \yii\db\ActiveRecord
     const TYPE_ROUTE = 2;
     const TYPE_ARTICLE = 3;
 	
+	private $_relatedContentLimit = 9;
+	
     /**
      * {@inheritdoc}
      */
@@ -242,7 +244,24 @@ class Content extends \yii\db\ActiveRecord
 	
 	public function getRelatedContent()
     {
-    	return ContentTag::find()
+    	$heritageContent = $this->_relatedContentQuery();
+    	
+    	$otherContent = [];
+    	if ($count = count($heritageContent) < $this->_relatedContentLimit)
+    	{
+    		$left = $this->_relatedContentLimit - $count;
+    		$otherContent = $this->_relatedContentQuery(false, $this->heritage_id, $left);
+    	}
+    	
+    	return array_merge($heritageContent, $otherContent);
+    }
+    
+    private function _relatedContentQuery($includeHeritage = true, $excludeHeritage = false, $limit = 'default')
+    {
+    	if ($limit == 'default')
+    		$limit = $this->_relatedContentLimit;
+    	
+    	$query = ContentTag::find()
     		->joinWith('content')
 			->select([
         		'content_tag.content_id',
@@ -250,11 +269,21 @@ class Content extends \yii\db\ActiveRecord
     		])
     		->where(['in', 'content_tag.tag_id', $this->tagIds])
     		->andWhere(['!=', 'content_tag.content_id', $this->id])
-    		->andWhere(['published' => true, 'hidden' => false])
-    		->groupBy('content_tag.content_id')
+    		->andWhere(['published' => true, 'hidden' => false]);
+    	
+    	if ($includeHeritage)
+    		$query = $query->andWhere(['heritage_id' => $this->heritage_id]);
+    	
+    	if ($excludeHeritage)
+    		$query = $query->andWhere(['!=', 'heritage_id', $this->heritage_id]);
+    		
+    	$query = $query->groupBy('content_tag.content_id')
     		->orderBy(['tag_count' => SORT_DESC])
     		->limit(9)
     		->all();
+    	
+    	
+    	return $query;
     }
     
     public function getTagIds()

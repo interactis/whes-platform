@@ -7,7 +7,7 @@
 					<?= $model->name ?>
 				</h1>
 				
-				<div class="margin-bottom-lg">
+				<div class="margin-bottom-lg ugc">
 					<div class="margin-bottom-md">
 						<?= $model->description ?>
 					</div>

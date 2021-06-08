@@ -37,6 +37,7 @@
 	
 	@include media-breakpoint-up(lg) {
 		padding-bottom: 0;
+		height: 90px;
 	
 		.navbar-brand {
 			@include centerer;

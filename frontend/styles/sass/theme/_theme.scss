@@ -7,6 +7,14 @@ body {
 	flex-direction:column; 
 }
 
+.page {
+	margin-top: 56px;
+	
+	@include media-breakpoint-up(lg) {
+		margin-top: 90px;
+	}
+}
+
 .container,
 .container-fluid {
 	@include media-breakpoint-down(sm) {

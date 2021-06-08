@@ -10639,6 +10639,12 @@ body {
       -ms-flex-direction: column;
           flex-direction: column; }
 
+.page {
+  margin-top: 56px; }
+  @media (min-width: 992px) {
+    .page {
+      margin-top: 90px; } }
+
 @media (max-width: 767.98px) {
   .container,
   .container-fluid,
@@ -10794,7 +10800,8 @@ body {
     font-size: 1rem; }
   @media (min-width: 992px) {
     .navbar {
-      padding-bottom: 0; }
+      padding-bottom: 0;
+      height: 90px; }
       .navbar .navbar-brand {
         position: absolute;
         top: 50%;

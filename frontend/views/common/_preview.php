@@ -7,12 +7,7 @@ $url = Url::toRoute([$type .'/view', 'slug' => $model->slug]);
 $img = $content->previewImage;
 ?>
 
-<?php if (isset($fullWidthRow) AND $fullWidthRow == false): ?>
-	<div class="col-md-6 px-md-4">
-<?php else: ?>
-	<div class="col-md-6 col-lg-4 px-md-4 px-lg-3 px-xl-4">
-<?php endif; ?>
-
+<div class="col-md-6 col-lg-4"> 
 	<div class="card preview-card">	
 		<div class="card-header img-header">
 			<a class="img-link" href="<?= $url ?>">
@@ -39,5 +34,4 @@ $img = $content->previewImage;
 			</a>
 		</div>
 	</div>
-	
 </div>

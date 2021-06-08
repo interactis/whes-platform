@@ -22,6 +22,7 @@ AppAsset::register($this);
     <?php $this->registerCsrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
+    <?= $this->render('_tracking') ?>
 </head>
 <body>
 <?php $this->beginBody() ?>

@@ -291,30 +291,4 @@ class Content extends \yii\db\ActiveRecord
     	$tagIds = ArrayHelper::map($this->contentTags, 'tag_id', 'tag_id');
     	return array_values($tagIds);
     }
-    
-    /*
-    protected function getRelatedPois($tagIds, $excludePoiIds = [])
-	{
-		$query = TagMaster::find()
-			->select([
-        		'"TagMaster".poiId',
-        		'COUNT("TagMaster".id) AS tagcount' // required for orderBy below
-    		])
-    		->joinWith(['poi', 'poi.poiContents'])
-    		->with(['poi.mediaMasters'])
-    		->where(['in', '"TagMaster".tagId', $tagIds])
-    		->andWhere(['"Poi".status' => 3])
-    		->andWhere(['"PoiContent".languageId' => $this->getOption('languageId', $this->_languageId)])
-    		->andWhere(['not in', '"Poi".id', $excludePoiIds])
-    		->groupBy('"TagMaster".poiId')
-    		->orderBy(['tagcount' => SORT_DESC])
-    		->limit($this->getOption('limit', $this->_limit));
-    	
-    	// don't return current poi
-    	if ($this->model->tableName() == "Poi")
-    		$query = $query->andWhere(['not in', '"TagMaster".poiId', [$this->model->id]]);
-    		
-		return $query->all();
-	}
-	*/
 }

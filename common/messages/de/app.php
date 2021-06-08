@@ -56,10 +56,10 @@ return [
 	"m a.s.l." => "m ü. M.",
 	
 	"About" => "Impressum",
-	"Privacy policy" => "Datenschutz",
+	"privacy policy" => "Datenschutzrichtlinien",
 	"Contact" => "Kontakt",
 	"Follow us on {socialMedia}" => "Folgen Sie uns auf {socialMedia}",
-	
+	"This website uses cookies to provide the best possible service. By continuing to browse the site you agree to our {link}." => "Diese Webseite verwendet Cookies, um den bestmöglichen Service zu gewährleisten. Wenn Sie auf der Seite weitersurfen, stimmt Sie unseren {link} zu.",
 	"Oops, this page doesn't exist." => "Ups, diese Seite existiert nicht.",
 	"To Homepage" => "Zur Homepage",
 	

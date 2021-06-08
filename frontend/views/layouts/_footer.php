@@ -46,7 +46,7 @@ $half = ceil($count/2);
 			</div>
 			<div class="col-md-6 small">
 				<?= Html::a(Yii::t('app', 'About'), ['site/about']) ?> &middot; 
-				<?= Html::a(Yii::t('app', 'Privacy policy'), ['site/privacy-policy']) ?> &middot;
+				<?= Html::a(ucfirst(Yii::t('app', 'privacy policy')), ['site/privacy-policy']) ?> &middot;
 				<?= Html::a(Yii::t('app', 'Contact'), ['site/contact']) ?>
 			</div>
 		</div>

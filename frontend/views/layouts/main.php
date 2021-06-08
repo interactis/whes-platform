@@ -26,7 +26,7 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 
-<?= $this->render('_nav.php') ?>
+<?= $this->render('_nav') ?>
 
 <div class="page">
 	<?= $content ?>
@@ -35,8 +35,10 @@ AppAsset::register($this);
 
 <?php
 if ($this->context->id != 'map')
-	echo $this->render('_footer.php');
+	echo $this->render('_footer');
 ?>
+
+<?= $this->render('_cookieMessage') ?>
 
 <?php $this->endBody() ?>
 </body>

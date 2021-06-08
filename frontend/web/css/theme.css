@@ -10768,7 +10768,8 @@ body {
 
 .navbar {
   z-index: 1030;
-  background: white !important; }
+  background: white !important;
+  opacity: 0.95; }
   .navbar .navbar-brand {
     position: absolute;
     top: 0;
@@ -11144,12 +11145,27 @@ body {
         bottom: 0 !important;
         width: 100%; }
   .preview-card .card-body {
+    position: relative;
     background: none;
     font-size: 1em;
     margin: 24px 0;
     padding: 0; }
     .preview-card .card-body p {
       font-weight: 300; }
+    .preview-card .card-body .actions {
+      position: absolute;
+      top: -54px;
+      right: 18px; }
+      .preview-card .card-body .actions .bookmark-btn {
+        border-radius: 50%;
+        -webkit-box-shadow: 2px 2px 3px 4px rgba(0, 0, 0, 0.2);
+                box-shadow: 2px 2px 3px 4px rgba(0, 0, 0, 0.2); }
+        .preview-card .card-body .actions .bookmark-btn svg {
+          width: 52px; }
+          .preview-card .card-body .actions .bookmark-btn svg .circle {
+            stroke: #fff; }
+        .preview-card .card-body .actions .bookmark-btn.active svg .circle {
+          stroke: #A60100; }
   .preview-card .card-text {
     margin-bottom: 24px !important; }
   @media (min-width: 576px) {
@@ -11163,7 +11179,7 @@ body {
 @media (min-width: 992px) {
   .trip-card {
     position: sticky;
-    top: 30px; } }
+    top: 120px; } }
 
 .breadcrumb {
   padding: 0;

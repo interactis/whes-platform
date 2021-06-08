@@ -19,6 +19,14 @@ $img = $content->previewImage;
 		</div>
 		<div class="card-body small">
 			
+			<div class="actions">
+				<div class="action">
+					<a href="#" class="bookmark-btn active" slug="<?= $model->slug ?>" title="<?= Yii::t('app', 'Bookmark') ?>">
+						<?= $this->render('/common/_rucksackButton') ?>
+					</a>
+				</div>
+			</div>
+			
 			<div class="label margin-bottom-sm">
 				<?= $model->label ?>
 			</div>

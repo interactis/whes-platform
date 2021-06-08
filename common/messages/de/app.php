@@ -58,6 +58,8 @@ return [
 	"This might also interest you:" => "Das könnte Sie auch interessieren:",
 	"Along this route:" => "Entlang dieser Route:",
 	
+	"Bookmark" => "Merken",
+	
 	"About" => "Impressum",
 	"privacy policy" => "Datenschutzrichtlinien",
 	"Contact" => "Kontakt",

@@ -1,6 +1,7 @@
 .navbar {
 	z-index: $zindex-fixed;
 	background: white !important;
+	opacity: 0.95;
 	.navbar-brand {
 		@include centerer-horizontal;
 		width: 190px;

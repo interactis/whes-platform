@@ -57,9 +57,13 @@ if (!isset($showCaption))
 	</div>
 	
 	<?php if (isset($content)): ?>
-		<div class="container">
-			<div class="action">
-				<?= $this->render('_rucksackButton', ['model' => $content, 'largeBtn' => true]) ?>
+		<div class="container action-container">
+			<div class="row">
+				<div class="col-lg-4 offset-lg-8">
+					<div class="action">
+						<?= $this->render('_rucksackButton', ['model' => $content, 'largeBtn' => true]) ?>
+					</div>
+				</div>
 			</div>
 		</div>
 	<?php endif; ?>

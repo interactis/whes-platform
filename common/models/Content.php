@@ -293,23 +293,9 @@ class Content extends \yii\db\ActiveRecord
     	return array_values($tagIds);
     }
     
-    public function getRucksackIds()
-    {
-    	if (!$this->_rucksackIds)
-    	{
-    		$cookies = Yii::$app->request->cookies;
-    		$cookie = $cookies->get('rucksack');
-    		
-    		if (!empty($cookie->value))
-    			$this->_rucksackIds = explode(",", $cookie);
-    	}
-    	
-    	return $this->_rucksackIds;
-    }
-    
     public function getInRucksack()
     {
-    	$rucksackIds = $this->rucksackIds;
+    	$rucksackIds = Yii::$app->helpers->getRucksackIds();
     	
     	if (in_array($this->id, $rucksackIds))
     	{

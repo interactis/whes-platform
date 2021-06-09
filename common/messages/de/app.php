@@ -58,6 +58,7 @@ return [
 	"This might also interest you:" => "Das könnte Sie auch interessieren:",
 	"Along this route:" => "Entlang dieser Route:",
 	
+	"Rucksack" => "Rucksack",
 	"Bookmark" => "Merken",
 	
 	"About" => "Impressum",

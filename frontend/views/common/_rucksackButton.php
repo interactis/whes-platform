@@ -42,7 +42,6 @@ $js = "
 
 $this->registerJs($js, $this::POS_READY);
 
-
 $class = "small";
 $showActionText = false;
 if (isset($largeBtn) && $largeBtn)

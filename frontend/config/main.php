@@ -67,6 +67,7 @@ return [
     		'rules' => [
     			'search' =>'search/index',
     			'map' =>'map/index',
+    			'rucksack' =>'rucksack/index',
     			
     			'<slug:[\w\-]+>' =>'heritage/view',
     			'article/<slug:[\w\-]+>' =>'article/view',

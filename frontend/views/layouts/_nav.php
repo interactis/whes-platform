@@ -79,7 +79,7 @@ $langLinks = [
 				</div>
 			</li>
 			<li class="nav-item <?= (($this->context->id == 'rucksack') ? 'active' : '') ?>">
-				<a class="nav-link" href="#">
+				<a class="nav-link" href="/rucksack">
 					<?= $this->render('_svg/rucksack.php') ?>
 					<?= Yii::t('app', 'My Collection') ?>
 				</a>

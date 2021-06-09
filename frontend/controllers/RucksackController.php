@@ -4,26 +4,20 @@ namespace frontend\controllers;
 use Yii;
 use frontend\components\HelperController;
 use common\models\Content;
-use yii\filters\VerbFilter;
 use yii\web\NotFoundHttpException;
 use \yii\web\Cookie;
 
 class RucksackController extends HelperController
 {   
 
-	/*
-    public function behaviors()
+	public function actionIndex()
     {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'toggle' => ['post'],
-                ],
-            ],
-        ];
+    	$ids = Yii::$app->helpers->getRucksackIds();
+    	
+    	return $this->render('index', [
+    		'models' => $this->findContent(false, false, false, 'default', 0, $ids)
+    	]);	
     }
-	*/
 	
     public function actionToggle($id)
     {
@@ -36,7 +30,7 @@ class RucksackController extends HelperController
     private function _setRucksackCookie($model)
     {
     	$id = $model->id;
-    	$ids = $model->rucksackIds;
+    	$ids = Yii::$app->helpers->getRucksackIds();
   		
     	if (($key = array_search($id, $ids)) !== false)
     	{

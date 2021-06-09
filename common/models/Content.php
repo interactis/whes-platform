@@ -38,6 +38,7 @@ class Content extends \yii\db\ActiveRecord
     const TYPE_ARTICLE = 3;
 	
 	private $_relatedContentLimit = 9;
+	private $_rucksackIds = [];
 	
     /**
      * {@inheritdoc}
@@ -290,5 +291,31 @@ class Content extends \yii\db\ActiveRecord
     {
     	$tagIds = ArrayHelper::map($this->contentTags, 'tag_id', 'tag_id');
     	return array_values($tagIds);
+    }
+    
+    public function getRucksackIds()
+    {
+    	if (!$this->_rucksackIds)
+    	{
+    		$cookies = Yii::$app->request->cookies;
+    		$cookie = $cookies->get('rucksack');
+    		
+    		if (!empty($cookie->value))
+    			$this->_rucksackIds = explode(",", $cookie);
+    	}
+    	
+    	return $this->_rucksackIds;
+    }
+    
+    public function getInRucksack()
+    {
+    	$rucksackIds = $this->rucksackIds;
+    	
+    	if (in_array($this->id, $rucksackIds))
+    	{
+    		return true;
+    	}
+    	else
+    		return false;
     }
 }

@@ -248,7 +248,12 @@ class Content extends \yii\db\ActiveRecord
     	$heritageContent = $this->_relatedContentQuery();
     	
     	$otherContent = [];
-    	
+    	$count = count($heritageContent);
+    	if ($count < $this->_relatedContentLimit)
+    	{
+    		$left = $this->_relatedContentLimit - $count;
+    		$otherContent = $this->_relatedContentQuery(false, $this->heritage_id, $left);
+    	}
     	
     	return array_merge($heritageContent, $otherContent);
     }
@@ -276,7 +281,7 @@ class Content extends \yii\db\ActiveRecord
     		
     	$query = $query->groupBy('content_tag.content_id')
     		->orderBy(['tag_count' => SORT_DESC])
-    		->limit(9)
+    		->limit($limit)
     		->all();
     	
     	

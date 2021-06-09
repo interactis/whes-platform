@@ -1,31 +1,4 @@
 <?php
-/*
-$js = "
-	$(document).on('click', '.rucksack-btn', function(e) {
-		e.preventDefault();
-		var btn = $(this);
-		var contentId = btn.attr('content-id');
-	
-		if (btn.hasClass('active') === true) {
-			btn.removeClass('active');
-		}
-		else {
-			btn.addClass('active');
-		}
-		
-		$.ajax({
-			type: 'GET',
-			url: '/rucksack/toggle',
-			data: {id: contentId},
-			success: function(data) {
-			}
-		});
-	});
-";
-
-$this->registerJs($js, $this::POS_READY);
-*/
-
 $class = "small";
 $showActionText = false;
 if (isset($largeBtn) && $largeBtn)

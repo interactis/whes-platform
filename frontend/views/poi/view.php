@@ -11,7 +11,10 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="poi-view">
 
-	<?= $this->render('/common/_jumbotron', ['models' => $content->media]) ?>
+	<?= $this->render('/common/_jumbotron', [
+		'models' => $content->media,
+		'content' => $content
+	]) ?>
 
 	<?= $this->render('_info', [
 		'model' => $model,

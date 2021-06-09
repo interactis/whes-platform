@@ -11,8 +11,11 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="article-view">
 
-	<?= Yii::$app->controller->renderPartial('//common/_jumbotron', ['models' => $content->media]) ?>
-
+	<?= $this->render('/common/_jumbotron', [
+		'models' => $content->media,
+		'content' => $content
+	]) ?>
+	
 	<?= $this->render('_info.php', [
 		'model' => $model,
 		'content' => $content,

@@ -55,6 +55,15 @@ if (!isset($showCaption))
 	<div class="footer">
 		<div class="transition"></div>
 	</div>
+	
+	<?php if (isset($content)): ?>
+		<div class="container">
+			<div class="action">
+				<?= $this->render('_rucksackButton', ['model' => $content, 'largeBtn' => true]) ?>
+			</div>
+		</div>
+	<?php endif; ?>
+	
 </div>
 
 <div class="container">

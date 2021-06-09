@@ -88,24 +88,7 @@
 			position: absolute;
 			top: -54px;
 			right: 18px;
-			
-			.bookmark-btn {
-				svg {
-					width: 52px;
-					.circle {
-						stroke: #fff;
-					}
-				}
-				&.active {
-					svg .circle {
-						stroke: $primary;
-					}
-				}
-				border-radius: 50%;
-				box-shadow: 2px 2px 3px 4px rgba(0, 0, 0, 0.2);
-			}
 		}
-	
 	}
 	
 	.card-text {

@@ -9,7 +9,10 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="route-view">
 
-	<?= $this->render('/common/_jumbotron', ['models' => $content->media]) ?>
+	<?= $this->render('/common/_jumbotron', [
+		'models' => $content->media,
+		'content' => $content
+	]) ?>
 
 	<?= $this->render('_info.php', [
 		'model' => $model,

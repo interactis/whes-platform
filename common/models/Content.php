@@ -37,7 +37,7 @@ class Content extends \yii\db\ActiveRecord
     const TYPE_ROUTE = 2;
     const TYPE_ARTICLE = 3;
 	
-	private $_relatedContentLimit = 9;
+	private $_relatedContentLimit = 6;
 	private $_rucksackIds = [];
 	
     /**

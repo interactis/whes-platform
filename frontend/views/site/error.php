@@ -15,15 +15,15 @@ $this->title = Yii::t('app', "Oops, this page doesn't exist.");
 			 <header class="container">
 				<div class="row">
 				   	<div class="col-md-6">
-						<h2 class="margin-bottom">
+						<h1 class="margin-bottom-md">
 							<?= $this->title ?>
-						</h2>
+						</h1>
 				   	</div>
 				</div>
 			 </header>
 			 <div class="container">
 				<a href="/" class="btn btn-primary">
-					<span><?= Yii::t('app', 'To Homepage') ?></span>
+					<span><?= Yii::t('app', 'To the homepage') ?></span>
 				</a>
 			</div>
 		</div>

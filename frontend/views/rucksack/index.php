@@ -1,27 +1,28 @@
 <?php
 $this->title = Yii::t('app', 'Rucksack');
 $this->params['breadcrumbs'][] = $this->title;
+
+$count = count($models);
 ?>
 
-<div class="rucksack-view container margin-top-lg">
-	<div class="h1 margin-bottom-lg">
-		<?php
-		$count = count($models);
-		if ($count < 1)
-		{
-			echo Yii::t('app', 'No results found.');
-			$showButtons = true;
-		}
-		else
-		{
-			echo Yii::t('app', 'My Collection');
-		}
-		?>
+<div class="rucksack-view container margin-top-lg margin-bottom-lg">
+	
+	<div class="margin-bottom-md">
+		<?php if ($count == 0): ?>
+			<div class="row">
+				<div class="col-md-10 col-lg-7 col-xl-6">
+					<div class="h1 margin-bottom-md">
+						<?= Yii::t('app', 'Your collection is still empty.') ?>
+					</div>
+					<p class="lead"><?= Yii::t('app', 'Click on the rucksack icon to collect what you like and get personalized trip recommendations here.') ?></p>
+				</div>
+			</div>
+		<?php else: ?>
+			<div class="h1 margin-bottom-lg">
+				<?= Yii::t('app', 'My Collection') ?>
+			</div>
+		<?php endif; ?>
 	</div>
 	
-	<?php if (!empty($q)): ?>
-		<p class="lead margin-bottom-lg"><?= Yii::t('app', 'Search term') ?>: <i><?= $q ?></i></p>
-	<?php endif; ?>
-	
-	<?= $this->render('_previews.php', ['models' => $models]) ?>
+	<?= $this->render('/common/_previews', ['models' => $models, 'isFilter' => false]) ?>
 </div>

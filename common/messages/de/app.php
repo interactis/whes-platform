@@ -60,6 +60,8 @@ return [
 	
 	"Rucksack" => "Rucksack",
 	"Bookmark" => "Merken",
+	"Your collection is still empty." => "Ihre Sammlung ist noch leer.",
+	"Click on the rucksack icon to collect what you like and get personalized trip recommendations here." => "Klicken Sie auf das Rucksack-Symbol, um zu sammeln, was Ihnen gefällt und erhalten Sie hier persönliche Ausflugsempfehlungen.",
 	
 	"About" => "Impressum",
 	"privacy policy" => "Datenschutzrichtlinien",
@@ -67,7 +69,7 @@ return [
 	"Follow us on {socialMedia}" => "Folgen Sie uns auf {socialMedia}",
 	"This website uses cookies to provide the best possible service. By continuing to browse the site you agree to our {link}." => "Diese Webseite verwendet Cookies, um den bestmöglichen Service zu gewährleisten. Wenn Sie auf der Seite weitersurfen, stimmt Sie unseren {link} zu.",
 	"Oops, this page doesn't exist." => "Ups, diese Seite existiert nicht.",
-	"To Homepage" => "Zur Homepage",
+	"To the homepage" => "Zur Homepage",
 	
 	"https://www.sbb.ch/en/buying/pages/fahrplan/fahrplan.xhtml" => "https://www.sbb.ch/de/kaufen/pages/fahrplan/fahrplan.xhtml",
 	

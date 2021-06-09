@@ -10,19 +10,20 @@ use \yii\web\Cookie;
 
 class RucksackController extends HelperController
 {   
-	
+
+	/*
     public function behaviors()
     {
         return [
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'toggle' => ['GET'],
+                    'toggle' => ['post'],
                 ],
             ],
         ];
     }
-	
+	*/
 	
     public function actionToggle($id)
     {

@@ -247,6 +247,9 @@ class Content extends \yii\db\ActiveRecord
     {
     	$heritageContent = $this->_relatedContentQuery();
     	
+    	return $heritageContent;
+    	
+    	/*
     	$otherContent = [];
     	$count = count($heritageContent);
     	if ($count < $this->_relatedContentLimit)
@@ -256,6 +259,7 @@ class Content extends \yii\db\ActiveRecord
     	}
     	
     	return array_merge($heritageContent, $otherContent);
+    	*/
     }
     
     private function _relatedContentQuery($includeHeritage = true, $excludeHeritage = false, $limit = 'default')

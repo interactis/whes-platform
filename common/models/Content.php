@@ -248,11 +248,7 @@ class Content extends \yii\db\ActiveRecord
     	$heritageContent = $this->_relatedContentQuery();
     	
     	$otherContent = [];
-    	if ($count = count($heritageContent) < $this->_relatedContentLimit)
-    	{
-    		$left = $this->_relatedContentLimit - $count;
-    		$otherContent = $this->_relatedContentQuery(false, $this->heritage_id, $left);
-    	}
+    	
     	
     	return array_merge($heritageContent, $otherContent);
     }

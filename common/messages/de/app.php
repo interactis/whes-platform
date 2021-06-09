@@ -62,6 +62,7 @@ return [
 	"Bookmark" => "Merken",
 	"Your collection is still empty." => "Ihre Sammlung ist noch leer.",
 	"Click on the rucksack icon to collect what you like and get personalized trip recommendations here." => "Klicken Sie auf das Rucksack-Symbol, um zu sammeln, was Ihnen gefällt und erhalten Sie hier persönliche Ausflugsempfehlungen.",
+	"Collect" => "Sammeln",
 	
 	"About" => "Impressum",
 	"privacy policy" => "Datenschutzrichtlinien",

@@ -47,7 +47,7 @@ $langLinks = [
 					<?= $this->render('_svg/heritage.php') ?>
 					<?= Yii::t('app', 'Heritages') ?>
 				</a>
-				<div class="dropdown-menu" aria-labelledby="heritagesDropdown">
+				<div class="dropdown-menu heritage-dropdown" aria-labelledby="heritagesDropdown">
 					<?php
 					foreach(Heritage::getActiveHeritages() as $heritage)
 					{
@@ -85,6 +85,8 @@ $langLinks = [
 				</a>
 			</li>
 		</ul>
+		
+		<div class="spacer"></div>
 		
 	</div>
 </nav>

@@ -11473,12 +11473,11 @@ body {
     font-size: 1rem; }
 
 .overview-map-container {
-  position: relative;
-  background: red; }
+  position: relative; }
   @media (max-width: 767.98px) {
     .overview-map-container {
-      padding-left: 26px;
-      padding-right: 46px; } }
+      padding-left: 27px;
+      padding-right: 48px; } }
 
 .overview-map,
 .heritage-map {

@@ -46,6 +46,10 @@
 		font-size: 1rem;
 	}
 	
+	.dropdown-toggle:focus {
+		outline: none !important;
+	}
+	
 	.spacer {
 		display:none;
 	}
@@ -116,6 +120,7 @@
 		
 		.spacer {
 			display: block;
+			margin-bottom: 120px;
 		}
 		
 		a {

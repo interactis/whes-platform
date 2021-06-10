@@ -2,7 +2,8 @@
 	position: relative;
 	
 	@include media-breakpoint-down(sm) {
-		padding-right: 42px;
+		padding-left: 6px;
+		padding-right: 48px;
 	}
 }
 

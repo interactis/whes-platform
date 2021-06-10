@@ -10893,11 +10893,13 @@ body {
         display: none; }
       .navbar .navbar-nav-left {
         padding-top: 54px; }
+      .navbar .dropdown-menu a {
+        font-size: 1rem !important; }
       .navbar .dropdown-menu:not(.language-mobile-dropdown-menu) {
         background: none;
         border: none; }
         .navbar .dropdown-menu:not(.language-mobile-dropdown-menu) .dropdown-item {
-          padding: 6px 0;
+          padding: 3px 0;
           color: #707070 !important; }
           .navbar .dropdown-menu:not(.language-mobile-dropdown-menu) .dropdown-item:hover {
             background: none; }

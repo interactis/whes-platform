@@ -136,11 +136,17 @@
 			padding-top: 54px;
 		}
 		
+		.dropdown-menu {
+			a {
+				font-size: 1rem !important;
+			}
+		}
+		
 		.dropdown-menu:not(.language-mobile-dropdown-menu) {
 			background: none;
 			border: none;
 			.dropdown-item {
-				padding: 6px 0;
+				padding: 3px 0;
 				color: $gray !important;
 				&:hover {
 					background: none;

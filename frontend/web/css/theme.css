@@ -11473,7 +11473,9 @@ body {
     font-size: 1rem; }
 
 .overview-map-container {
-  position: relative; }
+  position: relative;
+  padding-left: 30px;
+  padding-right: 30px; }
 
 .overview-map,
 .heritage-map {

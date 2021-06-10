@@ -4,7 +4,8 @@
 	opacity: 0.95;
 	.navbar-brand {
 		@include centerer-horizontal;
-		width: 190px;
+		width: 184px;
+		margin-top: -3px;
 		.logo {
 			width: 100%;
 		}
@@ -60,6 +61,7 @@
 	
 		.navbar-brand {
 			@include centerer;
+			margin-top: 0;
 			width: 230px;
 		}
 	
@@ -120,7 +122,7 @@
 		
 		.spacer {
 			display: block;
-			margin-bottom: 120px;
+			margin-bottom: 90px;
 		}
 		
 		a {

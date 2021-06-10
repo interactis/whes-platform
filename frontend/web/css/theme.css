@@ -10814,7 +10814,8 @@ body {
     left: 50%;
     -webkit-transform: translate(-50%, 0);
             transform: translate(-50%, 0);
-    width: 190px; }
+    width: 184px;
+    margin-top: -3px; }
     .navbar .navbar-brand .logo {
       width: 100%; }
   .navbar .navbar-toggler {
@@ -10850,6 +10851,7 @@ body {
         left: 50%;
         -webkit-transform: translate(-50%, -50%);
                 transform: translate(-50%, -50%);
+        margin-top: 0;
         width: 230px; }
       .navbar .navbar-nav-left {
         padding-top: 0; }
@@ -10885,7 +10887,7 @@ body {
       -webkit-overflow-scrolling: touch; }
       .navbar .spacer {
         display: block;
-        margin-bottom: 120px; }
+        margin-bottom: 90px; }
       .navbar a {
         font-size: 1.1875rem;
         font-weight: 300; }

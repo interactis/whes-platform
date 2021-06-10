@@ -11473,9 +11473,10 @@ body {
     font-size: 1rem; }
 
 .overview-map-container {
-  position: relative;
-  padding-left: 30px;
-  padding-right: 30px; }
+  position: relative; }
+  @media (max-width: 767.98px) {
+    .overview-map-container {
+      padding-right: 42px; } }
 
 .overview-map,
 .heritage-map {

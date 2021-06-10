@@ -1,7 +1,9 @@
 .overview-map-container {
 	position: relative;
-	padding-left: 30px;
-	padding-right: 30px;
+	
+	@include media-breakpoint-down(sm) {
+		padding-right: 42px;
+	}
 }
 
 .overview-map,

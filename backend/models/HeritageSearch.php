@@ -2,6 +2,7 @@
 
 namespace backend\models;
 
+use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use common\models\Heritage;
@@ -81,6 +82,7 @@ class HeritageSearch extends Heritage
             'hidden' => $this->hidden,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
+            'heritage_translation.language_id' => Yii::$app->params['preferredLanguageId']
         ]);
 
         $query->andFilterWhere(['ilike', 'heritage_translation.name', $this->name]);

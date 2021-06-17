@@ -2,6 +2,7 @@
 
 namespace backend\models;
 
+use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use common\models\Tag;
@@ -78,6 +79,7 @@ class TagSearch extends Tag
             'active' => $this->active,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
+            'tag_translation.language_id' => Yii::$app->params['preferredLanguageId']
         ]);
         
         $query->andFilterWhere(['ilike', 'tag_translation.title', $this->title]);

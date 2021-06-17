@@ -2,6 +2,7 @@
 
 namespace backend\models;
 
+use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use common\models\Flag;
@@ -81,6 +82,7 @@ class FlagSearch extends Flag
             'order' => $this->order,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
+            'flag_translation.language_id' => Yii::$app->params['preferredLanguageId']
         ]);
         
         $query->andFilterWhere(['ilike', 'flag_translation.title', $this->title]);

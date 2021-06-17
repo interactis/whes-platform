@@ -54,7 +54,7 @@ class PoiSearch extends Poi
         $query->leftJoin('content', 'content.id = poi.content_id');
         $query->leftJoin('heritage', 'heritage.id = content.heritage_id');
         $query->leftJoin('heritage_translation', 'heritage_translation.heritage_id = heritage.id');
-        $query->groupBy(['poi.id', 'content.id', 'poi_translation.title', 'content.priority', 'content.hidden', 'content.featured', 'content.published', 'heritage_translation.short_name']);
+        $query->groupBy(['poi.id', 'poi_translation.title', 'content.priority', 'content.hidden', 'content.featured', 'content.published', 'heritage_translation.short_name']);
 
         // add conditions that should always apply here
         
@@ -124,6 +124,8 @@ class PoiSearch extends Poi
             'content.published' => $this->published,
             'content.featured' => $this->featured,
             'content.hidden' => $this->hidden,
+            'poi_translation.language_id' => Yii::$app->params['preferredLanguageId'],
+            'heritage_translation.language_id' => Yii::$app->params['preferredLanguageId']
         ]);
         
         $query->andFilterWhere(['ilike', 'poi_translation.title', $this->title]);

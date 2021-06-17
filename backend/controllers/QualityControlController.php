@@ -46,10 +46,21 @@ class QualityControlController extends HelperController
     public function actionApprove()
     {
         $searchModel = new QualityControlSearch();
+        $searchModel->approved = false;
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        return $this->render('index', [
-            'searchModel' => $searchModel,
+        return $this->render('approve', [
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+    
+    public function actionEdited()
+    {
+        $searchModel = new QualityControlSearch();
+        $searchModel->edited = true;
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('edited', [
             'dataProvider' => $dataProvider,
         ]);
     }

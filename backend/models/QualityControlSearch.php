@@ -10,17 +10,14 @@ use common\models\Content;
 
 class QualityControlSearch extends Content
 {
-	public $title;
-	
     /**
      * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            [['id', 'priority', 'created_at', 'updated_at'], 'integer'],
-            [['title', 'heritage'], 'safe'],
-            [['published', 'featured', 'hidden'], 'boolean']
+            [['id', 'updated_at'], 'integer'],
+            [['approved', 'edited'], 'boolean']
         ];
     }
 
@@ -67,10 +64,8 @@ class QualityControlSearch extends Content
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'content.priority' => $this->priority,
-            'content.published' => $this->published,
-            'content.featured' => $this->featured,
-            'content.hidden' => $this->hidden
+            'content.approved' => $this->approved,
+            'content.edited' => $this->edited
         ]);
         
         return $dataProvider;

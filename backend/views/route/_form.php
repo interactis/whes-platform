@@ -28,6 +28,10 @@ $nav = [
 	[
 		'slug' => 'visibility',
 		'title' => 'Visibility'
+	],
+	[
+		'slug' => 'quality-control',
+		'title' => 'Quality Control'
 	]
 ];
 
@@ -207,8 +211,13 @@ $user = Yii::$app->user->identity;
 					<?= $form->field($contentModel, 'hidden')->checkbox()
 						->hint(Yii::t("app", "If hidden, the route won't be shown in overviews but it will still be available via direct link.")) ?>
 				</div>
-				
 			</div>
+			
+			<?= $this->render('/common/_qualityControlForm', [
+				'model' => $model,
+				'contentModel' => $contentModel,
+				'form' => $form
+			]) ?>
 			
 		</div>
 		

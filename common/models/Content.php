@@ -291,6 +291,18 @@ class Content extends \yii\db\ActiveRecord
     	return $query;
     }
     
+    public function setQualityControl($new = true, $approved = false)
+    {
+    	$user = Yii::$app->user->identity;
+		if (!$user->isAdmin())
+		{
+			if (!$new && $approved)
+				$this->edited = true;
+			
+			$this->approved = $approved;
+		}
+    }
+    
     public function getTagIds()
     {
     	$tagIds = ArrayHelper::map($this->contentTags, 'tag_id', 'tag_id');

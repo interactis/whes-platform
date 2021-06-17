@@ -40,7 +40,8 @@ class QualityControlSearch extends Content
     public function search($params)
     {
         $query = Content::find();
-
+		$query->where(['published' => true]);
+		
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([

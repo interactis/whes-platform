@@ -10,7 +10,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
     
     <div class="row">
-    	<div class="col-md-8">
+    	<div class="col-md-10 col-lg-7">
     		<p class="lead hint-block margin-bottom">Content that has been edited by the heritages is still displayed in the frontend view. Please check if everything is still ok.</p>
 		</div>
 	</div>

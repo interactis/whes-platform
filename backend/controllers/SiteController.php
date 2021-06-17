@@ -107,6 +107,9 @@ class SiteController extends Controller
     
     private function _getCount($condition = [])
     {
-    	return Content::find()->where($condition)->count();
+    	return Content::find()
+    		->where($condition)
+    		->andWhere(['published' => true])
+    		->count();
     }
 }

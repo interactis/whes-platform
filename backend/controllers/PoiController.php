@@ -79,7 +79,9 @@ class PoiController extends HelperController
     	$post = $this->setPointGeom($post, $model);
 
         if ($model->load($post) && $contentModel->load($post))
-        { 
+        {
+        	$contentModel->setQualityControl();
+        	
         	if ($model->validateTranslations() && $model->validate() && $contentModel->validate())
         	{
         		$contentModel->save(false);
@@ -110,13 +112,16 @@ class PoiController extends HelperController
     {
     	$model = $this->findModel($id);
         $contentModel = $model->content;
+        $approved = $contentModel->approved;
         $post = Yii::$app->request->post();
         
         // set geom field separately, as the postgis-behaviour doesn't work with $model->save()
     	$post = $this->setPointGeom($post, $model);
 
         if ($model->load($post) && $contentModel->load($post))
-        { 
+        {
+        	$contentModel->setQualityControl(false, $approved);
+        	
         	if ($model->validateTranslations() && $model->validate() && $contentModel->validate())
         	{
         	

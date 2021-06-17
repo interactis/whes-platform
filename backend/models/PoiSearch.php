@@ -54,8 +54,8 @@ class PoiSearch extends Poi
         $query->leftJoin('content', 'content.id = poi.content_id');
         $query->leftJoin('heritage', 'heritage.id = content.heritage_id');
         $query->leftJoin('heritage_translation', 'heritage_translation.heritage_id = heritage.id');
-        $query->groupBy(['poi.id', 'poi_translation.title', 'content.priority', 'content.hidden', 'content.featured', 'content.published', 'heritage_translation.short_name']);
-
+        $query->groupBy(['poi.id', 'poi_translation.title']);
+		
         // add conditions that should always apply here
         
         $user = Yii::$app->user->identity;

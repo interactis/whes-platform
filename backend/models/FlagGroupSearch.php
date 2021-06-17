@@ -2,6 +2,7 @@
 
 namespace backend\models;
 
+use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use common\models\FlagGroup;
@@ -79,6 +80,7 @@ class FlagGroupSearch extends FlagGroup
             'hidden' => $this->hidden,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
+            'flag_group_translation.language_id' => Yii::$app->params['preferredLanguageId']
         ]);
 		
 		$query->andFilterWhere(['ilike', 'flag_group_translation.title', $this->title]);

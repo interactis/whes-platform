@@ -124,6 +124,8 @@ class ArticleSearch extends Article
             'content.published' => $this->published,
             'content.featured' => $this->featured,
             'content.hidden' => $this->hidden,
+            'article_translation.language_id' => Yii::$app->params['preferredLanguageId'],
+            'heritage_translation.language_id' => Yii::$app->params['preferredLanguageId']
         ]);
         
         $query->andFilterWhere(['ilike', 'article_translation.title', $this->title]);

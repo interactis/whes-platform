@@ -124,6 +124,8 @@ class RouteSearch extends Route
             'content.published' => $this->published,
             'content.featured' => $this->featured,
             'content.hidden' => $this->hidden,
+            'route_translation.language_id' => Yii::$app->params['preferredLanguageId'],
+            'heritage_translation.language_id' => Yii::$app->params['preferredLanguageId']
         ]);
         
         $query->andFilterWhere(['ilike', 'route_translation.title', $this->title]);

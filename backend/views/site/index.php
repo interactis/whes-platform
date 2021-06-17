@@ -109,13 +109,19 @@ $this->title = 'Dashboard';
 				<div class="col-md-4 margin-bottom">
 					<div class="h1">Quality Control</div>
 					<p class="lead">
-						<a href="/poi">
-							To approve <span class="badge">3</span>
+						<a href="/quality-control/approve">
+							To approve 
+							<?php if ($approveCount > 0): ?>
+								<span class="badge"><?= $approveCount ?></span>
+							<?php endif; ?>
 						</a>
 					</p>
 					<p class="lead">
-						<a href="/route">
-							Edited
+						<a href="/quality-control/edited">
+							Edited 
+							<?php if ($editedCount > 0): ?>
+								<span class="badge"><?= $editedCount ?></span>
+							<?php endif; ?>
 						</a>
 					</p>
 				</div>

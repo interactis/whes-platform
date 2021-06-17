@@ -6,6 +6,7 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use backend\models\LoginForm;
+use common\models\Content;
 
 /**
  * Site controller
@@ -61,7 +62,9 @@ class SiteController extends Controller
     public function actionIndex()
     {
         return $this->render('index', [
-        	'user' => Yii::$app->user->identity
+        	'user' => Yii::$app->user->identity,
+        	'approveCount' => $this->_getCount(["approved" => false]),
+        	'editedCount' => $this->_getCount(["edited" => true])
         ]);
     }
 
@@ -100,5 +103,10 @@ class SiteController extends Controller
         Yii::$app->user->logout();
 
         return $this->goHome();
+    }
+    
+    private function _getCount($condition = [])
+    {
+    	return Content::find()->where($condition)->count();
     }
 }

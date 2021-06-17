@@ -1,7 +1,7 @@
 <?php
 use yii\helpers\Html;
 
-$this->title = Yii::t('app', 'To approve');
+$this->title = Yii::t('app', 'Unapproved Content');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 

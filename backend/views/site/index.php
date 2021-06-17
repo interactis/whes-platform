@@ -4,7 +4,12 @@ $this->title = 'Dashboard';
 
 <div class="site-index">
 	<div class="body-content">
-	
+		
+		<?php if ($user->isEditor()): ?>
+			<h1><?= $user->heritage->short_name ?></h1>
+		<?php endif; ?>
+		
+		
 		<?php if ($user->isAdmin()): ?>
 	
 			<div class="row">
@@ -81,9 +86,45 @@ $this->title = 'Dashboard';
 						</a>
 					</p>
 				</div>
-        	<?php endif; ?>
-        	
-        	<?php if ($user->isEditor()): ?>
+        		
+				<div class="col-md-4 margin-bottom">
+					<div class="h1">Content</div>
+					<p class="lead">
+						<a href="/poi">
+							Points of Interest
+						</a>
+					</p>
+					<p class="lead">
+						<a href="/route">
+							Routes
+						</a>
+					</p>
+					<p class="lead">
+						<a href="/article">
+							Articles
+						</a>
+					</p>
+				</div>
+				
+				<div class="col-md-4 margin-bottom">
+					<div class="h1">Quality Control</div>
+					<p class="lead">
+						<a href="/poi">
+							To approve <span class="badge">3</span>
+						</a>
+					</p>
+					<p class="lead">
+						<a href="/route">
+							Edited
+						</a>
+					</p>
+				</div>
+			<?php endif; ?>
+			
+			<?php
+        	if ($user->isEditor()): ?>
+        		<?php
+        		/*
 				<div class="col-md-4 margin-bottom">
 					<div class="h1">Heritage</div>
 					<p class="lead">
@@ -92,26 +133,31 @@ $this->title = 'Dashboard';
 						</a>
 					</p>
 				</div>
+				*/
+				?>
+				
+				<div class="col-md-4 margin-bottom">
+					<p class="lead">
+						<a href="/poi">
+							Points of Interest
+						</a>
+					</p>
+					<p class="lead">
+						<a href="/route">
+							Routes
+						</a>
+					</p>
+					<p class="lead">
+						<a href="/article">
+							Articles
+						</a>
+					</p>
+				</div>
+				
         	<?php endif; ?>
+        
         	
-            <div class="col-md-4 margin-bottom">
-                <div class="h1">Content</div>
-                <p class="lead">
-                	<a href="/poi">
-                		Points of Interest
-                	</a>
-                </p>
-                <p class="lead">
-                	<a href="/route">
-                		Routes
-                	</a>
-                </p>
-                <p class="lead">
-                	<a href="/article">
-                		Articles
-                	</a>
-                </p>
-        	</div>
+			
         </div>
         
     </div>

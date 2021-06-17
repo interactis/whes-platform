@@ -66,4 +66,23 @@ class HelperController extends Controller
         return $post;
     }
     
+    private function _getItems($fileName)
+    {
+    	$xml = simplexml_load_file($fileName);
+    	
+    	$items = [];
+    	foreach ($xml->trk->trkseg->trkpt as $item)
+    	{
+    		$attr = $attr = $item->attributes();
+			
+    		$items[] = [
+    			'lat' => $attr->lat,
+    			'lon' => $attr->lon,
+    			'time' => $item->time
+    		];
+    	}
+    	
+		return $items;
+    }
+    
 }

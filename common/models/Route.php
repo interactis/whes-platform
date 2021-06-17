@@ -7,6 +7,7 @@ use yii\behaviors\TimestampBehavior;
 use common\models\helpers\HelperModel;
 use common\components\SwissGeometryBehavior;
 
+
 /**
  * This is the model class for table "route".
  *
@@ -39,7 +40,7 @@ class Route extends HelperModel
 	public $translationFields = ['title','description', 'youtube_id', 'catering', 'options', 'directions', 'remarks'];
 	public $requiredTranslationFields = ['title', 'description'];
 	
-	public $geomUpload;
+	public $geojsonFile;
 	
 	const DIFFICULTY_EASY = 1;
     const DIFFICULTY_MEDIUM = 2;
@@ -68,6 +69,7 @@ class Route extends HelperModel
             [
                 'class' => SwissGeometryBehavior::className(),
                 'type' => SwissGeometryBehavior::GEOMETRY_LINESTRING,
+                //'type' => SwissGeometryBehavior::GEOMETRY_POLYGON,
                 'attribute' => 'geom',
             ],
         ];
@@ -88,6 +90,8 @@ class Route extends HelperModel
             [['content_id'], 'exist', 'skipOnError' => true, 'targetClass' => Content::className(), 'targetAttribute' => ['content_id' => 'id']],
             [['tags', 'flags'], 'required'],
             ['difficulty', 'in', 'range' => [self::DIFFICULTY_EASY, self::DIFFICULTY_MEDIUM, self::DIFFICULTY_DIFFICULT]],
+            
+            ['geojsonFile', 'file', 'extensions' => ['geojson']]
         ];
     }
 
@@ -118,6 +122,7 @@ class Route extends HelperModel
             'flags' =>  Yii::t('app', 'Filters'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
+            'geojsonFile' => Yii::t('app', 'GEOJSON File'),
         ];
     }
 
@@ -209,6 +214,7 @@ class Route extends HelperModel
 	
 	public function getRoutePois()
     {
+    	/*
 		if (!empty($this->geom))
 		{
 			return Poi::find()
@@ -218,7 +224,18 @@ class Route extends HelperModel
     			->limit(18)
     			->all();
     	}
-		
+    	*/
+    	return false;
+    }
+    
+    /**
+     * @param $geom
+     * Store geoJson to postgis geometry field.
+     */
+    public function setGeom($coordinates)
+    {
+    	//$geom = GeoJsonHelper::toGeometry('LineString', $coordinates, '21781');
+        $this->geom = $coordinates;
     }
     
     private function _relatedContentQuery($includeHeritage = true, $excludeHeritage = false, $limit = 'default')

@@ -22,6 +22,10 @@ $nav = [
 		'title' => 'SBB'
 	],
 	[
+		'slug' => 'geo',
+		'title' => 'Geo'
+	],
+	[
 		'slug' => 'relations',
 		'title' => 'Relations'
 	],
@@ -162,15 +166,13 @@ $user = Yii::$app->user->identity;
 				</div>
 			</div>
 			
-			<?php
-			/*
 			<div id="geo" class="panel panel-default">
 				<div class="panel-heading">
 					<h3>Geo</h3>
 				</div>
 				<div class="panel-body">
-					<?= $form->field($model, 'geomUpload')->widget(FileInput::classname(), [
-						// 'options' => ['accept' => 'image/*'],
+					<?= $form->field($model, 'geojsonFile')->widget(FileInput::classname(), [
+						'options' => ['accept' => 'application/geo+json'],
 						'pluginOptions' => [
 							'showPreview' => false,
 							'showCaption' => true,
@@ -180,8 +182,6 @@ $user = Yii::$app->user->identity;
 					]) ?>
 				</div>
 			</div>
-			*/
-			?>
 			
 			<?= $this->render('/common/_relationsForm', [
 				'model' => $model,

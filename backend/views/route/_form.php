@@ -208,7 +208,15 @@ if (!$model->isNewRecord && $model->content->published)
 					<?= $form->field($contentModel, 'priority')->dropDownList($model->priorities)
 						->hint(Yii::t("app", "Influences where the route appears in filter and search results.")) ?>
 					
-					<?= $form->field($contentModel, 'published')->checkbox() ?>
+					<?php
+					if ($user->isAdmin())
+					{
+						echo $form->field($contentModel, 'published')->checkbox();
+					}
+					else
+						echo $form->field($contentModel, 'published')->checkbox()
+							->hint(Yii::t("app", "When you publish a route, it will be approved before it is available online."));
+					?>
 					
 					<?= $form->field($contentModel, 'hidden')->checkbox()
 						->hint(Yii::t("app", "If hidden, the route won't be shown in overviews but it will still be available via direct link.")) ?>

@@ -39,7 +39,8 @@ class HelperController extends Controller
     	
     	$query->where([
     		'published' => true,
-    		'hidden' => false
+    		'hidden' => false,
+    		'approved' => true
     	]);
     	
     	if ($heritageId)

@@ -71,9 +71,9 @@ return [
 	"Oops, this page doesn't exist." => "Ups, diese Seite existiert nicht.",
 	"To the homepage" => "Zur Homepage",
 	
-	"https://www.sbb.ch/en/buying/pages/fahrplan/fahrplan.xhtml" => "https://www.sbb.ch/de/kaufen/pages/fahrplan/fahrplan.xhtml",
-	
-	"/privacy-policy" => "datenschutz",
+	"/privacy-policy" => "/datenschutz",
 	"/about" => "/impressum",
 	"/contact" => "/kontakt",
+	
+	"https://www.sbb.ch/en/buying/pages/fahrplan/fahrplan.xhtml" => "https://www.sbb.ch/de/kaufen/pages/fahrplan/fahrplan.xhtml",
 ];

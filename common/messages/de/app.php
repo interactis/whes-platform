@@ -76,5 +76,4 @@ return [
 	"/privacy-policy" => "datenschutz",
 	"/about" => "/impressum",
 	"/contact" => "/kontakt",
-	
 ];

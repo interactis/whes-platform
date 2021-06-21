@@ -45,9 +45,9 @@ $half = ceil($count/2);
 				<a href="https://www.youtube.com/user/UDSwitzerland" target="_blank" title="<?= Yii::t('app', 'Follow us on {socialMedia}', ['socialMedia' => 'YouTube']) ?>"><i class="fa fa-youtube-square"></i></a>
 			</div>
 			<div class="col-md-6 small">
-				<?= Html::a(Yii::t('app', 'About'), ['site/about']) ?> &middot; 
-				<?= Html::a(ucfirst(Yii::t('app', 'privacy policy')), ['site/privacy-policy']) ?> &middot;
-				<?= Html::a(Yii::t('app', 'Contact'), ['site/contact']) ?>
+				<?= Html::a(Yii::t('app', 'About'), Yii::t('app', '/about')) ?> &middot; 
+				<?= Html::a(ucfirst(Yii::t('app', 'privacy policy')), Yii::t('app', '/privacy-policy')) ?> &middot;
+				<?= Html::a(Yii::t('app', 'Contact'), Yii::t('app', '/contact')) ?>
 			</div>
 		</div>
     </div>

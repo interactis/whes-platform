@@ -73,4 +73,8 @@ return [
 	
 	"https://www.sbb.ch/en/buying/pages/fahrplan/fahrplan.xhtml" => "https://www.sbb.ch/de/kaufen/pages/fahrplan/fahrplan.xhtml",
 	
+	"/privacy-policy" => "datenschutz",
+	"/about" => "/impressum",
+	"/contact" => "/kontakt",
+	
 ];

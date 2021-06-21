@@ -291,7 +291,7 @@ class Content extends \yii\db\ActiveRecord
     	return $query;
     }
     
-    public function setQualityControl($new = true, $approved = false)
+    public function setQualityControl($new = true, $approved = false, $save = false)
     {
     	$user = Yii::$app->user->identity;
 		if (!$user->isAdmin())
@@ -300,6 +300,9 @@ class Content extends \yii\db\ActiveRecord
 				$this->edited = true;
 			
 			$this->approved = $approved;
+			
+			if ($save)
+				$this->save(false);
 		}
     }
     

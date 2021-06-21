@@ -156,6 +156,8 @@ class MediaController extends Controller
         		
         		if ($model->save(false) && $model->saveTranslations())
         		{
+        			$content->setQualityControl(false, $content->approved, true);
+        			
         			Yii::$app->getSession()->setFlash(
         				'success',
         				'<span class="glyphicon glyphicon-ok-sign"></span> Your changes have been saved.'
@@ -184,6 +186,8 @@ class MediaController extends Controller
         		
         		if ($model->save(false) && $model->saveTranslations())
         		{
+        			$content->setQualityControl(false, $content->approved, true);
+        			
         			Yii::$app->getSession()->setFlash(
         				'success',
         				'<span class="glyphicon glyphicon-ok-sign"></span> Your changes have been saved.'
@@ -231,8 +235,15 @@ class MediaController extends Controller
         $model->removeThumbs();
         $model->delete();
         
-		$contentType = $model->contentType;
-		return $this->redirect([$contentType, 'id' => $model->{$contentType}->id]);	
+        $contentType = $model->contentType;
+		if ($contentType == 'content')
+		{
+			$content = $model->{$contentType};
+			$content->setQualityControl(false, $content->approved, true);
+			return $this->redirect([$contentType, 'id' => $content->id]);
+		}
+		
+		return $this->redirect([$contentType, 'id' => $model->{$contentType}->id]);
     }
 	
     protected function findModel($id)

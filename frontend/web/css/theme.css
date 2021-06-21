@@ -11002,7 +11002,8 @@ body {
   .jumbotron .action-container {
     position: relative;
     top: 394px;
-    text-align: right; }
+    text-align: right;
+    z-index: 1030; }
     .jumbotron .action-container .action {
       display: inline-block; }
   @media (min-width: 576px) {

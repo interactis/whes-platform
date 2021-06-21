@@ -108,6 +108,7 @@
 		position: relative;
 		top: 394px;
 		text-align: right;
+		z-index: $zindex-fixed;
 		.action {
 			display: inline-block;
 		}

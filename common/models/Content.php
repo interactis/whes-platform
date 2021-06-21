@@ -275,7 +275,7 @@ class Content extends \yii\db\ActiveRecord
     		])
     		->where(['in', 'content_tag.tag_id', $this->tagIds])
     		->andWhere(['!=', 'content_tag.content_id', $this->id])
-    		->andWhere(['published' => true, 'hidden' => false]);
+    		->andWhere(['published' => true, 'approved' => true, 'hidden' => false]);
     	
     	if ($includeHeritage)
     		$query = $query->andWhere(['heritage_id' => $this->heritage_id]);

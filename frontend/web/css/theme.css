@@ -11368,6 +11368,7 @@ body {
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: none;
   /* IE and Edge */
+  -ms-overflow-style: -ms-autohiding-scrollbar;
   scrollbar-width: none;
   /* Firefox */ }
   #map-info-modal .header-container {

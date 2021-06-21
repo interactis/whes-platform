@@ -19,18 +19,20 @@ $nav = [
 	[
 		'slug' => 'visibility',
 		'title' => 'Visibility'
-	],
-	[
-		'slug' => 'quality-control',
-		'title' => 'Quality Control'
 	]
 ];
+
+$user = Yii::$app->user->identity;
+if ($user->isAdmin()) {
+	$nav[] = [
+		'slug' => 'quality-control',
+		'title' => 'Quality Control'
+	];
+}
 
 $viewUrl = false;
 if (!$model->isNewRecord && $model->content->published)
 	$viewUrl = Yii::$app->params['frontendUrl'] .'article/'. $model->slug;
-
-$user = Yii::$app->user->identity;
 ?>
 
 <div class="article-form">

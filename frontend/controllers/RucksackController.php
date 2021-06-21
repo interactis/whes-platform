@@ -78,7 +78,7 @@ class RucksackController extends HelperController
     	$tagIds = $this->_getTagIds($models);
     	$excludeIds = array_values(ArrayHelper::map($models, 'id', 'id'));
     	
-    	return ContentTag::find()
+    	$query = ContentTag::find()
     		->joinWith('content')
 			->select([
         		'content_tag.content_id',
@@ -86,8 +86,22 @@ class RucksackController extends HelperController
     		])
     		->where(['in', 'content_tag.tag_id', $tagIds])
     		->andWhere(['not in', 'content_tag.content_id', $excludeIds])
-    		->andWhere(['published' => true, 'approved' => true, 'hidden' => false])
-    		->groupBy('content_tag.content_id')
+    		->andWhere(['published' => true, 'approved' => true, 'hidden' => false]);
+    	
+    	$query->leftJoin('article', 'article.content_id = content.id')
+			->leftJoin('poi', 'poi.content_id = content.id')
+			->leftJoin('route', 'route.content_id = content.id')
+			->leftJoin('article_translation', 'article_translation.article_id = article.id')
+			->leftJoin('poi_translation', 'poi_translation.poi_id = poi.id')
+			->leftJoin('route_translation', 'route_translation.route_id = route.id');
+    	
+    	$query->andFilterWhere(['or',
+			['article_translation.language_id' => \Yii::$app->params['preferredLanguageId']],
+			['poi_translation.language_id' => \Yii::$app->params['preferredLanguageId']],
+			['route_translation.language_id' => \Yii::$app->params['preferredLanguageId']]
+		]);
+    	
+    	return $query->groupBy('content_tag.content_id')
     		->orderBy(['tag_count' => SORT_DESC])
     		->limit(9)
     		->all();

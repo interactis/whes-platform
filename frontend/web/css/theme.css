@@ -11364,13 +11364,7 @@ body {
   background: white;
   padding: 24px;
   z-index: 1030;
-  overflow: scroll;
-  -webkit-overflow-scrolling: touch;
-  -ms-overflow-style: none;
-  /* IE and Edge */
-  -ms-overflow-style: -ms-autohiding-scrollbar;
-  scrollbar-width: none;
-  /* Firefox */ }
+  overflow: none; }
   #map-info-modal .header-container {
     display: none; }
   #map-info-modal .close {

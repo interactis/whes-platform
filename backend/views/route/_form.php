@@ -186,7 +186,7 @@ if (!$model->isNewRecord && $model->content->published)
 							'showUpload' => false
 						]
 					]) ?>
-					<div class="hint-block"><strong>Important</strong>: Use only Lines (geometry type <code>LineString</code>) and the Swiss projection <code>EPSG:21781</code>. Please check if the route is displayed correctly on the map after the upload.</div>
+					<div class="hint-block"><strong>Important</strong>: Use only the geometry type <code>LineString</code> in the Swiss projection <code>EPSG:21781</code>. Please check if the route is displayed correctly on the map after the upload.</div>
 					
 					<hr />
 					

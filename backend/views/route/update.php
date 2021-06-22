@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="route-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    
+	    
     <?= $this->render('/common/_contentNavPills', [
     	'model' => $model->content,
     	'active' => 1,

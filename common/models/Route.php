@@ -83,7 +83,7 @@ class Route extends HelperModel
         return [
             [['content_id', 'difficulty', 'distance_in_km', 'duration_in_min', 'min_altitude', 'max_altitude', 'start_altitude', 'end_altitude', 'ascent', 'descent', 'created_at', 'updated_at'], 'default', 'value' => null],
             [['content_id', 'difficulty', 'distance_in_km', 'duration_in_min', 'min_altitude', 'max_altitude', 'start_altitude', 'end_altitude', 'ascent', 'descent', 'created_at', 'updated_at'], 'integer'],
-            [['profile', 'geom'], 'string'],
+            [['profile'], 'string'],
             [['print_available'], 'boolean'],
             [['arrival_station', 'arrival_url', 'departure_station', 'departure_url'], 'string', 'max' => 255],
             [['arrival_url', 'departure_url'], 'url'],
@@ -122,7 +122,7 @@ class Route extends HelperModel
             'flags' =>  Yii::t('app', 'Filters'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
-            'geojsonFile' => Yii::t('app', 'GEOJSON File'),
+            'geojsonFile' => Yii::t('app', 'GeoJSON File'),
         ];
     }
 

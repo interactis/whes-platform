@@ -186,6 +186,7 @@ if (!$model->isNewRecord && $model->content->published)
 							'showUpload' => false
 						]
 					]) ?>
+					<div class="hint-block"><strong>Important</strong>: Use the Swiss Projection <code>EPSG:21781</code> and check if the route is displayed correctly on the map after the upload.</div>
 				</div>
 			</div>
 			

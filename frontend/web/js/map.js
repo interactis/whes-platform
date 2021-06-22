@@ -284,7 +284,11 @@ $(function() {
  */
 function loadInfoForElement(type, identifier) {
     var modalContainer = $('#map-info-modal');
-    
+   	
+   	if (type == 'trail') {
+   		type = 'route'
+   	}
+   	
 	$.ajax({
 		method: 'GET',
 		url: '/map/get-info-modal',

@@ -53,10 +53,22 @@ class MapController extends HelperController
 	{
 		$request = Yii::$app->request->get();
 		$tableName = $request['type'];
-		$modelName = ucfirst($tableName);
-		$model = Poi::findOne([
-			'id' => $request['id']
-		]);
+		
+		switch (strtolower($request['type']))
+		{
+			case 'poi':
+				$model = Poi::findOne([
+					'id' => $request['id']
+				]);
+				break;
+			case 'route':
+				$model = Route::findOne([
+					'id' => $request['id']
+				]);
+				break;
+			default:
+				return null;
+		}
 		
 		if ($model !== null)
 		{

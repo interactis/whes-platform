@@ -150,13 +150,14 @@ class PoiController extends HelperController
     
     public function actionDelete($id)
     {
-        $model = $this->findModel($id);
-        foreach ($model->content->media as $media)
+    	$model = $this->findModel($id);
+        $content = $model->content;
+        foreach ($content->media as $media)
         {
         	$media->removeThumbs();
         }
         
-        $model->delete();
+        $content->delete();
 
         return $this->redirect(['index']);
     }

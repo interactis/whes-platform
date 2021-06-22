@@ -16,6 +16,8 @@ use yii\helpers\ArrayHelper;
  * @property bool|null $published
  * @property bool|null $featured
  * @property bool|null $hidden
+ * @property bool|null $approved
+ * @property bool|null $edited
  * @property int|null $created_at
  * @property int|null $updated_at
  *
@@ -75,7 +77,7 @@ class Content extends \yii\db\ActiveRecord
             		return true;
             }],
             
-            [['published', 'featured', 'hidden'], 'boolean'],
+            [['published', 'featured', 'hidden', 'approved', 'edited'], 'boolean'],
             [['heritage_id'], 'exist', 'skipOnError' => true, 'targetClass' => Heritage::className(), 'targetAttribute' => ['heritage_id' => 'id']],
         ];
     }
@@ -93,6 +95,8 @@ class Content extends \yii\db\ActiveRecord
             'published' => Yii::t('app', 'Published'),
             'featured' => Yii::t('app', 'Featured'),
             'hidden' => Yii::t('app', 'Hidden'),
+            'approved' => Yii::t('app', 'Approved'),
+            'edited' => Yii::t('app', 'Edited'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
         ];
@@ -271,7 +275,20 @@ class Content extends \yii\db\ActiveRecord
     		])
     		->where(['in', 'content_tag.tag_id', $this->tagIds])
     		->andWhere(['!=', 'content_tag.content_id', $this->id])
-    		->andWhere(['published' => true, 'hidden' => false]);
+    		->andWhere(['published' => true, 'approved' => true, 'hidden' => false]);
+    	
+    	$query->leftJoin('article', 'article.content_id = content.id')
+			->leftJoin('poi', 'poi.content_id = content.id')
+			->leftJoin('route', 'route.content_id = content.id')
+			->leftJoin('article_translation', 'article_translation.article_id = article.id')
+			->leftJoin('poi_translation', 'poi_translation.poi_id = poi.id')
+			->leftJoin('route_translation', 'route_translation.route_id = route.id');
+    	
+    	$query->andFilterWhere(['or',
+			['article_translation.language_id' => \Yii::$app->params['preferredLanguageId']],
+			['poi_translation.language_id' => \Yii::$app->params['preferredLanguageId']],
+			['route_translation.language_id' => \Yii::$app->params['preferredLanguageId']]
+		]);
     	
     	if ($includeHeritage)
     		$query = $query->andWhere(['heritage_id' => $this->heritage_id]);
@@ -285,6 +302,21 @@ class Content extends \yii\db\ActiveRecord
     		->all();
     	
     	return $query;
+    }
+    
+    public function setQualityControl($new = true, $approved = false, $save = false)
+    {
+    	$user = Yii::$app->user->identity;
+		if (!$user->isAdmin())
+		{
+			if (!$new && $approved)
+				$this->edited = true;
+			
+			$this->approved = $approved;
+			
+			if ($save)
+				$this->save(false);
+		}
     }
     
     public function getTagIds()

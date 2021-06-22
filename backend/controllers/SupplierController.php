@@ -77,6 +77,8 @@ class SupplierController extends Controller
         	{
         		if ($model->save(false) && $model->saveTranslations())
         		{
+        			$content->setQualityControl(false, $content->approved, true);
+        			
         			Yii::$app->getSession()->setFlash(
         				'success',
         				'<span class="glyphicon glyphicon-ok-sign"></span> Your changes have been saved.'
@@ -95,7 +97,8 @@ class SupplierController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
+		$content = $model->content;
+		
         $post = Yii::$app->request->post();
 		if ($model->load($post))
         {
@@ -103,6 +106,8 @@ class SupplierController extends Controller
         	{
         		if ($model->save(false) && $model->saveTranslations())
         		{
+        			$content->setQualityControl(false, $content->approved, true);
+        			
         			Yii::$app->getSession()->setFlash(
         				'success',
         				'<span class="glyphicon glyphicon-ok-sign"></span> Your changes have been saved.'
@@ -113,7 +118,7 @@ class SupplierController extends Controller
         }
 
         return $this->render('supplier', [
-        	'content' => $model->content,
+        	'content' => $content,
             'model' => $model
         ]);
     }

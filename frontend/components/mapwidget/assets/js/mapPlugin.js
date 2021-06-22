@@ -221,7 +221,8 @@
             // Create map canvas.
             var map = new ga.Map({
                 target: settings.target,
-                layers: [swisstopo, swissimage, perimeter, trails, clusters, location, allInformation],
+                //layers: [swisstopo, swissimage, perimeter, trails, clusters, location, allInformation],
+                layers: [swisstopo, swissimage, trails, clusters, location, allInformation],
                 view: mapView,
                 interactions: ol.interaction.defaults({
                     altShiftDragRotate: false, pinchRotate:false

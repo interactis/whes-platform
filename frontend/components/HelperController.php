@@ -35,33 +35,33 @@ class HelperController extends Controller
     	$query = Content::find()
     		->leftJoin('article', 'article.content_id = content.id')
 			->leftJoin('poi', 'poi.content_id = content.id')
-			->leftJoin('route', 'route.content_id = content.id');
+			->leftJoin('route', 'route.content_id = content.id')
+			->leftJoin('article_translation', 'article_translation.article_id = article.id')
+			->leftJoin('poi_translation', 'poi_translation.poi_id = poi.id')
+			->leftJoin('route_translation', 'route_translation.route_id = route.id');
     	
     	$query->where([
     		'published' => true,
-    		'hidden' => false
+    		'hidden' => false,
+    		'approved' => true
     	]);
     	
     	if ($heritageId)
     		$query->andWhere(['heritage_id' => $heritageId]);
+			
+		$query->andFilterWhere(['or',
+			['article_translation.language_id' => \Yii::$app->params['preferredLanguageId']],
+			['poi_translation.language_id' => \Yii::$app->params['preferredLanguageId']],
+			['route_translation.language_id' => \Yii::$app->params['preferredLanguageId']]
+		]);
     	
     	if ($q)
     	{
-    		$query->leftJoin('article_translation', 'article_translation.article_id = article.id')
-				->leftJoin('poi_translation', 'poi_translation.poi_id = poi.id')
-				->leftJoin('route_translation', 'route_translation.route_id = route.id');
-				
     		$query->andFilterWhere(['or',
     			['ilike', 'article_translation.title', $q],
     			['ilike', 'poi_translation.title', $q],
     			['ilike', 'route_translation.title', $q]
     		]);
-    		
-    		$query->andFilterWhere(['or',
-				['article_translation.language_id' => \Yii::$app->params['preferredLanguageId']],
-				['poi_translation.language_id' => \Yii::$app->params['preferredLanguageId']],
-				['route_translation.language_id' => \Yii::$app->params['preferredLanguageId']]
-			]);
     	}
     	
     	if ($contentIds !== false)

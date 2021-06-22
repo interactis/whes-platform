@@ -25,14 +25,15 @@ class HeritageController extends HelperController
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['index', 'create', 'delete'],
+                        'actions' => ['index', 'create', 'update', 'delete'],
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action) {
                         	$user = Yii::$app->user->identity;
                             return $user->isAdmin();
                         }
-                    ],
+                    ]
+                    /*
                     [
                         'actions' => ['update'],
                         'allow' => true,
@@ -41,6 +42,7 @@ class HeritageController extends HelperController
                             return $this->_isOwnerOrAdmin();
                         }
                     ]
+                    */
                 ],
             ],
             'verbs' => [

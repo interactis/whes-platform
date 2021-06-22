@@ -68,10 +68,14 @@ $this->registerJs($js, $this::POS_HEAD);
 				<input type="checkbox" id="hike-layer">&nbsp;
 				<label for="hike-layer"><?= Yii::t('app', 'Hiking Trail Network'); ?></label>
 			</li>
+			<?php
+			/*
 			<li class="toggle-perimeter">
 				<input type="checkbox" checked="checked" id="perimeter-layer">&nbsp;
 				<label for="perimeter-layer"><?= Yii::t('app', 'World Heritages'); ?></label>
 			</li>
+			*/
+			?>
 		</ul>
 	</div>
 	<div>

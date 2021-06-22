@@ -26,10 +26,11 @@
 	padding: 24px;
 	z-index: $zindex-fixed;
 	
-	overflow: scroll;
-	-webkit-overflow-scrolling: touch;
-	-ms-overflow-style: none;  /* IE and Edge */
-  	scrollbar-width: none;  /* Firefox */
+	overflow: none;
+	//overflow: scroll;
+	//-webkit-overflow-scrolling: touch;
+	//-ms-overflow-style: none;  /* IE and Edge */
+  	//scrollbar-width: none;  /* Firefox */
 	
 	.header-container {
 		display: none;

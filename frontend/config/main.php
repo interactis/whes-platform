@@ -66,13 +66,20 @@ return [
     		'enablePrettyUrl' => true,
     		'rules' => [
     			'search' =>'search/index',
+    			'suche' =>'search/index',
     			'map' =>'map/index',
+    			'karte' =>'map/index',
     			'rucksack' =>'rucksack/index',
+    			
+    			'about' => 'site/about',
+    			'impressum' => 'site/about',
+    			'privacy-policy' => 'site/privacy-policy',
+    			'datenschutz' => 'site/privacy-policy',
+    			'contact' => 'site/contact',
+    			'kontakt' => 'site/contact',
     			
     			'<slug:[\w\-]+>' =>'heritage/view',
     			'article/<slug:[\w\-]+>' =>'article/view',
-    			//'artikel/<slug:[\w\-]+>' => 'article/view',
-    			//'artikel' => 'article/index',
     			'poi/<slug:[\w\-]+>' =>'poi/view',
     			'route/<slug:[\w\-]+>' =>'route/view',
     			

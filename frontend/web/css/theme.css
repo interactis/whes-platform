@@ -11002,7 +11002,8 @@ body {
   .jumbotron .action-container {
     position: relative;
     top: 394px;
-    text-align: right; }
+    text-align: right;
+    z-index: 1030; }
     .jumbotron .action-container .action {
       display: inline-block; }
   @media (min-width: 576px) {
@@ -11203,6 +11204,8 @@ body {
       height: 260px;
       overflow: hidden; }
       .preview-card .card-header.img-header img {
+        -o-object-fit: cover;
+           object-fit: cover;
         min-height: 100%;
         min-width: 100%;
         height: 260px;
@@ -11361,12 +11364,7 @@ body {
   background: white;
   padding: 24px;
   z-index: 1030;
-  overflow: scroll;
-  -webkit-overflow-scrolling: touch;
-  -ms-overflow-style: none;
-  /* IE and Edge */
-  scrollbar-width: none;
-  /* Firefox */ }
+  overflow: none; }
   #map-info-modal .header-container {
     display: none; }
   #map-info-modal .close {

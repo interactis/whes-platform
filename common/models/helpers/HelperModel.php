@@ -144,7 +144,7 @@ class HelperModel extends TranslationModel
 		$text = strtolower($text);
 		
 		// trim
-		$max = 34; // 36 - 2 because of $i
+		$max = 90;
 		if (strlen($text) > $max)
 			$text = substr($text, 0, $max);
 			

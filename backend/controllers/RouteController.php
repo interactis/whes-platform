@@ -125,6 +125,8 @@ class RouteController extends HelperController
 				if ($file = UploadedFile::getInstance($model, 'geojsonFile'))
 					$this->_setLineGeom($file, $model);
         		
+        		$model->geom = '';
+        		
         		if ($contentModel->save(false) &&
         			$model->save(false)	&&
         			$model->saveTranslations() &&

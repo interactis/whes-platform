@@ -41,6 +41,7 @@ class Route extends HelperModel
 	public $requiredTranslationFields = ['title', 'description'];
 	
 	public $geojsonFile;
+	public $removeGeom = false;
 	
 	const DIFFICULTY_EASY = 1;
     const DIFFICULTY_MEDIUM = 2;
@@ -84,7 +85,7 @@ class Route extends HelperModel
             [['content_id', 'difficulty', 'distance_in_km', 'duration_in_min', 'min_altitude', 'max_altitude', 'start_altitude', 'end_altitude', 'ascent', 'descent', 'created_at', 'updated_at'], 'default', 'value' => null],
             [['content_id', 'difficulty', 'distance_in_km', 'duration_in_min', 'min_altitude', 'max_altitude', 'start_altitude', 'end_altitude', 'ascent', 'descent', 'created_at', 'updated_at'], 'integer'],
             [['profile'], 'string'],
-            [['print_available'], 'boolean'],
+            [['print_available', 'removeGeom'], 'boolean'],
             [['arrival_station', 'arrival_url', 'departure_station', 'departure_url'], 'string', 'max' => 255],
             [['arrival_url', 'departure_url'], 'url'],
             [['content_id'], 'exist', 'skipOnError' => true, 'targetClass' => Content::className(), 'targetAttribute' => ['content_id' => 'id']],
@@ -123,6 +124,7 @@ class Route extends HelperModel
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
             'geojsonFile' => Yii::t('app', 'GeoJSON File'),
+            'removeGeom' => Yii::t('app', 'Remove Geometry')
         ];
     }
 

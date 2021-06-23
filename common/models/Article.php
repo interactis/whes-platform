@@ -94,7 +94,7 @@ class Article extends HelperModel
     
     public function getLabel()
     {
-    	$html = $this->getFlagLabel(Yii::t('app', 'Good to Know'));
+    	$html = $this->getFlagLabel(Yii::t('app', 'Good to know'));
     	
     	if (isset($this->content->heritage))
     		$html .= '<br /><em>'. $this->content->heritage->short_name .'</em>';

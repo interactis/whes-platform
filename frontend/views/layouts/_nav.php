@@ -43,11 +43,11 @@ $langLinks = [
 				</a>
 			</li>
 			<li class="nav-item dropdown <?= (($this->context->id == 'heritage') ? 'active' : '') ?>">
-				<a class="nav-link dropdown-toggle" href="#" id="heritagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				<a class="nav-link dropdown-toggle" href="#" id="heritageDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					<?= $this->render('_svg/heritage.php') ?>
-					<?= Yii::t('app', 'Heritages') ?>
+					<?= Yii::t('app', 'Heritage') ?>
 				</a>
-				<div class="dropdown-menu heritage-dropdown" aria-labelledby="heritagesDropdown">
+				<div class="dropdown-menu heritage-dropdown" aria-labelledby="heritageDropdown">
 					<?php
 					foreach(Heritage::getActiveHeritages() as $heritage)
 					{

@@ -2,14 +2,14 @@
 return [
 	"Our Heritage" => "Unser Erbe",
 	"Discover" => "Entdecken",
-	"Heritages" => "Welterbe",
+	"Heritage" => "Welterbe",
 	"Search" => "Suchen",
 	"My Collection" => "Meine Sammlung",
-	"UNESCO World Heritage" => "UNESCO Welterbe",
+	"UNESCO World Heritage" => "UNESCO-Welterbe",
 	
-	"Point of Interest" => "Interessanter Ort",
+	"Point of interest" => "Interessanter Ort",
 	"Route" => "Route",
-	"Good to Know" => "Wissenswertes",
+	"Good to know" => "Wissenswertes",
 	
 	"Info Filter" => "Info-Filter",
 	"No results found." => "Keine Resultate gefunden.",
@@ -22,7 +22,7 @@ return [
 	"Show map" => "Karte anzeigen",
 	"View" => "Ansicht",
 	"Display" => "Anzeige",
-	"Hiking Trail Network" => "Wanderwegnetz",
+	"Hiking trail network" => "Wanderwegnetz",
 	"World Heritages" => "Welterbe",
 	
 	"Trip Description" => "Wegbeschreibung",
@@ -34,7 +34,7 @@ return [
 	"Remarks" => "Bemerkungen",
 	"Provider" => "Anbieter",
 	"Restaurants" => "Verpflegung",
-	"Alternative Routes" => "Alternative Routen",
+	"Alternative routes" => "Alternative Routen",
 	"Short Info" => "Kurzinfo",
 	"Learn more" => "Mehr erfahren",
 	
@@ -48,11 +48,11 @@ return [
 	"hours" => "Std.",
 	"min." => "Min.",
 	"Start Altitude" => "Starthöhe",
-	"End Altitude" => "Endhöhe",
+	"End altitude" => "Endhöhe",
 	"Ascent" => "Aufstieg",
 	"Descent" => "Abstieg",
-	"Lowest Point" => "Niedrigster Punkt",
-	"Highest Point" => "Höchster Punkt",
+	"Lowest point" => "Niedrigster Punkt",
+	"Highest point" => "Höchster Punkt",
 	"m a.s.l." => "m ü. M.",
 	
 	"This might also interest you:" => "Das könnte Sie auch interessieren:",

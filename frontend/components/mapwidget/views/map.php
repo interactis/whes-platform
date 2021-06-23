@@ -66,7 +66,7 @@ $this->registerJs($js, $this::POS_HEAD);
 		<ul class="list-unstyled">
 			<li class="toggle-hike">
 				<input type="checkbox" id="hike-layer">&nbsp;
-				<label for="hike-layer"><?= Yii::t('app', 'Hiking Trail Network'); ?></label>
+				<label for="hike-layer"><?= Yii::t('app', 'Hiking trail network'); ?></label>
 			</li>
 			<?php
 			/*

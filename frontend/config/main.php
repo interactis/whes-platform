@@ -73,7 +73,7 @@ return [
     			
     			'about' => 'site/about',
     			'impressum' => 'site/about',
-    			'privacy-policy' => 'site/privacy-policy',
+    			'privacy' => 'site/privacy-policy',
     			'datenschutz' => 'site/privacy-policy',
     			'contact' => 'site/contact',
     			'kontakt' => 'site/contact',

@@ -23,7 +23,6 @@ return [
 	"View" => "Ansicht",
 	"Display" => "Anzeige",
 	"Hiking trail network" => "Wanderwegnetz",
-	"World Heritages" => "Welterbe",
 	
 	"Trip Description" => "Wegbeschreibung",
 	"Schedule" => "Fahrplan",
@@ -71,7 +70,7 @@ return [
 	"Oops, this page doesn't exist." => "Ups, diese Seite existiert nicht.",
 	"To the homepage" => "Zur Homepage",
 	
-	"/privacy-policy" => "/datenschutz",
+	"/privacy" => "/datenschutz",
 	"/about" => "/impressum",
 	"/contact" => "/kontakt",
 	

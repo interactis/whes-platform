@@ -75,8 +75,10 @@ return [
     			'impressum' => 'site/about',
     			'privacy' => 'site/privacy-policy',
     			'datenschutz' => 'site/privacy-policy',
+    			'protezione-dei-dati' => 'site/privacy-policy',
     			'contact' => 'site/contact',
     			'kontakt' => 'site/contact',
+    			'contatto' => 'site/contact',
     			
     			'<slug:[\w\-]+>' =>'heritage/view',
     			'article/<slug:[\w\-]+>' =>'article/view',

@@ -18,6 +18,7 @@ class RouteSearch extends Route
 	public $published;
 	public $featured;
 	public $hidden;
+	public $tags;
 	
     /**
      * {@inheritdoc}
@@ -26,7 +27,7 @@ class RouteSearch extends Route
     {
         return [
             [['id', 'content_id', 'priority', 'created_at', 'updated_at'], 'integer'],
-            [['title', 'heritage'], 'safe'],
+            [['title', 'heritage', 'tags'], 'safe'],
             [['published', 'featured', 'hidden'], 'boolean']
         ];
     }
@@ -54,6 +55,11 @@ class RouteSearch extends Route
         $query->leftJoin('content', 'content.id = route.content_id');
         $query->leftJoin('heritage', 'heritage.id = content.heritage_id');
         $query->leftJoin('heritage_translation', 'heritage_translation.heritage_id = heritage.id');
+        
+        $query->leftJoin('content_tag', 'content.id = content_tag.content_id');
+        $query->leftJoin('tag', 'content_tag.tag_id = tag.id');
+        $query->leftJoin('tag_translation', 'tag_translation.tag_id = tag.id');
+        
         $query->groupBy(['route.id', 'route_translation.title', 'content.priority', 'content.hidden', 'content.featured', 'content.published', 'heritage_translation.short_name']);
 
         // add conditions that should always apply here
@@ -130,6 +136,7 @@ class RouteSearch extends Route
         
         $query->andFilterWhere(['ilike', 'route_translation.title', $this->title]);
         $query->andFilterWhere(['ilike', 'heritage_translation.short_name', $this->heritage]);
+        $query->andFilterWhere(['like', 'lower(tag_translation.title)', strtolower($this->tags)]);
 
         return $dataProvider;
     }

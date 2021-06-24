@@ -332,6 +332,17 @@ class Content extends \yii\db\ActiveRecord
     	return array_values($tagIds);
     }
     
+    public function getTagList()
+    {
+    	$tagList = [];
+    	foreach ($this->contentTags as $contentTag)
+    	{
+    		$tagList[] = $contentTag->tag->title;
+    	}
+    	
+    	return $tagList;
+    }
+    
     public function getInRucksack()
     {
     	$rucksackIds = Yii::$app->helpers->getRucksackIds();

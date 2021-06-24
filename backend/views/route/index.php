@@ -18,7 +18,13 @@ $boolFilter = [
 $colums = [
 	['class' => 'yii\grid\SerialColumn'],
 	'id',
-	'title'
+	'title',
+	[
+		'attribute' => 'tags',
+		'value' => function ($model) {
+			return implode(', ', $model->content->tagList);
+		}
+	]
 ];
 
 $user = Yii::$app->user->identity;

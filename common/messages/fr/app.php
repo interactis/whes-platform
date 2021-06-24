@@ -43,7 +43,7 @@ return [
 	"difficult" => "difficile",
 	"Distance" => "Distance",
 	"Duration" => "Durée",
-	"hour" => "heures",
+	"hour" => "heure",
 	"hours" => "heures",
 	"min." => "min.",
 	"Start Altitude" => "Altitude de départ",

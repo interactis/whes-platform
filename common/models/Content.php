@@ -129,7 +129,8 @@ class Content extends \yii\db\ActiveRecord
      */
     public function getContentFlags()
     {
-        return $this->hasMany(ContentFlag::className(), ['content_id' => 'id']);
+        return $this->hasMany(ContentFlag::className(), ['content_id' => 'id'])
+        	->orderBy(['order' => SORT_ASC]);
     }
 
     /**

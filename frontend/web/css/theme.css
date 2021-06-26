@@ -10808,15 +10808,16 @@ body {
   z-index: 1030;
   background: white !important;
   opacity: 0.95; }
-  .navbar .navbar-brand {
+  .navbar .brand {
     position: absolute;
     top: 0;
     left: 50%;
     -webkit-transform: translate(-50%, 0);
             transform: translate(-50%, 0);
+    display: block;
     width: 184px;
-    margin-top: -2px; }
-    .navbar .navbar-brand .logo {
+    margin-top: 2px; }
+    .navbar .brand .logo {
       width: 100%; }
   .navbar .navbar-toggler {
     border: none;
@@ -10845,7 +10846,7 @@ body {
     .navbar {
       padding-bottom: 0;
       height: 90px; }
-      .navbar .navbar-brand {
+      .navbar .brand {
         position: absolute;
         top: 50%;
         left: 50%;
@@ -10875,7 +10876,7 @@ body {
         width: 390px;
         padding: 18px; } }
   @media (min-width: 1200px) {
-    .navbar .navbar-brand {
+    .navbar .brand {
       width: 260px; } }
   @media (max-width: 991.98px) {
     .navbar {

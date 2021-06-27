@@ -2,6 +2,7 @@
 	z-index: $zindex-fixed;
 	background: white !important;
 	opacity: 0.95;
+	
 	.brand {
 		@include centerer-horizontal;
 		display: block;
@@ -118,8 +119,15 @@
 		padding-left: 24px;
 		padding-right: 24px;
 		max-height: 100vh;
-		overflow: scroll;
+		overflow-y: scroll;
 		-webkit-overflow-scrolling: touch;
+		
+		-ms-overflow-style: none;  /* Internet Explorer 10+ */
+    	scrollbar-width: none;  /* Firefox */
+		
+		&::-webkit-scrollbar { 
+			display: none;  /* Safari and Chrome */
+		}
 		
 		.spacer {
 			display: block;

@@ -35,7 +35,7 @@
 					'heritage' => $heritage
 				]) ?>
 				
-				<?= $this->render('_trip.php', ['model' => $model]) ?>
+				<?= $this->render('_visitorInfo.php', ['model' => $model]) ?>
 				
 			</div>
 		</div>

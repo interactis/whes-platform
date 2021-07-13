@@ -2,7 +2,7 @@
 <?php if (!empty($model->arrival_station)): ?>
 	<div class="card trip-card margin-bottom-lg">
 		<div class="card-header">
-			<div class="h4"><?= Yii::t('app', 'Trip Description') ?></div>
+			<div class="h4"><?= Yii::t('app', 'Visitor info') ?></div>
 		</div>
 		<div class="card-body">
 			<ul class="trip-list list-unstyled">

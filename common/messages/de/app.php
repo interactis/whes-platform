@@ -24,7 +24,7 @@ return [
 	"Display" => "Anzeige",
 	"Hiking trail network" => "Wanderwegnetz",
 	
-	"Trip Description" => "Wegbeschreibung",
+	"Visitor info" => "Besucherinfo",
 	"Schedule" => "Fahrplan",
 	"Journey" => "Anreise",
 	"Return trip" => "Rückreise",

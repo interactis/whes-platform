@@ -24,7 +24,7 @@ return [
 	"Display" => "Visualizza",
 	"Hiking trail network" => "Rete di sentieri escursionistici",
 	
-	"Trip Description" => "Indicazioni",
+	"Visitor info" => "Info per visitatori",
 	"Schedule" => "Orario",
 	"Journey" => "Arrivo",
 	"Return trip" => "Viaggio di ritorno",

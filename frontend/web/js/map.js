@@ -10,7 +10,7 @@ $(function() {
             highlightDisabledPoi: bgMap.data('disabled-poi-highlight-url'),
             clusterImage: bgMap.data('cluster-url'),
             locationImage: bgMap.data('location-url'),
-            zoom: ($(window).width() < 500) ? 10 : 11.5,
+            zoom: ($(window).width() < 500) ? 8.5 : 9.6,
             allDataUrl: '/map/get-all-markers/'
         });
 

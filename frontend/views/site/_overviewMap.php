@@ -17,4 +17,9 @@ use common\models\Heritage;
 			</div>
 		<?php endforeach; ?>
 	</div>
+	
+	<a href="/map" title="<?= Yii::t('app', 'Show map') ?>">
+		<i class="fa fa-map-marker"></i> 
+		<?= Yii::t('app', 'Show map') ?>
+	</a>
 </div>

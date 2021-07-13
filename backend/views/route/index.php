@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use common\models\Heritage;
 
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\RouteSearch */
@@ -36,7 +37,8 @@ if ($user->isAdmin())
 			'value' => function ($model) {
 				if (isset($model->content->heritage))
 					return $model->content->heritage->short_name;
-			}
+			},
+			'filter' => Heritage::getHeritages(true)
 		],
 		[
 			'attribute' => 'featured',

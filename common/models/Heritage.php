@@ -157,14 +157,20 @@ class Heritage extends HelperModel
         	->orderBy(['order' => SORT_ASC, 'id' => SORT_ASC]);
     }
     
-    public static function getHeritages()
+    public static function getHeritages($forDropdown = false)
     {
         $models = Heritage::find()
         	->joinWith('heritageTranslations')
         	->where(['language_id' => Yii::$app->params['preferredLanguageId']])
         	->orderBy(['short_name' => SORT_ASC])
         	->all();
-        return ArrayHelper::map($models, 'id', 'short_name');
+        	
+        if ($forDropdown)
+        {
+        	return ArrayHelper::map($models, 'short_name', 'short_name');
+        }
+        else
+        	return ArrayHelper::map($models, 'id', 'short_name');
     }
     
     public static function getActiveHeritages()

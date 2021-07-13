@@ -74,5 +74,9 @@ return [
 	"/about" => "/impressum",
 	"/contact" => "/kontakt",
 	
+	"Media" => "Medien",
+	
 	"https://www.sbb.ch/en/buying/pages/fahrplan/fahrplan.xhtml" => "https://www.sbb.ch/de/kaufen/pages/fahrplan/fahrplan.xhtml",
+	"http://www.whes.ch/en/media/230/?oid=1880&lang=en" => "http://www.whes.ch/de/media/medienmitteilungen/?oid=1880&lang=de",
+	"http://www.whes.ch/en/trade/1284/?oid=2333&lang=en" => "http://www.whes.ch/de/trade/1282/?oid=2333&lang=de",
 ];

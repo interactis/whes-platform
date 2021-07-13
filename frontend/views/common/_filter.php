@@ -11,7 +11,7 @@ $this->registerJs($js, $this::POS_HEAD);
 $filterSet = false;
 ?>
 
-<div class="section" id="filter">
+<div id="filter">
 	
 	<div class="collapse-title last" data-toggle="collapse" data-target="#info-filter" aria-expanded="true" aria-controls="course-filter">
 		<div class="container">

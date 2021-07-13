@@ -8,8 +8,10 @@ $this->title = Yii::t('app', 'Our Heritage');
 
 	<?= $this->render('/common/_jumbotron', ['models' => $media]) ?>
 
-	<?= $this->render('_intro.php', ['model' => $model]) ?>
+	<?= $this->render('_intro', ['model' => $model]) ?>
 	
-	<?= $this->render('/common/_filter.php', ['content' => $content, 'filters' => $filters]) ?>
+	<?= $this->render('/common/_filter', ['content' => $content, 'filters' => $filters]) ?>
+	
+	<?= $this->render('_instaFeed') ?>
     
 </div>

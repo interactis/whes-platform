@@ -2,7 +2,7 @@
 use common\models\Heritage;
 ?>
 
-<div class="overview-map-container text-center container">
+<div class="overview-map-container text-center container margin-bottom-lg">
 	<div class="overview-map">
 		<img class="map-img" src="/img/layout/map.svg" alt="<?= Yii::t('app', 'Map') ?>">
 	

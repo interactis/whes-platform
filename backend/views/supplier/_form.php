@@ -76,6 +76,11 @@ $translationModel = new SupplierTranslation();
 						'translationModel' => $translationModel,
 						'isWysiwyg' => true
 					]); ?>
+					
+					<?php
+					if (!$model->isNewRecord)
+						echo $form->field($model, 'remove')->checkbox();
+					?>
 
     			</div>
 			</div>

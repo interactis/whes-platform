@@ -102,6 +102,19 @@ class SupplierController extends Controller
         $post = Yii::$app->request->post();
 		if ($model->load($post))
         {
+        	if ($model->remove)
+        	{
+        		$model->delete();
+        		
+        		Yii::$app->getSession()->setFlash(
+					'success',
+					'<span class="glyphicon glyphicon-ok-sign"></span> Supplier has been removed.'
+				);
+
+        		return $this->redirect(['create', 'id' => $content->id]);
+        	}
+        	
+        	
         	if ($model->validateTranslations() && $model->validate())
         	{
         		if ($model->save(false) && $model->saveTranslations())

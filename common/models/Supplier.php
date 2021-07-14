@@ -30,6 +30,7 @@ class Supplier extends TranslationModel
 {
 	public $translationFields = ['name', 'name_affix', 'remarks'];
 	public $requiredTranslationFields = ['name'];
+	public $remove = false;
 	
     /**
      * {@inheritdoc}
@@ -65,6 +66,7 @@ class Supplier extends TranslationModel
             [['phone'], 'string', 'min' => 8, 'max' => 20],
             [['email'], 'email'],
             [['url'], 'url'],
+            ['remove', 'boolean'],
             [['content_id'], 'exist', 'skipOnError' => true, 'targetClass' => Content::className(), 'targetAttribute' => ['content_id' => 'id']],
         ];
     }
@@ -86,6 +88,7 @@ class Supplier extends TranslationModel
             'email' => Yii::t('app', 'Email'),
             'phone' => Yii::t('app', 'Phone'),
             'geom' => Yii::t('app', 'Geom'),
+            'remove' => Yii::t('app', 'Remove supplier'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
         ];

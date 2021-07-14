@@ -12,6 +12,6 @@ $this->title = Yii::t('app', 'Our Heritage');
 	
 	<?= $this->render('/common/_filter', ['content' => $content, 'filters' => $filters]) ?>
 	
-	<?php // $this->render('_instaFeed') ?>
+	<?= $this->render('_instaFeed') ?>
     
 </div>

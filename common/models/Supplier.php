@@ -88,7 +88,7 @@ class Supplier extends TranslationModel
             'email' => Yii::t('app', 'Email'),
             'phone' => Yii::t('app', 'Phone'),
             'geom' => Yii::t('app', 'Geom'),
-            'remove' => Yii::t('app', 'Remove supplier'),
+            'remove' => Yii::t('app', 'Remove Supplier'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
         ];

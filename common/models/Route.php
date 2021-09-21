@@ -6,6 +6,7 @@ use Yii;
 use yii\behaviors\TimestampBehavior;
 use common\models\helpers\HelperModel;
 use common\components\SwissGeometryBehavior;
+use yii\web\UploadedFile;
 
 
 /**
@@ -70,7 +71,6 @@ class Route extends HelperModel
             [
                 'class' => SwissGeometryBehavior::className(),
                 'type' => SwissGeometryBehavior::GEOMETRY_LINESTRING,
-                //'type' => SwissGeometryBehavior::GEOMETRY_POLYGON,
                 'attribute' => 'geom',
             ],
         ];
@@ -92,10 +92,37 @@ class Route extends HelperModel
             [['tags', 'flags'], 'required'],
             ['difficulty', 'in', 'range' => [self::DIFFICULTY_EASY, self::DIFFICULTY_MEDIUM, self::DIFFICULTY_DIFFICULT]],
             
-            ['geojsonFile', 'file', 'extensions' => ['geojson']]
+            ['geojsonFile', 'file', 'extensions' => ['geojson']],
+            ['geom', 'handleFileUpload', 'skipOnEmpty' => false, 'skipOnError' => false]
         ];
     }
-
+	
+	public function handleFileUpload($attribute, $params)
+    {
+    	if ($file = UploadedFile::getInstance($this, 'geojsonFile'))
+		{
+			$string = file_get_contents($file->tempName);
+			$json = json_decode($string, true);
+			
+			if (!isset($json['crs']['properties']['name']) OR $json['crs']['properties']['name'] != 'urn:ogc:def:crs:EPSG::21781')
+			{
+				$this->addError($attribute, 'Wrong data projection. Please use Swiss projection EPSG:21781.');
+			}
+			else
+			{
+				if (!isset($json['features'][0]['geometry']) OR $json['features'][0]['geometry']['type'] != 'LineString')
+				{
+					$this->addError($attribute, 'Please use geometry type LineString.');
+				}
+				else
+				{
+					$coordinates = $json['features'][0]['geometry']['coordinates'];
+					$this->geom = $coordinates;
+				}
+			}	
+		}
+    }
+	
     /**
      * {@inheritdoc}
      */

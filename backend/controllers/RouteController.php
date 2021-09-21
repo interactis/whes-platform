@@ -10,7 +10,6 @@ use backend\components\HelperController;
 use yii\web\NotFoundHttpException;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
-use yii\web\UploadedFile;
 
 /**
  * RouteController implements the CRUD actions for Route model.
@@ -82,9 +81,6 @@ class RouteController extends HelperController
         	
         	if ($model->validateTranslations() && $model->validate() && $contentModel->validate())
         	{
-				if ($file = UploadedFile::getInstance($model, 'geojsonFile'))
-					$model->setLineGeom($file->tempName);
-					
         		$contentModel->save(false);
     			$model->content_id = $contentModel->id;	
         		if ($model->save(false)	&&
@@ -122,9 +118,6 @@ class RouteController extends HelperController
         	
         	if ($model->validateTranslations() && $model->validate() && $contentModel->validate())
         	{
-				if ($file = UploadedFile::getInstance($model, 'geojsonFile'))
-					$this->_setLineGeom($file, $model);
-        		
         		if ($model->removeGeom)
         			$model->geom = '';
         		
@@ -163,14 +156,6 @@ class RouteController extends HelperController
         $content->delete();
 
         return $this->redirect(['index']);
-    }
-    
-    private function _setLineGeom($file, $model)
-    {
-    	$string = file_get_contents($file->tempName);
-    	$json = json_decode($string, true);
-    	$coordinates = $json['features'][0]['geometry']['coordinates'];
-    	$model->setGeom($coordinates);
     }
 	
     protected function findModel($id)

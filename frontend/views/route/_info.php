@@ -16,6 +16,8 @@
 					
 					<?= $this->render('/common/_youtube', ['model' => $model]) ?>
 					
+					<?= $this->render('/common/_vimeo', ['model' => $model]) ?>
+					
 					<?= $this->render('_figures', ['model' => $model]) ?>
 					
 					<?= $this->render('_catering', ['model' => $model]) ?>

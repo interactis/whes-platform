@@ -10704,20 +10704,25 @@ body {
   .action-btn.active svg .circle {
     stroke: #A60100; }
 
-.youtube-iframe {
+.youtube-iframe,
+.vimeo-iframe {
   width: 100%;
   height: 266px; }
   @media (min-width: 576px) {
-    .youtube-iframe {
+    .youtube-iframe,
+    .vimeo-iframe {
       height: 277px; } }
   @media (min-width: 768px) {
-    .youtube-iframe {
+    .youtube-iframe,
+    .vimeo-iframe {
       height: 388px; } }
   @media (min-width: 992px) {
-    .youtube-iframe {
+    .youtube-iframe,
+    .vimeo-iframe {
       height: 298px; } }
   @media (min-width: 1200px) {
-    .youtube-iframe {
+    .youtube-iframe,
+    .vimeo-iframe {
       height: 357px; } }
 
 #footer {

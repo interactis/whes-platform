@@ -16,6 +16,7 @@ use yii\behaviors\TimestampBehavior;
  * @property string|null $excerpt
  * @property string|null $description
  * @property string|null $youtube_id
+ * @property string|null $vimeo_id
  * @property int|null $created_at
  * @property int|null $updated_at
  *
@@ -51,7 +52,7 @@ class ArticleTranslation extends \yii\db\ActiveRecord
             [['article_id', 'language_id', 'created_at', 'updated_at'], 'default', 'value' => null],
             [['article_id', 'language_id', 'created_at', 'updated_at'], 'integer'],
             [['excerpt', 'description'], 'string'],
-            [['slug', 'title', 'youtube_id'], 'string', 'max' => 255],
+            [['slug', 'title', 'youtube_id', 'vimeo_id'], 'string', 'max' => 255],
             [['article_id'], 'exist', 'skipOnError' => true, 'targetClass' => Article::className(), 'targetAttribute' => ['article_id' => 'id']],
             [['language_id'], 'exist', 'skipOnError' => true, 'targetClass' => Language::className(), 'targetAttribute' => ['language_id' => 'id']],
         ];
@@ -71,6 +72,7 @@ class ArticleTranslation extends \yii\db\ActiveRecord
             'excerpt' => Yii::t('app', 'Excerpt'),
             'description' => Yii::t('app', 'Description'),
             'youtube_id' => Yii::t('app', 'YouTube ID'),
+            'vimeo_id' => Yii::t('app', 'Vimeo ID'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
         ];

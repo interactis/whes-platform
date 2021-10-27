@@ -15,6 +15,7 @@ use yii\behaviors\TimestampBehavior;
  * @property string|null $title
  * @property string|null $description
  * @property string|null $youtube_id
+ * @property string|null $vimeo_id
  * @property string|null $catering
  * @property string|null $options
  * @property string|null $directions
@@ -54,7 +55,7 @@ class RouteTranslation extends \yii\db\ActiveRecord
             [['route_id', 'language_id', 'created_at', 'updated_at'], 'default', 'value' => null],
             [['route_id', 'language_id', 'created_at', 'updated_at'], 'integer'],
             [['description', 'catering', 'options', 'directions', 'remarks'], 'string'],
-            [['slug', 'title', 'youtube_id'], 'string', 'max' => 255],
+            [['slug', 'title', 'youtube_id', 'vimeo_id'], 'string', 'max' => 255],
             [['language_id'], 'exist', 'skipOnError' => true, 'targetClass' => Language::className(), 'targetAttribute' => ['language_id' => 'id']],
             [['route_id'], 'exist', 'skipOnError' => true, 'targetClass' => Route::className(), 'targetAttribute' => ['route_id' => 'id']],
         ];
@@ -73,6 +74,7 @@ class RouteTranslation extends \yii\db\ActiveRecord
             'title' => Yii::t('app', 'Title'),
             'description' => Yii::t('app', 'Description'),
             'youtube_id' => Yii::t('app', 'YouTube ID'),
+            'vimeo_id' => Yii::t('app', 'Vimeo ID'),
             'catering' => Yii::t('app', 'Restaurants / Catering Options'),
             'options' => Yii::t('app', 'Route Options'),
             'directions' => Yii::t('app', 'Direction Instructions (optional)'),

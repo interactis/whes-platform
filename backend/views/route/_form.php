@@ -91,6 +91,15 @@ if (!$model->isNewRecord && $model->content->published)
 					<?= $this->render('/translation/field', [
 						'model' => $model,
 						'form' => $form,
+						'field' => 'vimeo_id',
+						'translations' => $translations,
+						'translationModel' => $translationModel,
+						'hint' => Yii::t('app', 'Use the last section of the Vimeo video link right after <code>https://vimeo.com/</code><br />Example: <strong>https://vimeo.com/<code>73556553</code></strong>')
+					]); ?>
+					
+					<?= $this->render('/translation/field', [
+						'model' => $model,
+						'form' => $form,
 						'field' => 'catering',
 						'translations' => $translations,
 						'translationModel' => $translationModel,

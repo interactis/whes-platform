@@ -24,7 +24,7 @@ use common\components\SwissGeometryBehavior;
  */
 class Poi extends HelperModel
 {
-	public $translationFields = ['title','description', 'youtube_id', 'directions', 'remarks'];
+	public $translationFields = ['title','description', 'youtube_id', 'vimeo_id', 'directions', 'remarks'];
 	public $requiredTranslationFields = ['title', 'description'];
 	
     /**

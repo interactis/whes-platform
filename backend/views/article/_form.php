@@ -71,7 +71,16 @@ if (!$model->isNewRecord && $model->content->published)
 						'field' => 'youtube_id',
 						'translations' => $translations,
 						'translationModel' => $translationModel,
-						'hint' => Yii::t('app', 'Use the last section of the YouTube video link right after <code>watch?v=</code><br />Example: <strong>www.youtube.com/watch?v=<code>uU4c2UX5Lz8</code></strong>')
+						'hint' => Yii::t('app', 'Use the last section of the YouTube video link right after <code>watch?v=</code><br />Example: <strong>https://www.youtube.com/watch?v=<code>uU4c2UX5Lz8</code></strong>')
+					]); ?>
+					
+					<?= $this->render('/translation/field', [
+						'model' => $model,
+						'form' => $form,
+						'field' => 'vimeo_id',
+						'translations' => $translations,
+						'translationModel' => $translationModel,
+						'hint' => Yii::t('app', 'Use the last section of the Vimeo video link right after <code>https://vimeo.com/</code><br />Example: <strong>https://vimeo.com/<code>73556553</code></strong>')
 					]); ?>
 					
 					<?= $this->render('/translation/field', [

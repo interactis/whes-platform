@@ -25,7 +25,7 @@ id SERIAL,
 code_series_id INTEGER,
 code_group_id INTEGER,
 content_id INTEGER,
-type SMALLINT,
+type SMALLINT DEFAULT 1,
 code VARCHAR(6) NOT NULL UNIQUE ,
 active BOOLEAN DEFAULT false,
 created_at INTEGER,
@@ -537,6 +537,7 @@ ALTER TABLE code_group ADD FOREIGN KEY (heritage_id) REFERENCES heritage (id) ON
 ALTER TABLE code_translation ADD FOREIGN KEY (code_id) REFERENCES code (id) ON DELETE CASCADE;
 
 ALTER TABLE code_translation ADD FOREIGN KEY (language_id) REFERENCES language (id) ON DELETE CASCADE;
+
 
 
 

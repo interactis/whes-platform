@@ -7,8 +7,39 @@ $this->title = 'Dashboard';
 		
 		<?php if ($user->isEditor()): ?>
 			<h1><?= $user->heritage->short_name ?></h1>
+			
+			<div class="row">
+				<div class="col-md-4 margin-bottom">
+					<?php
+					/*
+					<div class="col-md-4 margin-bottom">
+						<div class="h1">Heritage</div>
+						<p class="lead">
+							<a href="/heritage/update/<?= $user->heritage_id ?>">
+								Heritage Page
+							</a>
+						</p>
+					</div>
+					*/
+					?>
+					<p class="lead">
+						<a href="/poi">
+							Points of Interest
+						</a>
+					</p>
+					<p class="lead">
+						<a href="/route">
+							Routes
+						</a>
+					</p>
+					<p class="lead">
+						<a href="/article">
+							Articles
+						</a>
+					</p>
+				</div>
+			</div>
 		<?php endif; ?>
-		
 		
 		<?php if ($user->isAdmin()): ?>
 	
@@ -38,7 +69,6 @@ $this->title = 'Dashboard';
 				</div>
 			
 				<div class="col-md-4 margin-bottom">
-					
 					<?php if ($user->isSuperAdmin()): ?>
 						<div class="h1">Tags & Filters</div>
 						<p class="lead">
@@ -59,7 +89,6 @@ $this->title = 'Dashboard';
 							</a>
 						</p>
 					<?php endif; ?>
-					
 				</div>
 			
 				<div class="col-md-4 margin-bottom">
@@ -70,14 +99,10 @@ $this->title = 'Dashboard';
 						</a>
 					</p>
 				</div>
-			
+				
 			</div>
-		
-		<?php endif; ?>
-        
-        <div class="row">
-        	
-        	<?php if ($user->isAdmin()): ?>
+			
+			<div class="row">
 				<div class="col-md-4 margin-bottom">
 					<div class="h1">Heritages</div>
 					<p class="lead">
@@ -86,7 +111,7 @@ $this->title = 'Dashboard';
 						</a>
 					</p>
 				</div>
-        		
+				
 				<div class="col-md-4 margin-bottom">
 					<div class="h1">Content</div>
 					<p class="lead">
@@ -125,46 +150,19 @@ $this->title = 'Dashboard';
 						</a>
 					</p>
 				</div>
-			<?php endif; ?>
-			
-			<?php
-        	if ($user->isEditor()): ?>
-        		<?php
-        		/*
+				
+			</div>
+			<div class="row">
 				<div class="col-md-4 margin-bottom">
-					<div class="h1">Heritage</div>
+					<div class="h1">NFC</div>
 					<p class="lead">
-						<a href="/heritage/update/<?= $user->heritage_id ?>">
-							Heritage Page
+						<a  href="/code-series">
+							Code Series
 						</a>
 					</p>
 				</div>
-				*/
-				?>
-				
-				<div class="col-md-4 margin-bottom">
-					<p class="lead">
-						<a href="/poi">
-							Points of Interest
-						</a>
-					</p>
-					<p class="lead">
-						<a href="/route">
-							Routes
-						</a>
-					</p>
-					<p class="lead">
-						<a href="/article">
-							Articles
-						</a>
-					</p>
-				</div>
-				
-        	<?php endif; ?>
-        
-        	
-			
-        </div>
+			</div>
+		<?php endif; ?>
         
     </div>
 </div>

@@ -8,6 +8,7 @@ use common\models\Code;
 use backend\models\CodeSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 
 /**
@@ -21,6 +22,20 @@ class CodeController extends Controller
     public function behaviors()
     {
         return [
+        	'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'actions' => ['index', 'update'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action) {
+                        	$user = Yii::$app->user->identity;
+                            return $user->isAdmin();
+                        }
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -50,37 +65,6 @@ class CodeController extends Controller
     }
 
     /**
-     * Displays a single Code model.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    public function actionView($id)
-    {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
-    }
-
-    /**
-     * Creates a new Code model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
-    public function actionCreate()
-    {
-        $model = new Code();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        }
-
-        return $this->render('create', [
-            'model' => $model,
-        ]);
-    }
-
-    /**
      * Updates an existing Code model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
@@ -99,21 +83,7 @@ class CodeController extends Controller
             'model' => $model,
         ]);
     }
-
-    /**
-     * Deletes an existing Code model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    public function actionDelete($id)
-    {
-        $this->findModel($id)->delete();
-
-        return $this->redirect(['index']);
-    }
-    
+	
     private function _findCodeSeries($id)
     {
         if (($model = CodeSeries::findOne($id)) !== null) {

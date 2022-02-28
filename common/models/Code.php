@@ -26,6 +26,14 @@ use common\models\helpers\TranslationModel;
  */
 class Code extends TranslationModel
 {
+	const TYPE_INFO = 1;
+    const TYPE_COLLECT = 2;
+    
+    public $types = [
+    	1 => 'Info',
+    	2 => 'Collect'
+    ];
+    
 	public $translationFields = ['info'];
 	public $requiredTranslationFields = [];
 	

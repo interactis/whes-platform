@@ -56,7 +56,7 @@ class CodeSeries extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('app', 'ID'),
             'code_count' => Yii::t('app', 'Number of Codes'),
-            'created_at' => Yii::t('app', 'Created at'),
+            'created_at' => Yii::t('app', 'Creation Time'),
             'updated_at' => Yii::t('app', 'Updated at'),
         ];
     }
@@ -111,6 +111,8 @@ class CodeSeries extends \yii\db\ActiveRecord
 	    return $randomString;
 	}
 	
+	/*
+	HIER WEITERMACHEN
 	private function _saveCsv($codes, $seriesId)
 	{
 		$fp = fopen('console/exhibitionCodes/Exhibition-Codes-Series-'. $seriesId .'.csv', 'w');
@@ -119,4 +121,5 @@ class CodeSeries extends \yii\db\ActiveRecord
 		}
 		fclose($fp);
 	}
+	*/
 }

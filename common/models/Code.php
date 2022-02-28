@@ -73,8 +73,8 @@ class Code extends TranslationModel
         return [
             'id' => Yii::t('app', 'ID'),
             'code_series_id' => Yii::t('app', 'Code Series ID'),
-            'code_group_id' => Yii::t('app', 'Code Group ID'),
-            'content_id' => Yii::t('app', 'Content ID'),
+            'code_group_id' => Yii::t('app', 'Code Group'),
+            'content_id' => Yii::t('app', 'Content'),
             'type' => Yii::t('app', 'Type'),
             'code' => Yii::t('app', 'Code'),
             'active' => Yii::t('app', 'Active'),

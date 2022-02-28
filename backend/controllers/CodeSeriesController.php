@@ -25,7 +25,7 @@ class CodeSeriesController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['index', 'create', 'view'],
+                        'actions' => ['index', 'create'],
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action) {
@@ -69,19 +69,6 @@ class CodeSeriesController extends Controller
     }
 
     /**
-     * Displays a single CodeSeries model.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    public function actionView($id)
-    {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
-    }
-
-    /**
      * Creates a new CodeSeries model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
@@ -93,7 +80,7 @@ class CodeSeriesController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save())
         {
         	if ($model->createCodes())
-        		return $this->redirect(['view', 'id' => $model->id]);
+        		return $this->redirect(['code/index', 'id' => $model->id]);
         }
 
         return $this->render('create', [

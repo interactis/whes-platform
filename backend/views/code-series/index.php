@@ -26,17 +26,31 @@ $this->params['breadcrumbs'][] = $this->title;
     {
    		 $actionCollumn = [
 			'class' => 'yii\grid\ActionColumn',
-			'template' => '{view} {delete}'
+			'template' => '{view} {delete}',
+			'buttons'=>[
+				'view' => function ($url, $model) { 
+					return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['code/index', 'id' => $model->id], [
+						'title' => Yii::t('app', 'View'),
+					]);
+				}
+			],
 		]; 
     }
     else
     {
     	 $actionCollumn = [
 			'class' => 'yii\grid\ActionColumn',
-			'template' => '{view}'
+			'template' => '{view}',
+			'buttons'=>[
+				'view' => function ($url, $model) { 
+					return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['code/index', 'id' => $model->id], [
+						'title' => Yii::t('app', 'View'),
+					]);
+				}
+			],
 		]; 
     }
-    
+            
     echo GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -50,6 +64,5 @@ $this->params['breadcrumbs'][] = $this->title;
              $actionCollumn
         ],
     ]); ?>
-
 
 </div>

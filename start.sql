@@ -1,15 +1,6 @@
 /* SQLEditor (Postgres)*/
 
 
-CREATE TABLE article
-(
-id SERIAL,
-content_id INTEGER,
-created_at INTEGER,
-updated_at INTEGER,
-CONSTRAINT article_pkey PRIMARY KEY (id)
-);
-
 CREATE TABLE code_series
 (
 id SERIAL,
@@ -17,6 +8,15 @@ code_count INTEGER,
 created_at INTEGER,
 updated_at INTEGER,
 CONSTRAINT code_series_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE article
+(
+id SERIAL,
+content_id INTEGER,
+created_at INTEGER,
+updated_at INTEGER,
+CONSTRAINT article_pkey PRIMARY KEY (id)
 );
 
 CREATE TABLE code
@@ -418,6 +418,7 @@ CREATE TABLE code_group
 (
 id SERIAL,
 heritage_id INTEGER,
+code_series_id INTEGER,
 title VARCHAR(255),
 code_count INTEGER,
 created_at INTEGER,
@@ -534,11 +535,11 @@ ALTER TABLE related_tag ADD FOREIGN KEY (related_tag_id) REFERENCES tag (id) ON 
 
 ALTER TABLE code_group ADD FOREIGN KEY (heritage_id) REFERENCES heritage (id) ON DELETE CASCADE;
 
+ALTER TABLE code_group ADD FOREIGN KEY (code_series_id) REFERENCES code_series (id) ON DELETE CASCADE;
+
 ALTER TABLE code_translation ADD FOREIGN KEY (code_id) REFERENCES code (id) ON DELETE CASCADE;
 
 ALTER TABLE code_translation ADD FOREIGN KEY (language_id) REFERENCES language (id) ON DELETE CASCADE;
-
-
 
 
 

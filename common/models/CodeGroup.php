@@ -44,10 +44,13 @@ class CodeGroup extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['heritage_id', 'code_count', 'created_at', 'updated_at'], 'default', 'value' => null],
-            [['heritage_id', 'code_count', 'created_at', 'updated_at'], 'integer'],
+            [['heritage_id', 'code_series_id', 'code_count', 'created_at', 'updated_at'], 'default', 'value' => null],
+            [['heritage_id', 'code_series_id', 'code_count', 'created_at', 'updated_at'], 'integer'],
             [['title'], 'string', 'max' => 255],
             [['heritage_id'], 'exist', 'skipOnError' => true, 'targetClass' => Heritage::className(), 'targetAttribute' => ['heritage_id' => 'id']],
+        	[['code_series_id'], 'exist', 'skipOnError' => true, 'targetClass' => CodeSeries::className(), 'targetAttribute' => ['code_series_id' => 'id']],
+        	[['heritage_id', 'code_series_id', 'code_count', 'title'], 'required'],
+            ['code_count', 'compare', 'compareValue' => 0, 'operator' => '>'],
         ];
     }
 
@@ -59,8 +62,9 @@ class CodeGroup extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('app', 'ID'),
             'heritage_id' => Yii::t('app', 'Heritage ID'),
+            'code_series_id' => Yii::t('app', 'Code Series ID'),
             'title' => Yii::t('app', 'Title'),
-            'code_count' => Yii::t('app', 'Code Count'),
+            'code_count' => Yii::t('app', 'Number of Codes'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
         ];

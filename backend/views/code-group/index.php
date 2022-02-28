@@ -8,17 +8,22 @@ use yii\grid\GridView;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = Yii::t('app', 'Code Groups');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Code Series'), 'url' => ['code-series/index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Code Series') .' #'. $codeSeries->id, 'url' => ['code/index', 'id' => $codeSeries->id]];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="code-group-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
+    <h1><?= Yii::t('app', 'Code Series') .' #'. $codeSeries->id ?></h1>
+    
+    <?= $this->render('/common/_codeNavPills', [
+    	'model' => $codeSeries,
+    	'active' => 2
+    ]) ?>
+    
     <p>
-        <?= Html::a(Yii::t('app', 'Create Code Group'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('app', 'Create Code Group'), ['code-group/create', 'id' => $codeSeries->id], ['class' => 'btn btn-success']) ?>
     </p>
-
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,

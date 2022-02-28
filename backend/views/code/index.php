@@ -15,11 +15,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a(Yii::t('app', 'Create Code Group'), ['code-group/create', 'id' => $codeSeries->id], ['class' => 'btn btn-success']) ?>
-    </p>
-
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?= $this->render('/common/_codeNavPills', [
+    	'model' => $codeSeries,
+    	'active' => 1
+    ]) ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,

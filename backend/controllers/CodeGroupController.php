@@ -49,14 +49,16 @@ class CodeGroupController extends Controller
      * Lists all CodeGroup models.
      * @return mixed
      */
-    public function actionIndex()
+    public function actionIndex($id)
     {
+    	$codeSeries = $this->_findCodeSeries($id);
         $searchModel = new CodeGroupSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'codeSeries' => $codeSeries,
         ]);
     }
 

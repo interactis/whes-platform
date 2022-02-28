@@ -8,6 +8,7 @@ use yii\helpers\Html;
 $this->title = Yii::t('app', 'Create Code Group');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Code Series'), 'url' => ['code-series/index']];
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Code Series') .' #'. $codeSeries->id, 'url' => ['code/index', 'id' => $codeSeries->id]];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Code Groups'), 'url' => ['code-group/index', 'id' => $codeSeries->id]];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="code-group-create">

@@ -73,8 +73,9 @@ class CodeGroupController extends Controller
         $model = new CodeGroup();
         $model->code_series_id = $codeSeries->id;
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post()) && $model->save() && $model->assignCodes())
+        {
+            return $this->redirect(['code/index', 'id' => $codeSeries->id]);
         }
 
         return $this->render('create', [
@@ -82,7 +83,7 @@ class CodeGroupController extends Controller
             'codeSeries' => $codeSeries,
         ]);
     }
-
+	
     /**
      * Updates an existing CodeGroup model.
      * If update is successful, the browser will be redirected to the 'view' page.

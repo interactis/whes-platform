@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use common\models\Heritage;
 
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\CodeGroupSearch */
@@ -32,13 +33,21 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'heritage_id',
             'title',
             'code_count',
-            'created_at',
-            //'updated_at',
+            [
+				'attribute' => 'heritage_id',
+				'value' => function ($model) {
+					if (isset($model->heritage))
+						return $model->heritage->short_name;
+				},
+				'filter' => Heritage::getHeritages(),
+			],
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+				'class' => 'yii\grid\ActionColumn',
+				'template' => '{update}'
+			]
         ],
     ]); ?>
 

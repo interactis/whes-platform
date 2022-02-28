@@ -46,6 +46,13 @@ class CodeGroupSearch extends CodeGroup
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort'=> [
+				'defaultOrder' => ['id' => SORT_ASC],
+				'attributes' => ['id','title', 'code_count']
+			],
+            'pagination' => [
+				'pageSize' => 50,
+			]
         ]);
 
         $this->load($params);

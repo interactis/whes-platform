@@ -8,9 +8,10 @@ use yii\helpers\Html;
 $this->title = Yii::t('app', 'Update Code Group: {name}', [
     'name' => $model->title,
 ]);
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Code Groups'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->title, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = Yii::t('app', 'Update');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Code Series'), 'url' => ['code-series/index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Code Series') .' #'. $codeSeries->id, 'url' => ['code/index', 'id' => $codeSeries->id]];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Code Groups'), 'url' => ['code-group/index', 'id' => $codeSeries->id]];
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="code-group-update">
 
@@ -18,6 +19,7 @@ $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
 
     <?= $this->render('_form', [
         'model' => $model,
+         'showCodeCount' => false,
     ]) ?>
 
 </div>

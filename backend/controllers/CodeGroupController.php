@@ -71,6 +71,7 @@ class CodeGroupController extends Controller
     {
     	$codeSeries = $this->_findCodeSeries($id);
         $model = new CodeGroup();
+        $model->scenario = 'create';
         $model->code_series_id = $codeSeries->id;
 
         if ($model->load(Yii::$app->request->post()) && $model->save() && $model->assignCodes())
@@ -95,12 +96,14 @@ class CodeGroupController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post()) && $model->save())
+        {
+            return $this->redirect(['index', 'id' => $model->code_series_id]);
         }
 
         return $this->render('update', [
             'model' => $model,
+            'codeSeries' => $model->codeSeries,
         ]);
     }
     

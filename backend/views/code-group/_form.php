@@ -29,7 +29,10 @@ use common\models\Heritage;
 						['prompt' => Yii::t('app', 'Please select')]
 					) ?>
 					
-					<?= $form->field($model, 'code_count')->textInput() ?>
+					<?php
+					if ($showCodeCount)
+						echo $form->field($model, 'code_count')->textInput();
+					?>
 					
 				</div>
 			</div>

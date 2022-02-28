@@ -52,7 +52,7 @@ class CodeGroup extends \yii\db\ActiveRecord
         	[['code_series_id'], 'exist', 'skipOnError' => true, 'targetClass' => CodeSeries::className(), 'targetAttribute' => ['code_series_id' => 'id']],
         	[['heritage_id', 'code_series_id', 'code_count', 'title'], 'required'],
             ['code_count', 'compare', 'compareValue' => 0, 'operator' => '>'],
-            ['code_count', 'validateCodeCount'],
+            ['code_count', 'validateCodeCount', 'on' => ['create']],
         ];
     }
     
@@ -131,6 +131,16 @@ class CodeGroup extends \yii\db\ActiveRecord
     public function getHeritage()
     {
         return $this->hasOne(Heritage::className(), ['id' => 'heritage_id']);
+    }
+    
+    /**
+     * Gets query for [[CodeSeries]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCodeSeries()
+    {
+        return $this->hasOne(CodeSeries::className(), ['id' => 'code_series_id']);
     }
     
     public static function getCodeGroups($codeSeriesId)

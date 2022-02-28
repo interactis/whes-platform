@@ -48,7 +48,8 @@ class CodeSearch extends Code
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'sort'=> [
-				'defaultOrder' => ['id' => SORT_ASC]
+				'defaultOrder' => ['id' => SORT_ASC],
+				'attributes' => ['id', 'code', 'type', 'active']
 			],
             'pagination' => [
 				'pageSize' => 50,

@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use common\models\CodeGroup;
 
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\CodeSearch */
@@ -27,6 +28,16 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
+            'code',
+            [
+				'attribute' => 'code_group_id',
+				'value' => function ($model) {
+					if (isset($model->codeGroup))
+						return $model->codeGroup->title;
+				},
+				'filter' => CodeGroup::getCodeGroups($codeSeries->id),
+			],
+            'content_id',
             [
                 'attribute' => 'type',
                 'value' => function ($model) {
@@ -34,13 +45,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 },
                 'filter' => $searchModel->types,
             ],
-            
-            'code',
-            'code_group_id',
-            'content_id',
             'active:boolean',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+				'class' => 'yii\grid\ActionColumn',
+				'template' => '{update}'
+			]
         ],
     ]); ?>
 

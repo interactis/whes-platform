@@ -31,7 +31,6 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
             'id',
             'title',
             'code_count',
@@ -43,7 +42,6 @@ $this->params['breadcrumbs'][] = $this->title;
 				},
 				'filter' => Heritage::getHeritages(),
 			],
-
             [
 				'class' => 'yii\grid\ActionColumn',
 				'template' => '{update}'

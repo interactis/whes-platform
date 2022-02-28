@@ -48,7 +48,7 @@ class CodeGroupSearch extends CodeGroup
             'query' => $query,
             'sort'=> [
 				'defaultOrder' => ['id' => SORT_ASC],
-				'attributes' => ['id','title', 'code_count']
+				'attributes' => ['id', 'title', 'code_count']
 			],
             'pagination' => [
 				'pageSize' => 50,

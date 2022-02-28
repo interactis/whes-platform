@@ -4,6 +4,7 @@ namespace common\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "code_group".
@@ -130,5 +131,15 @@ class CodeGroup extends \yii\db\ActiveRecord
     public function getHeritage()
     {
         return $this->hasOne(Heritage::className(), ['id' => 'heritage_id']);
+    }
+    
+    public static function getCodeGroups($codeSeriesId)
+    {
+        $models = CodeGroup::find()
+        	->where(['code_series_id' => $codeSeriesId])
+        	->orderBy(['title' => SORT_ASC])
+        	->all();
+        	
+        return ArrayHelper::map($models, 'id', 'title');
     }
 }

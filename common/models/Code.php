@@ -4,6 +4,7 @@ namespace common\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
+use common\models\helpers\TranslationModel;
 
 /**
  * This is the model class for table "code".
@@ -23,8 +24,11 @@ use yii\behaviors\TimestampBehavior;
  * @property Content $content
  * @property CodeTranslation[] $codeTranslations
  */
-class Code extends \yii\db\ActiveRecord
+class Code extends TranslationModel
 {
+	public $translationFields = ['info'];
+	public $requiredTranslationFields = [];
+	
     /**
      * {@inheritdoc}
      */

@@ -26,13 +26,27 @@ class CodeController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['index', 'update'],
+                        'actions' => ['index'],
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action) {
                         	$user = Yii::$app->user->identity;
                             return $user->isAdmin();
                         }
+                    ],
+                    [
+                        'actions' => ['list'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action) {
+                        	$user = Yii::$app->user->identity;
+                            return $user->isEditor();
+                        }
+                    ],
+                    [
+                        'actions' => ['update'],
+                        'allow' => true,
+                        'roles' => ['@']
                     ],
                 ],
             ],
@@ -64,10 +78,25 @@ class CodeController extends Controller
             'codeSeries' => $codeSeries
         ]);
     }
-
+	
+	public function actionList()
+    {
+    	$user = Yii::$app->user->identity;
+        $searchModel = new CodeSearch();
+        $searchModel->heritage_id = $user->heritage_id;
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+		$downloadDataProvider = $searchModel->getDownloadData($dataProvider);
+		
+        return $this->render('list', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'downloadDataProvider' => $downloadDataProvider,
+            'user' => $user,
+        ]);
+    }
+	
     /**
      * Updates an existing Code model.
-     * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found

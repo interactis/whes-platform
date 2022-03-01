@@ -37,6 +37,11 @@ $this->title = 'Dashboard';
 							Articles
 						</a>
 					</p>
+					<p class="lead">
+						<a  href="/code/list">
+							NFC Codes
+						</a>
+					</p>
 				</div>
 			</div>
 		<?php endif; ?>

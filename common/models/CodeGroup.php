@@ -143,12 +143,17 @@ class CodeGroup extends \yii\db\ActiveRecord
         return $this->hasOne(CodeSeries::className(), ['id' => 'code_series_id']);
     }
     
-    public static function getCodeGroups($codeSeriesId)
+    public static function getCodeGroups($codeSeriesId = false, $heritageId = false)
     {
-        $models = CodeGroup::find()
-        	->where(['code_series_id' => $codeSeriesId])
-        	->orderBy(['title' => SORT_ASC])
-        	->all();
+        $query = CodeGroup::find();
+        
+        if ($codeSeriesId)
+        	$query->where(['code_series_id' => $codeSeriesId]);
+        
+        if ($heritageId)
+        	$query->where(['heritage_id' => $heritageId]);
+        	
+        $models = $query->orderBy(['title' => SORT_ASC])->all();
         	
         return ArrayHelper::map($models, 'id', 'title');
     }

@@ -13,13 +13,15 @@ use common\models\Code;
  */
 class CodeSearch extends Code
 {
+	public $heritage_id;
+
     /**
      * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            [['id', 'code_series_id', 'code_group_id', 'content_id', 'type', 'created_at', 'updated_at'], 'integer'],
+            [['id', 'code_series_id', 'code_group_id', 'content_id', 'type', 'heritage_id', 'created_at', 'updated_at'], 'integer'],
             [['code'], 'safe'],
             [['active'], 'boolean'],
         ];
@@ -43,7 +45,7 @@ class CodeSearch extends Code
      */
     public function search($params)
     {
-        $query = Code::find();
+        $query = Code::find()->joinWith('codeGroup');
 
         // add conditions that should always apply here
 
@@ -69,11 +71,12 @@ class CodeSearch extends Code
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'code_series_id' => $this->code_series_id,
+            'code.code_series_id' => $this->code_series_id,
             'code_group_id' => $this->code_group_id,
             'content_id' => $this->content_id,
             'type' => $this->type,
             'active' => $this->active,
+            'code_group.heritage_id' => $this->heritage_id,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ]);

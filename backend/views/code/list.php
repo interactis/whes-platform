@@ -9,25 +9,19 @@ use kartik\export\ExportMenu;
 /* @var $searchModel backend\models\CodeSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Code Series') .' #'. $codeSeries->id;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Code Series'), 'url' => ['code-series/index']];
+$this->title = Yii::t('app', 'NFC Codes');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="code-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-
-    <?= $this->render('/common/_codeNavPills', [
-    	'model' => $codeSeries,
-    	'active' => 1
-    ]) ?>
     
     <div class="margin-bottom">
 		<p class="small"><strong>Excel Download:</strong><p>
 		<?= ExportMenu::widget([
 			'dataProvider' => $downloadDataProvider,
 			// 'columns' => ['url', 'code'],
-			'filename' => 'Code_Series_'. $codeSeries->id,
+			'filename' => 'NFC_Codes_'. date('d.m.Y'),
 			'showConfirmAlert' => false,
 			'exportConfig' => [
 				ExportMenu::FORMAT_HTML => false,
@@ -55,7 +49,7 @@ $this->params['breadcrumbs'][] = $this->title;
 					else
 						return '';
 				},
-				'filter' => CodeGroup::getCodeGroups($codeSeries->id),
+				'filter' => CodeGroup::getCodeGroups(false, $user->heritage_id),
 			],
             [
 				'attribute' => 'content_id',

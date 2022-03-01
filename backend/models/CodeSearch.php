@@ -2,8 +2,10 @@
 
 namespace backend\models;
 
+use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
+use yii\data\ArrayDataProvider;
 use common\models\Code;
 
 /**
@@ -79,5 +81,21 @@ class CodeSearch extends Code
         $query->andFilterWhere(['ilike', 'code', $this->code]);
 
         return $dataProvider;
+    }
+    
+    public function getDownloadData($dataProvider)
+    {
+    	$data = [];
+    	foreach ($dataProvider->getModels() as $model)
+    	{
+    		 $data[] = [
+    		 	'url' => Yii::$app->params['frontendUrl'] .'code/'. $model->code,
+    		 	'code' => $model->code
+    		 ];
+    	}
+    	
+		return new ArrayDataProvider([
+			'allModels' => $data,
+		]);
     }
 }

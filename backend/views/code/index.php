@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use common\models\CodeGroup;
+use kartik\export\ExportMenu;
 
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\CodeSearch */
@@ -20,6 +21,21 @@ $this->params['breadcrumbs'][] = $this->title;
     	'model' => $codeSeries,
     	'active' => 1
     ]) ?>
+    
+    <div class="margin-bottom">
+		<p class="small"><strong>Excel Download:</strong><p>
+		<?= ExportMenu::widget([
+			'dataProvider' => $downloadDataProvider,
+			// 'columns' => ['url', 'code'],
+			'filename' => 'Code_Series_'. $codeSeries->id,
+			'showConfirmAlert' => false,
+			'exportConfig' => [
+				ExportMenu::FORMAT_HTML => false,
+				ExportMenu::FORMAT_TEXT => false,
+				ExportMenu::FORMAT_PDF => false
+			]
+		]) ?>
+    </div>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,

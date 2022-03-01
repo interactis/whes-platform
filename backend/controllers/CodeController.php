@@ -55,11 +55,12 @@ class CodeController extends Controller
         $searchModel = new CodeSearch();
         $searchModel->code_series_id = $id;
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+		$downloadDataProvider = $searchModel->getDownloadData($dataProvider);
 		
-		 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'downloadDataProvider' => $downloadDataProvider,
             'codeSeries' => $codeSeries
         ]);
     }

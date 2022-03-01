@@ -90,7 +90,8 @@ class CodeSearch extends Code
     	{
     		 $data[] = [
     		 	'url' => Yii::$app->params['frontendUrl'] .'code/'. $model->code,
-    		 	'code' => $model->code
+    		 	'code' => $model->code,
+    		 	'code group' => $model->codeGroup->title
     		 ];
     	}
     	

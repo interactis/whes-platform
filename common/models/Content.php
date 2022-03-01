@@ -354,4 +354,25 @@ class Content extends \yii\db\ActiveRecord
     	else
     		return false;
     }
+    
+    public static function getContentList($heritageId = false)
+    {
+    	$query = Content::find();
+    	
+    	if ($heritageId)
+    		$query->where(['heritage_id' => $heritageId]);
+   
+    	$models = $query->all();
+    	
+    	$list = [];
+    	foreach ($models as $model)
+    	{
+    		$type = $model->typeText;
+    		if (isset($model->$type))
+    		{
+    			$list[$model->id] = $model->$type->title .' ('. $type .')';
+    		};
+    	}
+        return $list;
+    }
 }

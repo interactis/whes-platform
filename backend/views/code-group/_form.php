@@ -24,7 +24,7 @@ use common\models\Heritage;
 					
 					<?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 					
-					<?= $form->field($model, 'heritage_id')->textInput()->dropDownList(
+					<?= $form->field($model, 'heritage_id')->dropDownList(
 						Heritage::getHeritages(),
 						['prompt' => Yii::t('app', 'Please select')]
 					) ?>

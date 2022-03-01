@@ -1,15 +1,8 @@
 <?php
-
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use common\models\Content;
 use kartik\select2\Select2;
-
-$contentValue = [];
-/*
-if (isset($model->content->contentTags))
-	$contentValue = ArrayHelper::map($model->content->contentTags, 'tag_id', 'tag_id');
-*/
 ?>
 
 <div class="code-form">
@@ -30,7 +23,7 @@ if (isset($model->content->contentTags))
 	
 						<?= Select2::widget([
 							'name' => 'Code[content_id]',
-							'value' => $contentValue,
+							'value' => $model->content_id,
 							'data' => Content::getContentList(),
 							'maintainOrder' => true,
 							'showToggleAll' => false,
@@ -39,7 +32,6 @@ if (isset($model->content->contentTags))
 								'multiple' => false
 							],
 							'pluginOptions' => [
-								'tags' => true,
 								'maximumInputLength' => 20
 							]
 						]) ?>

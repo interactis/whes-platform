@@ -76,12 +76,24 @@ class CodeController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post()) && $model->validate())
+        {
+        	$model->active = false;
+        	if (!empty($model->content_id))
+        		$model->active = true;
+        	
+        	$model->save(false);
+        	
+        	Yii::$app->getSession()->setFlash(
+				'success',
+				'<span class="glyphicon glyphicon-ok-sign"></span> Your changes have been saved.'
+			);
+			return $this->redirect(['update', 'id' => $model->id]);
         }
 
         return $this->render('update', [
             'model' => $model,
+            'codeSeries' => $model->codeSeries
         ]);
     }
 	

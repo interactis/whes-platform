@@ -17,7 +17,7 @@ class CodeGroupSearch extends CodeGroup
     public function rules()
     {
         return [
-            [['id', 'heritage_id', 'code_count', 'created_at', 'updated_at'], 'integer'],
+            [['id', 'heritage_id', 'code_series_id', 'code_count', 'created_at', 'updated_at'], 'integer'],
             [['title'], 'safe'],
         ];
     }
@@ -67,6 +67,7 @@ class CodeGroupSearch extends CodeGroup
         $query->andFilterWhere([
             'id' => $this->id,
             'heritage_id' => $this->heritage_id,
+            'code_series_id' => $this->code_series_id,
             'code_count' => $this->code_count,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,

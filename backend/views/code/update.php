@@ -6,10 +6,9 @@ use yii\helpers\Html;
 /* @var $model common\models\Code */
 
 $this->title = Yii::t('app', 'Code') .': '. $model->code;
-
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Codes'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = Yii::t('app', 'Update');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Code Series'), 'url' => ['code-series/index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Code Series') .' #'. $codeSeries->id, 'url' => ['code/index', 'id' => $codeSeries->id]];
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="code-update">
 

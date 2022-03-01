@@ -53,6 +53,7 @@ class CodeGroupController extends Controller
     {
     	$codeSeries = $this->_findCodeSeries($id);
         $searchModel = new CodeGroupSearch();
+        $searchModel->code_series_id = $codeSeries->id;
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -76,6 +77,10 @@ class CodeGroupController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save() && $model->assignCodes())
         {
+        	Yii::$app->getSession()->setFlash(
+				'success',
+				'<span class="glyphicon glyphicon-ok-sign"></span> Your changes have been saved.'
+			);
             return $this->redirect(['code/index', 'id' => $codeSeries->id]);
         }
 
@@ -98,6 +103,10 @@ class CodeGroupController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save())
         {
+        	Yii::$app->getSession()->setFlash(
+				'success',
+				'<span class="glyphicon glyphicon-ok-sign"></span> Your changes have been saved.'
+			);
             return $this->redirect(['index', 'id' => $model->code_series_id]);
         }
 

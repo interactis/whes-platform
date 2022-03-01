@@ -80,7 +80,13 @@ class CodeSeriesController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save())
         {
         	if ($model->createCodes())
+        	{
+        		Yii::$app->getSession()->setFlash(
+					'success',
+					'<span class="glyphicon glyphicon-ok-sign"></span> The codes have been created.'
+				);
         		return $this->redirect(['code/index', 'id' => $model->id]);
+        	}
         }
 
         return $this->render('create', [

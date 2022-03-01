@@ -6,7 +6,7 @@ use Yii;
 use common\models\CodeSeries;
 use common\models\Code;
 use backend\models\CodeSearch;
-use yii\web\Controller;
+use backend\components\HelperController;
 use yii\web\NotFoundHttpException;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
@@ -14,7 +14,7 @@ use yii\filters\VerbFilter;
 /**
  * CodeController implements the CRUD actions for Code model.
  */
-class CodeController extends Controller
+class CodeController extends HelperController
 {
     /**
      * {@inheritdoc}
@@ -44,10 +44,20 @@ class CodeController extends Controller
                         }
                     ],
                     [
-                        'actions' => ['update'],
-                        'allow' => true,
-                        'roles' => ['@']
-                    ],
+						'actions' => ['update'],
+						'allow' => true,
+						'roles' => ['@'],
+						'matchCallback' => function ($rule, $action) {
+    						$id = Yii::$app->request->get('id');
+                            $model = $this->findModel($id);
+                            $heritageId = false;
+                            
+                            if ($model->codeGroup)
+                            	$heritageId = $model->codeGroup->heritage_id;
+                            
+                            return $this->isOwnerOrAdmin($heritageId);
+                        }
+					]
                 ],
             ],
             'verbs' => [

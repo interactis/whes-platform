@@ -26,8 +26,6 @@ use yii\helpers\ArrayHelper;
  * @property ContentFlag[] $contentFlags
  * @property ContentTag[] $contentTags
  * @property ContentValidTime[] $contentValidTimes
- * @property Exhibit[] $exhibits
- * @property ExhibitRucksack[] $exhibitRucksacks
  * @property Media[] $media
  * @property Poi[] $pois
  * @property Route[] $routes
@@ -158,27 +156,7 @@ class Content extends \yii\db\ActiveRecord
     {
         return $this->hasMany(ContentValidTime::className(), ['content_id' => 'id']);
     }
-
-    /**
-     * Gets query for [[Exhibits]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getExhibits()
-    {
-        return $this->hasMany(Exhibit::className(), ['content_id' => 'id']);
-    }
-
-    /**
-     * Gets query for [[ExhibitRucksacks]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getExhibitRucksacks()
-    {
-        return $this->hasMany(ExhibitRucksack::className(), ['content_id' => 'id']);
-    }
-
+	
     /**
      * Gets query for [[Media]].
      *
@@ -232,6 +210,13 @@ class Content extends \yii\db\ActiveRecord
     public function getTypeText()
     {
     	return $this->getTypes()[$this->type];
+    }
+    
+    public function getTypeContent()
+    {
+    	$type = $this->typeText;
+    	return $this->$type;
+    	
     }
     
     public function getPreviewImage()

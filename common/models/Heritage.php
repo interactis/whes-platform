@@ -24,7 +24,7 @@ use yii\helpers\ArrayHelper;
  * @property Admin[] $admins
  * @property AmbassadorTranslation[] $ambassadorTranslations
  * @property Content[] $contents
- * @property ExhibitionCodeSeries[] $exhibitionCodeSeries
+ * @property CodeSeries[] $CodeSeries
  * @property HeritageTranslation[] $heritageTranslations
  * @property Media[] $media
  */
@@ -127,13 +127,13 @@ class Heritage extends HelperModel
     }
 
     /**
-     * Gets query for [[ExhibitionCodeSeries]].
+     * Gets query for [[CodeSeries]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getExhibitionCodeSeries()
+    public function getCodeSeries()
     {
-        return $this->hasMany(ExhibitionCodeSeries::className(), ['heritage_id' => 'id']);
+        return $this->hasMany(CodeSeries::className(), ['heritage_id' => 'id']);
     }
 
     /**

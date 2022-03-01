@@ -49,11 +49,30 @@ $this->params['breadcrumbs'][] = $this->title;
 				'attribute' => 'code_group_id',
 				'value' => function ($model) {
 					if (isset($model->codeGroup))
+					{
 						return $model->codeGroup->title;
+					}
+					else
+						return '';
 				},
 				'filter' => CodeGroup::getCodeGroups($codeSeries->id),
 			],
-            'content_id',
+            [
+				'attribute' => 'content_id',
+				'value' => function ($model) {
+					
+					if ($model->content)
+					{
+						$typeContent = $model->content->typeContent;
+						if ($typeContent)
+						{
+							return $typeContent->title .' ('. $model->content->typeText .')';
+						}	
+					}
+					return '';	
+				},
+				'filter' => CodeGroup::getCodeGroups($codeSeries->id),
+			],
             [
                 'attribute' => 'type',
                 'value' => function ($model) {

@@ -110,16 +110,4 @@ class CodeSeries extends \yii\db\ActiveRecord
     	}
 	    return $randomString;
 	}
-	
-	/*
-	HIER WEITERMACHEN
-	private function _saveCsv($codes, $seriesId)
-	{
-		$fp = fopen('console/exhibitionCodes/Exhibition-Codes-Series-'. $seriesId .'.csv', 'w');
-		foreach ($codes as $fields) {
-    		fputcsv($fp, $fields);
-		}
-		fclose($fp);
-	}
-	*/
 }

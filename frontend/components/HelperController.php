@@ -7,6 +7,7 @@ use common\models\Content;
 use common\models\Flag;
 use common\models\ContentFlag;
 use yii\helpers\ArrayHelper;
+use \yii\web\Cookie;
 
 class HelperController extends Controller
 {
@@ -26,6 +27,34 @@ class HelperController extends Controller
 	    
 	    return true; // or false to not run the action
 	}
+	
+	public function setRucksackCookie($model)
+    {
+    	$id = $model->id;
+    	$ids = Yii::$app->helpers->getRucksackIds();
+  		
+    	if (($key = array_search($id, $ids)) !== false)
+    	{
+    		//remove from cookie
+			unset($ids[$key]);
+		}
+    	else
+    	{
+    		//add to cookie
+    		array_push($ids, $id);
+    	}
+    	
+    	$this->_setCookie($ids);
+    }
+    
+    private function _setCookie($ids)
+    {
+    	$cookies = Yii::$app->response->cookies;
+		$cookies->add(new \yii\web\Cookie([
+			'name' => 'rucksack',
+			'value' => implode(',', $ids),
+		]));
+    }
 	
     public function findContent($heritageId = false, $featured = false, $q = false, $limit = 'default', $offset = 0, $contentIds = false)
     {

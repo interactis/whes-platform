@@ -6,7 +6,6 @@ use frontend\components\HelperController;
 use common\models\Content;
 use common\models\ContentTag;
 use yii\web\NotFoundHttpException;
-use \yii\web\Cookie;
 use yii\helpers\ArrayHelper;
 
 class RucksackController extends HelperController
@@ -27,36 +26,8 @@ class RucksackController extends HelperController
     {
     	$this->layout = false;
     	$model = $this->_findContent($id);
-    	$this->_setRucksackCookie($model);    	
+    	$this->setRucksackCookie($model);    	
     	return true;
-    }
-    
-    private function _setRucksackCookie($model)
-    {
-    	$id = $model->id;
-    	$ids = Yii::$app->helpers->getRucksackIds();
-  		
-    	if (($key = array_search($id, $ids)) !== false)
-    	{
-    		//remove from cookie
-			unset($ids[$key]);
-		}
-    	else
-    	{
-    		//add to cookie
-    		array_push($ids, $id);
-    	}
-    	
-    	$this->_setCookie($ids);
-    }
-    
-    private function _setCookie($ids)
-    {
-    	$cookies = Yii::$app->response->cookies;
-		$cookies->add(new \yii\web\Cookie([
-			'name' => 'rucksack',
-			'value' => implode(',', $ids),
-		]));
     }
     
     private function _findContent($id)

@@ -5,10 +5,12 @@ use Yii;
 use yii\console\Controller;
 use common\models\mysa\Story;
 use common\models\mysa\Poi;
-use common\models\mysa\PoiTranslation;
+use common\models\mysa\Trail;
 use common\models\Content;
 use common\models\Article;
 use common\models\ArticleTranslation;
+use common\models\Route;
+use common\models\RouteTranslation;
 
 /**
  * Migration controller
@@ -72,6 +74,53 @@ class MigrationController extends Controller
 				$translation->title = $poiTranslation->title;
 				$translation->description = $poiTranslation->description;
 				$translation->directions = $poiTranslation->directions;
+				$translation->save(false);
+			}
+			$model->generateSlugs();
+    		exit;
+    	}
+	}
+	
+	public function actionTrails()
+    {
+    	$trails = Trail::find()
+    		->where(['status' => 3])
+    		->all();
+    	
+    	foreach($trails as $trail)
+    	{
+    		$content = $this->_newContentModel(Content::TYPE_ROUTE);
+    		$content->save(false);
+			
+			$model = new Route();
+			$model->content_id = $content->id;
+			$model->external_id = $trail->permaId;
+			$model->geom = $trail->geom;
+			$model->difficulty = $trail->difficulty;
+			$model->distance_in_km = $trail->distanceInKm;
+			$model->duration_in_min = $trail->durationInMin;
+			$model->min_altitude = $trail->minAltitude;
+			$model->max_altitude = $trail->maxAltitude;
+			$model->start_altitude = $trail->startAltitude;
+			$model->end_altitude = $trail->endAltitude;
+			$model->ascent = $trail->ascent;
+			$model->descent = $trail->descent;
+			$model->profile = $trail->profile;
+			$model->print_available = $trail->printAvailable;
+			$model->arrival_station = $trail->arrivalStation;
+			$model->departure_station = $trail->departureStation;
+			$model->save(false);
+			
+			foreach ($trail->trailContents as $trailTranslation)
+			{
+				$translation = new RouteTranslation();
+				$translation->route_id = $model->id;
+				$translation->language_id = $trailTranslation->languageId;
+				$translation->title = $trailTranslation->title;
+				$translation->description = $trailTranslation->description;
+				$translation->catering = $trailTranslation->catering;
+				$translation->options = $trailTranslation->options;
+				$translation->remarks = $trailTranslation->generalRemarks;
 				$translation->save(false);
 			}
 			$model->generateSlugs();

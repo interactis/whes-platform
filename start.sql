@@ -4,6 +4,7 @@
 CREATE TABLE article
 (
 id SERIAL,
+external_id INTEGER,
 content_id INTEGER,
 created_at INTEGER,
 updated_at INTEGER,
@@ -155,6 +156,7 @@ CONSTRAINT media_pkey PRIMARY KEY (id)
 CREATE TABLE poi
 (
 id SERIAL,
+external_id INTEGER,
 content_id INTEGER,
 arrival_station VARCHAR(255),
 arrival_url VARCHAR(255),
@@ -184,6 +186,7 @@ CONSTRAINT poi_translation_pkey PRIMARY KEY (id)
 CREATE TABLE route
 (
 id SERIAL,
+external_id INTEGER,
 content_id INTEGER,
 difficulty SMALLINT,
 distance_in_km SMALLINT,
@@ -541,7 +544,6 @@ ALTER TABLE flag ADD FOREIGN KEY (flag_group_id) REFERENCES flag_group (id) ON D
 ALTER TABLE related_tag ADD FOREIGN KEY (tag_id) REFERENCES tag (id) ON DELETE CASCADE;
 
 ALTER TABLE related_tag ADD FOREIGN KEY (related_tag_id) REFERENCES tag (id) ON DELETE CASCADE;
-
 
 
 

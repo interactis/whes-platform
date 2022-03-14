@@ -13,6 +13,7 @@ use yii\web\UploadedFile;
  * This is the model class for table "route".
  *
  * @property int $id
+ * @property int $external_id
  * @property int|null $content_id
  * @property int|null $difficulty
  * @property int|null $distance_in_km
@@ -82,8 +83,8 @@ class Route extends HelperModel
     public function rules()
     {
         return [
-            [['content_id', 'difficulty', 'distance_in_km', 'duration_in_min', 'min_altitude', 'max_altitude', 'start_altitude', 'end_altitude', 'ascent', 'descent', 'created_at', 'updated_at'], 'default', 'value' => null],
-            [['content_id', 'difficulty', 'distance_in_km', 'duration_in_min', 'min_altitude', 'max_altitude', 'start_altitude', 'end_altitude', 'ascent', 'descent', 'created_at', 'updated_at'], 'integer'],
+            [['content_id', 'external_id', 'difficulty', 'distance_in_km', 'duration_in_min', 'min_altitude', 'max_altitude', 'start_altitude', 'end_altitude', 'ascent', 'descent', 'created_at', 'updated_at'], 'default', 'value' => null],
+            [['content_id', 'external_id', 'difficulty', 'distance_in_km', 'duration_in_min', 'min_altitude', 'max_altitude', 'start_altitude', 'end_altitude', 'ascent', 'descent', 'created_at', 'updated_at'], 'integer'],
             [['profile'], 'string'],
             [['print_available', 'removeGeom'], 'boolean'],
             [['arrival_station', 'arrival_url', 'departure_station', 'departure_url'], 'string', 'max' => 255],
@@ -130,6 +131,7 @@ class Route extends HelperModel
     {
         return [
             'id' => Yii::t('app', 'ID'),
+            'external_id' => Yii::t('app', 'External ID'),
             'content_id' => Yii::t('app', 'Content ID'),
             'difficulty' => Yii::t('app', 'Difficulty'),
             'distance_in_km' => Yii::t('app', 'Distance in Km'),

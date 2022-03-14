@@ -11,6 +11,7 @@ use common\components\SwissGeometryBehavior;
  * This is the model class for table "poi".
  *
  * @property int $id
+ * @property int $external_id
  * @property int|null $content_id
  * @property string|null $arrival_station
  * @property string|null $arrival_url
@@ -61,8 +62,8 @@ class Poi extends HelperModel
     public function rules()
     {
         return [
-            [['content_id', 'created_at', 'updated_at'], 'default', 'value' => null],
-            [['content_id', 'created_at', 'updated_at'], 'integer'],
+            [['content_id', 'external_id', 'created_at', 'updated_at'], 'default', 'value' => null],
+            [['content_id', 'external_id', 'created_at', 'updated_at'], 'integer'],
             [['arrival_station', 'arrival_url'], 'string', 'max' => 255],
             [['arrival_url'], 'url'],
             [['content_id'], 'exist', 'skipOnError' => true, 'targetClass' => Content::className(), 'targetAttribute' => ['content_id' => 'id']],
@@ -77,6 +78,7 @@ class Poi extends HelperModel
     {
         return [
             'id' => Yii::t('app', 'ID'),
+            'external_id' => Yii::t('app', 'External ID'),
             'content_id' => Yii::t('app', 'Content ID'),
             'arrival_station' => Yii::t('app', 'SBB Arrival Station Name'),
             'arrival_url' => Yii::t('app', 'Arrival Station URL'),

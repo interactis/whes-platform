@@ -25,6 +25,7 @@ class MigrationController extends Controller
 			
 			$article = new Article();
 			$article->content_id = $content->id;
+			$article->external_id = $story->permaId;
 			$article->save(false);
 			
 			foreach ($story->storyContents as $storyTranslation)
@@ -37,7 +38,6 @@ class MigrationController extends Controller
 				$translation->description = $storyTranslation->story;
 				$translation->save(false);
 			}
-			
 			$article->generateSlugs();
     		exit;
     	}
@@ -52,6 +52,4 @@ class MigrationController extends Controller
     	$model->imported = true;
     	return $model;
 	}
-	
-	
 }

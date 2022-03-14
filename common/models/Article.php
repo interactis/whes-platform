@@ -10,6 +10,7 @@ use common\models\helpers\HelperModel;
  * This is the model class for table "article".
  *
  * @property int $id
+ * @property int $external_id
  * @property int|null $content_id
  * @property int|null $created_at
  * @property int|null $updated_at
@@ -51,8 +52,8 @@ class Article extends HelperModel
     public function rules()
     {
         return [
-            [['content_id', 'created_at', 'updated_at'], 'default', 'value' => null],
-            [['content_id', 'created_at', 'updated_at'], 'integer'],
+            [['content_id', 'external_id', 'created_at', 'updated_at'], 'default', 'value' => null],
+            [['content_id', 'external_id', 'created_at', 'updated_at'], 'integer'],
             [['content_id'], 'exist', 'skipOnError' => true, 'targetClass' => Content::className(), 'targetAttribute' => ['content_id' => 'id']],
             [['tags', 'flags'], 'required'],
         ];
@@ -65,6 +66,7 @@ class Article extends HelperModel
     {
         return [
             'id' => Yii::t('app', 'ID'),
+            'external_id' => Yii::t('app', 'External ID'),
             'content_id' => Yii::t('app', 'Content ID'),
             'flags' =>  Yii::t('app', 'Filters'),
             'created_at' => Yii::t('app', 'Created At'),

@@ -18,6 +18,7 @@ use yii\helpers\ArrayHelper;
  * @property bool|null $hidden
  * @property bool|null $approved
  * @property bool|null $edited
+ * @property bool|null $imported
  * @property int|null $created_at
  * @property int|null $updated_at
  *
@@ -75,7 +76,7 @@ class Content extends \yii\db\ActiveRecord
             		return true;
             }],
             
-            [['published', 'featured', 'hidden', 'approved', 'edited'], 'boolean'],
+            [['published', 'featured', 'hidden', 'approved', 'edited', 'imported'], 'boolean'],
             [['heritage_id'], 'exist', 'skipOnError' => true, 'targetClass' => Heritage::className(), 'targetAttribute' => ['heritage_id' => 'id']],
         ];
     }
@@ -94,6 +95,7 @@ class Content extends \yii\db\ActiveRecord
             'featured' => Yii::t('app', 'Featured'),
             'hidden' => Yii::t('app', 'Hidden'),
             'approved' => Yii::t('app', 'Approved'),
+        	'imported' => Yii::t('app', 'Imported'),
             'edited' => Yii::t('app', 'Edited'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),

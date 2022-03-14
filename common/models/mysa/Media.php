@@ -1,6 +1,6 @@
 <?php
 
-namespace common\models;
+namespace common\models\mysa;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
@@ -30,6 +30,11 @@ use yii\helpers\Html;
  */
 class Media extends ImageModel
 {
+	public static function getDb()
+	{
+		return Yii::$app->dbMysa;
+	}
+	
 	public $image_file;
 
 	private $_sizes = [

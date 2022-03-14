@@ -1,6 +1,6 @@
 <?php
 
-namespace common\models;
+namespace common\models\mysa;
 
 use Yii;
 
@@ -14,6 +14,11 @@ use Yii;
  */
 class PoiType extends \yii\db\ActiveRecord
 {
+	public static function getDb()
+	{
+		return Yii::$app->dbMysa;
+	}
+	
     /**
      * @inheritdoc
      */

@@ -1,6 +1,6 @@
 <?php
 
-namespace common\models;
+namespace common\models\mysa;
 
 use Yii;
 use common\components\validators\DefaultLanguageValidator;
@@ -25,6 +25,11 @@ use common\components\validators\TranslationsValidator;
  */
 class TrailContent extends \yii\db\ActiveRecord
 {
+	public static function getDb()
+	{
+		return Yii::$app->dbMysa;
+	}
+	
     /**
      * @inheritdoc
      */

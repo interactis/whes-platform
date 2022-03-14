@@ -1,6 +1,6 @@
 <?php
 
-namespace common\models;
+namespace common\models\mysa;
 
 use Yii;
 use yii\helpers\Url;
@@ -22,6 +22,11 @@ use yii\helpers\Url;
  */
 class Tag extends TranslatedModel
 {
+	public static function getDb()
+	{
+		return Yii::$app->dbMysa;
+	}
+	
 	public $images = [];
 		
     /**

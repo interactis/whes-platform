@@ -1,6 +1,6 @@
 <?php
 
-namespace common\models;
+namespace common\models\mysa;
 
 use Yii;
 
@@ -14,6 +14,11 @@ use Yii;
  */
 class MediaType extends \yii\db\ActiveRecord
 {
+	public static function getDb()
+	{
+		return Yii::$app->dbMysa;
+	}
+	
     // Values as imported from original db-dump.
     const IMAGE = 'image';
     const YOUTUBE_VIDEO = 'youTube';

@@ -1,6 +1,6 @@
 <?php
 
-namespace common\models;
+namespace common\models\mysa;
 
 use Yii;
 use yii\helpers\ArrayHelper;
@@ -20,6 +20,11 @@ use yii\helpers\ArrayHelper;
  */
 class Language extends \yii\db\ActiveRecord
 {
+	public static function getDb()
+	{
+		return Yii::$app->dbMysa;
+	}
+	
     /**
      * @inheritdoc
      */

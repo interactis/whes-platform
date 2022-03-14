@@ -1,5 +1,5 @@
 <?php
-namespace common\models;
+namespace common\models\mysa;
 
 use Yii;
 use yii\web\UploadedFile;
@@ -9,6 +9,10 @@ use yii\base\Model;
 
 class ImageModel extends \yii\db\ActiveRecord
 {
+	public static function getDb()
+	{
+		return Yii::$app->dbMysa;
+	}
 		
 	 /**
      * Image upload handling

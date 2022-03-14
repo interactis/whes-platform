@@ -11,6 +11,8 @@ use common\models\Article;
 use common\models\ArticleTranslation;
 use common\models\Route;
 use common\models\RouteTranslation;
+use common\models\Supplier;
+use common\models\SupplierTranslation;
 
 /**
  * Migration controller
@@ -51,7 +53,8 @@ class MigrationController extends Controller
     {
     	$pois = Poi::find()
     		->where(['status' => 3])
-    		->andWhere(['!=', 'type', 4])
+    		// ->andWhere(['type' => 2]) // local offer
+    		->andWhere(['!=', 'type', 4]) // not ambassador
     		->all();
     	
     	foreach($pois as $poi)
@@ -77,8 +80,37 @@ class MigrationController extends Controller
 				$translation->save(false);
 			}
 			$model->generateSlugs();
+			
+			if (!empty($poi->supplierName))
+				$this->_saveSupplier($poi, $content->id);
+			
     		exit;
     	}
+	}
+	
+	private function _saveSupplier($poi, $contentId)
+	{
+		$model = new Supplier();
+		$model->content_id = $contentId;
+		$model->street = $poi->supplierStreet;
+		$model->street_number = $poi->supplierStreetNumber;
+		$model->zip = $poi->supplierZip;
+		$model->city = $poi->supplierCity;
+		$model->url = $poi->supplierUrl;
+		$model->email = $poi->supplierEmail;
+		$model->phone = $poi->supplierTel;
+		$model->save(false);
+		
+		foreach ($poi->poiContents as $poiTranslation)
+		{
+			$translation = new SupplierTranslation();
+			$translation->supplier_id = $model->id;
+			$translation->language_id = $poiTranslation->languageId;
+			$translation->name = $poiTranslation->supplierName;
+			$translation->name_affix = $poiTranslation->supplierNameAffix;
+			$translation->remarks = $poiTranslation->supplierRemark;
+			$translation->save(false);
+		}
 	}
 	
 	public function actionTrails()

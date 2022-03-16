@@ -46,6 +46,13 @@ if ($user->isAdmin())
 				return ($model->content->featured ? Yii::t('app', 'Yes') :  Yii::t('app', 'No'));
 			},
 			'filter' => $boolFilter,
+		],
+		[
+			'attribute' => 'imported',
+			'value' => function ($model) {
+				return ($model->content->imported ? Yii::t('app', 'Yes') :  Yii::t('app', 'No'));
+			},
+			'filter' => $boolFilter,
 		]
 	);
 }

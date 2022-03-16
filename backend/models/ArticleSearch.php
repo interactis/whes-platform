@@ -18,6 +18,7 @@ class ArticleSearch extends Article
 	public $published;
 	public $featured;
 	public $hidden;
+	public $imported;
 	public $tags;
 	
     /**
@@ -28,7 +29,7 @@ class ArticleSearch extends Article
         return [
             [['id', 'content_id', 'priority', 'created_at', 'updated_at'], 'integer'],
             [['title', 'heritage', 'tags'], 'safe'],
-            [['published', 'featured', 'hidden'], 'boolean']
+            [['published', 'featured', 'hidden', 'imported'], 'boolean']
         ];
     }
 
@@ -60,7 +61,7 @@ class ArticleSearch extends Article
         $query->leftJoin('tag', 'content_tag.tag_id = tag.id');
         $query->leftJoin('tag_translation', 'tag_translation.tag_id = tag.id');
         
-        $query->groupBy(['article.id', 'article_translation.title', 'content.priority', 'content.hidden', 'content.featured', 'content.published', 'heritage_translation.short_name']);
+        $query->groupBy(['article.id', 'article_translation.title', 'content.priority', 'content.hidden', 'content.featured', 'content.published', 'content.imported', 'heritage_translation.short_name']);
 
         // add conditions that should always apply here
         
@@ -107,6 +108,11 @@ class ArticleSearch extends Article
 			'desc' => ['content.hidden' => SORT_DESC],
 		];
 		
+		$dataProvider->sort->attributes['imported'] = [
+			'asc' => ['content.imported' => SORT_ASC],
+			'desc' => ['content.imported' => SORT_DESC],
+		];
+		
 		$dataProvider->sort->attributes['heritage'] = [
 			'asc' => ['heritage_translation.short_name' => SORT_ASC],
 			'desc' => ['heritage_translation.short_name' => SORT_DESC],
@@ -130,6 +136,7 @@ class ArticleSearch extends Article
             'content.published' => $this->published,
             'content.featured' => $this->featured,
             'content.hidden' => $this->hidden,
+            'content.imported' => $this->imported,
             'article_translation.language_id' => Yii::$app->params['preferredLanguageId']
         ]);
         

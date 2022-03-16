@@ -48,7 +48,7 @@ class ImageModel extends TranslationModel
 		return $this->$imageName;
     }
     
-    protected function generateThumbs($type, $original, $imageName, $frontendPath)
+    public function generateThumbs($type, $original, $imageName, $frontendPath)
     {
     	$modes = $this->getModes($frontendPath);
 		$imageFormats = \Yii::$app->params['imageFormats'];
@@ -64,7 +64,7 @@ class ImageModel extends TranslationModel
 		return true;
     }
     
-    protected function resize($original, $imageName, $frontendPath)
+    public function resize($original, $imageName, $frontendPath)
     {
     	$modes = $this->getModes($frontendPath);
 		$imageFormats = \Yii::$app->params['imageFormats'];

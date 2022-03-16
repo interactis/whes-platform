@@ -29,11 +29,6 @@ class MediaMaster extends \yii\db\ActiveRecord
 		return Yii::$app->dbMysa;
 	}
 	
-	public static function getDb()
-	{
-		return Yii::$app->dbMysa;
-	}
-	
     /**
      * @inheritdoc
      */

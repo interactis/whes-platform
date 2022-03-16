@@ -13,6 +13,8 @@ use common\models\Route;
 use common\models\RouteTranslation;
 use common\models\Supplier;
 use common\models\SupplierTranslation;
+use common\models\Media;
+use common\models\MediaTranslation;
 
 /**
  * Migration controller
@@ -45,9 +47,59 @@ class MigrationController extends Controller
 				$translation->save(false);
 			}
 			$model->generateSlugs();
+			$this->_saveImages($model, $story);
     		exit;
     	}
 	}
+	
+	private function _saveImages($model, $mysaModel)
+	{
+		foreach ($mysaModel->mediaMasters as $master)
+		{
+			if ($mysaMedia = $master->media)
+			{
+				if ($mysaMedia->type == 1)
+				{
+					$media = new Media();
+					$media->filename = $this->_createThumbs($media, $mysaMedia);
+					$media->heritage_id = Yii::$app->params['sajaHeritageId'];
+					$media->content_id = $model->content_id;
+					$media->exif = $mysaMedia->exif;
+					$media->order = $master->position;
+					$media->save();
+					
+					foreach ($master->mediaDescriptions as $mysaTranslation)
+					{
+						$translation = new MediaTranslation();
+						$translation->media_id = $media->id;
+						$translation->language_id = $mysaTranslation->languageId;
+						$translation->title = $mysaMedia->title;
+						$translation->description = $mysaTranslation->description;
+						$translation->author = $mysaMedia->author;
+						$translation->copyright = $mysaMedia->copyright;
+						$translation->save();
+					}
+				}
+			}
+		}
+	}
+	
+	private function _createThumbs($media, $mysaMedia)
+    {	 
+    	$filename = $mysaMedia->fileName;
+    	$original = Yii::getAlias('@common/uploads/mysa-img/media/'. $filename);
+    	$frontendPath = Yii::getAlias('@frontend/web/img/');
+    	
+    	if (file_exists($original))
+    	{
+    		$media->resize($original, $filename, $frontendPath);
+			$media->generateThumbs('crop', $original, $filename, $frontendPath);
+		}
+		else
+			$filename = '';
+			
+		return $filename;
+    }
 	
 	public function actionPois()
     {

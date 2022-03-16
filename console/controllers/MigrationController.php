@@ -23,7 +23,7 @@ use yii\helpers\ArrayHelper;
 class MigrationController extends Controller
 {
 		
-	public function actionStories()
+	public function actionStories($limit)
     {
     	$migratedIds = $this->_getMigratedStoryIds();
     
@@ -31,9 +31,10 @@ class MigrationController extends Controller
     		->where(['status' => 3])
     		->andWhere(['not in', 'permaId', $migratedIds])
     		->orderBy(['id' => SORT_ASC])
-    		->limit(1)
+    		->limit($limit)
     		->all();
     	
+    	$count = 0;
     	foreach($stories as $story)
     	{
     		$content = $this->_newContentModel(Content::TYPE_ARTICLE);
@@ -56,26 +57,25 @@ class MigrationController extends Controller
 			}
 			$model->generateSlugs();
 			$this->_saveImages($model, $story);
+			$count = $count+1;
     	}
+    	echo $count;
 	}
 	
-	private function _getMigratedStoryIds()
-	{
-		$models = Article::find()
-			->where(['not', ['external_id' => null]])
-			->all();
-		
-		return array_values(ArrayHelper::map($models, 'external_id', 'external_id'));
-	}
-	
-	public function actionPois()
+	public function actionPois($limit)
     {
+    	$migratedIds = $this->_getMigratedPoiIds();
+    	
     	$pois = Poi::find()
     		->where(['status' => 3])
+    		->andWhere(['not in', 'permaId', $migratedIds])
     		// ->andWhere(['type' => 2]) // local offer
     		->andWhere(['!=', 'type', 4]) // not ambassador
+    		->orderBy(['id' => SORT_ASC])
+    		->limit($limit)
     		->all();
     	
+    	$count = 0;
     	foreach($pois as $poi)
     	{
     		$content = $this->_newContentModel(Content::TYPE_POI);
@@ -104,9 +104,9 @@ class MigrationController extends Controller
 				$this->_saveSupplier($poi, $content->id);
 			
 			$this->_saveImages($model, $poi);
-			
-    		exit;
+    		$count = $count+1;
     	}
+    	echo $count;
 	}
 	
 	private function _saveSupplier($poi, $contentId)
@@ -134,12 +134,18 @@ class MigrationController extends Controller
 		}
 	}
 	
-	public function actionTrails()
+	public function actionTrails($limit)
     {
+    	$migratedIds = $this->_getMigratedTrailIds();
+    
     	$trails = Trail::find()
     		->where(['status' => 3])
+    		->andWhere(['not in', 'permaId', $migratedIds])
+    		->orderBy(['id' => SORT_ASC])
+    		->limit($limit)
     		->all();
     	
+    	$count = 0;
     	foreach($trails as $trail)
     	{
     		$content = $this->_newContentModel(Content::TYPE_ROUTE);
@@ -178,8 +184,9 @@ class MigrationController extends Controller
 			}
 			$model->generateSlugs();
 			$this->_saveImages($model, $trail);
-    		exit;
+    		$count = $count+1;
     	}
+    	echo $count;
 	}
 	
 	private function _newContentModel($type)
@@ -240,4 +247,31 @@ class MigrationController extends Controller
 			
 		return $filename;
     }
+    
+    private function _getMigratedStoryIds()
+	{
+		$models = Article::find()
+			->where(['not', ['external_id' => null]])
+			->all();
+		
+		return array_values(ArrayHelper::map($models, 'external_id', 'external_id'));
+	}
+	
+	private function _getMigratedPoiIds()
+	{
+		$models = \common\models\Poi::find()
+			->where(['not', ['external_id' => null]])
+			->all();
+		
+		return array_values(ArrayHelper::map($models, 'external_id', 'external_id'));
+	}
+	
+	private function _getMigratedTrailIds()
+	{
+		$models = Route::find()
+			->where(['not', ['external_id' => null]])
+			->all();
+		
+		return array_values(ArrayHelper::map($models, 'external_id', 'external_id'));
+	}
 }

@@ -20,7 +20,7 @@ use yii\helpers\Html;
 	<div class="panel-body">
 		<div class="row">
 			<div class="col-md-4">
-				<?= $model->getImageHtml(400, 'img-thumbnail', 'Media image') ?>
+				<?= $model->getImageHtml(600, 'img-thumbnail', 'Media image') ?>
 			</div>
 			<div class="col-md-8">
 				<div class="h4"><?= $model->title ?></div>

@@ -58,8 +58,8 @@ class MigrationController extends Controller
 			$model->generateSlugs();
 			$this->_saveImages($model, $story);
 			$count = $count+1;
+			echo $count .' - ';
     	}
-    	echo $count;
 	}
 	
 	public function actionPois($limit)
@@ -105,8 +105,8 @@ class MigrationController extends Controller
 			
 			$this->_saveImages($model, $poi);
     		$count = $count+1;
+    		echo $count .' - ';
     	}
-    	echo $count;
 	}
 	
 	private function _saveSupplier($poi, $contentId)
@@ -185,8 +185,8 @@ class MigrationController extends Controller
 			$model->generateSlugs();
 			$this->_saveImages($model, $trail);
     		$count = $count+1;
+    		echo $count .' - ';
     	}
-    	echo $count;
 	}
 	
 	private function _newContentModel($type)

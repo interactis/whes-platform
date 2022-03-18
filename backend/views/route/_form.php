@@ -234,6 +234,9 @@ if (!$model->isNewRecord && $model->content->published)
 					
 					<?= $form->field($contentModel, 'hidden')->checkbox()
 						->hint(Yii::t("app", "If hidden, the route won't be shown in overviews but it will still be available via direct link.")) ?>
+					
+					<?= $form->field($contentModel, 'archive')->checkbox()
+						->hint(Yii::t("app", "You can archive a route and activate it later again. Archived routes won't be shown.")) ?>
 				</div>
 			</div>
 			

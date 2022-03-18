@@ -19,6 +19,7 @@ class PoiSearch extends Poi
 	public $featured;
 	public $hidden;
 	public $imported;
+	public $archive;
 	public $tags;
 	
     /**
@@ -29,7 +30,7 @@ class PoiSearch extends Poi
         return [
             [['id', 'content_id', 'priority', 'created_at', 'updated_at'], 'integer'],
             [['title', 'heritage', 'tags'], 'safe'],
-            [['published', 'featured', 'hidden', 'imported'], 'boolean']
+            [['published', 'featured', 'hidden', 'imported', 'archive'], 'boolean']
         ];
     }
 
@@ -61,7 +62,7 @@ class PoiSearch extends Poi
         $query->leftJoin('tag', 'content_tag.tag_id = tag.id');
         $query->leftJoin('tag_translation', 'tag_translation.tag_id = tag.id');
         
-        $query->groupBy(['poi.id', 'poi_translation.title', 'content.priority', 'content.hidden', 'content.featured', 'content.published', 'content.imported', 'heritage_translation.short_name']);
+        $query->groupBy(['poi.id', 'poi_translation.title', 'content.priority', 'content.hidden', 'content.featured', 'content.published', 'content.imported', 'content.archive', 'heritage_translation.short_name']);
 
         // add conditions that should always apply here
         
@@ -113,6 +114,11 @@ class PoiSearch extends Poi
 			'desc' => ['content.imported' => SORT_DESC],
 		];
 		
+		$dataProvider->sort->attributes['archive'] = [
+			'asc' => ['content.archive' => SORT_ASC],
+			'desc' => ['content.archive' => SORT_DESC],
+		];
+		
 		$dataProvider->sort->attributes['heritage'] = [
 			'asc' => ['heritage_translation.short_name' => SORT_ASC],
 			'desc' => ['heritage_translation.short_name' => SORT_DESC],
@@ -137,6 +143,7 @@ class PoiSearch extends Poi
             'content.featured' => $this->featured,
             'content.hidden' => $this->hidden,
         	'content.imported' => $this->imported,
+        	'content.archive' => $this->archive,
             'poi_translation.language_id' => Yii::$app->params['preferredLanguageId'],
             'heritage_translation.language_id' => Yii::$app->params['preferredLanguageId']
         ]);

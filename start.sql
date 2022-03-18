@@ -1,6 +1,15 @@
 /* SQLEditor (Postgres)*/
 
 
+CREATE TABLE code_series
+(
+id SERIAL,
+code_count INTEGER,
+created_at INTEGER,
+updated_at INTEGER,
+CONSTRAINT code_series_pkey PRIMARY KEY (id)
+);
+
 CREATE TABLE article
 (
 id SERIAL,
@@ -9,15 +18,6 @@ content_id INTEGER,
 created_at INTEGER,
 updated_at INTEGER,
 CONSTRAINT article_pkey PRIMARY KEY (id)
-);
-
-CREATE TABLE code_series
-(
-id SERIAL,
-code_count INTEGER,
-created_at INTEGER,
-updated_at INTEGER,
-CONSTRAINT code_series_pkey PRIMARY KEY (id)
 );
 
 CREATE TABLE code
@@ -333,6 +333,7 @@ hidden BOOLEAN DEFAULT false,
 approved BOOLEAN DEFAULT false,
 edited BOOLEAN DEFAULT false,
 imported BOOLEAN DEFAULT false,
+archive BOOLEAN DEFAULT false,
 created_at INTEGER,
 updated_at INTEGER,
 CONSTRAINT content_pkey PRIMARY KEY (id)

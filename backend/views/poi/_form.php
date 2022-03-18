@@ -169,6 +169,9 @@ if (!$model->isNewRecord && $model->content->published)
 					
 					<?= $form->field($contentModel, 'hidden')->checkbox()
 						->hint(Yii::t("app", "If hidden, the POI won't be shown in overviews but it will still be available via direct link.")) ?>
+						
+					<?= $form->field($contentModel, 'archive')->checkbox()
+						->hint(Yii::t("app", "You can archive a POI and activate it later again. Archived POIs won't be shown.")) ?>
 				</div>
 			</div>
 			

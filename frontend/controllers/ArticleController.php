@@ -32,7 +32,8 @@ class ArticleController extends Controller
         	->joinWith('articleTranslations')
 			->where([
 				'slug' => $slug,
-				'published' => true
+				'published' => true,
+				'archive' => false
 			])->one();
 		
 		if ($model !== null)

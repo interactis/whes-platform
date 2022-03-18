@@ -32,7 +32,8 @@ class RouteController extends Controller
         	->joinWith('routeTranslations')
 			->where([
 				'slug' => $slug,
-				'published' => true
+				'published' => true,
+				'archive' => false
 			])->one();
 		
 		if ($model !== null)

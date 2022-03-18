@@ -32,7 +32,8 @@ class PoiController extends Controller
         	->joinWith('poiTranslations')
 			->where([
 				'slug' => $slug,
-				'published' => true
+				'published' => true,
+				'archive' => false
 			])->one();
 		
 		if ($model !== null)

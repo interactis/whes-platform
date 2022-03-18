@@ -44,7 +44,7 @@ if ($user->isAdmin()) {
 }
 
 $viewUrl = false;
-if (!$model->isNewRecord && $model->content->published)
+if (!$model->isNewRecord && $model->content->published && !$model->content->archive)
 	$viewUrl = Yii::$app->params['frontendUrl'] .'route/'. $model->slug;
 ?>
 

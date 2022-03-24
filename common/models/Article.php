@@ -20,7 +20,7 @@ use common\models\helpers\HelperModel;
  */
 class Article extends HelperModel
 {
-	public $translationFields = ['title', 'excerpt', 'description', 'youtube_id', 'vimeo_id'];
+	public $translationFields = ['title', 'slug', 'excerpt', 'description', 'youtube_id', 'vimeo_id'];
 	public $requiredTranslationFields = ['title', 'excerpt'];
 	
     /**

@@ -57,6 +57,17 @@ if (!$model->isNewRecord && $model->published)
 						'hint' => Yii::t('app', 'Use the full name here if no short name is available.')
 					]); ?>
 					
+					<div class="<?= (Yii::$app->user->identity->isAdmin() ? '' : 'hidden') ?>">
+						<?= Yii::$app->controller->renderPartial('//translation/field', [
+							'model' => $model,
+							'form' => $form,
+							'field' => 'slug',
+							'translations' => $translations,
+							'translationModel' => $translationModel,
+							'hint' => Yii::t('app', 'The slug is used in the URL.')
+						]); ?>
+					</div>
+					
 					<?= $this->render('/translation/field', [
 						'model' => $model,
 						'form' => $form,

@@ -30,7 +30,7 @@ use yii\helpers\ArrayHelper;
  */
 class Heritage extends HelperModel
 {
-	public $translationFields = ['name', 'short_name', 'description', 'link_url', 'link_text'];
+	public $translationFields = ['name', 'short_name', 'slug', 'description', 'link_url', 'link_text'];
 	public $requiredTranslationFields = ['name', 'short_name', 'description'];
 
     /**

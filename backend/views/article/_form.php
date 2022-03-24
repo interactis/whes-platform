@@ -56,6 +56,17 @@ if (!$model->isNewRecord && $model->content->published)
 						'translationModel' => $translationModel
 					]); ?>
 					
+					<div class="<?= ($user->isAdmin() ? '' : 'hidden') ?>">
+						<?= Yii::$app->controller->renderPartial('//translation/field', [
+							'model' => $model,
+							'form' => $form,
+							'field' => 'slug',
+							'translations' => $translations,
+							'translationModel' => $translationModel,
+							'hint' => Yii::t('app', 'The slug is used in the URL.')
+						]); ?>
+					</div>
+					
 					<?= $this->render('/translation/field', [
 						'model' => $model,
 						'form' => $form,

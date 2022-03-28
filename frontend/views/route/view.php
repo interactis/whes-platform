@@ -4,7 +4,9 @@
 
 $this->title = $model->title;
 
-$this->params['breadcrumbs'][] = ['label' => $heritage->short_name, 'url' => ['/heritage/view', 'slug' => $heritage->slug]];
+if (isset($heritage))
+	$this->params['breadcrumbs'][] = ['label' => $heritage->short_name, 'url' => ['/heritage/view', 'slug' => $heritage->slug]];
+
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="route-view">
@@ -19,7 +21,6 @@ $this->params['breadcrumbs'][] = $this->title;
 		'content' => $content,
 		'heritage' => $heritage
 	]) ?>
-	
 	
 	<?= $this->render('_routePois', ['model' => $model, 'content' => $content]) ?>
 

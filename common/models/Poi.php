@@ -130,7 +130,11 @@ class Poi extends HelperModel
     
     public function getLabel()
     {
-    	return $this->getFlagLabel(Yii::t('app', 'Point of interest')) .'<br />
-    		<em>'. $this->content->heritage->short_name .'</em>';
+    	$html = $this->getFlagLabel(Yii::t('app', 'Point of interest'));
+    	
+    	if (isset($this->content->heritage))
+    		$html .= '<br /><em>'. $this->content->heritage->short_name .'</em>';
+    		
+    	return $html;
     }
 }

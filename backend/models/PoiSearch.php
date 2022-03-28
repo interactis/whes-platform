@@ -144,8 +144,12 @@ class PoiSearch extends Poi
             'content.hidden' => $this->hidden,
         	'content.imported' => $this->imported,
         	'content.archive' => $this->archive,
-            'poi_translation.language_id' => Yii::$app->params['preferredLanguageId'],
-            'heritage_translation.language_id' => Yii::$app->params['preferredLanguageId']
+            'poi_translation.language_id' => Yii::$app->params['preferredLanguageId']
+        ]);
+        
+        $query->andWhere(['or', 
+        	['content.heritage_id' => null],
+        	['heritage_translation.language_id' => Yii::$app->params['preferredLanguageId']]
         ]);
         
         $query->andFilterWhere(['ilike', 'poi_translation.title', $this->title]);

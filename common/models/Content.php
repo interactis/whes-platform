@@ -73,6 +73,9 @@ class Content extends \yii\db\ActiveRecord
             	if ($model->type == $this::TYPE_ARTICLE) {
             		return false;
             	}
+            	elseif ($model->type == $this::TYPE_ROUTE) {
+            		return false;
+            	}
             	else
             		return true;
             }],

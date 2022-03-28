@@ -13,12 +13,17 @@ class CodeController extends HelperController
     {
     	$model = $this->_findCode($code);
     	
-    	if ($model->type == Code::TYPE_INFO)
-    	{
-    		return $this->_infoRedirect($model);
-    	}
-    	else
-    		return $this->_collectRedirect($model);
+		switch ($model->type) {
+			case Code::TYPE_INFO:
+				return $this->_infoRedirect($model);
+				break;
+			case Code::TYPE_COLLECT:
+				return $this->_collectRedirect($model);
+				break;
+			case Code::TYPE_URL:
+				return $this->redirect(Yii::$app->params['frontendUrl']. $model->url);
+				break;
+		}
     }
 	
 	private function _infoRedirect($model)

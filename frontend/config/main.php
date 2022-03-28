@@ -80,11 +80,15 @@ return [
     			'kontakt' => 'site/contact',
     			'contatto' => 'site/contact',
     			
+    			'<slug:patron>' =>'article/view',
     			'<slug:[\w\-]+>' =>'heritage/view',
     			'article/<slug:[\w\-]+>' =>'article/view',
-    			'poi/<slug:[\w\-]+>' =>'poi/view',
-    			'route/<slug:[\w\-]+>' =>'route/view',
-    			'code/<code:[\w\-]+>' =>'code/index',
+    			'artikel/<slug:[\w\-]+>' => 'article/view',
+    			'articolo/<slug:[\w\-]+>' => 'article/view',
+    			'poi/<slug:[\w\-]+>' => 'poi/view',
+    			'route/<slug:[\w\-]+>' => 'route/view',
+    			'percorso/<slug:[\w\-]+>' => 'route/view',
+    			'code/<code:[\w\-]+>' => 'code/index',
     			
         		'<controller:\w+>/<id:\d+>' => '<controller>/view',
                 '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',

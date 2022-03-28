@@ -15,6 +15,7 @@ use common\models\helpers\TranslationModel;
  * @property int|null $content_id
  * @property int|null $type
  * @property string $code
+ * @property string $url
  * @property bool|null $active
  * @property int|null $created_at
  * @property int|null $updated_at
@@ -28,10 +29,12 @@ class Code extends TranslationModel
 {
 	const TYPE_INFO = 1;
     const TYPE_COLLECT = 2;
+    const TYPE_URL = 3;
     
     public $types = [
     	1 => 'Info',
-    	2 => 'Collect'
+    	2 => 'Collect',
+    	3 => 'URL'
     ];
     
 	public $translationFields = ['info'];
@@ -66,13 +69,21 @@ class Code extends TranslationModel
             [['code'], 'required'],
             [['active'], 'boolean'],
             [['code'], 'string', 'max' => 6],
+            [['url'], 'string', 'max' => 255],
             [['code'], 'unique'],
             [['code_group_id'], 'exist', 'skipOnError' => true, 'targetClass' => CodeGroup::className(), 'targetAttribute' => ['code_group_id' => 'id']],
             [['code_series_id'], 'exist', 'skipOnError' => true, 'targetClass' => CodeSeries::className(), 'targetAttribute' => ['code_series_id' => 'id']],
             [['content_id'], 'exist', 'skipOnError' => true, 'targetClass' => Content::className(), 'targetAttribute' => ['content_id' => 'id']],
+            ['url', 'valdiateUrl']
         ];
     }
-
+	
+	public function valdiateUrl()
+	{
+		if (!empty($this->url))
+			$this->url = urlencode($this->url);
+	}
+	
     /**
      * {@inheritdoc}
      */
@@ -85,6 +96,7 @@ class Code extends TranslationModel
             'content_id' => Yii::t('app', 'Content'),
             'type' => Yii::t('app', 'Type'),
             'code' => Yii::t('app', 'Code'),
+            'url' => Yii::t('app', 'URL'),
             'active' => Yii::t('app', 'Active'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),

@@ -82,8 +82,12 @@ return [
     			
     			'<slug:[\w\-]+>' =>'heritage/view',
     			'article/<slug:[\w\-]+>' =>'article/view',
+    			'artikel/<slug:[\w\-]+>' =>'article/view',
+    			'articolo/<slug:[\w\-]+>' =>'article/view',
     			'poi/<slug:[\w\-]+>' =>'poi/view',
     			'route/<slug:[\w\-]+>' =>'route/view',
+    			'percorso/<slug:[\w\-]+>' =>'route/view',
+    			
     			'code/<code:[\w\-]+>' =>'code/index',
     			
         		'<controller:\w+>/<id:\d+>' => '<controller>/view',

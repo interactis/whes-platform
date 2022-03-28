@@ -9,8 +9,10 @@ return [
 	
 	"Point of interest" => "Point d'intérêt",
 	"Route" => "Route",
-	"Good to know" => "Bon à savoir",
+	"route" => "route",
+	"article" => "article",
 	
+	"Good to know" => "Bon à savoir",
 	"Info Filter" => "Filtre d'information",
 	"No results found." => "Aucun résultat trouvé.",
 	"1 result found." => "1 résultat trouvé.",

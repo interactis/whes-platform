@@ -6,7 +6,7 @@ $type = $content->typeText;
 if (!isset($model))
 	$model = $content->{$type};
 
-$url = Url::toRoute([$type .'/view', 'slug' => $model->slug]);
+$url = '/'. Yii::t('app', $type) .'/'. $model->slug;
 $img = $content->previewImage;
 ?>
 

@@ -26,7 +26,6 @@ $this->params['breadcrumbs'][] = $this->title;
 		<p class="small"><strong>Excel Download:</strong><p>
 		<?= ExportMenu::widget([
 			'dataProvider' => $downloadDataProvider,
-			// 'columns' => ['url', 'code'],
 			'filename' => 'Code_Series_'. $codeSeries->id,
 			'showConfirmAlert' => false,
 			'exportConfig' => [

@@ -100,6 +100,9 @@ class CodeSearch extends Code
     	
 		return new ArrayDataProvider([
 			'allModels' => $data,
+			'pagination' => [
+				'pageSize' => false,
+			]
 		]);
     }
 }

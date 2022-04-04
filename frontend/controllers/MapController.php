@@ -124,13 +124,13 @@ class MapController extends HelperController
         $pois = Poi::find()
         	->joinWith('content')
        		->where(['not', ['geom' => null]])
-       		->andWhere(['hidden' => false])
+       		->andWhere(['hidden' => false, 'archive' => false])
         	->all();
         
         $routes = Route::find()
         	->joinWith('content')
        		->where(['not', ['geom' => null]])
-       		->andWhere(['hidden' => false])
+       		->andWhere(['hidden' => false, 'archive' => false])
         	->all();
     	
         return [

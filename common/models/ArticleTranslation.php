@@ -55,8 +55,6 @@ class ArticleTranslation extends \yii\db\ActiveRecord
             [['slug', 'title', 'youtube_id', 'vimeo_id'], 'string', 'max' => 255],
             [['article_id'], 'exist', 'skipOnError' => true, 'targetClass' => Article::className(), 'targetAttribute' => ['article_id' => 'id']],
             [['language_id'], 'exist', 'skipOnError' => true, 'targetClass' => Language::className(), 'targetAttribute' => ['language_id' => 'id']],
-            
-            [['slug'], 'unique'],
             [['slug'], 'match', 'pattern' => '/^[a-z][-a-z0-9]*$/', 'message' => Yii::t('app', 'Slug can contain only small letters, numbers and -')],
         ];
     }

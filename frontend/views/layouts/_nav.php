@@ -21,6 +21,13 @@ $langLinks = [
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>
+	
+	<a class="collection hide-desktop" href="/rucksack">
+		<div class="rucksack">
+			<?= $this->render('_svg/rucksack.php') ?>
+			<span class="badge badge-pill badge-primary">2</span>
+		</div>
+	</a>
 
 	<div class="collapse navbar-collapse" id="main-nav">
 		
@@ -80,7 +87,10 @@ $langLinks = [
 			</li>
 			<li class="nav-item <?= (($this->context->id == 'rucksack') ? 'active' : '') ?>">
 				<a class="nav-link" href="/rucksack">
-					<?= $this->render('_svg/rucksack.php') ?>
+					<div class="rucksack">
+						<?= $this->render('_svg/rucksack.php') ?>
+						<span class="badge badge-pill badge-primary hide-mobile">2</span>
+					</div>
 					<?= Yii::t('app', 'My Collection') ?>
 				</a>
 			</li>

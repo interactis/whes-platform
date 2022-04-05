@@ -230,3 +230,15 @@ body {
 .hidden {
 	display: none;
 }
+
+.hide-mobile {
+	@include media-breakpoint-down(md) {
+		display: none;
+	}
+}
+
+.hide-desktop {
+	@include media-breakpoint-up(lg) {
+		display: none;
+	}
+}

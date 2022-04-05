@@ -10809,6 +10809,14 @@ body {
 .hidden {
   display: none; }
 
+@media (max-width: 991.98px) {
+  .hide-mobile {
+    display: none; } }
+
+@media (min-width: 992px) {
+  .hide-desktop {
+    display: none; } }
+
 .navbar {
   z-index: 1030;
   background: white !important;
@@ -10847,6 +10855,18 @@ body {
     outline: none !important; }
   .navbar .spacer {
     display: none; }
+  .navbar .nav-item .rucksack {
+    display: inline; }
+  .navbar .collection .rucksack {
+    position: relative;
+    top: 9px; }
+    .navbar .collection .rucksack .icon {
+      width: 28px; }
+    .navbar .collection .rucksack .badge {
+      position: absolute;
+      top: -3px;
+      right: 5px;
+      font-size: 0.72rem; }
   @media (min-width: 992px) {
     .navbar {
       padding-bottom: 0;
@@ -10870,6 +10890,15 @@ body {
         vertical-align: bottom; }
       .navbar .nav-item.active {
         border-bottom: 4px solid #A60100; }
+      .navbar .nav-item .rucksack {
+        position: relative;
+        display: block;
+        width: 60px;
+        margin: 0 auto; }
+        .navbar .nav-item .rucksack .badge {
+          position: absolute;
+          top: -3px;
+          right: 0; }
       .navbar .icon {
         display: block;
         height: 40px;
@@ -10898,6 +10927,10 @@ body {
       .navbar::-webkit-scrollbar {
         display: none;
         /* Safari and Chrome */ }
+      .navbar .collection {
+        position: absolute;
+        top: 0;
+        right: 0; }
       .navbar .spacer {
         display: block;
         margin-bottom: 120px; }

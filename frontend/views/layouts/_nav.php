@@ -28,7 +28,7 @@ $rucksackCount = count($rucksackIds);
 	<a class="collection hide-desktop fade-in" href="/rucksack" title="<?= Yii::t('app', 'My Collection') ?>">
 		<div class="rucksack">
 			<?= $this->render('_svg/rucksack.php') ?>
-			<span class="rucksack-count badge badge-pill badge-primary <?= ($rucksackCount > 0 ? '' : 'hidden') ?>"><?= $rucksackCount ?></span>
+			<span id="rucksack-count" class="rucksack-count badge badge-pill badge-primary <?= ($rucksackCount > 0 ? '' : 'hidden') ?>"><?= $rucksackCount ?></span>
 		</div>
 	</a>
 

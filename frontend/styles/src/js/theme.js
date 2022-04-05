@@ -47,12 +47,25 @@ $(document).on('click', '.rucksack-btn', function(e) {
 	e.preventDefault();
 	var btn = $(this);
 	var contentId = btn.attr('content-id');
+	
+	var counter = $('#rucksack-count');
+	var count = parseInt(counter.text());
 
 	if (btn.hasClass('active') === true) {
 		btn.removeClass('active');
+		count = count-1;
 	}
 	else {
 		btn.addClass('active');
+		count = count+1;
+	}
+	
+	$('.rucksack-count').text(count);
+	if (count < 1) {
+		$('.rucksack-count').hide();
+	}
+	else {
+		$('.rucksack-count').show();
 	}
 	
 	$.ajax({

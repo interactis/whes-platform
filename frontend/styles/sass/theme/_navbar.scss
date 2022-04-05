@@ -79,6 +79,59 @@
 		}
 	}
 	
+	.rucksack-info {
+		position: fixed;
+		top: 68px;
+		right: 24px;
+		border: 1px $gray-light solid;
+		padding: 18px;
+		width: 240px;
+		background: $white;
+		border-radius: 28px 0 28px 28px;
+		z-index: $zindex-fixed;
+		
+		a {
+			color: $primary !important;
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+		
+		&:before {
+			content:'';
+			display:block;
+			width:0;
+			height:0;
+			position:absolute;
+			border-left: 8px solid transparent;
+  			border-right: 8px solid transparent;
+  			border-bottom: 8px solid $gray-light;
+			right:0px;
+			top:-9px;
+		}
+		
+		&:after {
+			content:'';
+			display:block;
+			width:0;
+			height:0;
+			position:absolute;
+			border-left: 8px solid transparent;
+  			border-right: 8px solid transparent;
+  			border-bottom: 8px solid white;
+			right:0px;
+			top:-8px;
+		}
+		
+		@include media-breakpoint-up(lg) {
+			top: 108px;
+			right: 76px;
+			width: 280px;
+		}
+		
+		
+	}
+	
 	@include media-breakpoint-up(lg) {
 		padding-bottom: 0;
 		height: 90px;

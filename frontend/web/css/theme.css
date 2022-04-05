@@ -10867,6 +10867,47 @@ body {
       top: -3px;
       right: 5px;
       font-size: 0.71rem; }
+  .navbar .rucksack-info {
+    position: fixed;
+    top: 68px;
+    right: 24px;
+    border: 1px #D9D8D7 solid;
+    padding: 18px;
+    width: 240px;
+    background: #fff;
+    border-radius: 28px 0 28px 28px;
+    z-index: 1030; }
+    .navbar .rucksack-info a {
+      color: #A60100 !important; }
+      .navbar .rucksack-info a:hover  {
+        text-decoration: underline; }
+    .navbar .rucksack-info:before {
+      content: '';
+      display: block;
+      width: 0;
+      height: 0;
+      position: absolute;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-bottom: 8px solid #D9D8D7;
+      right: 0px;
+      top: -9px; }
+    .navbar .rucksack-info:after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 0;
+      position: absolute;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-bottom: 8px solid white;
+      right: 0px;
+      top: -8px; }
+    @media (min-width: 992px) {
+      .navbar .rucksack-info {
+        top: 108px;
+        right: 76px;
+        width: 280px; } }
   @media (min-width: 992px) {
     .navbar {
       padding-bottom: 0;

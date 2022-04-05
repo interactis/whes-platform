@@ -31,6 +31,13 @@ $rucksackCount = count($rucksackIds);
 			<span id="rucksack-count" class="rucksack-count badge badge-pill badge-primary <?= ($rucksackCount > 0 ? '' : 'hidden') ?>"><?= $rucksackCount ?></span>
 		</div>
 	</a>
+	
+	<?php // if (!isset(Yii::$app->request->cookies['bookmarkInfoRead'])): ?>
+		<div class="rucksack-info fade-in">
+			<p class="small">«Raron - Niedergesteln» wurde Ihrer Sammlung hinzugefügt.</p>
+			<a href="">OK</a>
+		</div>
+	<?php // endif; ?>
 
 	<div class="collapse navbar-collapse" id="main-nav">
 		

@@ -10,6 +10,9 @@ $langLinks = [
 	Html::a('Français', ['site/language', 'lang' => 'fr'], ['class' => (Yii::$app->language == 'fr' ? 'active ' : '') .'dropdown-item']),
 	Html::a('Italiano', ['site/language', 'lang' => 'it'], ['class' => (Yii::$app->language == 'it' ? 'active ' : '') .'dropdown-item'])
 ];
+
+$rucksackIds = Yii::$app->helpers->getRucksackIds();
+$rucksackCount = count($rucksackIds);
 ?>
 
 <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
@@ -18,24 +21,24 @@ $langLinks = [
 		<?= $this->render('_svg/logo.php') ?>
 	</a>
   	
-	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+	<button class="navbar-toggler fade-in" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>
 	
-	<a class="collection hide-desktop" href="/rucksack">
+	<a class="collection hide-desktop fade-in" href="/rucksack" title="<?= Yii::t('app', 'My Collection') ?>">
 		<div class="rucksack">
 			<?= $this->render('_svg/rucksack.php') ?>
-			<span class="badge badge-pill badge-primary">2</span>
+			<span class="rucksack-count badge badge-pill badge-primary <?= ($rucksackCount > 0 ? '' : 'hidden') ?>"><?= $rucksackCount ?></span>
 		</div>
 	</a>
 
 	<div class="collapse navbar-collapse" id="main-nav">
 		
-		<div class="dropdown lang-mobile-dropdown pull-right">
+		<div class="dropdown lang-mobile-dropdown">
 			<a class="nav-link dropdown-toggle" href="#" id="langMobileDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				<?= $currentLang ?>
 			</a>
-			<div class="dropdown-menu dropdown-menu-right language-mobile-dropdown-menu" aria-labelledby="langMobileDropdown">
+			<div class="dropdown-menu language-mobile-dropdown-menu" aria-labelledby="langMobileDropdown">
 				<?php foreach($langLinks as $link)
 					echo $link;
 				?>
@@ -89,7 +92,7 @@ $langLinks = [
 				<a class="nav-link" href="/rucksack">
 					<div class="rucksack">
 						<?= $this->render('_svg/rucksack.php') ?>
-						<span class="badge badge-pill badge-primary hide-mobile">2</span>
+						<span class="rucksack-count badge badge-pill badge-primary hide-mobile <?= ($rucksackCount > 0 ? '' : 'hidden') ?>"><?= $rucksackCount ?></span>
 					</div>
 					<?= Yii::t('app', 'My Collection') ?>
 				</a>

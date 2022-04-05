@@ -10859,14 +10859,14 @@ body {
     display: inline; }
   .navbar .collection .rucksack {
     position: relative;
-    top: 9px; }
+    top: 8px; }
     .navbar .collection .rucksack .icon {
       width: 28px; }
     .navbar .collection .rucksack .badge {
       position: absolute;
       top: -3px;
       right: 5px;
-      font-size: 0.72rem; }
+      font-size: 0.71rem; }
   @media (min-width: 992px) {
     .navbar {
       padding-bottom: 0;
@@ -10935,17 +10935,17 @@ body {
         display: block;
         margin-bottom: 120px; }
       .navbar a {
-        font-size: 1.1875rem;
-        font-weight: 300; }
+        font-size: 1.5rem;
+        font-weight: 300;
+        margin-bottom: 18px; }
       .navbar .heritage-dropdown {
         width: auto;
         max-width: 420px; }
       .navbar .lang-dropdown {
         display: none; }
-      .navbar .navbar-nav-left {
-        padding-top: 54px; }
       .navbar .dropdown-menu a {
-        font-size: 1.07rem !important; }
+        font-size: 1.15rem !important;
+        margin-bottom: 12px; }
       .navbar .dropdown-menu:not(.language-mobile-dropdown-menu) {
         background: none;
         border: none; }
@@ -10958,9 +10958,14 @@ body {
             background: none;
             color: #333333; }
       .navbar .lang-mobile-dropdown {
-        right: -12px; }
+        left: -12px;
+        margin-top: 24px; }
         .navbar .lang-mobile-dropdown .nav-link {
-          font-size: 1rem; } }
+          font-size: 1.1rem; }
+        .navbar .lang-mobile-dropdown .language-mobile-dropdown-menu {
+          margin-left: 10px; }
+      .navbar .search-dropdown-menu {
+        margin-bottom: 24px; } }
 
 .jumbotron {
   position: relative;

@@ -66,7 +66,7 @@
 	.collection {
 		.rucksack {
 			position: relative;
-			top: 9px;
+			top: 8px;
 			.icon {
 				width: 28px;
 			}
@@ -74,7 +74,7 @@
 				position: absolute;
 				top: -3px;
 				right: 5px;
-				font-size: 0.72rem;
+				font-size: 0.71rem;
 			}
 		}
 	}
@@ -175,8 +175,9 @@
 		}
 		
 		a {
-			font-size: 1.1875rem;
+			font-size: 1.5rem;
 			font-weight: 300;
+			margin-bottom: 18px;
 		}
 		
 		.heritage-dropdown {
@@ -188,13 +189,10 @@
 			display: none;
 		}
 		
-		.navbar-nav-left {
-			padding-top: 54px;
-		}
-		
 		.dropdown-menu {
 			a {
-				font-size: 1.07rem !important;
+				font-size: 1.15rem !important;
+				margin-bottom: 12px;
 			}
 		}
 		
@@ -215,10 +213,18 @@
 		}
 		
 		.lang-mobile-dropdown {
-			right: -12px;
+			left: -12px;
+			margin-top:24px;
 			.nav-link {
-				font-size: 1rem;
+				font-size: 1.1rem;
 			}
+			.language-mobile-dropdown-menu {
+				margin-left: 10px;
+			}
+		}
+		
+		.search-dropdown-menu {
+			margin-bottom: 24px;
 		}
 	}
 }

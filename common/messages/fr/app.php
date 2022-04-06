@@ -63,6 +63,7 @@ return [
 	"Bookmark" => "Ajouter aux favoris",
 	"Your collection is still empty." => "Votre collection est encore vide.",
 	"Click on the rucksack icon to bookmark what you like." => "Cliquez sur l'icône du sac à dos pour collecter ce que vous voulez.",
+	"Was added to your collection." => "A été ajouté à votre collection.",
 	
 	"About" => "Impressum",
 	"privacy policy" => "Politique de confidentialité",

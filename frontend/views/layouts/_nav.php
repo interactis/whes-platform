@@ -34,8 +34,9 @@ $rucksackCount = count($rucksackIds);
 	
 	<?php // if (!isset(Yii::$app->request->cookies['bookmarkInfoRead'])): ?>
 		<div class="rucksack-info fade-in">
-			<p class="small">«Raron - Niedergesteln» wurde Ihrer Sammlung hinzugefügt.</p>
-			<a href="">OK</a>
+			<div class="h5 margin-bottom-sm">Raron - Niedergesteln</div>
+			<p class="small margin-bottom-sm"><?= Yii::t('app', 'Was added to your collection.') ?></p>
+			<a class="rucksack-info-btn" href="#">OK</a>
 		</div>
 	<?php // endif; ?>
 

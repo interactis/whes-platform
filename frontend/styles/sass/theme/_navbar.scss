@@ -82,13 +82,12 @@
 	.rucksack-info {
 		position: fixed;
 		top: 68px;
-		right: 24px;
+		right: 28px;
 		border: 1px $gray-light solid;
 		padding: 18px;
-		width: 240px;
+		width: 260px;
 		background: $white;
 		border-radius: 28px 0 28px 28px;
-		z-index: $zindex-fixed;
 		
 		a {
 			color: $primary !important;
@@ -103,11 +102,11 @@
 			width:0;
 			height:0;
 			position:absolute;
-			border-left: 8px solid transparent;
-  			border-right: 8px solid transparent;
-  			border-bottom: 8px solid $gray-light;
+			border-left: 7px solid transparent;
+  			border-right: 7px solid transparent;
+  			border-bottom: 7px solid $gray-light;
 			right:0px;
-			top:-9px;
+			top:-8px;
 		}
 		
 		&:after {
@@ -116,17 +115,17 @@
 			width:0;
 			height:0;
 			position:absolute;
-			border-left: 8px solid transparent;
-  			border-right: 8px solid transparent;
-  			border-bottom: 8px solid white;
+			border-left: 7px solid transparent;
+  			border-right: 7px solid transparent;
+  			border-bottom: 7px solid white;
 			right:0px;
-			top:-8px;
+			top:-7px;
 		}
 		
 		@include media-breakpoint-up(lg) {
 			top: 108px;
 			right: 76px;
-			width: 280px;
+			width: 330px;
 		}
 		
 		
@@ -227,11 +226,14 @@
 			margin-bottom: 120px;
 		}
 		
-		a {
-			font-size: 1.5rem;
-			font-weight: 300;
-			margin-bottom: 18px;
+		.nav-item {
+			a {
+				font-size: 1.5rem;
+				font-weight: 300;
+				margin-bottom: 18px;
+			}
 		}
+		
 		
 		.heritage-dropdown {
 			width: auto;

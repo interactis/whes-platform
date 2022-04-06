@@ -10870,13 +10870,12 @@ body {
   .navbar .rucksack-info {
     position: fixed;
     top: 68px;
-    right: 24px;
+    right: 28px;
     border: 1px #D9D8D7 solid;
     padding: 18px;
-    width: 240px;
+    width: 260px;
     background: #fff;
-    border-radius: 28px 0 28px 28px;
-    z-index: 1030; }
+    border-radius: 28px 0 28px 28px; }
     .navbar .rucksack-info a {
       color: #A60100 !important; }
       .navbar .rucksack-info a:hover  {
@@ -10887,27 +10886,27 @@ body {
       width: 0;
       height: 0;
       position: absolute;
-      border-left: 8px solid transparent;
-      border-right: 8px solid transparent;
-      border-bottom: 8px solid #D9D8D7;
+      border-left: 7px solid transparent;
+      border-right: 7px solid transparent;
+      border-bottom: 7px solid #D9D8D7;
       right: 0px;
-      top: -9px; }
+      top: -8px; }
     .navbar .rucksack-info:after {
       content: '';
       display: block;
       width: 0;
       height: 0;
       position: absolute;
-      border-left: 8px solid transparent;
-      border-right: 8px solid transparent;
-      border-bottom: 8px solid white;
+      border-left: 7px solid transparent;
+      border-right: 7px solid transparent;
+      border-bottom: 7px solid white;
       right: 0px;
-      top: -8px; }
+      top: -7px; }
     @media (min-width: 992px) {
       .navbar .rucksack-info {
         top: 108px;
         right: 76px;
-        width: 280px; } }
+        width: 330px; } }
   @media (min-width: 992px) {
     .navbar {
       padding-bottom: 0;
@@ -10975,7 +10974,7 @@ body {
       .navbar .spacer {
         display: block;
         margin-bottom: 120px; }
-      .navbar a {
+      .navbar .nav-item a {
         font-size: 1.5rem;
         font-weight: 300;
         margin-bottom: 18px; }

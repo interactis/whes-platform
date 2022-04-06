@@ -77,6 +77,11 @@ $(document).on('click', '.rucksack-btn', function(e) {
 	});
 });
 
+$('.rucksack-info-btn').click(function(e) {
+	e.preventDefault();
+	$('.rucksack-info').hide();
+});
+
 var smoothScrollTo = function(id) {
 	var margin = 45;
 	var position = $(id).offset().top-margin;

@@ -115,6 +115,24 @@
 		}
 	}
 	
+	.h3 {
+		.counter {
+			position: relative;
+			display: inline-block;
+			width: 28px;
+			height: 28px;
+			background: $primary;
+			color: white;
+			border-radius: 50%;
+			font-size: 1.1rem;
+			top: 3px;
+			
+			.count {
+				@include centerer;
+			}
+		}
+	}
+	
 	@include media-breakpoint-up(lg) {
 		.collapse {
 			display: block;

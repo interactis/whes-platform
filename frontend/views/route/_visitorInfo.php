@@ -15,7 +15,11 @@ if (!isset($showRouteLink))
 					<a class="btn btn-primary btn-sm pull-right" target="_blank" href="<?= Yii::$app->helpers->getSbbLink($model->arrival_station) ?>">
 						<?= Yii::t('app', 'Schedule') ?>
 					</a>
-					<div class="h3"><?= Yii::t('app', 'Journey') ?></div>
+					<div class="h3">
+						<div class="counter">
+							<div class="count">1</div>
+						</div>
+						<?= Yii::t('app', 'Journey') ?></div>
 					<div><?= Yii::t('app', 'to') ?> <?= $model->arrival_station ?></div>
 				</li>
 				
@@ -31,7 +35,12 @@ if (!isset($showRouteLink))
 						if($showRouteLink)
 							echo '<a class="btn btn-primary btn-sm pull-right" href="/'. Yii::t('app', 'route') .'/'. $model->slug .'">'. Yii::t('app', 'Info') .'</a>';
 						?>
-						<div class="h3"><?= $model->title ?></div>
+						<div class="h3">
+							<div class="counter">
+								<div class="count">2</div>
+							</div>
+							<?= $model->title ?>
+						</div>
 						<div>
 							<?= $model->label ?>
 							<?= (!empty($model->difficulty) ? '<span class="thin">'. $model->difficultyText .'</thin>' : '') ?>
@@ -41,7 +50,12 @@ if (!isset($showRouteLink))
 						<a class="btn btn-primary btn-sm pull-right" target="_blank" href="<?= Yii::$app->helpers->getSbbLink($model->departure_station, 'von') ?>">
 							<?= Yii::t('app', 'Schedule') ?>
 						</a>
-						<div class="h3"><?= Yii::t('app', 'Return trip') ?></div>
+						<div class="h3">
+							<div class="counter">
+								<div class="count">3</div>
+							</div>
+							<?= Yii::t('app', 'Return trip') ?>
+						</div>
 						<div><?= Yii::t('app', 'from') ?> <?= $model->departure_station ?></div>
 					</li>
 				<?php endif; ?>

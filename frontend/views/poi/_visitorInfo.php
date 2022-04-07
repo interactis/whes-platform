@@ -1,12 +1,13 @@
 <?php if (!empty($model->arrival_station)): ?>
 	<div class="card trip-card margin-bottom-lg">
-		<div class="card-header">
+		<div class="card-header collapsed" data-toggle="collapse" data-target="#visitor-info">
+			<svg class="handle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34.42 58.95"><g><path fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="7" d="M2.48 2.48l27 27-27 27" /></g></svg>
 			<div class="h4"><?= Yii::t('app', 'Visitor info') ?></div>
 		</div>
-		<div class="card-body">
+		<div id="visitor-info" class="card-body collapse">
 			<ul class="trip-list list-unstyled">
 				<li>
-					<a class="btn btn-primary btn-sm pull-right" href="<?= Yii::$app->helpers->getSbbLink($model->arrival_station) ?>">
+					<a class="btn btn-primary btn-sm pull-right" target="_blank" href="<?= Yii::$app->helpers->getSbbLink($model->arrival_station) ?>">
 						<?= Yii::t('app', 'Schedule') ?>
 					</a>
 					<div class="h3"><?= Yii::t('app', 'Journey') ?></div>
@@ -21,4 +22,9 @@
 			</ul>
 		</div>
 	</div>
-<?php endif; ?>
+<?php
+else:
+	if ($route = $model->poiRoute)
+		echo $this->render('/route/_visitorInfo.php', ['model' => $route, 'showRouteLink' => true]);
+endif;
+?>

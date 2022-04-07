@@ -6,6 +6,7 @@ use Yii;
 use yii\behaviors\TimestampBehavior;
 use common\models\helpers\HelperModel;
 use common\components\SwissGeometryBehavior;
+use nanson\postgis\helpers\GeoJsonHelper;
 
 /**
  * This is the model class for table "poi".
@@ -136,5 +137,18 @@ class Poi extends HelperModel
     		$html .= '<br /><em>'. $this->content->heritage->short_name .'</em>';
     		
     	return $html;
+    }
+    
+    public function getPoiRoute()
+    {    	
+		if ($geometry = SwissGeometryBehavior::toGeometry($this->type, $this->geom))
+		{
+			return Route::find()
+    			->joinWith('content')
+    			->where('ST_DWithin(geom, '. $geometry .', '. \Yii::$app->params['routePoiBuffer'] .')')
+    			->andWhere(['published' => true, 'hidden' => false, 'archive' => false, 'approved' => true])
+    			->one();
+    	}
+    	return false;
     }
 }

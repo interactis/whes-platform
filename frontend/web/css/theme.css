@@ -11336,10 +11336,53 @@ body {
     .preview-card.popover-card .img-header {
       height: 190px; }
 
+.trip-card .card-header .handle {
+  display: none; }
+
 @media (min-width: 992px) {
   .trip-card {
     position: sticky;
-    top: 120px; } }
+    top: 120px; }
+    .trip-card .collapse {
+      display: block;
+      height: auto !important;
+      visibility: visible; }
+    .trip-card .collapsing {
+      position: relative;
+      height: unset !important;
+      overflow: hidden; } }
+
+@media (max-width: 991.98px) {
+  .trip-card {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    margin-bottom: 0;
+    z-index: 1030; }
+    .trip-card .card-header {
+      padding: 16px; }
+      .trip-card .card-header:hover {
+        cursor: pointer; }
+      .trip-card .card-header .handle {
+        position: absolute;
+        display: block;
+        left: 24px;
+        margin: 0;
+        -webkit-transition: -webkit-transform 150ms ease;
+        transition: -webkit-transform 150ms ease;
+        transition: transform 150ms ease;
+        transition: transform 150ms ease, -webkit-transform 150ms ease;
+        -webkit-transform: rotate(90deg);
+                transform: rotate(90deg);
+        width: 16px; }
+      .trip-card .card-header.collapsed .handle {
+        -webkit-transform: rotate(-90deg);
+                transform: rotate(-90deg); }
+    .trip-card .card-body {
+      max-height: 70vh;
+      overflow: scroll;
+      -webkit-overflow-scrolling: touch; } }
 
 .breadcrumb {
   padding: 0;

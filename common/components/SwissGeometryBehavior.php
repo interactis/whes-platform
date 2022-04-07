@@ -11,6 +11,16 @@ use nanson\postgis\helpers\GeoJsonHelper;
 */
 class SwissGeometryBehavior extends GeometryBehavior
 {
+	public static function toGeometry($type, $coordinates)
+	{
+		if (!empty($coordinates))
+		{
+			return GeoJsonHelper::toGeometry($type, $coordinates, '21781');
+		}
+		else
+			return false;
+	}
+
     protected function coordinatesToGeoJson()
     {
         $coordinates = $this->owner->{$this->attribute};

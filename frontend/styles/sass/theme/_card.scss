@@ -109,8 +109,62 @@
 }
 
 .trip-card {
+	.card-header {
+		.handle {
+			display: none;
+		}
+	}
+	
 	@include media-breakpoint-up(lg) {
+		.collapse {
+			display: block;
+    		height: auto !important;
+    		visibility: visible;
+		}
+		.collapsing{
+			position: relative;
+			height: unset !important;
+			overflow: hidden;
+		}
+		
 		position: sticky;
 		top: 120px;
+	}
+	
+	@include media-breakpoint-down(md) {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		margin-bottom: 0;
+		z-index: $zindex-fixed;
+		
+		.card-header {
+			padding: 16px;
+			&:hover {
+				cursor: pointer;
+			}
+			.handle {
+				position: absolute;
+				display: block;
+				left: 24px;
+				margin: 0;
+				transition: transform 150ms ease;
+				transform: rotate(90deg);
+				width: 16px;
+			}
+	
+			&.collapsed {
+				.handle {
+					transform: rotate(-90deg);
+				}
+			}
+		}
+		
+		.card-body {
+			max-height: 70vh;
+			overflow: scroll;
+			-webkit-overflow-scrolling: touch;
+		}
 	}
 }

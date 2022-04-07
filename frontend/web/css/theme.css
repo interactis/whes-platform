@@ -10779,6 +10779,9 @@ body {
     #cookie-info {
       padding: 12px 0; } }
 
+.margin-bottom-xs {
+  margin-bottom: 3px; }
+
 .margin-bottom-sm {
   margin-bottom: 12px; }
 
@@ -10838,7 +10841,7 @@ body {
   .navbar .icon {
     width: 30px;
     margin-right: 18px; }
-  .navbar a {
+  .navbar a:not(.btn) {
     text-decoration: none;
     color: #333333 !important; }
   .navbar .dropdown-menu a {
@@ -10876,10 +10879,6 @@ body {
     width: 260px;
     background: #fff;
     border-radius: 28px 0 28px 28px; }
-    .navbar .rucksack-info a {
-      color: #A60100 !important; }
-      .navbar .rucksack-info a:hover  {
-        text-decoration: underline; }
     .navbar .rucksack-info:before {
       content: '';
       display: block;

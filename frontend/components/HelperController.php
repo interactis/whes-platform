@@ -28,15 +28,15 @@ class HelperController extends Controller
 	    return true; // or false to not run the action
 	}
 	
-	public function setRucksackCookie($model)
+	public function setRucksackCookie($model, $toggle = true)
     {
     	$id = $model->id;
     	$ids = Yii::$app->helpers->getRucksackIds();
   		
     	if (($key = array_search($id, $ids)) !== false)
     	{
-    		//remove from cookie
-			unset($ids[$key]);
+			if ($toggle)
+				unset($ids[$key]); //remove from cookie
 		}
     	else
     	{

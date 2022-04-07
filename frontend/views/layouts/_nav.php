@@ -32,13 +32,14 @@ $rucksackCount = count($rucksackIds);
 		</div>
 	</a>
 	
-	<?php // if (!isset(Yii::$app->request->cookies['bookmarkInfoRead'])): ?>
+	<?php if ($message = Yii::$app->session->getFlash('collected')): ?>
 		<div class="rucksack-info fade-in">
-			<div class="h5 margin-bottom-sm">Raron - Niedergesteln</div>
-			<p class="small margin-bottom-sm"><?= Yii::t('app', 'Was added to your collection.') ?></p>
-			<a class="rucksack-info-btn" href="#">OK</a>
+			<div class="label margin-bottom-xs">Besucherzentrum</div>
+			<div class="h4 card-title margin-bottom-sm"><?= $message ?></div>
+			<p class="small margin-bottom"><?= Yii::t('app', 'Was added to your collection.') ?></p>
+			<a class="btn btn-primary btn-sm rucksack-info-btn" href="#">OK</a>
 		</div>
-	<?php // endif; ?>
+	<?php endif; ?>
 
 	<div class="collapse navbar-collapse" id="main-nav">
 		

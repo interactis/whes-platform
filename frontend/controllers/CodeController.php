@@ -26,18 +26,22 @@ class CodeController extends HelperController
 		}
     }
 	
-	private function _infoRedirect($model)
+	private function _collectRedirect($model)
+	{
+		$this->setRucksackCookie($model->content, false);
+		return $this->_infoRedirect($model, true);
+	}
+	
+	private function _infoRedirect($model, $flash = false)
 	{
 		$content = $model->content;
 		$type = $content->typeText;
 		$typeContent = $content->$type;
+		
+		if ($flash)
+			Yii::$app->session->setFlash('collected', $typeContent->title);
+			
 		return $this->redirect([$type .'/view', 'slug' => $typeContent->slug]);
-	}
-	
-	private function _collectRedirect($model)
-	{
-		$this->setRucksackCookie($model->content);
-		return $this->redirect(['rucksack/index']);
 	}
     
     private function _findCode($code)

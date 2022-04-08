@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use common\models\PoiTranslation;
-use backend\components\poiwidget\PoiWidget;
+use backend\components\poipicker\PoiPicker;
 
 $translations = $model->poiTranslations;
 $translationModel = new PoiTranslation();
@@ -142,10 +142,8 @@ if (!$model->isNewRecord && $model->content->published && !$model->content->arch
 					<h3>Geo</h3>
 				</div>
 				<div class="panel-body">
-				
 					<div class="hint-block margin-bottom-sm"><?= Yii::t('app', 'Click on the map to position the point of interest') ?>:</div>
-					
-					<?= PoiWidget::widget(['model' => $model, 'attribute' => 'geom', 'value' => $model->geom, 'created' => $model->isNewRecord]) ?>
+					<?= PoiPicker::widget(['model' => $model, 'attribute' => 'geom']) ?>
 				</div>
 			</div>
 			

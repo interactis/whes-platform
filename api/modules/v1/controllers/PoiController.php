@@ -30,32 +30,20 @@ class PoiController extends ApiController
   	
   	public function actionView($id)
     {
-    	$model = Phrase::findOne($id);
+    	$model = Poi::findOne($id);
     	
     	if (!$model) 
     		$this->returnError(404);
     	
-    	$key = 'phraseCache_'. $id;
-    	$cache = Yii::$app->apiCache;
-    	$data = $cache->get($key);
-    	
-		if ($data === false)
-		{
-			$response = [
-				'id' => $model->id,
-				'title' => $model->title,
-				'description' => $model->description,
-				'polygons' => $this->_getPolygons($model),
-				'pois' => $this->_getPois($model)
-			];
-			
-			$response = json_encode($response, JSON_PRETTY_PRINT);
-			$cache->set($key, $response);
-		}
-		else
-			$response = $data;
+		$response = [
+			'id' => $model->id,
+			'slug' => $model->slug,
+			'label' => $model->label,
+			'title' => $model->title,
+			'description' => $model->description,
+		];
 		
-        $this->encodeResponse($response, false);
+        $this->encodeResponse($response);
     }
     
     private function _getPois()
@@ -92,7 +80,4 @@ class PoiController extends ApiController
     	}
     	return $response;
     }
-    
-  
-  
 }

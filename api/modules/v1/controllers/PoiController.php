@@ -70,6 +70,7 @@ class PoiController extends ApiController
     			'type' => "Feature",
     			'properties' => [
     				'id' => $poi->id,
+    				'label' => $poi->label,
     				'title' => $poi->title
     			],
     			'geometry' => [

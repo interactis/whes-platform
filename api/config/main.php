@@ -46,9 +46,6 @@ return [
 				'<controller:\w+>/<id:\d+>' => '<controller>/view',
 				'v1' => 'site/index',
 				'v1/<controller:\w+>/<id:\d+>' => '<controller>/view',
-				
-				'v1/poi' => 'poi/list',
-				'v1/route' => 'route/list',
 			],
 		],
 		'errorHandler' => [

@@ -9,6 +9,12 @@
 [GET route/list](#get-route-list)  
 [GET route/:id](#get-route) 
 
+### Heritage
+
+[GET heritage/list](#get-heritage-list)  
+[GET heritage/:id](#get-heritage) 
+
+
 
 ## <a name="get-poi-list"></a>GET poi/list
 
@@ -85,7 +91,7 @@ curl https://api.ourheritage.ch/v1/poi/17?lang=de
     "slug": "suone-stigwasser",
     "label": "Interessanter Ort<br \/><em>Swiss Alps Jungfrau-Aletsch<\/em>",
     "title": "Suone Stigwasser",
-    "description": "<p>Das Stigwasser ist die zweitunterste von insgesamt vier Suonen, welche einst aus dem Gredetschtal auf die Munderseite gef&uuml;hrt wurden. Die Spuren dieser vier Suonen sind von der linken Talseite aus noch sehr deutlich erkennbar. Erstmals urkundlich erw&auml;hnt wird das 3.6 km lange Stigwasser in einem Reglement von 1521. Die zum Teil durch spektakul&auml;res Gel&auml;nde und steile Felsabschnitte f&uuml;hrende Suone leitet das Wasser des Mundbaches heute praktisch nur noch zu touristischen Zwecken nach Mund, weshalb sie in niederschlagsarmen Zeiten oftmals trocken liegt.<\/p>\r\n\r\n<p>&nbsp;<\/p>\r\n"
+    "description": "<p>Lorem ipsum dolor ...<\/p>"
 }
 ```
 
@@ -119,4 +125,83 @@ curl https://api.ourheritage.ch/v1/route/10?lang=de
 ### Example Response
 ```
 
+```
+
+## <a name="get-heritage-list"></a>GET heritage/list
+
+### Parameters
+
+| Parameter    |Type     |Description                     |              |
+|--------------|:-------:|:------------------------------:|:------------:|
+| lang         |string   |Language code (de, fr, it, en)  |Optional      |
+
+### Example Request
+
+```
+curl https://api.ourheritage.ch/v1/heritage/list?lang=de
+```
+
+### Example Response
+```
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "id": 5,
+                "label": "UNESCO-Welterbe",
+                "title": "Schweizer Alpen Jungfrau-Aletsch"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    648981,
+                    145667
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "id": 8,
+                "label": "UNESCO-Welterbe",
+                "title": "Tektonik Arena Sardona"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    737808,
+                    197364
+                ]
+            }
+        }
+    ]
+}
+```
+
+## <a name="get-heritage"></a>GET heritage/:id
+
+### Parameters
+
+| Parameter    |Type     |Description                     |              |
+|--------------|:-------:|:------------------------------:|:------------:|
+| id           |integer  |ID of the requested heritage    |Required      |
+| lang         |string   |Language code (de, fr, it, en)  |Optional      |
+
+### Example Request
+
+```
+curl https://api.ourheritage.ch/v1/heritage/5?lang=de
+```
+
+### Example Response
+```
+{
+    "id": 5,
+    "slug": "swiss-alps-jungfrau-aletsch",
+    "label": "UNESCO-Welterbe",
+    "title": "Schweizer Alpen Jungfrau-Aletsch",
+    "description": "<p>Lorem ipsum dolor ...<\/p>"
+}
 ```

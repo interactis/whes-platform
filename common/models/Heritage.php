@@ -32,7 +32,7 @@ class Heritage extends HelperModel
 {
 	public $translationFields = ['name', 'short_name', 'slug', 'description', 'link_url', 'link_text'];
 	public $requiredTranslationFields = ['name', 'short_name', 'description'];
-
+	
     /**
      * {@inheritdoc}
      */
@@ -205,4 +205,9 @@ class Heritage extends HelperModel
     		];
 		}
 	}
+	
+	public function getLabel()
+    {
+    	return Yii::t('app', 'UNESCO World Heritage');
+    }
 }

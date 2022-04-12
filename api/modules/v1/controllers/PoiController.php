@@ -4,7 +4,7 @@ namespace api\modules\v1\controllers;
 use Yii;
 use api\modules\v1\components\ApiController;
 use yii\filters\VerbFilter;
-use common\models\Phrase;
+use common\models\Poi;
  
 class PoiController extends ApiController
 {
@@ -25,7 +25,7 @@ class PoiController extends ApiController
     
     public function actionList()
     {
-		$this->encodeResponse($this->_getPhrases());
+		$this->encodeResponse($this->_getPois());
     }
   	
   	public function actionView($id)
@@ -58,79 +58,41 @@ class PoiController extends ApiController
         $this->encodeResponse($response, false);
     }
     
-    private function _getPois($model)
-    {    
+    private function _getPois()
+    {   
     	$response = [
     		'type' => 'FeatureCollection',
     		'features' => []
     	];
     	
-    	foreach($model->audio as $audio)
+    	$pois = Poi::find()
+        	->joinWith('content')
+       		->where(['not', ['geom' => null]])
+       		->andWhere([
+       			'published' => true,
+       			'approved' => true,
+       			'hidden' => false,
+       			'archive' => false
+       		])
+        	->all();
+        
+    	foreach($pois as $poi)
     	{
     		$response['features'][] = [
     			'type' => "Feature",
     			'properties' => [
-    				'id' => $audio->id,
-    				'file' => Yii::$app->params['frontendUrl'] .'audio/'. $audio->filename,
-    				'description' => $audio->description
+    				'id' => $poi->id,
+    				'title' => $poi->title
     			],
     			'geometry' => [
     				'type' => 'Point',
-    				'coordinates' => $audio->poi->geom
+    				'coordinates' => $poi->geom
     			]
     		];
     	}
     	return $response;
     }
     
-    private function _getPolygons($model)
-    {    
-    	$response = [
-    		'type' => 'FeatureCollection',
-    		'features' => []
-    	];
-    	
-    	foreach($model->polygons as $polygon)
-    	{
-    		$response['features'][] = [
-    			'type' => "Feature",
-    			'properties' => [
-    				'id' => $polygon->id,
-    				'color' => $polygon->color->code
-    			],
-    			'geometry' => [
-    				'type' => 'MultiPolygon',
-    				'coordinates' => $polygon->geom
-    			]
-    		];
-    	}
-    	return $response;
-    }
-  	
-  	private function _getPhrases()
-    {
-    	$models = Phrase::find()
-    		->joinWith(['phraseTranslations'])
-    		->where([
-				'hidden' => false,
-				'language_id' => Yii::$app->params['preferredLanguageId']
-    		])
-    		->orderBy([
-    			'order' => SORT_ASC,
-    			'title' => SORT_ASC
-    		])
-    		->limit(200)
-    		->all();
-    	
-    	$phrases = [];
-    	foreach ($models as $model)
-    	{
-    		$phrases[] = [
-				'id' => $model->id,
-				'title' => $model->title			
-			];
-    	}
-    	
-    	return $phrases;
-    }
+  
+  
 }

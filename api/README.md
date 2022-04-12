@@ -12,6 +12,12 @@
 
 ## <a name="get-poi-list"></a>GET poi/list
 
+### Parameters
+
+| Parameter    |Type     |Description                     |              |
+|--------------|:-------:|:------------------------------:|:------------:|
+| lang         |string   |Language code (de, fr, it, en)  |Optional      |
+
 ### Example Request
 
 ```

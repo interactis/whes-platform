@@ -69,7 +69,7 @@ curl https://api.ourheritage.ch/v1/poi/list
 ### Example Request
 
 ```
-curl https://api.ourheritage.ch/v1/poi/12?lang=de
+curl https://api.ourheritage.ch/v1/poi/17?lang=de
 ```
 
 ### Example Response

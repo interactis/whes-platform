@@ -21,7 +21,7 @@
 ### Example Request
 
 ```
-curl https://api.ourheritage.ch/v1/poi/list
+curl https://api.ourheritage.ch/v1/poi/list?lang=de
 ```
 
 ### Example Response

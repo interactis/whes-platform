@@ -10,7 +10,7 @@
 [GET route](#get-route) 
 
 
-## <a name="get-phrase-list"></a>GET poi/list
+## <a name="get-poi-list"></a>GET poi/list
 
 ### Example Request
 
@@ -34,7 +34,39 @@ curl https://api.ourheritage.ch/v1/poi/list
 ### Example Request
 
 ```
-curl https://api.ourheritage.ch/v1/poi/7?lang=de
+curl https://api.ourheritage.ch/v1/poi/12?lang=de
+```
+
+### Example Response
+```
+
+```
+
+## <a name="get-route-list"></a>GET route/list
+
+### Example Request
+
+```
+curl https://api.ourheritage.ch/v1/route/list
+```
+
+### Example Response
+```
+```
+
+## <a name="get-route"></a>GET route/:id
+
+### Parameters
+
+| Parameter    |Type     |Description                     |              |
+|--------------|:-------:|:------------------------------:|:------------:|
+| id           |integer  |ID of the requested route       |Required      |
+| lang         |string   |Language code (de, fr, it, en)  |Optional      |
+
+### Example Request
+
+```
+curl https://api.ourheritage.ch/v1/route/10?lang=de
 ```
 
 ### Example Response

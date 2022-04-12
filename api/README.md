@@ -105,6 +105,93 @@ curl https://api.ourheritage.ch/v1/route/list
 
 ### Example Response
 ```
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "id": 10,
+                "label": "Wanderung<br \/><em>Swiss Alps Jungfrau-Aletsch<\/em>",
+                "title": "Am Fusse des Eigers"
+            },
+            "geometry": {
+                "type": "Linestring",
+                "coordinates": [
+                    [
+                        645472.004451798,
+                        178811.195983901
+                    ],
+                    [
+                        653139.268639388,
+                        177203.646654112
+                    ],
+                    [
+                        668481.60497933,
+                        158194.35391896
+                    ],
+                    [
+                        668423.88750327,
+                        158166.12636386
+                    ],
+                    [
+                        668417.01253547,
+                        158177.38782045
+                    ],
+                    [
+                        668399.8842279,
+                        158166.63164582
+                    ],
+                    [
+                        668393.83149767,
+                        158173.01086773
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "id": 11,
+                "label": "Wanderung<br \/><em>Swiss Alps Jungfrau-Aletsch<\/em>",
+                "title": "Auf den Pfaden der Bergbauern"
+            },
+            "geometry": {
+                "type": "Linestring",
+                "coordinates": [
+                    [
+                        645472.004451798,
+                        178811.195983901
+                    ],
+                    [
+                        653139.268639388,
+                        177203.646654112
+                    ],
+                    [
+                        668481.60497933,
+                        158194.35391896
+                    ],
+                    [
+                        668423.88750327,
+                        158166.12636386
+                    ],
+                    [
+                        668417.01253547,
+                        158177.38782045
+                    ],
+                    [
+                        668399.8842279,
+                        158166.63164582
+                    ],
+                    [
+                        668393.83149767,
+                        158173.01086773
+                    ]
+                ]
+            }
+        }
+    ]
+}
 ```
 
 ## <a name="get-route"></a>GET route/:id
@@ -124,7 +211,13 @@ curl https://api.ourheritage.ch/v1/route/10?lang=de
 
 ### Example Response
 ```
-
+{
+    "id": 10,
+    "slug": "am-fusse-des-eigers",
+    "label": "Wanderung<br \/><em>Swiss Alps Jungfrau-Aletsch<\/em>",
+    "title": "Am Fusse des Eigers"
+    "description": "<p>Lorem ipsum dolor ...<\/p>"
+}
 ```
 
 ## <a name="get-heritage-list"></a>GET heritage/list

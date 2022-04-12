@@ -37,10 +37,12 @@ class HeritageController extends ApiController
     	
 		$response = [
 			'id' => $model->id,
+			'type' => 'heritage',
 			'slug' => $model->slug,
 			'label' => $model->label,
 			'title' => $model->name,
-			'description' => $model->description,
+			'description' => Yii::$app->helpers->shortenString($model->description),
+			'img' => $model->previewImage
 		];
 		
         $this->encodeResponse($response);

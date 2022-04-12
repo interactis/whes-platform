@@ -37,10 +37,12 @@ class RouteController extends ApiController
     	
 		$response = [
 			'id' => $model->id,
+			'type' => 'route',
 			'slug' => $model->slug,
 			'label' => $model->label,
 			'title' => $model->title,
-			'description' => $model->description,
+			'description' => Yii::$app->helpers->shortenString($model->description),
+			'img' => $model->content->previewImage
 		];
 		
         $this->encodeResponse($response);

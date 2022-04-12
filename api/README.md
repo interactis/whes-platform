@@ -90,10 +90,15 @@ curl https://api.ourheritage.ch/v1/poi/17?lang=de
 ```
 {
     "id": 17,
+    "type": "poi",
     "slug": "suone-stigwasser",
     "label": "Interessanter Ort<br \/><em>Swiss Alps Jungfrau-Aletsch<\/em>",
     "title": "Suone Stigwasser",
-    "description": "<p>Lorem ipsum dolor ...<\/p>"
+    "description": "<p>Lorem ipsum dolor ...<\/p>",
+    "img": {
+        "url": "http:\/\/ourheritage.ch\/img\/layout\/placeholder\/600\/placeholder.jpg",
+        "alt": ""
+    }
 }
 ```
 
@@ -217,10 +222,15 @@ curl https://api.ourheritage.ch/v1/route/10?lang=de
 ```
 {
     "id": 10,
+    "type": "route",
     "slug": "am-fusse-des-eigers",
     "label": "Wanderung<br \/><em>Swiss Alps Jungfrau-Aletsch<\/em>",
     "title": "Am Fusse des Eigers"
-    "description": "<p>Lorem ipsum dolor ...<\/p>"
+    "description": "<p>Lorem ipsum dolor ...<\/p>",
+    "img": {
+        "url": "http:\/\/ourheritage.ch\/img\/layout\/placeholder\/600\/placeholder.jpg",
+        "alt": ""
+    }
 }
 ```
 
@@ -298,9 +308,14 @@ curl https://api.ourheritage.ch/v1/heritage/5?lang=de
 ```
 {
     "id": 5,
+    "type": "heritage",
     "slug": "swiss-alps-jungfrau-aletsch",
     "label": "UNESCO-Welterbe",
     "title": "Schweizer Alpen Jungfrau-Aletsch",
-    "description": "<p>Lorem ipsum dolor ...<\/p>"
+    "description": "<p>Lorem ipsum dolor ...<\/p>",
+    "img": {
+        "url": "http:\/\/ourheritage.ch\/img\/layout\/placeholder\/600\/placeholder.jpg",
+        "alt": ""
+    }
 }
 ```

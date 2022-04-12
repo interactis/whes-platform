@@ -2,12 +2,12 @@
 
 ### POI
 [GET poi/list](#get-poi-list)  
-[GET poi](#get-poi) 
+[GET poi/:id](#get-poi) 
 
 ### Route
 
 [GET route/list](#get-route-list)  
-[GET route](#get-route) 
+[GET route/:id](#get-route) 
 
 
 ## <a name="get-poi-list"></a>GET poi/list

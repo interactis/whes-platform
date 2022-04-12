@@ -67,6 +67,7 @@ class HeritageController extends ApiController
     			'type' => "Feature",
     			'properties' => [
     				'id' => $heritage->id,
+    				'type' => 'heritage',
     				'label' => $heritage->label,
     				'title' => $heritage->name
     			],

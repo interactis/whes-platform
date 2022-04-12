@@ -39,6 +39,7 @@ curl https://api.ourheritage.ch/v1/poi/list?lang=de
             "type": "Feature",
             "properties": {
                 "id": 17,
+                "type": 'poi',
                 "label": "Interessanter Ort<br \/><em>Swiss Alps Jungfrau-Aletsch<\/em>",
                 "title": "Suone Stigwasser"
             },
@@ -54,6 +55,7 @@ curl https://api.ourheritage.ch/v1/poi/list?lang=de
             "type": "Feature",
             "properties": {
                 "id": 21,
+                "type": 'poi',
                 "label": "Geführte Besichtigung<br \/><em>Tektonikarena Sardona<\/em>",
                 "title": "Geo-Stadtspaziergang Glarus "
             },
@@ -112,11 +114,12 @@ curl https://api.ourheritage.ch/v1/route/list
             "type": "Feature",
             "properties": {
                 "id": 10,
+                "type": 'route',
                 "label": "Wanderung<br \/><em>Swiss Alps Jungfrau-Aletsch<\/em>",
                 "title": "Am Fusse des Eigers"
             },
             "geometry": {
-                "type": "Linestring",
+                "type": "LineString",
                 "coordinates": [
                     [
                         645472.004451798,
@@ -153,11 +156,12 @@ curl https://api.ourheritage.ch/v1/route/list
             "type": "Feature",
             "properties": {
                 "id": 11,
+                "type": 'route',
                 "label": "Wanderung<br \/><em>Swiss Alps Jungfrau-Aletsch<\/em>",
                 "title": "Auf den Pfaden der Bergbauern"
             },
             "geometry": {
-                "type": "Linestring",
+                "type": "LineString",
                 "coordinates": [
                     [
                         645472.004451798,
@@ -243,6 +247,7 @@ curl https://api.ourheritage.ch/v1/heritage/list?lang=de
             "type": "Feature",
             "properties": {
                 "id": 5,
+                "type": 'heritage',
                 "label": "UNESCO-Welterbe",
                 "title": "Schweizer Alpen Jungfrau-Aletsch"
             },
@@ -258,6 +263,7 @@ curl https://api.ourheritage.ch/v1/heritage/list?lang=de
             "type": "Feature",
             "properties": {
                 "id": 8,
+                "type": 'heritage',
                 "label": "UNESCO-Welterbe",
                 "title": "Tektonik Arena Sardona"
             },

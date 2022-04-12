@@ -70,11 +70,12 @@ class RouteController extends ApiController
     			'type' => "Feature",
     			'properties' => [
     				'id' => $route->id,
+    				'type' => 'route',
     				'label' => $route->label,
     				'title' => $route->title
     			],
     			'geometry' => [
-    				'type' => 'Linestring',
+    				'type' => 'LineString',
     				'coordinates' => $route->geom
     			]
     		];

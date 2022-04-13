@@ -70,7 +70,7 @@ class HeritageController extends ApiController
     			'properties' => [
     				'id' => $heritage->id,
     				'type' => 'heritage',
-    				'label' => $heritage->label,
+    				'marker' => Yii::$app->params['frontendUrl'] .'img/heritage/badge/'. $heritage->id .'.svg',
     				'title' => $heritage->name
     			],
     			'geometry' => [

@@ -73,7 +73,7 @@ class PoiController extends ApiController
     			'properties' => [
     				'id' => $poi->id,
     				'type' => 'poi',
-    				'label' => $poi->label,
+    				'marker' => Yii::$app->params['frontendUrl'] .'img/layout/poi-marker.svg',
     				'title' => $poi->title
     			],
     			'geometry' => [

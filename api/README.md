@@ -40,7 +40,7 @@ curl https://api.ourheritage.ch/v1/poi/list?lang=de
             "properties": {
                 "id": 17,
                 "type": 'poi',
-                "label": "Interessanter Ort<br \/><em>Swiss Alps Jungfrau-Aletsch<\/em>",
+                "marker": "https:\/\/ourheritage.ch\/img\/layout\/poi-marker.svg",
                 "title": "Suone Stigwasser"
             },
             "geometry": {
@@ -56,7 +56,7 @@ curl https://api.ourheritage.ch/v1/poi/list?lang=de
             "properties": {
                 "id": 21,
                 "type": 'poi',
-                "label": "Geführte Besichtigung<br \/><em>Tektonikarena Sardona<\/em>",
+                "marker": "https:\/\/ourheritage.ch\/img\/layout\/poi-marker.svg",
                 "title": "Geo-Stadtspaziergang Glarus "
             },
             "geometry": {
@@ -120,7 +120,6 @@ curl https://api.ourheritage.ch/v1/route/list
             "properties": {
                 "id": 10,
                 "type": 'route',
-                "label": "Wanderung<br \/><em>Swiss Alps Jungfrau-Aletsch<\/em>",
                 "title": "Am Fusse des Eigers"
             },
             "geometry": {
@@ -258,7 +257,7 @@ curl https://api.ourheritage.ch/v1/heritage/list?lang=de
             "properties": {
                 "id": 5,
                 "type": 'heritage',
-                "label": "UNESCO-Welterbe",
+                "marker": "https:\/\/ourheritage.ch\/img\/heritage\/badge\/5.svg",
                 "title": "Schweizer Alpen Jungfrau-Aletsch"
             },
             "geometry": {
@@ -274,7 +273,7 @@ curl https://api.ourheritage.ch/v1/heritage/list?lang=de
             "properties": {
                 "id": 8,
                 "type": 'heritage',
-                "label": "UNESCO-Welterbe",
+                "marker": "https:\/\/ourheritage.ch\/img\/heritage\/badge\/8.svg",
                 "title": "Tektonik Arena Sardona"
             },
             "geometry": {

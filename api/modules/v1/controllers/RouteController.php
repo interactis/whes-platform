@@ -73,7 +73,6 @@ class RouteController extends ApiController
     			'properties' => [
     				'id' => $route->id,
     				'type' => 'route',
-    				'label' => $route->label,
     				'title' => $route->title
     			],
     			'geometry' => [

@@ -12,6 +12,7 @@
 ### Heritage
 
 [GET heritage/list](#get-heritage-list)  
+[GET heritage/perimeter](#get-heritage-perimeter)  
 [GET heritage/:id](#get-heritage) 
 
 
@@ -281,6 +282,53 @@ curl https://api.ourheritage.ch/v1/heritage/list?lang=de
                 "coordinates": [
                     737808,
                     197364
+                ]
+            }
+        }
+    ]
+}
+```
+
+## <a name="get-heritage-perimeter"></a>GET heritage/perimeter
+
+### Example Request
+
+```
+curl https://api.ourheritage.ch/v1/heritage/perimeter
+```
+
+### Example Response
+```
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "id": 5
+            },
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                656937.999958435,
+                                170139.999994016
+                            ],
+                            [
+                                656964.999973268,
+                                170117.999999414
+                            ],
+                            [
+                                656985.000033712,
+                                170095.000028125
+                            ],
+                            
+                            ...
+                    	
+                    	]
+                    ]
                 ]
             }
         }

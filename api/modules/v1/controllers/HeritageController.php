@@ -18,6 +18,7 @@ class HeritageController extends ApiController
                 'actions' => [
                     'list' => ['get'],
                     'view' => ['get'],
+                    'perimeter' => ['get'],
                 ]
             ]
         ];
@@ -46,6 +47,38 @@ class HeritageController extends ApiController
 		];
 		
         $this->encodeResponse($response);
+    }
+    
+    public function actionPerimeter()
+    {
+    	$models = Heritage::find()
+    		->where([
+    			'published' => true,
+    			'hidden' => false,
+    		])
+    		->andWhere(['not', ['perimeter' => null]])
+    		->all();
+    	
+    	$response = [
+    		'type' => 'FeatureCollection',
+    		'features' => []
+    	];
+    	
+    	foreach($models as $model)
+    	{
+    		$response['features'][] = [
+    			'type' => "Feature",
+    			'properties' => [
+    				'id' => $model->id
+    			],
+    			'geometry' => [
+    				'type' => 'MultiPolygon',
+    				'coordinates' => $model->perimeter
+    			]
+    		];
+    	}
+    	
+    	$this->encodeResponse($response);
     }
     
     private function _getHeritages()

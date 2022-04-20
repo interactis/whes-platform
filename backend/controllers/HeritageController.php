@@ -9,6 +9,7 @@ use backend\components\HelperController;
 use yii\filters\AccessControl;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * HeritageController implements the CRUD actions for Heritage model.
@@ -85,6 +86,8 @@ class HeritageController extends HelperController
 		{
         	if ($model->validateTranslations() && $model->validate())
         	{
+        		$this->_handlePerimeterFileUpload($model);
+        		
         		if ($model->save(false)	&&
         			$model->saveTranslations() &&
         			$model->generateSlugs('short_name')
@@ -122,6 +125,8 @@ class HeritageController extends HelperController
 		{
         	if ($model->validateTranslations() && $model->validate())
         	{
+        		$this->_handlePerimeterFileUpload($model);
+        		
         		if ($model->save(false)	&&
         			$model->saveTranslations() &&
         			$model->generateSlugs('short_name')
@@ -159,6 +164,17 @@ class HeritageController extends HelperController
         $model->delete();
 
         return $this->redirect(['index']);
+    }
+    
+    private function _handlePerimeterFileUpload($model)
+    {
+    	if ($file = UploadedFile::getInstance($model, 'perimeterFile'))
+    	{
+    		$string = file_get_contents($file->tempName);
+			$json = json_decode($string, true);
+			$coordinates = $json['features'][0]['geometry']['coordinates'];
+			$model->perimeter = $coordinates;
+		}
     }
 
     /**

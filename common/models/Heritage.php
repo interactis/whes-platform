@@ -32,6 +32,7 @@ class Heritage extends HelperModel
 {
 	public $translationFields = ['name', 'short_name', 'slug', 'description', 'link_url', 'link_text'];
 	public $requiredTranslationFields = ['name', 'short_name', 'description'];
+	public $perimeterFile;
 	
     /**
      * {@inheritdoc}
@@ -53,6 +54,11 @@ class Heritage extends HelperModel
                 'type' => SwissGeometryBehavior::GEOMETRY_POINT,
                 'attribute' => 'geom',
             ],
+            [
+                'class' => SwissGeometryBehavior::className(),
+                'type' => SwissGeometryBehavior::GEOMETRY_MULTIPOLYGON,
+                'attribute' => 'perimeter',
+            ]
         ];
     }
 
@@ -66,6 +72,9 @@ class Heritage extends HelperModel
             [['priority', 'created_at', 'updated_at'], 'integer'],
             [['published', 'hidden'], 'boolean'],
             [['map_position_x', 'map_position_y'],'number', 'min' => 0, 'max' => 100],
+            //[['perimeter'], 'string'],
+            ['perimeterFile', 'file', 'extensions' => ['geojson']],
+            ['perimeterFile', 'required', 'on' => 'create', 'skipOnEmpty' => true],
         ];
     }
 
@@ -77,6 +86,7 @@ class Heritage extends HelperModel
         return [
             'id' => Yii::t('app', 'ID'),
             'geom' => Yii::t('app', 'Geom'),
+            'perimeter' => Yii::t('app', 'Perimeter'),
             'map_position_x' => Yii::t('app', 'Overview Map X-Position (%)'),
             'map_position_y' => Yii::t('app', 'Overview Map Y-Position (%)'),
             'priority' => Yii::t('app', 'Priority'),
@@ -84,6 +94,7 @@ class Heritage extends HelperModel
             'hidden' => Yii::t('app', 'Hidden'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
+            'perimeterFile' => Yii::t('app', 'Perimeter File (GeoJSON)'),
         ];
     }
     

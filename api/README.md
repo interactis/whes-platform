@@ -107,9 +107,9 @@ curl https://api.ourheritage.ch/v1/poi/17?lang=de
 
 ### Parameters
 
-| Parameter    |Type     |Description                                                      |              |
-|--------------|:-------:|:---------------------------------------------------------------:|:------------:|
-| type         |string   |"general" (e.g. Grand Tours) or "detail" (e.g. heritage routes)  |Required      |
+| Parameter    |Type     |Description                                                   |              |
+|--------------|:-------:|:------------------------------------------------------------:|:------------:|
+| type         |string   |"general" (e.g. Grand Tours) or "detail" (heritage routes)    |Required      |
 
 ### Example Request
 

@@ -41,6 +41,25 @@ if (!$model->isNewRecord && $model->published)
 				</div>
 				<div class="panel-body">
 				
+					<div class="row">
+					 	<div class="col-md-2">
+					 		<?= $model->getBadge('img-responsive margin-bottom-sm') ?>
+					 	</div>
+					 	<div class="col-md-10">
+							<?= $form->field($model, 'badgeFile')->widget(FileInput::classname(), [
+								'options' => ['accept' => 'image/svg+xml, image/png'],
+								'pluginOptions' => [
+									'showPreview' => false,
+									'showCaption' => true,
+									'showRemove' => true,
+									'showUpload' => false
+								]
+							]) ?>
+						</div>
+					</div>
+					
+					<hr />
+					
 					<?= $this->render('/translation/field', [
 						'model' => $model,
 						'form' => $form,

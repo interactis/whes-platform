@@ -7,6 +7,7 @@ use yii\behaviors\TimestampBehavior;
 use common\models\helpers\HelperModel;
 use common\components\SwissGeometryBehavior;
 use yii\helpers\ArrayHelper;
+use yii\web\UploadedFile;
 
 /**
  * This is the model class for table "heritage".
@@ -33,6 +34,7 @@ class Heritage extends HelperModel
 	public $translationFields = ['name', 'short_name', 'slug', 'description', 'link_url', 'link_text'];
 	public $requiredTranslationFields = ['name', 'short_name', 'description'];
 	public $perimeterFile;
+	public $badgeFile;
 	
     /**
      * {@inheritdoc}
@@ -75,6 +77,7 @@ class Heritage extends HelperModel
             //[['perimeter'], 'string'],
             ['perimeterFile', 'file', 'extensions' => ['geojson']],
             ['perimeterFile', 'required', 'on' => 'create', 'skipOnEmpty' => true],
+            ['badgeFile', 'file', 'extensions' => ['svg']]
         ];
     }
 
@@ -220,5 +223,47 @@ class Heritage extends HelperModel
 	public function getLabel()
     {
     	return Yii::t('app', 'UNESCO World Heritage');
+    }
+    
+    public function getBadge($class = "")
+    {  	
+    	$path = $this->getBadgeFilePath();
+		if (file_exists($path))
+		{
+			$url = Yii::$app->params['frontendUrl'] ."img/heritage/badge/". $this->id .'.svg';
+			return '<img src="'. $url .'" class="heritage-badge '. $class .'" alt="Heritage icon">';		
+		}
+		else
+			return false;		
+	}
+    
+    public function saveBadgeFile()
+    {
+    	$file = UploadedFile::getInstance($this, 'badgeFile');
+    	
+		if (!empty($file))
+		{   
+			// delete old file
+			$this->_removeBadgeFile();
+				
+			// save new file
+			$path = $this->getBadgeFilePath();			
+			$file->saveAs($path);
+		}
+		
+		return true;
+    }
+    
+    public function getBadgeFilePath()
+    {
+		$path = '/img/heritage/badge/'. $this->id .'.svg';
+		return Yii::getAlias('@frontend/web'. $path);
+    }
+    
+    private function _removeBadgeFile()
+    {
+		$path = $this->getBadgeFilePath();
+		if (file_exists($path))
+			unlink($path);	
     }
 }

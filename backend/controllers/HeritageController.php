@@ -90,7 +90,8 @@ class HeritageController extends HelperController
         		
         		if ($model->save(false)	&&
         			$model->saveTranslations() &&
-        			$model->generateSlugs('short_name')
+        			$model->generateSlugs('short_name') &&
+        			$model->saveBadgeFile()
         		)
         		{        						
 					Yii::$app->getSession()->setFlash(
@@ -129,7 +130,8 @@ class HeritageController extends HelperController
         		
         		if ($model->save(false)	&&
         			$model->saveTranslations() &&
-        			$model->generateSlugs('short_name')
+        			$model->generateSlugs('short_name') &&
+        			$model->saveBadgeFile()
         		)
         		{        						
 					Yii::$app->getSession()->setFlash(

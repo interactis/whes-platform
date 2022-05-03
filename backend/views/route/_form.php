@@ -226,6 +226,8 @@ if (!$model->isNewRecord && $model->content->published && !$model->content->arch
 				</div>
 				<div class="panel-body">
 					<?php if ($user->isAdmin()): ?>
+						<?= $form->field($contentModel, 'general')->checkbox()
+							->hint(Yii::t("app", "General routes are displayed on the first map layer when fully zoomed out. Use it for Grand Tours, for example.")) ?>
 						<?= $form->field($contentModel, 'featured')->checkbox()
 							->hint(Yii::t("app", "Featured items are displayed first on the homepage and in search results (can only be set by admins).")) ?>
 					<?php endif; ?>

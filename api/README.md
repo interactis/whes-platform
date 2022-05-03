@@ -105,10 +105,16 @@ curl https://api.ourheritage.ch/v1/poi/17?lang=de
 
 ## <a name="get-route-list"></a>GET route/list
 
+### Parameters
+
+| Parameter    |Type     |Description                                                      |              |
+|--------------|:-------:|:---------------------------------------------------------------:|:------------:|
+| type         |string   |"general" (e.g. Grand Tours) or "detail" (e.g. heritage routes)  |Required      |
+
 ### Example Request
 
 ```
-curl https://api.ourheritage.ch/v1/route/list
+curl https://api.ourheritage.ch/v1/route/list?type=detail
 ```
 
 ### Example Response

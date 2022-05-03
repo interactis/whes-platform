@@ -13,6 +13,7 @@ use yii\helpers\ArrayHelper;
  * @property int|null $heritage_id
  * @property int|null $type
  * @property int|null $priority
+ * @property int|null $general
  * @property bool|null $published
  * @property bool|null $featured
  * @property bool|null $hidden
@@ -66,8 +67,8 @@ class Content extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['heritage_id', 'type', 'priority', 'created_at', 'updated_at'], 'default', 'value' => null],
-            [['heritage_id', 'type', 'priority', 'created_at', 'updated_at'], 'integer'],
+            [['heritage_id', 'type', 'priority', 'general', 'created_at', 'updated_at'], 'default', 'value' => null],
+            [['heritage_id', 'type', 'priority', 'general', 'created_at', 'updated_at'], 'integer'],
     
             [['heritage_id'], 'required', 'enableClientValidation' => false, 'when' => function($model) {
             	if ($model->type == $this::TYPE_ARTICLE) {
@@ -95,6 +96,7 @@ class Content extends \yii\db\ActiveRecord
             'heritage_id' => Yii::t('app', 'Heritage'),
             'type' => Yii::t('app', 'Type'),
             'priority' => Yii::t('app', 'Priority'),
+            'general' => Yii::t('app', 'General'),
             'published' => Yii::t('app', 'Published'),
             'featured' => Yii::t('app', 'Featured'),
             'hidden' => Yii::t('app', 'Hidden'),

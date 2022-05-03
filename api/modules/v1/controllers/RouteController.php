@@ -23,9 +23,13 @@ class RouteController extends ApiController
         ];
     }
     
-    public function actionList()
+    public function actionList($type)
     {
-		$this->encodeResponse($this->_getRoutes());
+    	$general = false;
+    	if ($type == "general")
+    		$general = true;
+    			
+		$this->encodeResponse($this->_getRoutes($general));
     }
   	
   	public function actionView($id)
@@ -48,7 +52,7 @@ class RouteController extends ApiController
         $this->encodeResponse($response);
     }
     
-    private function _getRoutes()
+    private function _getRoutes($general)
     {   
     	$response = [
     		'type' => 'FeatureCollection',
@@ -62,7 +66,8 @@ class RouteController extends ApiController
        			'published' => true,
        			'approved' => true,
        			'hidden' => false,
-       			'archive' => false
+       			'archive' => false,
+       			'general' => $general
        		])
         	->all();
         

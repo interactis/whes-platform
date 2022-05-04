@@ -16,6 +16,11 @@ class MapController extends HelperController
     {
     	return $this->render('index');
     }
+    
+    public function actionNew()
+    {
+    	return $this->render('new');
+    }
 	
 	public function actionHeritage($id)
     {

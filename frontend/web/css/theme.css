@@ -10869,7 +10869,9 @@ body {
       position: absolute;
       top: -3px;
       right: 5px;
-      font-size: 0.71rem; }
+      font-size: 0.71rem;
+      border-radius: 12px;
+      padding: 3px 7px; }
   .navbar .rucksack-info {
     position: fixed;
     top: 68px;
@@ -10937,7 +10939,9 @@ body {
         .navbar .nav-item .rucksack .badge {
           position: absolute;
           top: -3px;
-          right: 0; }
+          right: 0;
+          border-radius: 12px;
+          padding: 3px 7px; }
       .navbar .icon {
         display: block;
         height: 40px;

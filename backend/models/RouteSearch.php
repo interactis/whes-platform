@@ -16,6 +16,7 @@ class RouteSearch extends Route
 	public $heritage;
 	public $priority;
 	public $published;
+	public $general;
 	public $featured;
 	public $hidden;
 	public $imported;
@@ -30,7 +31,7 @@ class RouteSearch extends Route
         return [
             [['id', 'content_id', 'priority', 'created_at', 'updated_at'], 'integer'],
             [['title', 'heritage', 'tags'], 'safe'],
-            [['published', 'featured', 'hidden', 'imported', 'archive'], 'boolean']
+            [['published', 'general', 'featured', 'hidden', 'imported', 'archive'], 'boolean']
         ];
     }
 
@@ -62,7 +63,7 @@ class RouteSearch extends Route
         $query->leftJoin('tag', 'content_tag.tag_id = tag.id');
         $query->leftJoin('tag_translation', 'tag_translation.tag_id = tag.id');
         
-        $query->groupBy(['route.id', 'route_translation.title', 'content.priority', 'content.hidden', 'content.featured', 'content.published', 'content.imported', 'content.archive', 'heritage_translation.short_name']);
+        $query->groupBy(['route.id', 'route_translation.title', 'content.priority', 'content.hidden', 'content.general', 'content.featured', 'content.published', 'content.imported', 'content.archive', 'heritage_translation.short_name']);
 
         // add conditions that should always apply here
         
@@ -97,6 +98,11 @@ class RouteSearch extends Route
 		$dataProvider->sort->attributes['published'] = [
 			'asc' => ['content.published' => SORT_ASC],
 			'desc' => ['content.published' => SORT_DESC],
+		];
+		
+		$dataProvider->sort->attributes['general'] = [
+			'asc' => ['content.general' => SORT_ASC],
+			'desc' => ['content.general' => SORT_DESC],
 		];
 		
 		$dataProvider->sort->attributes['featured'] = [
@@ -140,6 +146,7 @@ class RouteSearch extends Route
             'updated_at' => $this->updated_at,
             'content.priority' => $this->priority,
             'content.published' => $this->published,
+            'content.general' => $this->general,
             'content.featured' => $this->featured,
             'content.hidden' => $this->hidden,
             'content.imported' => $this->imported,

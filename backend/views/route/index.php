@@ -41,6 +41,13 @@ if ($user->isAdmin())
 			'filter' => Heritage::getHeritages(true)
 		],
 		[
+			'attribute' => 'general',
+			'value' => function ($model) {
+				return ($model->content->general ? Yii::t('app', 'Yes') :  Yii::t('app', 'No'));
+			},
+			'filter' => $boolFilter,
+		],
+		[
 			'attribute' => 'featured',
 			'value' => function ($model) {
 				return ($model->content->featured ? Yii::t('app', 'Yes') :  Yii::t('app', 'No'));

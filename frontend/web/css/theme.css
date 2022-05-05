@@ -11384,6 +11384,7 @@ body {
     left: 0;
     width: 100%;
     margin-bottom: 0;
+    opacity: 0.96;
     z-index: 1030; }
     .trip-card .card-header {
       padding: 16px; }

@@ -11387,7 +11387,7 @@ body {
     opacity: 0.96;
     z-index: 1030; }
     .trip-card .card-header {
-      padding: 16px; }
+      padding: 12px; }
       .trip-card .card-header:hover {
         cursor: pointer; }
       .trip-card .card-header .handle {

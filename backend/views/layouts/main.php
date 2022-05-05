@@ -52,7 +52,6 @@ AppAsset::register($this);
 					 ['label' => 'Points of Interest', 'url' => ['/poi']],
 					 ['label' => 'Routes', 'url' => ['/route']],
 					 ['label' => 'Articles', 'url' => ['/article']],
-					 ['label' => 'NFC Codes', 'url' => ['/code/list']],
 				]
 			],
     	];

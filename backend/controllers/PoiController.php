@@ -60,6 +60,8 @@ class PoiController extends HelperController
    
     public function actionIndex()
     {
+    	echo 1;
+    	exit;
         $searchModel = new PoiSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 

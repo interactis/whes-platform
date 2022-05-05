@@ -8,6 +8,9 @@ use yii\base\Widget;
 
 class Map extends Widget
 {
+	public $initialItem;
+	public $translations;
+
     private $_assetBundle;
 
     public function init()
@@ -18,7 +21,10 @@ class Map extends Widget
 
     public function run()
     {
-        return $this->render('view');
+        return $this->render('view', [
+        	'initialItem' => $this->initialItem,
+        	'translations' => $this->translations
+        ]);
     }
 	
     /**

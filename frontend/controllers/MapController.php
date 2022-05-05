@@ -19,7 +19,24 @@ class MapController extends HelperController
     
     public function actionNew()
     {
-    	return $this->render('new');
+    	return $this->render('new', [
+    		'initialItem' => false,
+    		'translations' => $this->_getTranslations()
+    	]);
+    }
+    
+    private function _getTranslations()
+    {
+    	return '{
+			"display": "'. Yii::t('app', 'Display') .'",
+			"view": "'. Yii::t('app', 'View') .'",
+			"pointOfInterest": "'. Yii::t('app', 'Points of interest') .'",
+			"routes": "'. Yii::t('app', 'Routes') .'",
+			"perimeter": "'. Yii::t('app', 'World Heritage perimeters') .'",
+			"hikingTrailNetwork": "'. Yii::t('app', 'Hiking trail network') .'",
+			"close": "'. Yii::t('app', 'Close') .'",
+			"learnMore": "'. Yii::t('app', 'Learn more') .'"
+		}';
     }
 	
 	public function actionHeritage($id)

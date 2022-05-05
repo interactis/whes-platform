@@ -11,6 +11,9 @@ return [
 	"Route" => "Route",
 	"route" => "route",
 	"article" => "artikel",
+	"Points of interest" => "Interessante Orte",
+	"Routes" => "Routen",
+	"World Heritage perimeters" => "Welterbeperimeter",
 	
 	"Good to know" => "Wissenswertes",
 	"Info Filter" => "Info-Filter",

@@ -5,5 +5,8 @@ $this->title = Yii::t('app', 'Map');
 ?>
 
 <div class="map-view">
-	<?= Map::widget([]) ?>
+	<?= Map::widget([
+		'initialItem' => $initialItem,
+		'translations' => $translations
+	]) ?>
 </div>

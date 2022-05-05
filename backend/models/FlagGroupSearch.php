@@ -56,7 +56,7 @@ class FlagGroupSearch extends FlagGroup
 				'defaultOrder' => ['order' => SORT_ASC]
 			],
             'pagination' => [
-				'pageSize' => 50,
+				'pageSize' => 20,
 			]
         ]);
         

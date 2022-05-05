@@ -50,7 +50,7 @@ class QualityControlSearch extends Content
 				'defaultOrder' => ['updated_at' => SORT_ASC]
 			],
             'pagination' => [
-				'pageSize' => 50,
+				'pageSize' => 20,
 			]
         ]);
 

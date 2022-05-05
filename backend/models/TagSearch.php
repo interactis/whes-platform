@@ -56,7 +56,7 @@ class TagSearch extends Tag
 				'defaultOrder' => ['id' => SORT_DESC]
 			],
             'pagination' => [
-				'pageSize' => 50,
+				'pageSize' => 20,
 			]
         ]);
         

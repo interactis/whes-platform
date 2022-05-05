@@ -51,7 +51,7 @@ class CodeGroupSearch extends CodeGroup
 				'attributes' => ['id', 'title', 'code_count']
 			],
             'pagination' => [
-				'pageSize' => 50,
+				'pageSize' => 20,
 			]
         ]);
 

@@ -11247,9 +11247,13 @@ body {
   .btn.btn-outline-primary:hover, .btn.btn-outline-primary:active, .btn.btn-outline-primary:focus {
     background: #A60100;
     color: white !important; }
-  .btn:active, .btn:focus {
+  .btn:active {
     background: #707070 !important;
     border-color: #707070 !important;
+    -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+    outline: 0px !important; }
+  .btn:focus {
     -webkit-box-shadow: none !important;
             box-shadow: none !important;
     outline: 0px !important; }

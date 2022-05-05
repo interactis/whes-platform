@@ -36,10 +36,14 @@
 		color: white !important;
 	}
 	
-	&:active,
-	&:focus {
+	&:active {
 		background: $gray !important;
 		border-color: $gray !important;
+		box-shadow:none !important;
+    	outline:0px !important;
+	}
+	
+	&:focus {
 		box-shadow:none !important;
     	outline:0px !important;
 	}

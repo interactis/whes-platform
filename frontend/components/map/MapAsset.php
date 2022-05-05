@@ -10,7 +10,7 @@ class MapAsset extends AssetBundle
         'css/app.css',
         'css/chunk-vendors.css'
     ];
-    
+       
     public $js = [
     	'js/app.js',
         'js/chunk-vendors.js'

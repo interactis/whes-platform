@@ -64,7 +64,7 @@ $rucksackCount = count($rucksackIds);
 			<li class="nav-item dropdown <?= (($this->context->id == 'heritage') ? 'active' : '') ?>">
 				<a class="nav-link dropdown-toggle" href="#" id="heritageDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					<?= $this->render('_svg/heritage.php') ?>
-					<?= Yii::t('app', 'Heritage') ?>
+					<?= Yii::t('app', 'Our Heritage') ?>
 				</a>
 				<div class="dropdown-menu heritage-dropdown" aria-labelledby="heritageDropdown">
 					<?php

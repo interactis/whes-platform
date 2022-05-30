@@ -13,6 +13,7 @@ use yii\web\UploadedFile;
  * This is the model class for table "heritage".
  *
  * @property int $id
+ * @property int|null $type
  * @property string|null $geom
  * @property int|null $map_position_x
  * @property int|null $map_position_y
@@ -31,6 +32,10 @@ use yii\web\UploadedFile;
  */
 class Heritage extends HelperModel
 {
+	const TYPE_WORLD_HERITAGE = 1;
+    const TYPE_INTAGNIBLE = 2;
+    const TYPE_BIOSPHERE = 3;
+    
 	public $translationFields = ['name', 'short_name', 'slug', 'description', 'link_url', 'link_text'];
 	public $requiredTranslationFields = ['name', 'short_name', 'description'];
 	public $perimeterFile;
@@ -70,8 +75,8 @@ class Heritage extends HelperModel
     public function rules()
     {
         return [
-            [['priority', 'created_at', 'updated_at'], 'default', 'value' => null],
-            [['priority', 'created_at', 'updated_at'], 'integer'],
+            [['type', 'priority', 'created_at', 'updated_at'], 'default', 'value' => null],
+            [['type', 'priority', 'created_at', 'updated_at'], 'integer'],
             [['published', 'hidden'], 'boolean'],
             [['map_position_x', 'map_position_y'],'number', 'min' => 0, 'max' => 100],
             //[['perimeter'], 'string'],
@@ -88,6 +93,7 @@ class Heritage extends HelperModel
     {
         return [
             'id' => Yii::t('app', 'ID'),
+            'type' => Yii::t('app', 'Type'),
             'geom' => Yii::t('app', 'Geom'),
             'perimeter' => Yii::t('app', 'Perimeter'),
             'map_position_x' => Yii::t('app', 'Overview Map X-Position (%)'),
@@ -198,6 +204,21 @@ class Heritage extends HelperModel
         	])
         	->orderBy(['short_name' => SORT_ASC])
         	->all();
+    }
+    
+    public static function getTypes()
+    {
+        return [
+        	1 => 'World Heritage',
+        	2 => 'Intangible Cultural Heritage',
+        	3 => 'Biosphere Reserve'
+        ];
+    }
+    
+    public function getTypeText()
+    {
+        $types = $this::getTypes();
+        return Yii::t('app', $types[$this->type]);
     }
     
     public function getPreviewImage()

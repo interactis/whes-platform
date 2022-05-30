@@ -20,7 +20,7 @@ class HeritageSearch extends Heritage
     public function rules()
     {
         return [
-            [['id', 'priority', 'created_at', 'updated_at'], 'integer'],
+            [['id', 'type', 'priority', 'created_at', 'updated_at'], 'integer'],
             [['geom'], 'safe'],
             [['published', 'hidden'], 'boolean'],
             [['name'], 'safe'],
@@ -76,6 +76,7 @@ class HeritageSearch extends Heritage
 
         // grid filtering conditions
         $query->andFilterWhere([
+        	'type' => $this->type,
             'heritage.id' => $this->id,
             'priority' => $this->priority,
             'published' => $this->published,

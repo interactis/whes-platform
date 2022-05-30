@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use common\models\Heritage;
 
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\HeritageSearch */
@@ -28,6 +29,13 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'name',
+            [
+				'attribute' => 'type',
+				'value' => function ($model) {
+					return $model->typeText;
+				},
+				'filter' => Heritage::getTypes()
+			],
             'published:boolean',
             'hidden:boolean',
 

@@ -1,6 +1,7 @@
 <?php
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use common\models\Heritage;
 use common\models\HeritageTranslation;
 use backend\components\poipicker\PoiPicker;
 use kartik\file\FileInput;
@@ -59,6 +60,10 @@ if (!$model->isNewRecord && $model->published)
 					</div>
 					
 					<hr />
+					
+					<?= $form->field($model, 'type')->dropDownList(
+    					Heritage::getTypes()
+    				) ?>
 					
 					<?= $this->render('/translation/field', [
 						'model' => $model,

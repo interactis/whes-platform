@@ -6,6 +6,8 @@ return [
 	"Search" => "Suchen",
 	"My Collection" => "Meine Sammlung",
 	"UNESCO World Heritage" => "UNESCO-Welterbe",
+	"UNESCO Intangible Cultural Heritage" => "Immaterielles Kulturerbe der UNESCO",
+	"UNESCO Biosphere Reserve" => "UNESCO-Biosphäre",
 	
 	"Point of interest" => "Interessanter Ort",
 	"Route" => "Route",

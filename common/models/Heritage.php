@@ -209,9 +209,9 @@ class Heritage extends HelperModel
     public static function getTypes()
     {
         return [
-        	1 => 'World Heritage',
-        	2 => 'Intangible Cultural Heritage',
-        	3 => 'Biosphere Reserve'
+        	1 => 'UNESCO World Heritage',
+        	2 => 'UNESCO Intangible Cultural Heritage',
+        	3 => 'UNESCO Biosphere Reserve'
         ];
     }
     

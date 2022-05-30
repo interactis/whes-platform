@@ -2,7 +2,7 @@
 	 <div class="container">
 		<div class="row">
 			<div class="col-md-7 order-md-2 offset-lg-1">
-		   		<div class="label"><?= Yii::t('app', 'UNESCO World Heritage') ?></div>
+		   		<div class="label"><?= $model->getTypeText() ?></div>
 				<h1 class="margin-bottom-md">
 					<?= $model->name ?>
 				</h1>

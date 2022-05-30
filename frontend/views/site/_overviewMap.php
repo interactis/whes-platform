@@ -8,7 +8,7 @@ use common\models\Heritage;
 	
 		<?php
 		foreach(Heritage::getActiveHeritages() as $model): ?>	
-			<div class="poi" 
+			<div class="poi poi-type-<?= $model->type ?>" 
 				style="top:<?= $model->map_position_y ?>%; left: <?= $model->map_position_x ?>%;" 
 				data-toggle="popover" 
 				data-placement="top" 

@@ -11668,6 +11668,18 @@ body {
       opacity: 0.4;
       -webkit-animation: pulse-ring 1.25s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
               animation: pulse-ring 1.25s cubic-bezier(0.215, 0.61, 0.355, 1) infinite; }
+    .overview-map .poi.poi-type-2,
+    .heritage-map .poi.poi-type-2 {
+      background: #1172C9; }
+      .overview-map .poi.poi-type-2:before,
+      .heritage-map .poi.poi-type-2:before {
+        background-color: #1172C9; }
+    .overview-map .poi.poi-type-3,
+    .heritage-map .poi.poi-type-3 {
+      background: #558136; }
+      .overview-map .poi.poi-type-3:before,
+      .heritage-map .poi.poi-type-3:before {
+        background-color: #558136; }
   .overview-map .map-img,
   .heritage-map .map-img {
     width: 100%;

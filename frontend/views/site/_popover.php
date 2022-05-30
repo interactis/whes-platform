@@ -12,6 +12,9 @@ $img = $model->previewImage;
 		</a>
 	</div>
 	<div class='card-body small'>
+		<div class='label margin-bottom-sm'>
+			<?= $model->label ?>
+		</div>
 		<div class='h4 margin-bottom-sm'>
 			<a href='<?= $url ?>'><?= $model->short_name ?></a>
 		</div>

@@ -214,10 +214,10 @@ class Heritage extends HelperModel
         	3 => 'UNESCO Biosphere Reserve'
         ];
     }
-    
-    public function getTypeText()
+	
+	public function getLabel()
     {
-        $types = $this::getTypes();
+    	$types = $this::getTypes();
         return Yii::t('app', $types[$this->type]);
     }
     
@@ -240,11 +240,6 @@ class Heritage extends HelperModel
     		];
 		}
 	}
-	
-	public function getLabel()
-    {
-    	return Yii::t('app', 'UNESCO World Heritage');
-    }
     
     public function getBadge($class = "")
     {  	

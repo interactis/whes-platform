@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
 				'attribute' => 'type',
 				'value' => function ($model) {
-					return $model->typeText;
+					return $model->label;
 				},
 				'filter' => Heritage::getTypes()
 			],

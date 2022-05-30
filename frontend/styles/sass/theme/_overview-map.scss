@@ -37,6 +37,20 @@
 			opacity: 0.4;
 			animation: pulse-ring 1.25s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
 		}	  
+		
+		&.poi-type-2 {
+			background: $intangible;
+			&:before {
+				background-color: $intangible;
+			}
+		}
+		
+		&.poi-type-3 {
+			background: $biosphere;
+			&:before {
+				background-color: $biosphere;
+			}
+		}
 	}
 	
 	.map-img {

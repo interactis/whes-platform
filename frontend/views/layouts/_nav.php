@@ -66,15 +66,36 @@ $rucksackCount = count($rucksackIds);
 					<?= $this->render('_svg/heritage.php') ?>
 					<?= Yii::t('app', 'Our Heritage') ?>
 				</a>
-				<div class="dropdown-menu heritage-dropdown" aria-labelledby="heritageDropdown">
-					<?php
-					foreach(Heritage::getActiveHeritages() as $heritage)
-					{
-						echo Html::a($heritage->name, ['heritage/view', 'slug' => $heritage->slug], ['class' => 'dropdown-item']);
-					}
-					?>
-				</div>
-			</li>
+				<ul class="dropdown-menu heritage-dropdown" aria-labelledby="heritageDropdown">
+					<li class="dropdown-item dropdown-submenu">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle"><?= Yii::t('app', 'UNESCO World Heritage') ?></a>
+                        <ul class="dropdown-menu">
+                        	<?php
+							foreach(Heritage::getActiveHeritages(Heritage::TYPE_WORLD_HERITAGE) as $heritage)
+								echo '<li class="dropdown-item">'. Html::a($heritage->name, ['heritage/view', 'slug' => $heritage->slug]) .'</li>';
+							?>
+                        </ul>
+                    </li>
+                    <li class="dropdown-item dropdown-submenu">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle"><?= Yii::t('app', 'UNESCO Intangible Cultural Heritage') ?></a>
+                        <ul class="dropdown-menu">
+                            <?php
+							foreach(Heritage::getActiveHeritages(Heritage::TYPE_INTAGNIBLE) as $heritage)
+								echo '<li class="dropdown-item">'. Html::a($heritage->name, ['heritage/view', 'slug' => $heritage->slug]) .'</li>';
+							?>
+                        </ul>
+                    </li>
+                    <li class="dropdown-item dropdown-submenu">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle"><?= Yii::t('app', 'UNESCO Biosphere Reserves') ?></a>
+                        <ul class="dropdown-menu">
+                            <?php
+							foreach(Heritage::getActiveHeritages(Heritage::TYPE_BIOSPHERE) as $heritage)
+								echo '<li class="dropdown-item">'. Html::a($heritage->name, ['heritage/view', 'slug' => $heritage->slug]) .'</li>';
+							?>
+                        </ul>
+                    </li>
+				</ul>
+			</li>					
 		</ul>
 		
 		<ul class="navbar-nav navbar-nav-right">

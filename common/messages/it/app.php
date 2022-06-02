@@ -8,6 +8,7 @@ return [
 	"UNESCO World Heritage" => "Patrimonio mondiale dell'UNESCO",
 	"UNESCO Intangible Cultural Heritage" => "Patrimonio culturale immateriale dell'UNESCO",
 	"UNESCO Biosphere Reserve" => "Biosfera dell’UNESCO",
+	"UNESCO Biosphere Reserves" => "Biosfere dell’UNESCO",
 	
 	"Point of interest" => "Punto di interesse",
 	"Route" => "Percorso",

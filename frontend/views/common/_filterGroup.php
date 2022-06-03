@@ -25,7 +25,7 @@ $groupId = 'filter-group-'. $model->id;
 				$filterId = 'filter-'. $flag->id;
 				$active = in_array($flag->id, $filters);
 				?>
-				<div class="custom-control custom-control-sm custom-checkbox <?= ($active ? "active" : ""); ?>">
+				<div class="custom-control custom-control-sm filter-checkbox-control custom-checkbox <?= ($active ? "active" : ""); ?>">
 					<input value="" class="custom-control-input filter-checkbox" id="<?= $filterId ?>" name="<?= $filterId ?>" type="checkbox" <?= ($active ? "checked" : ""); ?>>
 					<label class="custom-control-label" for="<?= $filterId ?>"><?= $flag->title ?></label>
 				</div>

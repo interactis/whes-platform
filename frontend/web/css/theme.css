@@ -11532,6 +11532,9 @@ body {
     margin-top: -5px !important;
     left: -44px !important; }
 
+.filter-checkbox-control label:hover {
+  cursor: pointer; }
+
 @media (min-width: 768px) {
   .custom-control-lg .custom-control-label {
     font-size: 1.38rem !important; }

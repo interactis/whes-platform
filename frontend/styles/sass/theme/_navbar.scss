@@ -44,6 +44,12 @@
 	
 	.dropdown-item {
 		font-weight: 300;
+		font-size: 1.1rem;
+		padding-top: 6px;
+		padding-bottom: 6px;
+		&:hover {
+			cursor: pointer;
+		}
 		&.active {
 			color: white !important;	
 		}
@@ -52,28 +58,6 @@
 	.fa-search {
 		font-size: 1rem;
 	}
-	
-	
-	.dropdown-submenu {
-		position: relative;
-		.dropdown-menu {
-			top: 0;
-			left: 100%;
-			margin-top: -1px;
-		}
-		.dropdown-toggle {
-			&::after {
-				@include centerer-vertical;
-				right: 24px;
-				transform: rotate(-90deg);
-				margin-top:-3px;
-			}
-		}
-	}
-	
-	
-	
-	
 	
 	.dropdown-toggle:focus {
 		outline: none !important;
@@ -176,6 +160,23 @@
 				margin-left: 24px;
 			}
 		}
+		
+		.dropdown-submenu {
+			position: relative;
+			.dropdown-menu {
+				top: 0;
+				left: 100%;
+				margin-top: -1px;
+			}
+			.dropdown-toggle {
+				&::after {
+					@include centerer-vertical;
+					right: 24px;
+					transform: rotate(-90deg);
+					margin-top:-3px;
+				}
+			}
+		}
 	
 		.nav-item {
 			&.lang-dropdown {
@@ -255,9 +256,16 @@
 		
 		.nav-item {
 			a {
-				font-size: 1.5rem;
+				font-size: 1.75rem;
 				font-weight: 300;
 				margin-bottom: 18px;
+				//color: $primary !important;
+			}
+			
+			.subdropdown-toggle {
+				font-weight: normal;
+				font-size: 1.3rem !important;
+				color: $primary !important;
 			}
 		}
 		
@@ -265,6 +273,7 @@
 		.heritage-dropdown {
 			width: auto;
 			max-width: 420px;
+			padding-bottom: 30px;
 		}
 
 		.lang-dropdown {
@@ -273,7 +282,7 @@
 		
 		.dropdown-menu {
 			a {
-				font-size: 1.15rem !important;
+				font-size: 1.4rem !important;
 				margin-bottom: 12px;
 			}
 		}
@@ -281,8 +290,9 @@
 		.dropdown-menu:not(.language-mobile-dropdown-menu) {
 			background: none;
 			border: none;
+			width: auto !important;
 			.dropdown-item {
-				padding: 3px 0;
+				padding: 12px 0;
 				color: $gray !important;
 				&:hover {
 					background: none;

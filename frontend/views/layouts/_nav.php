@@ -68,7 +68,7 @@ $rucksackCount = count($rucksackIds);
 				</a>
 				<ul class="dropdown-menu heritage-dropdown" aria-labelledby="heritageDropdown">
 					<li class="dropdown-item dropdown-submenu">
-                        <a href="#" data-toggle="dropdown" class="dropdown-toggle"><?= Yii::t('app', 'UNESCO World Heritage') ?></a>
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle subdropdown-toggle"><?= Yii::t('app', 'UNESCO World Heritage') ?></a>
                         <ul class="dropdown-menu">
                         	<?php
 							foreach(Heritage::getActiveHeritages(Heritage::TYPE_WORLD_HERITAGE) as $heritage)
@@ -77,7 +77,7 @@ $rucksackCount = count($rucksackIds);
                         </ul>
                     </li>
                     <li class="dropdown-item dropdown-submenu">
-                        <a href="#" data-toggle="dropdown" class="dropdown-toggle"><?= Yii::t('app', 'UNESCO Intangible Cultural Heritage') ?></a>
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle subdropdown-toggle"><?= Yii::t('app', 'UNESCO Intangible Cultural Heritage') ?></a>
                         <ul class="dropdown-menu">
                             <?php
 							foreach(Heritage::getActiveHeritages(Heritage::TYPE_INTAGNIBLE) as $heritage)
@@ -86,7 +86,7 @@ $rucksackCount = count($rucksackIds);
                         </ul>
                     </li>
                     <li class="dropdown-item dropdown-submenu">
-                        <a href="#" data-toggle="dropdown" class="dropdown-toggle"><?= Yii::t('app', 'UNESCO Biosphere Reserves') ?></a>
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle subdropdown-toggle"><?= Yii::t('app', 'UNESCO Biosphere Reserves') ?></a>
                         <ul class="dropdown-menu">
                             <?php
 							foreach(Heritage::getActiveHeritages(Heritage::TYPE_BIOSPHERE) as $heritage)

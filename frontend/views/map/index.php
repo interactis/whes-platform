@@ -1,11 +1,12 @@
 <?php
-use frontend\components\mapwidget\MapWidget;
+use frontend\components\map\Map;
 
 $this->title = Yii::t('app', 'Map');
 ?>
 
 <div class="map-view">
-	<?= MapWidget::widget([]) ?>
+	<?= Map::widget([
+		'initialItem' => $initialItem,
+		'translations' => $translations
+	]) ?>
 </div>
-
-<span id="map-initial-icons" data-value=""></span>

@@ -253,7 +253,7 @@ class Heritage extends HelperModel
     	$path = $this->getBadgeFilePath();
 		if (file_exists($path))
 		{
-			$url = Yii::$app->params['frontendUrl'] ."img/heritage/badge/". $this->id .'.svg';
+			$url = Yii::$app->params['frontendUrl'] ."img/heritage/badge/". $this->id .'.svg?'. Yii::$app->security->generateRandomString(6);
 			return '<img src="'. $url .'" class="heritage-badge '. $class .'" alt="Heritage icon">';		
 		}
 		else

@@ -13,7 +13,7 @@ $filterSet = false;
 
 <div id="filter">
 	
-	<div class="collapse-title last collapsed" data-toggle="collapse" data-target="#info-filter" aria-expanded="false" aria-controls="course-filter">
+	<div class="collapse-title last" data-toggle="collapse" data-target="#info-filter" aria-expanded="true" aria-controls="course-filter">
 		<div class="container">
 			<div class="row title-content">
 				<div class="col">
@@ -24,7 +24,7 @@ $filterSet = false;
 		</div>
 	</div>
 
-	<div class="collapse" id="info-filter">
+	<div class="collapse show" id="info-filter">
 		<div class="collapse-wrapper">
 			<div class="container filter-groups">
 				<div class="row">

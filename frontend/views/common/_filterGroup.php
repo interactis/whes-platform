@@ -3,7 +3,7 @@ $groupId = 'filter-group-'. $model->id;
 ?>
 
 <div class="collapse-item">
-	<div class="collapse-title collapse-title-sm" data-toggle="collapse" data-target="#<?= $groupId ?>" aria-expanded="true" aria-controls="<?= $groupId ?>">
+	<div class="collapse-title collapse-title-sm collapsed" data-toggle="collapse" data-target="#<?= $groupId ?>" aria-expanded="false" aria-controls="<?= $groupId ?>">
 		<div class="row title-content">
 			<div class="col-lg-12">
 				<svg class="handle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34.42 58.95"><g data-name="Layer 2"><path fill="none" stroke="#A60100" stroke-miterlimit="10" stroke-width="7" d="M2.48 2.48l27 27-27 27" /></g></svg>
@@ -18,7 +18,7 @@ $groupId = 'filter-group-'. $model->id;
 		</div>
 	</div>
 
-	<div class="collapse collapse-sm show" id="<?= $groupId ?>">
+	<div class="collapse collapse-sm" id="<?= $groupId ?>">
 		<div class="collapse-wrapper">
 				
 			<?php foreach ($model->activeFlags as $flag):

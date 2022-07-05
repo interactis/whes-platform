@@ -12,6 +12,8 @@ use common\models\ProfileItem;
  */
 class ProfileItemSearch extends ProfileItem
 {
+	public $title;
+	
     /**
      * {@inheritdoc}
      */
@@ -19,6 +21,7 @@ class ProfileItemSearch extends ProfileItem
     {
         return [
             [['id', 'heritage_id', 'order', 'created_at', 'updated_at'], 'integer'],
+            [['title'], 'safe'],
         ];
     }
 
@@ -71,14 +74,14 @@ class ProfileItemSearch extends ProfileItem
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'id' => $this->id,
+            'profile_item.id' => $this->id,
             'heritage_id' => $this->heritage_id,
             'order' => $this->order,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ]);
         
-        //$query->andFilterWhere(['ilike', 'profile_item_translation.title', $this->title]);
+        $query->andFilterWhere(['ilike', 'profile_item_translation.title', $this->title]);
 
         return $dataProvider;
     }

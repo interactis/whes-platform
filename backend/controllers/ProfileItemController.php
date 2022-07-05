@@ -27,13 +27,8 @@ class ProfileItemController extends HelperController
         	'access' => [
                 'class' => AccessControl::className(),
                 'rules' => [
-                    [
-						'actions' => ['create'],
-						'allow' => true,
-						'roles' => ['@']
-					],
 					[
-						'actions' => ['index'],
+						'actions' => ['index', 'create'],
 						'allow' => true,
 						'roles' => ['@'],
 						'matchCallback' => function ($rule, $action) {
@@ -73,8 +68,8 @@ class ProfileItemController extends HelperController
     public function actionIndex($id)
     {
         $searchModel = new ProfileItemSearch();
+        $searchModel->heritage_id = $id;
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-		$searchModel->heritage_id = $id;
 		
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -82,41 +77,40 @@ class ProfileItemController extends HelperController
             'heritage' => $this->_heritage,
         ]);
     }
-
-    /**
-     * Displays a single ProfileItem model.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    public function actionView($id)
-    {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
-    }
-
+	
     /**
      * Creates a new ProfileItem model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCreate($id)
     {
         $model = new ProfileItem();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        $model->heritage_id = $this->_heritage->id;
+        
+        $post = Yii::$app->request->post();
+		if ($model->load($post))
+        {
+        	if ($model->validateTranslations() && $model->validate())
+        	{
+        		if ($model->save(false) && $model->saveTranslations())
+        		{
+        			Yii::$app->getSession()->setFlash(
+        				'success',
+        				'<span class="glyphicon glyphicon-ok-sign"></span> Your changes have been saved.'
+        			);
+        			return $this->redirect(['index', 'id' => $this->_heritage->id]);	
+            	}
+       		}
         }
 
         return $this->render('create', [
+        	'heritage' => $this->_heritage,
             'model' => $model,
         ]);
     }
 
     /**
      * Updates an existing ProfileItem model.
-     * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -125,12 +119,25 @@ class ProfileItemController extends HelperController
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        $post = Yii::$app->request->post();
+		if ($model->load($post))
+        {
+        	if ($model->validateTranslations() && $model->validate())
+        	{	
+        		if ($model->save(false) && $model->saveTranslations())
+        		{
+        			Yii::$app->getSession()->setFlash(
+        				'success',
+        				'<span class="glyphicon glyphicon-ok-sign"></span> Your changes have been saved.'
+        			);
+        			return $this->redirect(['index', 'id' => $model->heritage_id]);	
+            	}
+       		}
         }
 
         return $this->render('update', [
-            'model' => $model,
+        	'heritage' => $model->heritage,
+            'model' => $model
         ]);
     }
 
@@ -143,9 +150,9 @@ class ProfileItemController extends HelperController
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
-
-        return $this->redirect(['index']);
+        $model = $this->findModel($id);
+        $model->delete();
+        return $this->redirect(['index', 'id' => $model->heritage_id]);
     }
 
     /**

@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use Yii;
 use common\models\ProfileItem;
+use common\models\Heritage;
 use backend\models\ProfileItemSearch;
 use backend\components\HelperController;
 use yii\web\NotFoundHttpException;
@@ -15,6 +16,8 @@ use yii\filters\VerbFilter;
  */
 class ProfileItemController extends HelperController
 {
+	private $_heritage;
+	
     /**
      * {@inheritdoc}
      */
@@ -25,9 +28,17 @@ class ProfileItemController extends HelperController
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-						'actions' => ['index', 'create'],
+						'actions' => ['create'],
 						'allow' => true,
 						'roles' => ['@']
+					],
+					[
+						'actions' => ['index'],
+						'allow' => true,
+						'roles' => ['@'],
+						'matchCallback' => function ($rule, $action) {
+                            return $this->_isHeritageOwnerOrAdmin(Yii::$app->request->get('id'));
+                        }
 					],
 					[
 						'actions' => ['update', 'delete'],
@@ -59,14 +70,16 @@ class ProfileItemController extends HelperController
      * Lists all ProfileItem models.
      * @return mixed
      */
-    public function actionIndex()
+    public function actionIndex($id)
     {
         $searchModel = new ProfileItemSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
+		$searchModel->heritage_id = $id;
+		
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'heritage' => $this->_heritage,
         ]);
     }
 
@@ -149,5 +162,39 @@ class ProfileItemController extends HelperController
         }
 
         throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
+    }
+    
+    private function _findHeritage($id)
+    {
+    	if (empty($this->_heritage))
+    	{
+    		if (($model = Heritage::findOne($id)) !== null)
+    		{
+    			$this->_heritage = $model;
+				return $model;
+			}
+			
+			throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
+    	}
+        else
+			return $this->_heritage;
+    }
+    
+    private function _isHeritageOwnerOrAdmin($id)
+    {   
+    	$heritage = $this->_findHeritage($id);
+    	$user = Yii::$app->user->identity;
+    	
+    	if ($user->isAdmin())
+    	{
+    		return true;
+    	}
+    	else
+    	{
+    		if ($heritage->id == $user->heritage_id)
+    			return true;
+    	}
+    	
+    	return false;
     }
 }

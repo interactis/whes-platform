@@ -2,6 +2,7 @@
 
 namespace backend\models;
 
+use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use common\models\ProfileItem;
@@ -40,12 +41,25 @@ class ProfileItemSearch extends ProfileItem
     public function search($params)
     {
         $query = ProfileItem::find();
+        $query->leftJoin('profile_item_translation', 'profile_item_translation.profile_item_id = profile_item.id');
+		$query->groupBy(['profile_item.id', 'profile_item_translation.title']);
 
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort'=> [
+				'defaultOrder' => ['order' => SORT_ASC]
+			],
+            'pagination' => [
+				'pageSize' => 20,
+			]
         ]);
+        
+        $dataProvider->sort->attributes['title'] = [
+			'asc' => ['profile_item_translation.title' => SORT_ASC],
+			'desc' => ['profile_item_translation.title' => SORT_DESC],
+		];
 
         $this->load($params);
 
@@ -63,6 +77,8 @@ class ProfileItemSearch extends ProfileItem
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ]);
+        
+        //$query->andFilterWhere(['ilike', 'profile_item_translation.title', $this->title]);
 
         return $dataProvider;
     }

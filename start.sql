@@ -1,6 +1,15 @@
 /* SQLEditor (Postgres)*/
 
 
+CREATE TABLE code_series
+(
+id SERIAL,
+code_count INTEGER,
+created_at INTEGER,
+updated_at INTEGER,
+CONSTRAINT code_series_pkey PRIMARY KEY (id)
+);
+
 CREATE TABLE article
 (
 id SERIAL,
@@ -9,15 +18,6 @@ content_id INTEGER,
 created_at INTEGER,
 updated_at INTEGER,
 CONSTRAINT article_pkey PRIMARY KEY (id)
-);
-
-CREATE TABLE code_series
-(
-id SERIAL,
-code_count INTEGER,
-created_at INTEGER,
-updated_at INTEGER,
-CONSTRAINT code_series_pkey PRIMARY KEY (id)
 );
 
 CREATE TABLE code
@@ -405,18 +405,6 @@ updated_at INTEGER,
 CONSTRAINT flag_group_pkey PRIMARY KEY (id)
 );
 
-CREATE TABLE code_group
-(
-id SERIAL,
-heritage_id INTEGER,
-code_series_id INTEGER,
-title VARCHAR(255),
-code_count INTEGER,
-created_at INTEGER,
-updated_at INTEGER,
-CONSTRAINT code_group_pkey PRIMARY KEY (id)
-);
-
 CREATE TABLE content
 (
 id SERIAL,
@@ -436,6 +424,18 @@ updated_at INTEGER,
 CONSTRAINT content_pkey PRIMARY KEY (id)
 );
 
+CREATE TABLE code_group
+(
+id SERIAL,
+heritage_id INTEGER,
+code_series_id INTEGER,
+title VARCHAR(255),
+code_count INTEGER,
+created_at INTEGER,
+updated_at INTEGER,
+CONSTRAINT code_group_pkey PRIMARY KEY (id)
+);
+
 CREATE TABLE related_tag
 (
 id SERIAL,
@@ -444,6 +444,28 @@ related_tag_id INTEGER,
 created_at INTEGER,
 updated_at INTEGER,
 CONSTRAINT related_tag_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE profile_item
+(
+id SERIAL,
+heritage_id INTEGER,
+"order" SMALLINT,
+created_at INTEGER,
+updated_at INTEGER,
+CONSTRAINT profile_item_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE profile_item_translation
+(
+id SERIAL,
+profile_item_id INTEGER,
+language_id INTEGER,
+title VARCHAR(255),
+description TEXT,
+created_at INTEGER,
+updated_at INTEGER,
+CONSTRAINT profile_item_translation_pkey PRIMARY KEY (id)
 );
 
 ALTER TABLE article ADD FOREIGN KEY (content_id) REFERENCES content (id) ON DELETE CASCADE;
@@ -540,16 +562,21 @@ ALTER TABLE content_valid_time ADD FOREIGN KEY (valid_time_id) REFERENCES valid_
 
 ALTER TABLE content_valid_time ADD FOREIGN KEY (content_id) REFERENCES content (id) ON DELETE CASCADE;
 
+ALTER TABLE content ADD FOREIGN KEY (heritage_id) REFERENCES heritage (id) ON DELETE CASCADE;
+
 ALTER TABLE code_group ADD FOREIGN KEY (heritage_id) REFERENCES heritage (id) ON DELETE CASCADE;
 
 ALTER TABLE code_group ADD FOREIGN KEY (code_series_id) REFERENCES code_series (id) ON DELETE CASCADE;
-
-ALTER TABLE content ADD FOREIGN KEY (heritage_id) REFERENCES heritage (id) ON DELETE CASCADE;
 
 ALTER TABLE related_tag ADD FOREIGN KEY (tag_id) REFERENCES tag (id) ON DELETE CASCADE;
 
 ALTER TABLE related_tag ADD FOREIGN KEY (related_tag_id) REFERENCES tag (id) ON DELETE CASCADE;
 
+ALTER TABLE profile_item ADD FOREIGN KEY (heritage_id) REFERENCES heritage (id) ON DELETE CASCADE;
+
+ALTER TABLE profile_item_translation ADD FOREIGN KEY (profile_item_id) REFERENCES profile_item (id) ON DELETE CASCADE;
+
+ALTER TABLE profile_item_translation ADD FOREIGN KEY (language_id) REFERENCES language (id) ON DELETE CASCADE;
 
 
 

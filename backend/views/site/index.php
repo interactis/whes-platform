@@ -140,7 +140,7 @@ $this->title = 'Dashboard';
 						</a>
 					</p>
 					<p class="lead">
-						<a href="/event">
+						<a href="/event?EventSearch[archive]=0">
 							Events
 						</a>
 					</p>

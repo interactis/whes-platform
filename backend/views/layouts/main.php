@@ -52,6 +52,7 @@ AppAsset::register($this);
 					 ['label' => 'Points of Interest', 'url' => ['/poi']],
 					 ['label' => 'Routes', 'url' => ['/route']],
 					 ['label' => 'Articles', 'url' => ['/article']],
+					 ['label' => 'Events', 'url' => ['/event?EventSearch[archive]=0']],
 				]
 			],
     	];

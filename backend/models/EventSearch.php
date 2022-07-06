@@ -77,7 +77,7 @@ class EventSearch extends Event
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'sort'=> [
-				'defaultOrder' => ['id' => SORT_DESC]
+				'defaultOrder' => ['from' => SORT_ASC]
 			],
             'pagination' => [
 				'pageSize' => 20,

@@ -78,6 +78,13 @@ array_push($colums,
 		'filter' => $boolFilter,
 	],
 	[
+		'attribute' => 'archive',
+		'value' => function ($model) {
+			return ($model->content->archive ? Yii::t('app', 'Yes') :  Yii::t('app', 'No'));
+		},
+		'filter' => $boolFilter,
+	],
+	[
 		'class' => 'yii\grid\ActionColumn',
 		'template' => '{update} {delete}'
 	]

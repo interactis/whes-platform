@@ -85,6 +85,7 @@ return [
     			'poi/<slug:[\w\-]+>' => 'poi/view',
     			'route/<slug:[\w\-]+>' => 'route/view',
     			'percorso/<slug:[\w\-]+>' => 'route/view',
+    			'event/<slug:[\w\-]+>' => 'event/view',
     			'code/<code:[\w\-]+>' => 'code/index',
     			
         		'<controller:\w+>/<id:\d+>' => '<controller>/view',

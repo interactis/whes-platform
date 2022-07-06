@@ -143,12 +143,37 @@ class Event extends HelperModel
     
     public function getLabel()
     {
-    	$html = $this->getFlagLabel(Yii::t('app', 'Events'));
+    	$html = $this->getFlagLabel(Yii::t('app', 'Event'));
     	
     	if (isset($this->content->heritage))
     		$html .= '<br /><em>'. $this->content->heritage->short_name .'</em>';
     		
     	return $html;
+    }
+    
+    public function getFromTo()
+    {
+    	$fromTime = strtotime($this->from);
+    	$toTime = strtotime($this->to);
+    	
+    	if ($toTime > $fromTime)
+    	{
+    		if (date('Y', $fromTime) == date('Y', $toTime))
+    		{
+    			if (date('m', $fromTime) == date('m', $toTime))
+    			{
+    				$fromTo = date('d.', $fromTime) .' – '. \Yii::$app->helpers->dateOutputFormat($this->to);
+    			}
+    			else
+    				$fromTo = date('d.m.', $fromTime) .' – '. \Yii::$app->helpers->dateOutputFormat($this->to);
+    		}
+    		else
+    			$fromTo = \Yii::$app->helpers->dateOutputFormat($this->from) .' – '. \Yii::$app->helpers->dateOutputFormat($this->to);
+    	}
+    	else
+    		$fromTo = \Yii::$app->helpers->dateOutputFormat($this->from);
+    		
+    	return $fromTo;	
     }
     
     public function getEventRoute()

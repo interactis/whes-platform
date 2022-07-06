@@ -45,6 +45,7 @@ return [
 	"Short Info" => "Kurzinfo",
 	"Learn more" => "Mehr erfahren",
 	"Profile" => "Steckbrief",
+	"Event schedule" => "Programm",
 	
 	"Difficulty" => "Schwierigkeit",
 	"easy" => "leicht",

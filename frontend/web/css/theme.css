@@ -10542,6 +10542,11 @@ h4, .h4 {
   h3, .ugc .h3, .ugc
   h4, .ugc .h4 {
     margin-bottom: 12px; }
+  h1.dark, .h1.dark,
+  h2.dark, .h2.dark,
+  h3.dark, .h3.dark,
+  h4.dark, .h4.dark {
+    color: #333333; }
 
 h1, .h1 {
   font-size: 2.52rem;

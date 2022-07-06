@@ -29,6 +29,13 @@ $img = $content->previewImage;
 					<?= $model->title ?>
 				</a>
 			</div>
+			
+			<?php if (isset($model->fromTo)): ?>
+				<div class="h5 margin-bottom-sm">
+					<?= $model->fromTo ?>
+				</div>
+			<?php endif; ?>
+			
 			<div class="card-text">
 				<?= Yii::$app->helpers->shortenString($model->description) ?>
 			</div>

@@ -65,9 +65,11 @@ class HelperController extends Controller
     		->leftJoin('article', 'article.content_id = content.id')
 			->leftJoin('poi', 'poi.content_id = content.id')
 			->leftJoin('route', 'route.content_id = content.id')
+			->leftJoin('event', 'event.content_id = content.id')
 			->leftJoin('article_translation', 'article_translation.article_id = article.id')
 			->leftJoin('poi_translation', 'poi_translation.poi_id = poi.id')
-			->leftJoin('route_translation', 'route_translation.route_id = route.id');
+			->leftJoin('route_translation', 'route_translation.route_id = route.id')
+			->leftJoin('event_translation', 'event_translation.event_id = event.id');
     	
     	$query->where([
     		'published' => true,
@@ -82,7 +84,8 @@ class HelperController extends Controller
 		$query->andFilterWhere(['or',
 			['article_translation.language_id' => \Yii::$app->params['preferredLanguageId']],
 			['poi_translation.language_id' => \Yii::$app->params['preferredLanguageId']],
-			['route_translation.language_id' => \Yii::$app->params['preferredLanguageId']]
+			['route_translation.language_id' => \Yii::$app->params['preferredLanguageId']],
+			['event_translation.language_id' => \Yii::$app->params['preferredLanguageId']]
 		]);
     	
     	if ($q)
@@ -90,7 +93,8 @@ class HelperController extends Controller
     		$query->andFilterWhere(['or',
     			['ilike', 'article_translation.title', $q],
     			['ilike', 'poi_translation.title', $q],
-    			['ilike', 'route_translation.title', $q]
+    			['ilike', 'route_translation.title', $q],
+    			['ilike', 'event_translation.title', $q]
     		]);
     	}
     	

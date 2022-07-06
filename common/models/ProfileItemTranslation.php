@@ -47,8 +47,8 @@ class ProfileItemTranslation extends \yii\db\ActiveRecord
         return [
             [['profile_item_id', 'language_id', 'created_at', 'updated_at'], 'default', 'value' => null],
             [['profile_item_id', 'language_id', 'created_at', 'updated_at'], 'integer'],
-            [['description'], 'string'],
-            [['title'], 'string', 'max' => 255],
+            [['title'], 'string', 'max' => 90],
+            [['description'], 'string', 'max' => 120],
             [['language_id'], 'exist', 'skipOnError' => true, 'targetClass' => Language::className(), 'targetAttribute' => ['language_id' => 'id']],
             [['profile_item_id'], 'exist', 'skipOnError' => true, 'targetClass' => ProfileItem::className(), 'targetAttribute' => ['profile_item_id' => 'id']],
         ];

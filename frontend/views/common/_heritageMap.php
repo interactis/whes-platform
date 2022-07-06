@@ -24,7 +24,7 @@ switch ($model->tableName()) {
 ?>
 
 <?php if ($url): ?>
-	<div class="margin-bottom-lg text-center">
+	<div class="margin-bottom-md text-center">
 		
 		<div class="heritage-map">
 			<a href="<?= $url ?>" title="<?= Yii::t('app', 'Show map') ?>">

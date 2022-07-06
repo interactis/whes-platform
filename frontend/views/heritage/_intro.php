@@ -23,10 +23,16 @@
 				</div>
 		   </div>
 			<div class="col-md-5 col-lg-4">
-				<?= $this->render('/common/_heritageMap', [
-					'type' => 'heritage',
-					'model' => $model
-				]) ?>
+				<div class="margin-bottom-lg">
+					<?= $this->render('/common/_heritageMap', [
+						'type' => 'heritage',
+						'model' => $model
+					]) ?>
+				
+					<?= $this->render('_profile', [
+						'model' => $model
+					]) ?>
+				</div>
 			</div>
 		</div>
 	 </div>

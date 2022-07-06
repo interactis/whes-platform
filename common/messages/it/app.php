@@ -44,6 +44,7 @@ return [
 	"Alternative routes" => "Percorsi alternativi",
 	"Short Info" => "Informazioni in breve",
 	"Learn more" => "Per saperne di più",
+	"Profile" => "Profilo",
 	
 	"Difficulty" => "Difficoltà",
 	"easy" => "facile",

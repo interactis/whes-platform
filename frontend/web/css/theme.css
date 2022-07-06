@@ -11336,6 +11336,10 @@ body {
       .card .card-body .trip-list p {
         font-size: 1rem;
         margin-bottom: 0; }
+    .card .card-body .body-content {
+      padding: 18px; }
+      .card .card-body .body-content p:last-of-type {
+        margin-bottom: 0 !important; }
 
 .preview-card {
   border: none;

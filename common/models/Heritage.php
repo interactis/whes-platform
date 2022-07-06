@@ -155,7 +155,18 @@ class Heritage extends HelperModel
     {
         return $this->hasMany(CodeSeries::className(), ['heritage_id' => 'id']);
     }
-
+    
+    /**
+     * Gets query for [[ProfileItems]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getProfileItems()
+    {
+        return $this->hasMany(ProfileItem::className(), ['heritage_id' => 'id'])
+        	->orderBy(['order' => SORT_ASC]);
+    }
+	
     /**
      * Gets query for [[HeritageTranslations]].
      *

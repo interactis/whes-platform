@@ -38,6 +38,11 @@ $this->title = 'Dashboard';
 						</a>
 					</p>
 					<p class="lead">
+						<a href="/event">
+							Events
+						</a>
+					</p>
+					<p class="lead">
 						<a  href="/code/list">
 							NFC Codes
 						</a>
@@ -132,6 +137,11 @@ $this->title = 'Dashboard';
 					<p class="lead">
 						<a href="/article">
 							Articles
+						</a>
+					</p>
+					<p class="lead">
+						<a href="/event">
+							Events
 						</a>
 					</p>
 				</div>

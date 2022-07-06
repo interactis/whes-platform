@@ -24,14 +24,15 @@ use yii\helpers\ArrayHelper;
  * @property int|null $created_at
  * @property int|null $updated_at
  *
- * @property Article[] $articles
+ * @property Article[] $article
  * @property Heritage $heritage
  * @property ContentFlag[] $contentFlags
  * @property ContentTag[] $contentTags
  * @property ContentValidTime[] $contentValidTimes
  * @property Media[] $media
- * @property Poi[] $pois
- * @property Route[] $routes
+ * @property Poi[] $poi
+ * @property Event[] $event
+ * @property Route[] $route
  * @property Supplier[] $suppliers
  */
 class Content extends \yii\db\ActiveRecord
@@ -39,6 +40,7 @@ class Content extends \yii\db\ActiveRecord
 	const TYPE_POI = 1;
     const TYPE_ROUTE = 2;
     const TYPE_ARTICLE = 3;
+    const TYPE_EVENT = 4;
 	
 	private $_relatedContentLimit = 6;
 	private $_rucksackIds = [];
@@ -77,6 +79,9 @@ class Content extends \yii\db\ActiveRecord
             	elseif ($model->type == $this::TYPE_ROUTE) {
             		return false;
             	}
+            	elseif ($model->type == $this::TYPE_EVENT) {
+            		return false;
+            	}
             	else
             		return true;
             }],
@@ -110,7 +115,7 @@ class Content extends \yii\db\ActiveRecord
     }
 
     /**
-     * Gets query for [[Articles]].
+     * Gets query for [[Article]].
      *
      * @return \yii\db\ActiveQuery
      */
@@ -178,13 +183,23 @@ class Content extends \yii\db\ActiveRecord
     }
 
     /**
-     * Gets query for [[Pois]].
+     * Gets query for [[Poi]].
      *
      * @return \yii\db\ActiveQuery
      */
     public function getPoi()
     {
         return $this->hasOne(Poi::className(), ['content_id' => 'id']);
+    }
+    
+    /**
+     * Gets query for [[Event]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getEvent()
+    {
+        return $this->hasOne(Event::className(), ['content_id' => 'id']);
     }
 
     /**
@@ -212,7 +227,8 @@ class Content extends \yii\db\ActiveRecord
     	return [
     		1 => 'poi',
     		2 => 'route',
-			3 => 'article'
+			3 => 'article',
+			4 => 'event'
 		];
     }
     
@@ -281,14 +297,17 @@ class Content extends \yii\db\ActiveRecord
     	$query->leftJoin('article', 'article.content_id = content.id')
 			->leftJoin('poi', 'poi.content_id = content.id')
 			->leftJoin('route', 'route.content_id = content.id')
+			->leftJoin('event', 'event.content_id = content.id')
 			->leftJoin('article_translation', 'article_translation.article_id = article.id')
 			->leftJoin('poi_translation', 'poi_translation.poi_id = poi.id')
-			->leftJoin('route_translation', 'route_translation.route_id = route.id');
+			->leftJoin('route_translation', 'route_translation.route_id = route.id')
+			->leftJoin('event_translation', 'event_translation.event_id = event.id');
     	
     	$query->andFilterWhere(['or',
 			['article_translation.language_id' => \Yii::$app->params['preferredLanguageId']],
 			['poi_translation.language_id' => \Yii::$app->params['preferredLanguageId']],
-			['route_translation.language_id' => \Yii::$app->params['preferredLanguageId']]
+			['route_translation.language_id' => \Yii::$app->params['preferredLanguageId']],
+			['event_translation.language_id' => \Yii::$app->params['preferredLanguageId']],
 		]);
     	
     	if ($includeHeritage)

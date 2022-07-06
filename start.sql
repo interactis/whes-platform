@@ -35,6 +35,20 @@ updated_at INTEGER,
 CONSTRAINT code_pkey PRIMARY KEY (id)
 );
 
+CREATE TABLE event
+(
+id SERIAL,
+content_id INTEGER,
+"from" DATE,
+"to" DATE,
+arrival_station VARCHAR(255),
+arrival_url VARCHAR(255),
+geom GEOMETRY,
+created_at INTEGER,
+updated_at INTEGER,
+CONSTRAINT event_pkey PRIMARY KEY (id)
+);
+
 CREATE TABLE content_flag
 (
 id SERIAL,
@@ -43,19 +57,6 @@ flag_id INTEGER,
 created_at INTEGER,
 updated_at INTEGER,
 CONSTRAINT content_flag_pkey PRIMARY KEY (id)
-);
-
-CREATE TABLE flag
-(
-id SERIAL,
-flag_group_id INTEGER,
-label BOOLEAN DEFAULT false,
-operator VARCHAR(6),
-"order" SMALLINT,
-hidden BOOLEAN DEFAULT false,
-created_at INTEGER,
-updated_at INTEGER,
-CONSTRAINT flag_pkey PRIMARY KEY (id)
 );
 
 CREATE TABLE heritage
@@ -87,6 +88,25 @@ status SMALLINT DEFAULT 10,
 created_at INTEGER,
 updated_at INTEGER,
 CONSTRAINT admin_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE content
+(
+id SERIAL,
+heritage_id INTEGER,
+type SMALLINT,
+priority SMALLINT,
+general BOOLEAN DEFAULT false,
+published BOOLEAN DEFAULT false,
+featured BOOLEAN DEFAULT false,
+hidden BOOLEAN DEFAULT false,
+approved BOOLEAN DEFAULT false,
+edited BOOLEAN DEFAULT false,
+imported BOOLEAN DEFAULT false,
+archive BOOLEAN DEFAULT false,
+created_at INTEGER,
+updated_at INTEGER,
+CONSTRAINT content_pkey PRIMARY KEY (id)
 );
 
 CREATE TABLE language
@@ -152,17 +172,6 @@ updated_at INTEGER,
 CONSTRAINT flag_group_translation_pkey PRIMARY KEY (id)
 );
 
-CREATE TABLE code_translation
-(
-id SERIAL,
-code_id INTEGER,
-language_id INTEGER,
-info TEXT,
-created_at INTEGER,
-updated_at INTEGER,
-CONSTRAINT code_translation_pkey PRIMARY KEY (id)
-);
-
 CREATE TABLE media_translation
 (
 id SERIAL,
@@ -226,6 +235,24 @@ updated_at INTEGER,
 CONSTRAINT poi_pkey PRIMARY KEY (id)
 );
 
+CREATE TABLE ambassador_translation
+(
+id SERIAL,
+heritage_id INTEGER,
+poi_id INTEGER,
+type INTEGER,
+image_name VARCHAR(38),
+firstname VARCHAR(255),
+lastname VARCHAR(255),
+zip VARCHAR(10),
+city VARCHAR(150),
+favorite_place VARCHAR(150),
+quote TEXT,
+created_at INTEGER,
+updated_at INTEGER,
+CONSTRAINT ambassador_translation_pkey PRIMARY KEY (id)
+);
+
 CREATE TABLE poi_translation
 (
 id SERIAL,
@@ -243,22 +270,14 @@ updated_at INTEGER,
 CONSTRAINT poi_translation_pkey PRIMARY KEY (id)
 );
 
-CREATE TABLE ambassador_translation
+CREATE TABLE profile_item
 (
 id SERIAL,
 heritage_id INTEGER,
-poi_id INTEGER,
-type INTEGER,
-image_name VARCHAR(38),
-firstname VARCHAR(255),
-lastname VARCHAR(255),
-zip VARCHAR(10),
-city VARCHAR(150),
-favorite_place VARCHAR(150),
-quote TEXT,
+"order" SMALLINT,
 created_at INTEGER,
 updated_at INTEGER,
-CONSTRAINT ambassador_translation_pkey PRIMARY KEY (id)
+CONSTRAINT profile_item_pkey PRIMARY KEY (id)
 );
 
 CREATE TABLE route
@@ -304,24 +323,6 @@ remarks TEXT,
 created_at INTEGER,
 updated_at INTEGER,
 CONSTRAINT route_translation_pkey PRIMARY KEY (id)
-);
-
-CREATE TABLE supplier
-(
-id SERIAL,
-content_id INTEGER,
-street VARCHAR(255),
-street_number VARCHAR(10),
-address_addition VARCHAR(255),
-zip VARCHAR(10),
-city VARCHAR(150),
-url VARCHAR(255),
-email VARCHAR(255),
-phone VARCHAR(50),
-geom GEOMETRY,
-created_at INTEGER,
-updated_at INTEGER,
-CONSTRAINT supplier_pkey PRIMARY KEY (id)
 );
 
 CREATE TABLE supplier_translation
@@ -405,23 +406,17 @@ updated_at INTEGER,
 CONSTRAINT flag_group_pkey PRIMARY KEY (id)
 );
 
-CREATE TABLE content
+CREATE TABLE flag
 (
 id SERIAL,
-heritage_id INTEGER,
-type SMALLINT,
-priority SMALLINT,
-general BOOLEAN DEFAULT false,
-published BOOLEAN DEFAULT false,
-featured BOOLEAN DEFAULT false,
+flag_group_id INTEGER,
+label BOOLEAN DEFAULT false,
+operator VARCHAR(6),
+"order" SMALLINT,
 hidden BOOLEAN DEFAULT false,
-approved BOOLEAN DEFAULT false,
-edited BOOLEAN DEFAULT false,
-imported BOOLEAN DEFAULT false,
-archive BOOLEAN DEFAULT false,
 created_at INTEGER,
 updated_at INTEGER,
-CONSTRAINT content_pkey PRIMARY KEY (id)
+CONSTRAINT flag_pkey PRIMARY KEY (id)
 );
 
 CREATE TABLE code_group
@@ -436,24 +431,33 @@ updated_at INTEGER,
 CONSTRAINT code_group_pkey PRIMARY KEY (id)
 );
 
-CREATE TABLE related_tag
+CREATE TABLE event_translation
 (
 id SERIAL,
-tag_id INTEGER,
-related_tag_id INTEGER,
+event_id INTEGER,
+language_id INTEGER,
+slug VARCHAR(255),
+title VARCHAR(255),
+description TEXT,
+schedule TEXT,
+youtube_id VARCHAR(255),
+vimeo_id VARCHAR(255),
+directions TEXT,
+remarks TEXT,
 created_at INTEGER,
 updated_at INTEGER,
-CONSTRAINT related_tag_pkey PRIMARY KEY (id)
+CONSTRAINT event_translation_pkey PRIMARY KEY (id)
 );
 
-CREATE TABLE profile_item
+CREATE TABLE code_translation
 (
 id SERIAL,
-heritage_id INTEGER,
-"order" SMALLINT,
+code_id INTEGER,
+language_id INTEGER,
+info TEXT,
 created_at INTEGER,
 updated_at INTEGER,
-CONSTRAINT profile_item_pkey PRIMARY KEY (id)
+CONSTRAINT code_translation_pkey PRIMARY KEY (id)
 );
 
 CREATE TABLE profile_item_translation
@@ -468,6 +472,44 @@ updated_at INTEGER,
 CONSTRAINT profile_item_translation_pkey PRIMARY KEY (id)
 );
 
+CREATE TABLE supplier
+(
+id SERIAL,
+content_id INTEGER,
+street VARCHAR(255),
+street_number VARCHAR(10),
+address_addition VARCHAR(255),
+zip VARCHAR(10),
+city VARCHAR(150),
+url VARCHAR(255),
+email VARCHAR(255),
+phone VARCHAR(50),
+geom GEOMETRY,
+created_at INTEGER,
+updated_at INTEGER,
+CONSTRAINT supplier_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE related_tag
+(
+id SERIAL,
+tag_id INTEGER,
+related_tag_id INTEGER,
+created_at INTEGER,
+updated_at INTEGER,
+CONSTRAINT related_tag_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE event_content
+(
+id SERIAL,
+event_id INTEGER,
+content_id INTEGER,
+created_at INTEGER,
+updated_at INTEGER,
+CONSTRAINT event_content_pkey PRIMARY KEY (id)
+);
+
 ALTER TABLE article ADD FOREIGN KEY (content_id) REFERENCES content (id) ON DELETE CASCADE;
 
 ALTER TABLE code ADD FOREIGN KEY (code_series_id) REFERENCES code_series (id) ON DELETE CASCADE;
@@ -476,13 +518,15 @@ ALTER TABLE code ADD FOREIGN KEY (code_group_id) REFERENCES code_group (id) ON D
 
 ALTER TABLE code ADD FOREIGN KEY (content_id) REFERENCES content (id) ON DELETE CASCADE;
 
+ALTER TABLE event ADD FOREIGN KEY (content_id) REFERENCES content (id) ON DELETE CASCADE;
+
 ALTER TABLE content_flag ADD FOREIGN KEY (content_id) REFERENCES content (id) ON DELETE CASCADE;
 
 ALTER TABLE content_flag ADD FOREIGN KEY (flag_id) REFERENCES flag (id) ON DELETE CASCADE;
 
-ALTER TABLE flag ADD FOREIGN KEY (flag_group_id) REFERENCES flag_group (id) ON DELETE CASCADE;
-
 ALTER TABLE admin ADD FOREIGN KEY (heritage_id) REFERENCES heritage (id) ON DELETE CASCADE;
+
+ALTER TABLE content ADD FOREIGN KEY (heritage_id) REFERENCES heritage (id) ON DELETE CASCADE;
 
 ALTER TABLE article_translation ADD FOREIGN KEY (article_id) REFERENCES article (id) ON DELETE CASCADE;
 
@@ -504,10 +548,6 @@ ALTER TABLE flag_group_translation ADD FOREIGN KEY (flag_group_id) REFERENCES fl
 
 ALTER TABLE flag_group_translation ADD FOREIGN KEY (language_id) REFERENCES language (id) ON DELETE CASCADE;
 
-ALTER TABLE code_translation ADD FOREIGN KEY (code_id) REFERENCES code (id) ON DELETE CASCADE;
-
-ALTER TABLE code_translation ADD FOREIGN KEY (language_id) REFERENCES language (id) ON DELETE CASCADE;
-
 ALTER TABLE media_translation ADD FOREIGN KEY (media_id) REFERENCES media (id) ON DELETE CASCADE;
 
 ALTER TABLE media_translation ADD FOREIGN KEY (language_id) REFERENCES language (id) ON DELETE CASCADE;
@@ -526,15 +566,17 @@ CREATE INDEX page_translation_slug_idx ON page_translation(slug);
 
 ALTER TABLE poi ADD FOREIGN KEY (content_id) REFERENCES content (id) ON DELETE CASCADE;
 
+ALTER TABLE ambassador_translation ADD FOREIGN KEY (heritage_id) REFERENCES heritage (id) ON DELETE CASCADE;
+
+ALTER TABLE ambassador_translation ADD FOREIGN KEY (poi_id) REFERENCES poi (id) ON DELETE CASCADE;
+
 ALTER TABLE poi_translation ADD FOREIGN KEY (poi_id) REFERENCES poi (id) ON DELETE CASCADE;
 
 ALTER TABLE poi_translation ADD FOREIGN KEY (language_id) REFERENCES language (id) ON DELETE CASCADE;
 
 CREATE INDEX poi_translation_slug_idx ON poi_translation(slug);
 
-ALTER TABLE ambassador_translation ADD FOREIGN KEY (heritage_id) REFERENCES heritage (id) ON DELETE CASCADE;
-
-ALTER TABLE ambassador_translation ADD FOREIGN KEY (poi_id) REFERENCES poi (id) ON DELETE CASCADE;
+ALTER TABLE profile_item ADD FOREIGN KEY (heritage_id) REFERENCES heritage (id) ON DELETE CASCADE;
 
 ALTER TABLE route ADD FOREIGN KEY (content_id) REFERENCES content (id) ON DELETE CASCADE;
 
@@ -543,8 +585,6 @@ ALTER TABLE route_translation ADD FOREIGN KEY (route_id) REFERENCES route (id) O
 ALTER TABLE route_translation ADD FOREIGN KEY (language_id) REFERENCES language (id) ON DELETE CASCADE;
 
 CREATE INDEX route_translation_slug_idx ON route_translation(slug);
-
-ALTER TABLE supplier ADD FOREIGN KEY (content_id) REFERENCES content (id) ON DELETE CASCADE;
 
 ALTER TABLE supplier_translation ADD FOREIGN KEY (supplier_id) REFERENCES supplier (id) ON DELETE CASCADE;
 
@@ -562,21 +602,35 @@ ALTER TABLE content_valid_time ADD FOREIGN KEY (valid_time_id) REFERENCES valid_
 
 ALTER TABLE content_valid_time ADD FOREIGN KEY (content_id) REFERENCES content (id) ON DELETE CASCADE;
 
-ALTER TABLE content ADD FOREIGN KEY (heritage_id) REFERENCES heritage (id) ON DELETE CASCADE;
+ALTER TABLE flag ADD FOREIGN KEY (flag_group_id) REFERENCES flag_group (id) ON DELETE CASCADE;
 
 ALTER TABLE code_group ADD FOREIGN KEY (heritage_id) REFERENCES heritage (id) ON DELETE CASCADE;
 
 ALTER TABLE code_group ADD FOREIGN KEY (code_series_id) REFERENCES code_series (id) ON DELETE CASCADE;
 
-ALTER TABLE related_tag ADD FOREIGN KEY (tag_id) REFERENCES tag (id) ON DELETE CASCADE;
+ALTER TABLE event_translation ADD FOREIGN KEY (event_id) REFERENCES event (id) ON DELETE CASCADE;
 
-ALTER TABLE related_tag ADD FOREIGN KEY (related_tag_id) REFERENCES tag (id) ON DELETE CASCADE;
+ALTER TABLE event_translation ADD FOREIGN KEY (language_id) REFERENCES language (id) ON DELETE CASCADE;
 
-ALTER TABLE profile_item ADD FOREIGN KEY (heritage_id) REFERENCES heritage (id) ON DELETE CASCADE;
+CREATE INDEX event_translation_slug_idx ON event_translation(slug);
+
+ALTER TABLE code_translation ADD FOREIGN KEY (code_id) REFERENCES code (id) ON DELETE CASCADE;
+
+ALTER TABLE code_translation ADD FOREIGN KEY (language_id) REFERENCES language (id) ON DELETE CASCADE;
 
 ALTER TABLE profile_item_translation ADD FOREIGN KEY (profile_item_id) REFERENCES profile_item (id) ON DELETE CASCADE;
 
 ALTER TABLE profile_item_translation ADD FOREIGN KEY (language_id) REFERENCES language (id) ON DELETE CASCADE;
+
+ALTER TABLE supplier ADD FOREIGN KEY (content_id) REFERENCES content (id) ON DELETE CASCADE;
+
+ALTER TABLE related_tag ADD FOREIGN KEY (tag_id) REFERENCES tag (id) ON DELETE CASCADE;
+
+ALTER TABLE related_tag ADD FOREIGN KEY (related_tag_id) REFERENCES tag (id) ON DELETE CASCADE;
+
+ALTER TABLE event_content ADD FOREIGN KEY (event_id) REFERENCES event (id) ON DELETE CASCADE;
+
+ALTER TABLE event_content ADD FOREIGN KEY (content_id) REFERENCES content (id) ON DELETE CASCADE;
 
 
 

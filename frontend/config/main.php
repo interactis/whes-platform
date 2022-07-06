@@ -36,9 +36,6 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        'helpers' => [
- 			'class' => 'frontend\components\Helpers',
- 		],
         // disable yii jquery and css because it's already part of gulp app
         'assetManager' => [
             'bundles' => [

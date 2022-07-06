@@ -1,5 +1,5 @@
 <?php
-namespace frontend\components;
+namespace common\components;
 
 use Yii;
 use yii\base\Component;
@@ -36,5 +36,15 @@ class Helpers extends Component
     	
     	return $this->_rucksackIds;
     }
+    
+    public function dateOutputFormat($date)
+	{
+		return date("d.m.Y", strtotime($date));
+	}
+	
+	public function dateInputFormat($date)
+	{
+		return date("Y-m-d", strtotime($date));
+	}
 	
 }

@@ -111,6 +111,8 @@ class EventController extends HelperController
     public function actionUpdate($id)
     {
     	$model = $this->findModel($id);
+    	$model->from = \Yii::$app->helpers->dateOutputFormat($model->from);
+    	$model->to = \Yii::$app->helpers->dateOutputFormat($model->to);
         $contentModel = $model->content;
         $approved = $contentModel->approved;
         $post = Yii::$app->request->post();
@@ -139,6 +141,12 @@ class EventController extends HelperController
 					);
 					return $this->redirect(['update', 'id' => $model->id]);
 				}
+       		}
+       		else
+       		{
+       			// format for display if validation error
+       			$model->from = \Yii::$app->helpers->dateOutputFormat($model->from);
+    			$model->to = \Yii::$app->helpers->dateOutputFormat($model->to);
        		}
         }
        

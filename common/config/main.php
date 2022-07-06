@@ -17,5 +17,8 @@ return [
         	    ],
         	],
     	],
+    	'helpers' => [
+ 			'class' => 'common\components\Helpers',
+ 		],
     ],
 ];

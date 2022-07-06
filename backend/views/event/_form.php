@@ -65,25 +65,6 @@ if (!$model->isNewRecord && $model->content->published && !$model->content->arch
 						'translationModel' => $translationModel
 					]); ?>
 					
-					<div class="row">
-						<div class="col-md-6">
-							<?= $form->field($model, 'from')->widget(DatePicker::classname(), [
-								'options' => ['placeholder' => 'Choose date ...'],
-								'pluginOptions' => [
-									'autoclose' => true
-								]
-							]); ?>
-						</div>
-						<div class="col-md-6">
-							<?= $form->field($model, 'to')->widget(DatePicker::classname(), [
-								'options' => ['placeholder' => 'Choose date ...'],
-								'pluginOptions' => [
-									'autoclose' => true
-								]
-							]); ?>
-						</div>
-					</div>
-					
 					<div class="<?= ($model->isNewRecord ? 'hidden' : '') ?>">
 						<?= Yii::$app->controller->renderPartial('//translation/field', [
 							'model' => $model,
@@ -93,6 +74,27 @@ if (!$model->isNewRecord && $model->content->published && !$model->content->arch
 							'translationModel' => $translationModel,
 							'hint' => Yii::t('app', 'The slug is used in the URL. Example: <strong>https://ourheritage.ch/event/<code>this-is-a-slug</code></strong>')
 						]); ?>
+					</div>
+					
+					<div class="row">
+						<div class="col-md-6">
+							<?= $form->field($model, 'from')->widget(DatePicker::classname(), [
+								'options' => ['placeholder' => 'Choose date ...'],
+								'pluginOptions' => [
+									'format' => 'dd.mm.yyyy',
+									'autoclose' => true
+								]
+							]); ?>
+						</div>
+						<div class="col-md-6">
+							<?= $form->field($model, 'to')->widget(DatePicker::classname(), [
+								'options' => ['placeholder' => 'Choose date ...'],
+								'pluginOptions' => [
+									'format' => 'dd.mm.yyyy',
+									'autoclose' => true
+								]
+							]); ?>
+						</div>
 					</div>
 					
 					<?= $this->render('/translation/field', [

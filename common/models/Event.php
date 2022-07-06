@@ -66,11 +66,21 @@ class Event extends HelperModel
             [['content_id', 'created_at', 'updated_at'], 'default', 'value' => null],
             [['content_id', 'created_at', 'updated_at'], 'integer'],
             [['from', 'to'], 'required'],
+            [['from', 'to'], 'date', 'format' => 'php:d.m.Y'],
+            [['from', 'to'], 'validateDate'],
             [['arrival_station', 'arrival_url'], 'string', 'max' => 255],
             [['arrival_url'], 'url'],
             [['content_id'], 'exist', 'skipOnError' => true, 'targetClass' => Content::className(), 'targetAttribute' => ['content_id' => 'id']],
             [['tags', 'flags'], 'required'],
         ];
+    }
+
+	public function validateDate($attribute, $params)
+    {
+    	if (strtotime($this->from) > strtotime($this->to))
+    		$this->addError('to', Yii::t('app', 'To cannot be lower than from.'));
+    	
+    	 $this->$attribute = \Yii::$app->helpers->dateInputFormat($this->$attribute);
     }
 
     /**

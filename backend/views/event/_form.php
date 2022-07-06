@@ -1,9 +1,9 @@
 <?php
-
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use common\models\EventTranslation;
 use backend\components\poipicker\PoiPicker;
+use kartik\date\DatePicker;
 
 $translations = $model->eventTranslations;
 $translationModel = new EventTranslation();
@@ -64,6 +64,25 @@ if (!$model->isNewRecord && $model->content->published && !$model->content->arch
 						'translations' => $translations,
 						'translationModel' => $translationModel
 					]); ?>
+					
+					<div class="row">
+						<div class="col-md-6">
+							<?= $form->field($model, 'from')->widget(DatePicker::classname(), [
+								'options' => ['placeholder' => 'Choose date ...'],
+								'pluginOptions' => [
+									'autoclose' => true
+								]
+							]); ?>
+						</div>
+						<div class="col-md-6">
+							<?= $form->field($model, 'to')->widget(DatePicker::classname(), [
+								'options' => ['placeholder' => 'Choose date ...'],
+								'pluginOptions' => [
+									'autoclose' => true
+								]
+							]); ?>
+						</div>
+					</div>
 					
 					<div class="<?= ($model->isNewRecord ? 'hidden' : '') ?>">
 						<?= Yii::$app->controller->renderPartial('//translation/field', [

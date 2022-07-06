@@ -65,7 +65,7 @@ class Event extends HelperModel
         return [
             [['content_id', 'created_at', 'updated_at'], 'default', 'value' => null],
             [['content_id', 'created_at', 'updated_at'], 'integer'],
-            [['from', 'to'], 'safe'],
+            [['from', 'to'], 'required'],
             [['arrival_station', 'arrival_url'], 'string', 'max' => 255],
             [['arrival_url'], 'url'],
             [['content_id'], 'exist', 'skipOnError' => true, 'targetClass' => Content::className(), 'targetAttribute' => ['content_id' => 'id']],

@@ -17,8 +17,6 @@ $childContentValue = [];
 if (isset($model->content->childContents))
 	$childContentValue = ArrayHelper::map($model->content->childContents, 'child_content_id', 'child_content_id');
 
-print_r($childContentValue);
-
 $user = Yii::$app->user->identity;
 ?>
 

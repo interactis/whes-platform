@@ -11345,12 +11345,7 @@ body {
     .card .card-body .list-unstyled {
       margin: 0; }
       .card .card-body .list-unstyled li {
-        padding: 18px;
-        /*
-				&.active {
-					background: $gray-light;					
-				}
-				*/ }
+        padding: 18px; }
         .card .card-body .list-unstyled li:nth-child(even) {
           background: #f9f9f9; }
         .card .card-body .list-unstyled li.dark {

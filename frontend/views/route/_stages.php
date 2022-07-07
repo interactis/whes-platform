@@ -39,13 +39,9 @@ if ($count == 0)
 					$mapUrl = false;
 					if (isset($model->geom) && !empty($model->geom))
 						$mapUrl = '/map/'. Yii::t('app', $type) .'/'. $model->id;
-					
-					$class = '';
-					if ($currentId == $content->id)
-						$class = 'active';
 					?>
 					
-					<li class="<?= $class ?>">
+					<li>
 						<?php if ($mapUrl): ?>
 							<a class="btn btn-dark btn-sm pull-right" href="<?= $mapUrl ?>">
 								<?= Yii::t('app', 'Map') ?>
@@ -54,7 +50,9 @@ if ($count == 0)
 						
 						<label>
 							<?= Yii::t('app', 'Stage') ?> <?= $i ?>
-							<?= ($class == 'active' ? '&nbsp;<i class="fa fa-circle text-primary"></i>' : '') ?>
+							<?php if ($currentId == $content->id): ?>
+								&nbsp;<i class="fa fa-circle text-primary"></i>
+							<?php endif; ?>
 						</label>
 						<div class="h4">
 							<a href="<?= $infoUrl ?>">

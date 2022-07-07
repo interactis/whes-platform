@@ -12,7 +12,7 @@ if ($count > 0): ?>
 			<div class="h4"><?= $title ?></div>
 		</div>
 		<div class="card-body">
-			<ul class="trip-list list-unstyled">
+			<ul class="list-unstyled">
 				<?php foreach($childContents as $content):
 					$type = $content->typeText;
 					$model = $content->{$type};
@@ -36,7 +36,7 @@ if ($count > 0): ?>
 						</a>
 					</li>
 				<?php endforeach; ?>
-			</div>
+			</ul>
 		</div>
 	</div>
 <?php endif ?>

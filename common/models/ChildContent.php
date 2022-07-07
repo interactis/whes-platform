@@ -79,7 +79,7 @@ class ChildContent extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getChildContent()
+    public function getContent()
     {
         return $this->hasOne(Content::className(), ['id' => 'child_content_id']);
     }

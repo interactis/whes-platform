@@ -181,6 +181,29 @@ class Content extends \yii\db\ActiveRecord
         return $this->hasMany(ChildContent::className(), ['parent_content_id' => 'id']);
     }
     
+    public function getActiveChildContents()
+    {
+    	$contents = [];
+        foreach($this->childContents as $childContent)
+        {
+        	$content = $childContent->content;
+        	if ($content->isActive)
+        		$contents[] = $content;
+        }
+        
+        return $contents;
+    }
+    
+    public function getIsActive()
+    {
+    	if ($this->published && $this->approved && !$this->hidden && !$this->archive)
+    	{
+    		return true;
+    	}
+    	else
+    		return false;
+    }
+    
     /**
      * Gets query for [[ChildContents]].
      *

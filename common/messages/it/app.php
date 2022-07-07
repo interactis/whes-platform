@@ -46,6 +46,8 @@ return [
 	"Learn more" => "Per saperne di più",
 	"Profile" => "Profilo",
 	"Event schedule" => "Programma",
+	"Location" => "Sede",
+	"Locations" => "Sedes",
 	
 	"Difficulty" => "Difficoltà",
 	"easy" => "facile",

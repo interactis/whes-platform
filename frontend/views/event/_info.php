@@ -34,6 +34,8 @@
 					'heritage' => $heritage
 				]) ?>
 				
+				<?= $this->render('_pois.php', ['model' => $model]) ?>
+				
 				<?= $this->render('_visitorInfo.php', ['model' => $model]) ?>
 				
 			</div>

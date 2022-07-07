@@ -500,14 +500,14 @@ updated_at INTEGER,
 CONSTRAINT related_tag_pkey PRIMARY KEY (id)
 );
 
-CREATE TABLE event_content
+CREATE TABLE child_content
 (
 id SERIAL,
-event_id INTEGER,
-content_id INTEGER,
+parent_content_id INTEGER,
+child_content_id INTEGER,
 created_at INTEGER,
 updated_at INTEGER,
-CONSTRAINT event_content_pkey PRIMARY KEY (id)
+CONSTRAINT child_content_pkey PRIMARY KEY (id)
 );
 
 ALTER TABLE article ADD FOREIGN KEY (content_id) REFERENCES content (id) ON DELETE CASCADE;
@@ -628,9 +628,9 @@ ALTER TABLE related_tag ADD FOREIGN KEY (tag_id) REFERENCES tag (id) ON DELETE C
 
 ALTER TABLE related_tag ADD FOREIGN KEY (related_tag_id) REFERENCES tag (id) ON DELETE CASCADE;
 
-ALTER TABLE event_content ADD FOREIGN KEY (event_id) REFERENCES event (id) ON DELETE CASCADE;
+ALTER TABLE child_content ADD FOREIGN KEY (parent_content_id) REFERENCES content (id) ON DELETE CASCADE;
 
-ALTER TABLE event_content ADD FOREIGN KEY (content_id) REFERENCES content (id) ON DELETE CASCADE;
+ALTER TABLE child_content ADD FOREIGN KEY (child_content_id) REFERENCES content (id) ON DELETE CASCADE;
 
 
 

@@ -216,6 +216,14 @@ body {
 	}
 }
 
+.margin-top {
+	margin-top: 30px;
+}
+
+.margin-top-md {
+	margin-top: 48px;
+}
+
 .margin-top-lg {
 	margin-top: 60px;
 	@include media-breakpoint-up(md) {

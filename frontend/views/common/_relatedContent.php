@@ -4,7 +4,7 @@ if (isset($model))
 ?>
 
 <?php if ($related): ?>
-	<div id="related" class="container margin-bottom-lg">
+	<div id="related" class="container margin-bottom-lg margin-top">
 		<div class="h2 margin-bottom-md">
 			<?= Yii::t('app', 'This might also interest you:') ?>
 		</div>

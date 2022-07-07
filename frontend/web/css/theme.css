@@ -10802,6 +10802,12 @@ body {
     .margin-bottom-lg {
       margin-bottom: 120px; } }
 
+.margin-top {
+  margin-top: 30px; }
+
+.margin-top-md {
+  margin-top: 48px; }
+
 .margin-top-lg {
   margin-top: 60px; }
   @media (min-width: 768px) {

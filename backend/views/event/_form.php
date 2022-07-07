@@ -186,7 +186,9 @@ if (!$model->isNewRecord && $model->content->published && !$model->content->arch
 			<?= $this->render('/common/_relationsForm', [
 				'model' => $model,
 				'contentModel' => $contentModel,
-				'form' => $form
+				'form' => $form,
+				'showChildContent' => true,
+				'childContentType' => 'poi'
 			]) ?>
 			
 			<div id="visibility" class="panel panel-default">

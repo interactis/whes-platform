@@ -15,6 +15,7 @@ class HelperModel extends TranslationModel
 {	
     public $tags = [];
     public $flags = [];
+    public $childContent = [];
     
     public function getPriorities()
     {

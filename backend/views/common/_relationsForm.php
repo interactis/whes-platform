@@ -2,6 +2,9 @@
 use common\models\Heritage;
 use yii\helpers\ArrayHelper;
 
+if (!isset($showChildContent))
+	$showChildContent = false;
+
 $tagValue = [];
 if (isset($model->content->contentTags))
 	$tagValue = ArrayHelper::map($model->content->contentTags, 'tag_id', 'tag_id');
@@ -9,6 +12,10 @@ if (isset($model->content->contentTags))
 $flagValue = [];
 if (isset($model->content->contentFlags))
 	$flagValue = ArrayHelper::map($model->content->contentFlags, 'flag_id', 'flag_id');
+
+$childContentValue = [];
+if (isset($model->content->childContent))
+	$childContentValue = ArrayHelper::map($model->content->childContent, 'child_id', 'child_id');
 	
 $user = Yii::$app->user->identity;
 ?>
@@ -38,5 +45,16 @@ $user = Yii::$app->user->identity;
 			'model' => $model,
 			'flagValue' => $flagValue
 		]); ?>
+		
+		<?php
+		if ($showChildContent)
+		{
+			echo $this->render('/common/_childContentSelect', [
+				'model' => $model,
+				'childContentValue' => $childContentValue,
+				'childContentType' => $childContentType
+			]);
+		}
+		?>
 	</div>
 </div>

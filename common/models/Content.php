@@ -28,6 +28,9 @@ use yii\helpers\ArrayHelper;
  * @property Heritage $heritage
  * @property ContentFlag[] $contentFlags
  * @property ContentTag[] $contentTags
+ * @property ChildContents[] $childContents
+ * @property ParentContents[] $parentContents
+ 
  * @property ContentValidTime[] $contentValidTimes
  * @property Media[] $media
  * @property Poi[] $poi
@@ -41,6 +44,13 @@ class Content extends \yii\db\ActiveRecord
     const TYPE_ROUTE = 2;
     const TYPE_ARTICLE = 3;
     const TYPE_EVENT = 4;
+    
+    const TYPE_IDS = [
+    	'poi' => 1,
+    	'route' => 2,
+    	'article' => 3,
+    	'event' => 4
+    ];
 	
 	private $_relatedContentLimit = 6;
 	private $_rucksackIds = [];
@@ -159,6 +169,26 @@ class Content extends \yii\db\ActiveRecord
     public function getContentTags()
     {
         return $this->hasMany(ContentTag::className(), ['content_id' => 'id']);
+    }
+    
+    /**
+     * Gets query for [[ChildContents]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getChildContents()
+    {
+        return $this->hasMany(ChildContent::className(), ['parent_content_id' => 'id']);
+    }
+    
+    /**
+     * Gets query for [[ChildContents]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getParentContents()
+    {
+        return $this->hasMany(ChildContent::className(), ['child_content_id' => 'id']);
     }
 
     /**
@@ -356,6 +386,25 @@ class Content extends \yii\db\ActiveRecord
     	return $tagList;
     }
     
+    /*
+    public function getChildContentIds()
+    {
+    	$tagIds = ArrayHelper::map($this->contentTags, 'tag_id', 'tag_id');
+    	return array_values($tagIds);
+    }
+    
+    public function getChildContentList()
+    {
+    	$childList = [];
+    	foreach ($this->childContent as $childContent)
+    	{
+    		$childList[] = $childContent->{$this->typeText}->title;
+    	}
+    	
+    	return $childList;
+    }
+    */
+    
     public function getInRucksack()
     {
     	$rucksackIds = Yii::$app->helpers->getRucksackIds();
@@ -368,12 +417,18 @@ class Content extends \yii\db\ActiveRecord
     		return false;
     }
     
-    public static function getContentList($heritageId = false)
+    public static function getContentList($heritageId = false, $exludeId = false, $type = false)
     {
     	$query = Content::find();
     	
     	if ($heritageId)
     		$query->where(['heritage_id' => $heritageId]);
+    	
+    	if ($exludeId)
+    		$query->andWhere(['!=', 'id', $exludeId]);
+    	
+    	if ($type)
+    		$query->andWhere(['type' => Content::TYPE_IDS[$type]]);
    
     	$models = $query->all();
     	

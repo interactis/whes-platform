@@ -409,25 +409,6 @@ class Content extends \yii\db\ActiveRecord
     	return $tagList;
     }
     
-    /*
-    public function getChildContentIds()
-    {
-    	$tagIds = ArrayHelper::map($this->contentTags, 'tag_id', 'tag_id');
-    	return array_values($tagIds);
-    }
-    
-    public function getChildContentList()
-    {
-    	$childList = [];
-    	foreach ($this->childContent as $childContent)
-    	{
-    		$childList[] = $childContent->{$this->typeText}->title;
-    	}
-    	
-    	return $childList;
-    }
-    */
-    
     public function getInRucksack()
     {
     	$rucksackIds = Yii::$app->helpers->getRucksackIds();
@@ -440,7 +421,7 @@ class Content extends \yii\db\ActiveRecord
     		return false;
     }
     
-    public static function getContentList($heritageId = false, $exludeId = false, $type = false)
+    public static function getContentList($heritageId = false, $exludeId = false, $typeIds = false)
     {
     	$query = Content::find();
     	
@@ -450,8 +431,8 @@ class Content extends \yii\db\ActiveRecord
     	if ($exludeId)
     		$query->andWhere(['!=', 'id', $exludeId]);
     	
-    	if ($type)
-    		$query->andWhere(['type' => Content::TYPE_IDS[$type]]);
+    	if ($typeIds)
+    		$query->andWhere(['in', 'type', $typeIds]);
    
     	$models = $query->all();
     	

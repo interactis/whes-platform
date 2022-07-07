@@ -2,6 +2,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use common\models\EventTranslation;
+use common\models\Content;
 // use backend\components\poipicker\PoiPicker;
 use kartik\date\DatePicker;
 
@@ -188,7 +189,7 @@ if (!$model->isNewRecord && $model->content->published && !$model->content->arch
 				'contentModel' => $contentModel,
 				'form' => $form,
 				'showChildContent' => true,
-				'childContentType' => 'poi'
+				'childContentTypeIds' => [Content::TYPE_IDS['poi'], Content::TYPE_IDS['route']]
 			]) ?>
 			
 			<div id="visibility" class="panel panel-default">

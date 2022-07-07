@@ -52,7 +52,7 @@ $user = Yii::$app->user->identity;
 			echo $this->render('/common/_childContentSelect', [
 				'model' => $model,
 				'childContentValue' => $childContentValue,
-				'childContentType' => $childContentType
+				'childContentTypeIds' => $childContentTypeIds
 			]);
 		}
 		?>

@@ -6,10 +6,10 @@ use kartik\select2\Select2;
 
 <div class="form-group">
 
-	<?= Html::activeLabel($model, 'childContent') ?>
+	<?= Html::activeLabel($model, 'childContentIds') ?>
 	
 	<?= Select2::widget([
-		'name' => ucfirst($model->tableName()) .'[childContent]',
+		'name' => ucfirst($model->tableName()) .'[childContentIds]',
 		'value' => $childContentValue,
 		'data' => Content::getContentList(false, $model->content_id, $childContentType),
 		'maintainOrder' => true,

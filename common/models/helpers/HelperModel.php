@@ -9,13 +9,15 @@ use common\models\Tag;
 use common\models\Flag;
 use common\models\ContentTag;
 use common\models\ContentFlag;
+use common\models\ChildContent;
+use common\models\Content;
 
 
 class HelperModel extends TranslationModel
 {	
     public $tags = [];
     public $flags = [];
-    public $childContent = [];
+    public $childContentIds = [];
     
     public function getPriorities()
     {
@@ -70,6 +72,24 @@ class HelperModel extends TranslationModel
 			}
 		}
 		Yii::$app->db->createCommand()->batchInsert('content_flag', ['content_id', 'flag_id'], $flagIds)->execute();
+        
+        return true;
+    }
+    
+    public function saveChildContents()
+    {
+        ChildContent::deleteAll(['parent_content_id' => $this->content_id]);
+        
+		$contentIds = [];
+		foreach ($this->childContentIds as $contentId)
+		{
+			if (is_numeric($contentId))
+			{
+				if (Content::findOne($contentId))
+					$contentIds[] = [$this->content_id, $contentId];
+			}
+		}
+		Yii::$app->db->createCommand()->batchInsert('child_content', ['parent_content_id', 'child_content_id'], $contentIds)->execute();
         
         return true;
     }

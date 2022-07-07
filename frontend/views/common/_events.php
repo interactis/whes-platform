@@ -1,5 +1,5 @@
 <?php
-$parentContents = $model->content->activeParentContents;
+$parentContents = $model->content->getActiveParentContents('event');
 
 if (count($parentContents) > 0): ?>
 	<div class="card margin-bottom-md">

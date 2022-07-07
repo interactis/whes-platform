@@ -11346,6 +11346,8 @@ body {
         padding: 18px; }
         .card .card-body .list-unstyled li:nth-child(even) {
           background: #f9f9f9; }
+        .card .card-body .list-unstyled li.active {
+          background: #D9D8D7; }
       .card .card-body .list-unstyled p {
         font-size: 1rem;
         margin-bottom: 0; }

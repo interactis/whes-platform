@@ -87,6 +87,7 @@ class RouteController extends HelperController
         			$model->saveTranslations() &&
         			$model->saveTags() &&
         			$model->saveFlags() &&
+        			$model->saveChildContents() &&
         			$model->generateSlugs()
         		)
         		{   					
@@ -126,6 +127,7 @@ class RouteController extends HelperController
         			$model->saveTranslations() &&
         			$model->saveTags() &&
         			$model->saveFlags() &&
+        			$model->saveChildContents() &&
         			$model->generateSlugs()
         		)
         		{   					

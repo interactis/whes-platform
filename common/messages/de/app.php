@@ -49,6 +49,8 @@ return [
 	"Event schedule" => "Programm",
 	"Location" => "Austragungsort",
 	"Locations" => "Austragungsorte",
+	"Stage" => "Etappe",
+	"Stages" => "Etappen",
 	
 	"Difficulty" => "Schwierigkeit",
 	"easy" => "leicht",

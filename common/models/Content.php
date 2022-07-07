@@ -204,14 +204,22 @@ class Content extends \yii\db\ActiveRecord
         return $this->hasMany(ChildContent::className(), ['child_content_id' => 'id']);
     }
     
-    public function getActiveParentContents()
+    public function getActiveParentContents($type = false)
     {
     	$contents = [];
         foreach($this->parentContents as $parentContent)
         {
         	$content = $parentContent->parentContent;
         	if ($content->isActive)
-        		$contents[] = $content;
+        	{
+        		if ($type)
+        		{
+        			if (Content::TYPE_IDS[$type] == $content->type)
+        				$contents[] = $content;
+        		}
+        		else
+        			$contents[] = $content;
+        	}
         }
         
         return $contents;

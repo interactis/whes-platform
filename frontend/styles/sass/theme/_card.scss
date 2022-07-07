@@ -27,6 +27,10 @@
 				&:nth-child(even) {
 					background: $gray-light-bg;
 				}
+				
+				&.active {
+					background: $gray-light;					
+				}
 			}
 			
 			p {

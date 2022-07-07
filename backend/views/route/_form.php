@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use common\models\RouteTranslation;
+use common\models\Content;
 use kartik\file\FileInput;
 
 $translations = $model->routeTranslations;
@@ -217,7 +218,9 @@ if (!$model->isNewRecord && $model->content->published && !$model->content->arch
 			<?= $this->render('/common/_relationsForm', [
 				'model' => $model,
 				'contentModel' => $contentModel,
-				'form' => $form
+				'form' => $form,
+				'showChildContent' => true,
+				'childContentTypeIds' => [Content::TYPE_IDS['route']]
 			]) ?>
 			
 			<div id="visibility" class="panel panel-default">

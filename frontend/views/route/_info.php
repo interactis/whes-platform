@@ -39,6 +39,8 @@
 				
 				<?= $this->render('/common/_events.php', ['model' => $model]) ?>
 				
+				<?= $this->render('_stages.php', ['model' => $model]) ?>
+				
 				<?= $this->render('_visitorInfo.php', ['model' => $model]) ?>
 				
 			</div>

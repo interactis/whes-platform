@@ -69,6 +69,7 @@ class Poi extends HelperModel
             [['arrival_url'], 'url'],
             [['content_id'], 'exist', 'skipOnError' => true, 'targetClass' => Content::className(), 'targetAttribute' => ['content_id' => 'id']],
             [['tags', 'flags'], 'required'],
+            [['childContentIds'], 'safe'],
         ];
     }
 
@@ -85,6 +86,7 @@ class Poi extends HelperModel
             'arrival_url' => Yii::t('app', 'Arrival Station URL'),
             'geom' => Yii::t('app', 'Geom'),
             'flags' =>  Yii::t('app', 'Filters'),
+            'childContentIds' => Yii::t('app', 'Child Content'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
         ];

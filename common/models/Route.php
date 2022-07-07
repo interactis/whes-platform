@@ -91,6 +91,7 @@ class Route extends HelperModel
             [['arrival_url', 'departure_url'], 'url'],
             [['content_id'], 'exist', 'skipOnError' => true, 'targetClass' => Content::className(), 'targetAttribute' => ['content_id' => 'id']],
             [['tags', 'flags'], 'required'],
+            [['childContentIds'], 'safe'],
             ['difficulty', 'in', 'range' => [self::DIFFICULTY_EASY, self::DIFFICULTY_MEDIUM, self::DIFFICULTY_DIFFICULT]],
             
             ['geojsonFile', 'file', 'extensions' => ['geojson']],
@@ -150,6 +151,7 @@ class Route extends HelperModel
             'geom' => Yii::t('app', 'Geom'),
             'print_available' => Yii::t('app', 'Print Available'),
             'flags' =>  Yii::t('app', 'Filters'),
+            'childContentIds' => Yii::t('app', 'Child Content'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
             'geojsonFile' => Yii::t('app', 'GeoJSON File'),

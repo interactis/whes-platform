@@ -14,9 +14,9 @@ if (isset($model->content->contentFlags))
 	$flagValue = ArrayHelper::map($model->content->contentFlags, 'flag_id', 'flag_id');
 
 $childContentValue = [];
-if (isset($model->content->childContent))
-	$childContentValue = ArrayHelper::map($model->content->childContent, 'child_id', 'child_id');
-	
+if (isset($model->content->childContents))
+	$childContentValue = ArrayHelper::map($model->content->childContents, 'child_content_id', 'child_content_id');
+
 $user = Yii::$app->user->identity;
 ?>
 

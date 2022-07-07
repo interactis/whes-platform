@@ -11,7 +11,7 @@ use kartik\select2\Select2;
 	<?= Select2::widget([
 		'name' => ucfirst($model->tableName()) .'[childContentIds]',
 		'value' => $childContentValue,
-		'data' => Content::getContentList(false, $model->content_id, $childContentTypeIds),
+		'data' => Content::getContentList(false, [$model->content_id], $childContentTypeIds, $childContentValue),
 		'maintainOrder' => true,
 		'showToggleAll' => false,
 		'options' => [

@@ -421,18 +421,40 @@ class Content extends \yii\db\ActiveRecord
     		return false;
     }
     
-    public static function getContentList($heritageId = false, $exludeId = false, $typeIds = false)
+    public static function getContentList($heritageId = false, $exludeIds = false, $typeIds = false, $contentIds = false)
+    {
+    	$firstList = [];
+    	if ($contentIds)
+    	{
+    		$firstList = Content::_getContentList($heritageId, $exludeIds, $typeIds, $contentIds);
+    		
+    		if ($exludeIds)
+    		{
+    			$exludeIds = array_merge($exludeIds, array_values($contentIds));
+    		}
+    		else
+    			$exludeIds = $contentIds;
+    	}
+    	
+    	$list = Content::_getContentList($heritageId, $exludeIds, $typeIds);
+        return $firstList + $list;
+    }
+
+	private static function _getContentList($heritageId = false, $exludeIds = false, $typeIds = false, $contentIds = false)
     {
     	$query = Content::find();
     	
     	if ($heritageId)
     		$query->where(['heritage_id' => $heritageId]);
     	
-    	if ($exludeId)
-    		$query->andWhere(['!=', 'id', $exludeId]);
+    	if ($exludeIds)
+    		$query->andWhere(['not in', 'id', $exludeIds]);
     	
     	if ($typeIds)
     		$query->andWhere(['in', 'type', $typeIds]);
+    	
+    	if ($contentIds)
+    		$query->andWhere(['in', 'id', $contentIds]);
    
     	$models = $query->all();
     	
@@ -445,6 +467,25 @@ class Content extends \yii\db\ActiveRecord
     			$list[$model->id] = $model->$type->title .' ('. $type .')';
     		};
     	}
+    	
+    	if ($contentIds)
+    		$list = Content::_sortArrayByArray($list, $contentIds);
+    	
         return $list;
     }
+    
+    private static function _sortArrayByArray(array $array, array $orderArray)
+    {
+		$ordered = [];
+		foreach ($orderArray as $key)
+		{
+			if (array_key_exists($key, $array))
+			{
+				$ordered[$key] = $array[$key];
+				//unset($array[$key]);
+			}
+		}
+		return $ordered;
+	}
+
 }

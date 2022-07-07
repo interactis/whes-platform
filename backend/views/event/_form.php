@@ -2,7 +2,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use common\models\EventTranslation;
-use backend\components\poipicker\PoiPicker;
+// use backend\components\poipicker\PoiPicker;
 use kartik\date\DatePicker;
 
 $translations = $model->eventTranslations;
@@ -17,10 +17,12 @@ $nav = [
 		'slug' => 'sbb',
 		'title' => 'SBB'
 	],
+	/*
 	[
 		'slug' => 'geo',
 		'title' => 'Geo'
 	],
+	*/
 	[
 		'slug' => 'relations',
 		'title' => 'Relations'
@@ -167,6 +169,8 @@ if (!$model->isNewRecord && $model->content->published && !$model->content->arch
 				</div>
 			</div>
 			
+			<?php
+			/*
 			<div id="geo" class="panel panel-default">
 				<div class="panel-heading">
 					<h3>Geo</h3>
@@ -176,6 +180,8 @@ if (!$model->isNewRecord && $model->content->published && !$model->content->arch
 					<?= PoiPicker::widget(['model' => $model, 'attribute' => 'geom']) ?>
 				</div>
 			</div>
+			*/
+			?>
 			
 			<?= $this->render('/common/_relationsForm', [
 				'model' => $model,

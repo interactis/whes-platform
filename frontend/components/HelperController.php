@@ -103,6 +103,11 @@ class HelperController extends Controller
     		$query->andWhere(['in', 'content.id', $contentIds]);
     	}
     	
+    	$query->andFilterWhere(['OR', 
+    		['>=', 'event.to', date('Y.m.d')],
+    		['!=', 'content.type', Content::TYPE_EVENT],
+    	]);
+    	
     	if ($featured)
     	{
 			$query->orderBy([

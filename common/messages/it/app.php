@@ -45,6 +45,7 @@ return [
 	"Short Info" => "Informazioni in breve",
 	"Learn more" => "Per saperne di più",
 	"Profile" => "Profilo",
+	"Events" => "Eventi",
 	"Event schedule" => "Programma",
 	"Location" => "Sede",
 	"Locations" => "Sedes",

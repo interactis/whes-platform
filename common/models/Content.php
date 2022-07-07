@@ -194,16 +194,6 @@ class Content extends \yii\db\ActiveRecord
         return $contents;
     }
     
-    public function getIsActive()
-    {
-    	if ($this->published && $this->approved && !$this->hidden && !$this->archive)
-    	{
-    		return true;
-    	}
-    	else
-    		return false;
-    }
-    
     /**
      * Gets query for [[ChildContents]].
      *
@@ -212,6 +202,29 @@ class Content extends \yii\db\ActiveRecord
     public function getParentContents()
     {
         return $this->hasMany(ChildContent::className(), ['child_content_id' => 'id']);
+    }
+    
+    public function getActiveParentContents()
+    {
+    	$contents = [];
+        foreach($this->parentContents as $parentContent)
+        {
+        	$content = $parentContent->parentContent;
+        	if ($content->isActive)
+        		$contents[] = $content;
+        }
+        
+        return $contents;
+    }
+    
+    public function getIsActive()
+    {
+    	if ($this->published && $this->approved && !$this->hidden && !$this->archive)
+    	{
+    		return true;
+    	}
+    	else
+    		return false;
     }
 
     /**

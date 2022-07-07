@@ -37,6 +37,8 @@
 					'heritage' => $heritage
 				]) ?>
 				
+				<?= $this->render('/common/_events.php', ['model' => $model]) ?>
+				
 				<?= $this->render('_visitorInfo.php', ['model' => $model]) ?>
 				
 			</div>

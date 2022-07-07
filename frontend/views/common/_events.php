@@ -1,19 +1,14 @@
 <?php
-$childContents = $model->content->activeChildContents;
-$count = count($childContents);
+$parentContents = $model->content->activeParentContents;
 
-$title = Yii::t('app', 'Location');
-if ($count > 1)
-	$title = Yii::t('app', 'Locations');
-
-if ($count > 0): ?>
+if (count($parentContents) > 0): ?>
 	<div class="card margin-bottom-md">
 		<div class="card-header dark">
-			<div class="h4"><?= $title ?></div>
+			<div class="h4"><?= Yii::t('app', 'Events') ?></div>
 		</div>
 		<div class="card-body">
 			<ul class="list-unstyled">
-				<?php foreach($childContents as $content):
+				<?php foreach($parentContents as $content):
 					$type = $content->typeText;
 					$model = $content->{$type};
 					$infoUrl = '/'. Yii::t('app', $type) .'/'. $model->slug;
@@ -24,16 +19,15 @@ if ($count > 0): ?>
 					?>
 					
 					<li>
-						<?php if ($mapUrl): ?>
-							<a class="btn btn-dark btn-sm pull-right" href="<?= $mapUrl ?>">
-								<?= Yii::t('app', 'Map') ?>
-							</a>
-						<?php endif; ?>
-						
-						<label><?= $model->label ?></label>
+						<?php /* <label><?= $model->label ?></label> */ ?>
 						<a href="<?= $infoUrl ?>">
 							<div class="h4"><?= $model->title ?></div>
 						</a>
+						<?php if (isset($model->fromTo)): ?>
+							<div class="h5">
+								<?= $model->getFromTo(true) ?>
+							</div>
+						<?php endif; ?>
 					</li>
 				<?php endforeach; ?>
 			</ul>

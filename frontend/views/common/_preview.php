@@ -32,7 +32,7 @@ $img = $content->previewImage;
 			
 			<?php if (isset($model->fromTo)): ?>
 				<div class="h5 margin-bottom-sm">
-					<?= $model->fromTo ?>
+					<?= $model->getFromTo(true) ?>
 				</div>
 			<?php endif; ?>
 			

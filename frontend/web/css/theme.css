@@ -11328,6 +11328,8 @@ body {
     text-align: center; }
     .card .card-header .h4 {
       color: white; }
+    .card .card-header.dark {
+      background: #333333; }
   .card .card-body {
     border: none;
     background: #F2F2F2;

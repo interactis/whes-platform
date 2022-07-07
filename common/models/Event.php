@@ -153,7 +153,7 @@ class Event extends HelperModel
     	return $html;
     }
     
-    public function getFromTo()
+    public function getFromTo($showIcon = false)
     {
     	$fromTime = strtotime($this->from);
     	$toTime = strtotime($this->to);
@@ -174,7 +174,10 @@ class Event extends HelperModel
     	}
     	else
     		$fromTo = \Yii::$app->helpers->dateOutputFormat($this->from);
-    		
+    	
+    	if ($showIcon)
+    		$fromTo = '<i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;&nbsp;'. $fromTo;
+    	
     	return $fromTo;	
     }
     

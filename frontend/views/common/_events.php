@@ -20,9 +20,11 @@ if (count($parentContents) > 0): ?>
 					
 					<li>
 						<?php /* <label><?= $model->label ?></label> */ ?>
-						<a href="<?= $infoUrl ?>">
-							<div class="h4"><?= $model->title ?></div>
-						</a>
+						<div class="h4">
+							<a href="<?= $infoUrl ?>">
+								<?= $model->title ?>
+							</a>
+						</div>
 						<?php if (isset($model->fromTo)): ?>
 							<div class="h5">
 								<?= $model->getFromTo(true) ?>

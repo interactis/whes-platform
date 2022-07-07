@@ -11334,6 +11334,8 @@ body {
     text-align: center; }
     .card .card-header .h4 {
       color: white; }
+    .card .card-header a {
+      color: #fff; }
     .card .card-header.dark {
       background: #333333; }
   .card .card-body {
@@ -11343,11 +11345,16 @@ body {
     .card .card-body .list-unstyled {
       margin: 0; }
       .card .card-body .list-unstyled li {
-        padding: 18px; }
+        padding: 18px;
+        /*
+				&.active {
+					background: $gray-light;					
+				}
+				*/ }
         .card .card-body .list-unstyled li:nth-child(even) {
           background: #f9f9f9; }
-        .card .card-body .list-unstyled li.active {
-          background: #D9D8D7; }
+        .card .card-body .list-unstyled li.dark {
+          background: #333333; }
       .card .card-body .list-unstyled p {
         font-size: 1rem;
         margin-bottom: 0; }

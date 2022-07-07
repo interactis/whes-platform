@@ -10,6 +10,7 @@ if ($count == 0)
 	
 	if (isset($parentContents[0]))
 	{
+		$model = $parentContents[0]->route;
 		$childContents = $parentContents[0]->activeChildContents;
 		$count = count($childContents);
 	}
@@ -20,6 +21,11 @@ if ($count == 0)
 	<div class="card margin-bottom-md">
 		<div class="card-header dark">
 			<div class="h4"><?= Yii::t('app', 'Stages') ?></div>
+			<div class="h5 text-center">
+				<a href="<?= '/'. Yii::t('app', 'route') .'/'. $model->slug ?>">
+					<?= $model->title ?>
+				</a>
+			</div>
 		</div>
 		<div class="card-body">
 			<ul class="list-unstyled">
@@ -50,9 +56,11 @@ if ($count == 0)
 							<?= Yii::t('app', 'Stage') ?> <?= $i ?>
 							<?= ($class == 'active' ? '&nbsp;<i class="fa fa-circle text-primary"></i>' : '') ?>
 						</label>
-						<a href="<?= $infoUrl ?>">
-							<div class="h4"><?= $model->title ?></div>
-						</a>
+						<div class="h4">
+							<a href="<?= $infoUrl ?>">
+								<?= $model->title ?>
+							</a>
+						</div>
 					</li>
 				<?php
 				$i = $i+1;

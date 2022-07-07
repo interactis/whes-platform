@@ -31,9 +31,11 @@ if ($count > 0): ?>
 						<?php endif; ?>
 						
 						<label><?= $model->label ?></label>
-						<a href="<?= $infoUrl ?>">
-							<div class="h4"><?= $model->title ?></div>
-						</a>
+						<div class="h4">
+							<a href="<?= $infoUrl ?>">
+								<?= $model->title ?>
+							</a>
+						</div>
 					</li>
 				<?php endforeach; ?>
 			</ul>

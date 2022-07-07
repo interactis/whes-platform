@@ -10,6 +10,10 @@
 			color: white;
 		}
 		
+		a {
+			color: $white;
+		}
+		
 		&.dark {
 			background: $gray-dark;
 		}
@@ -28,8 +32,14 @@
 					background: $gray-light-bg;
 				}
 				
+				/*
 				&.active {
 					background: $gray-light;					
+				}
+				*/
+				
+				&.dark {
+					background: $gray-dark;					
 				}
 			}
 			

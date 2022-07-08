@@ -15,7 +15,7 @@ use kartik\select2\Select2;
 		'maintainOrder' => true,
 		'showToggleAll' => false,
 		'options' => [
-			'placeholder' => Yii::t('app', 'Select childrens'), 
+			'placeholder' => Yii::t('app', 'Please select'), 
 			'multiple' => true
 		],
 		'pluginOptions' => [
@@ -23,5 +23,9 @@ use kartik\select2\Select2;
 			'maximumInputLength' => 20
 		]
 	]) ?>
+	
+	<?php if ($childContentHint): ?>
+		<div class="hint-block"><?= $childContentHint ?></div>
+	<?php endif; ?>
 	
 </div>

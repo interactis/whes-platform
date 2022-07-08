@@ -47,8 +47,8 @@ return [
 	"Profile" => "Steckbrief",
 	"Events" => "Events",
 	"Event schedule" => "Programm",
-	"Location" => "Austragungsort",
-	"Locations" => "Austragungsorte",
+	"Event location" => "Veranstaltungsort",
+	"Event locations" => "Veranstaltungsorte",
 	"Stage" => "Etappe",
 	"Stages" => "Etappen",
 	

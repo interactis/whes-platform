@@ -47,8 +47,8 @@ return [
 	"Profile" => "Portrait",
 	"Events" => "Manifestations",
 	"Event schedule" => "Programme",
-	"Location" => "Lieu de déroulement",
-	"Locations" => "Lieux de déroulement",
+	"Event location" => "Lieu de la manifestation",
+	"Event locations" => "Lieux de la manifestation",
 	"Stage" => "Étape",
 	"Stages" => "Étapes",
 	

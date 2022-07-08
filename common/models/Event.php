@@ -98,7 +98,7 @@ class Event extends HelperModel
             'arrival_url' => Yii::t('app', 'Arrival Station URL'),
             'geom' => Yii::t('app', 'Geom'),
             'flags' =>  Yii::t('app', 'Filters'),
-            'childContentIds' => Yii::t('app', 'Child Content'),
+            'childContentIds' => Yii::t('app', 'Event Locations'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
         ];

@@ -189,7 +189,8 @@ if (!$model->isNewRecord && $model->content->published && !$model->content->arch
 				'contentModel' => $contentModel,
 				'form' => $form,
 				'showChildContent' => true,
-				'childContentTypeIds' => [Content::TYPE_IDS['poi'], Content::TYPE_IDS['route']]
+				'childContentTypeIds' => [Content::TYPE_IDS['poi'], Content::TYPE_IDS['route']],
+				'childContentHint' => false
 			]) ?>
 			
 			<div id="visibility" class="panel panel-default">

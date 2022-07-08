@@ -2,9 +2,9 @@
 $childContents = $model->content->activeChildContents;
 $count = count($childContents);
 
-$title = Yii::t('app', 'Location');
+$title = Yii::t('app', 'Event location');
 if ($count > 1)
-	$title = Yii::t('app', 'Locations');
+	$title = Yii::t('app', 'Event locations');
 
 if ($count > 0): ?>
 	<div class="card margin-bottom-md">

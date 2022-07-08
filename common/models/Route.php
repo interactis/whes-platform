@@ -151,7 +151,7 @@ class Route extends HelperModel
             'geom' => Yii::t('app', 'Geom'),
             'print_available' => Yii::t('app', 'Print Available'),
             'flags' =>  Yii::t('app', 'Filters'),
-            'childContentIds' => Yii::t('app', 'Child Content'),
+            'childContentIds' => Yii::t('app', 'Stages (Child Routes)'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
             'geojsonFile' => Yii::t('app', 'GeoJSON File'),

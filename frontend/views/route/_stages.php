@@ -1,5 +1,5 @@
 <?php if ($stages = $model->stages): ?>
-	<div class="card margin-bottom-md">
+	<div class="card max-height margin-bottom-md">
 		<div class="card-header dark">
 			<div class="h4"><?= Yii::t('app', 'Stages') ?></div>
 			<div class="h5 text-center">

@@ -221,7 +221,7 @@ if (!$model->isNewRecord && $model->content->published && !$model->content->arch
 				'form' => $form,
 				'showChildContent' => true,
 				'childContentTypeIds' => [Content::TYPE_IDS['route']],
-				'childContentHint' => 'Use this to connect other routes as stages (child routes) to this route. Please mind the correct order of the routes.'
+				'childContentHint' => 'Use this to connect other routes as stages (child routes) to this route. Please mind the correct order of the child routes.'
 			]) ?>
 			
 			<div id="visibility" class="panel panel-default">

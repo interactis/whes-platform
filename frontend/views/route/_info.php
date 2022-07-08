@@ -8,6 +8,8 @@
 				<h1 class="margin-bottom-md">
 					<?= $model->title ?>
 				</h1>
+				
+				<?= $this->render('_stageInfo', ['model' => $model]) ?>
 			  
 			  	<div class="margin-bottom-lg ugc">
 					<div class="margin-bottom-md">
@@ -37,11 +39,11 @@
 					'heritage' => $heritage
 				]) ?>
 				
-				<?= $this->render('/common/_events.php', ['model' => $model]) ?>
+				<?= $this->render('/common/_events', ['model' => $model]) ?>
 				
-				<?= $this->render('_stages.php', ['model' => $model]) ?>
+				<?= $this->render('_stages', ['model' => $model]) ?>
 				
-				<?= $this->render('_visitorInfo.php', ['model' => $model]) ?>
+				<?= $this->render('_visitorInfo', ['model' => $model]) ?>
 				
 			</div>
 		</div>

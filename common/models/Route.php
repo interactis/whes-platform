@@ -45,6 +45,8 @@ class Route extends HelperModel
 	public $geojsonFile;
 	public $removeGeom = false;
 	
+	private $_stages = false;
+	
 	const DIFFICULTY_EASY = 1;
     const DIFFICULTY_MEDIUM = 2;
     const DIFFICULTY_DIFFICULT = 3;
@@ -187,6 +189,54 @@ class Route extends HelperModel
     		$html .= '<br /><em>'. $this->content->heritage->short_name .'</em>';
     		
     	return $html;
+    }
+    
+    public function getStages()
+    {
+    	if (!$this->_stages)
+    	{
+			$parentRoute = $this;
+			$content = $this->content;
+			$childContents = $content->activeChildContents;
+			$currentId = $content->id;
+			$currentChild = false;
+		
+			if (!isset($childContents[0]))
+			{
+				$parentContents = $content->getActiveParentContents('route');
+	
+				if (isset($parentContents[0]))
+				{
+					$parentRoute = $parentContents[0]->route;
+					$childContents = $parentContents[0]->activeChildContents;
+				
+					$i = 1;
+					foreach ($childContents as $content)
+					{
+						if ($content->id == $currentId)
+						{
+							$currentChild = [
+								'i' => $i,
+								'content' => $content
+							];
+							break;
+						}
+						$i = $i+1;
+					}	
+				}
+			}
+			
+			if (isset($childContents[0]))
+			{
+				$this->_stages = [
+					'parentRoute' => $parentRoute,
+					'childContents' => $childContents,
+					'currentChild' => $currentChild
+				];
+			}
+		}
+		
+		return $this->_stages;
     }
     
     public function getDifficulties($uppercase = false)

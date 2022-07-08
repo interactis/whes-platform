@@ -51,6 +51,7 @@ return [
 	"Event locations" => "Veranstaltungsorte",
 	"Stage" => "Etappe",
 	"Stages" => "Etappen",
+	"Stage {i} of: {link}" => "Etappe {i} von: {link}",
 	
 	"Difficulty" => "Schwierigkeit",
 	"easy" => "leicht",

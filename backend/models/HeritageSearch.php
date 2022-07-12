@@ -57,7 +57,7 @@ class HeritageSearch extends Heritage
 				'defaultOrder' => ['id' => SORT_DESC]
 			],
             'pagination' => [
-				'pageSize' => 20,
+				'pageSize' => 10,
 			]
         ]);
         

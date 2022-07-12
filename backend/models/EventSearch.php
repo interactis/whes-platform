@@ -80,7 +80,7 @@ class EventSearch extends Event
 				'defaultOrder' => ['from' => SORT_ASC]
 			],
             'pagination' => [
-				'pageSize' => 20,
+				'pageSize' => 10,
 			]
         ]);
         

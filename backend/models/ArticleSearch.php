@@ -80,7 +80,7 @@ class ArticleSearch extends Article
 				'defaultOrder' => ['id' => SORT_DESC]
 			],
             'pagination' => [
-				'pageSize' => 20,
+				'pageSize' => 10,
 			]
         ]);
         

@@ -29,7 +29,7 @@
 						'model' => $model
 					]) ?>
 				
-					<?= $this->render('_profile', [
+					<?= $this->render('_factsheet', [
 						'model' => $model
 					]) ?>
 				</div>

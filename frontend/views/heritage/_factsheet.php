@@ -1,7 +1,7 @@
 <?php if (isset($model->profileItems[0]) && !empty($model->profileItems[0]->title)): ?>
 	<div class="card margin-bottom-md">
 		<div class="card-header">
-			<div class="h4"><?= Yii::t('app', 'Profile') ?></div>
+			<div class="h4"><?= Yii::t('app', 'Factsheet') ?></div>
 		</div>
 		<div class="card-body">
 			<div class="body-content small">

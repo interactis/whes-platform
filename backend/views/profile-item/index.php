@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel backend\models\ProfileItemSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Profile');
+$this->title = Yii::t('app', 'Factsheet');
 
 $user = Yii::$app->user->identity;
 if ($user->isAdmin())
@@ -26,7 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
     ]) ?>
 
     <p>
-        <?= Html::a(Yii::t('app', 'Create Profile Item'), ['create', 'id' => $heritage->id], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('app', 'Create Factsheet Item'), ['create', 'id' => $heritage->id], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>

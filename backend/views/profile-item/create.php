@@ -5,14 +5,14 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\ProfileItem */
 
-$this->title = Yii::t('app', 'Create Profile Item');
+$this->title = Yii::t('app', 'Create Factsheet Item');
 
 $user = Yii::$app->user->identity;
 if ($user->isAdmin())
 	$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Heritages'), 'url' => ['heritage/index']];
 
 $this->params['breadcrumbs'][] = ['label' => $heritage->short_name, 'url' => ['heritage/update', 'id' => $heritage->id]];
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Profile'), 'url' => ['index', 'id' => $heritage->id]];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Factsheet'), 'url' => ['index', 'id' => $heritage->id]];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="profile-item-create">

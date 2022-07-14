@@ -38,7 +38,6 @@ class Heritage extends HelperModel
     
 	public $translationFields = ['name', 'short_name', 'slug', 'description', 'link_url', 'link_text'];
 	public $requiredTranslationFields = ['name', 'short_name', 'description'];
-	public $perimeterFile;
 	public $badgeFile;
 	
     /**
@@ -80,8 +79,6 @@ class Heritage extends HelperModel
             [['published', 'hidden'], 'boolean'],
             [['map_position_x', 'map_position_y'],'number', 'min' => 0, 'max' => 100],
             //[['perimeter'], 'string'],
-            ['perimeterFile', 'file', 'extensions' => ['geojson']],
-            ['perimeterFile', 'required', 'on' => 'create', 'skipOnEmpty' => true],
             ['badgeFile', 'file', 'extensions' => ['svg']]
         ];
     }
@@ -103,7 +100,6 @@ class Heritage extends HelperModel
             'hidden' => Yii::t('app', 'Hidden'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
-            'perimeterFile' => Yii::t('app', 'Perimeter File (GeoJSON)'),
         ];
     }
     

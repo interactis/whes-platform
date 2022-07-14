@@ -16,7 +16,7 @@ $translationModel = new ProfileItemTranslation();
     	
 			<div id="profile-item" class="panel panel-default">
 				<div class="panel-heading">
-					<h3>Profile Item</h3>
+					<h3>Factsheet Item</h3>
 				</div>
 				<div class="panel-body">
 					

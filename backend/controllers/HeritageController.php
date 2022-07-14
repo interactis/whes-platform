@@ -85,9 +85,7 @@ class HeritageController extends HelperController
 		if ($model->load($post))
 		{
         	if ($model->validateTranslations() && $model->validate())
-        	{
-        		$this->_handlePerimeterFileUpload($model);
-        		
+        	{	
         		if ($model->save(false)	&&
         			$model->saveTranslations() &&
         			$model->generateSlugs('short_name') &&
@@ -126,8 +124,6 @@ class HeritageController extends HelperController
 		{
         	if ($model->validateTranslations() && $model->validate())
         	{
-        		$this->_handlePerimeterFileUpload($model);
-        		
         		if ($model->save(false)	&&
         			$model->saveTranslations() &&
         			$model->generateSlugs('short_name') &&
@@ -167,18 +163,7 @@ class HeritageController extends HelperController
 
         return $this->redirect(['index']);
     }
-    
-    private function _handlePerimeterFileUpload($model)
-    {
-    	if ($file = UploadedFile::getInstance($model, 'perimeterFile'))
-    	{
-    		$string = file_get_contents($file->tempName);
-			$json = json_decode($string, true);
-			$coordinates = $json['features'][0]['geometry']['coordinates'];
-			$model->perimeter = $coordinates;
-		}
-    }
-
+	
     /**
      * Finds the Heritage model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

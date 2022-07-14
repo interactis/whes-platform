@@ -139,16 +139,6 @@ if (!$model->isNewRecord && $model->published)
 				<div class="panel-body">
 					<div class="hint-block margin-bottom-sm"><?= Yii::t('app', 'Click on the map to position the heritage') ?>:</div>
 					<?= PoiPicker::widget(['model' => $model, 'attribute' => 'geom']) ?>
-				
-					<?= $form->field($model, 'perimeterFile')->widget(FileInput::classname(), [
-						'options' => ['accept' => 'application/geo+json'],
-						'pluginOptions' => [
-							'showPreview' => false,
-							'showCaption' => true,
-							'showRemove' => true,
-							'showUpload' => false
-						]
-					]) ?>
 				</div>
 			</div>
 			

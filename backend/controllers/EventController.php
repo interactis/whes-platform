@@ -101,6 +101,12 @@ class EventController extends HelperController
 					return $this->redirect(['update', 'id' => $model->id]);
 				}
        		}
+       		else
+       		{
+       			// format for display if validation error
+       			$model->from = \Yii::$app->helpers->dateOutputFormat($model->from);
+    			$model->to = \Yii::$app->helpers->dateOutputFormat($model->to);
+       		}
         }
        
         return $this->render('create', [

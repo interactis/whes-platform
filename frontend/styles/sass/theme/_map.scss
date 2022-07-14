@@ -10,164 +10,28 @@
 	z-index: 0;
 }
 
-.map-view {
-	overflow: hidden;
-}
-
-#map-info-modal {
-	position: fixed;
-	bottom: 0;
-	width: 100%;
-	height: 320px;
-	margin-bottom: -320px;
-	transition: margin 0.25s ease-out;
-	opacity: 0.95;
-	background: white;
-	padding: 24px;
-	z-index: $zindex-fixed;
-	
-	overflow: none;
-	//overflow: scroll;
-	//-webkit-overflow-scrolling: touch;
-	//-ms-overflow-style: none;  /* IE and Edge */
-  	//scrollbar-width: none;  /* Firefox */
-	
-	.header-container {
-		display: none;
+.ol-control {
+	padding: 0;
+	top: 108px;
+	left: 24px;
+	background: none;
+	&:hover {
+		background: none;
 	}
-	
-	.close {
-		position: absolute;
-		top: 0;
-		right: 0;
-		padding: 6px;
-		margin: -14px -8px 0 0;
-		opacity: 1;
-		z-index: $zindex-fixed;
-		
-		color: $link-color;
+	button {
+    	background-color: $primary !important;
+    	width: 36px;
+    	height: 36px;
+    	font-size: 1.6rem;
+    	opacity: 0.85;
+    	transition: background 0.17s;
+    	
 		&:hover {
-			cursor: pointer;
-		}
-	}
-	
-	.card,
-	.card-body {
-		margin: 0;
-	}
-	
-	@include media-breakpoint-up(md) {
-		width: 768px;
-		left: 50%;
-		transform: translate(-50%, 0);
-		border-radius: 30px 30px 0 0;
-		.header-container {
-			display: inline-block;
-		}
-	}
-	
-	&.in {
-		margin-bottom: 0;
-	}
-}
-
-.map-controls {
-	position: fixed;
-	right: 12px;
-	bottom: 90px;
-	margin: 0;
-	
-	.btn {
-		width: 30px;
-		height: 30px;
-		border-radius: none;
-		background: $link-color;
-		
-		&:focus {
-			background: $link-color !important;
-			border: none;
-		}
-	}
-	
-	.locate-me {
-		margin-bottom: 12px;
-	}
-	
-	.search {
-		display: none;
-	}
-	
-	@include media-breakpoint-down(md) {
-		margin-bottom: 90px;
-		.zoom {
-		  display: none;
-		}
-		.search {
-		  display: inline-block;
-		}
-	}
-	
-	.glyphicon {
-		font-size: 1.3em;
-	}
-}
-
-.map-settings {
-	position: absolute;
-	z-index: 1;
-	top: 0;
-	right: 0;
-	height: 100%;
-	width: 300px;
-	margin-right: -300px;
-	transition: margin 0.25s ease-out;
-	padding: 120px 30px 24px;
-	background: $gray-light-bg;
-	
-	.sidebar-handle {
-		position: absolute;
-		bottom: 24px;
-		left: 0;
-		margin-left: -42px;
-		width: 42px;
-		height: 42px;
-		background: $gray-light-bg;
-		color: $link-color;
-		
-		&:hover {
-			cursor: pointer;
-		}
-		
-		.fa {
-			font-size: 1.2rem;
-			@include centerer;
-		}
-	}
-	
-	&.in {
-		margin-right: 0;
-		.sidebar-handle {
-			transform: rotate(180deg);
+			opacity: 1;
 		}
 	}
 	
 	@include media-breakpoint-down(md) {
-		padding-top: 90px;
+		display: none;
 	}
-}
-
-#layer-slider {
-  padding: 0;
-
-  .noUi-handle, .noUi-base, .noUi-origin, .ui-slider-handle {
-    padding: 0;
-  }
-
-  .ui-slider-inner-label {
-    position: absolute;
-    top: rem-calc(30);
-    text-shadow: none;
-    padding: 0;
-    font-size: $font-size-base;
-  }
 }

@@ -14,9 +14,6 @@ class ApiController extends HelperController
     {
     	$action = $event->id;
 		$verb = Yii::$app->getRequest()->getMethod();
-		
-		 Yii::$app->getResponse()->getHeaders()->set('Access-Control-Allow-Origin', '*');
-	
 
 		if ($verb === 'OPTIONS') {
             Yii::$app->getResponse()->getHeaders()->set('Access-Control-Allow-Origin', '*');

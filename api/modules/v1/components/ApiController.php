@@ -14,20 +14,13 @@ class ApiController extends HelperController
     {
     	$action = $event->id;
 		$verb = Yii::$app->getRequest()->getMethod();
-		
-		Yii::$app->getResponse()->getHeaders()->set('Access-Control-Allow-Origin', '*');
-		Yii::$app->getResponse()->getHeaders()->set('Access-Control-Allow-Methods', 'POST, GET');
-		Yii::$app->getResponse()->getHeaders()->set('Access-Control-Allow-Headers', 'Auth-Key, Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With');
-		
+
 		if ($verb === 'OPTIONS') {
-			echo 2;
-			exit;
-			
             Yii::$app->getResponse()->getHeaders()->set('Access-Control-Allow-Origin', '*');
             Yii::$app->getResponse()->getHeaders()->set('Access-Control-Allow-Methods', 'POST, GET');
             Yii::$app->getResponse()->getHeaders()->set('Access-Control-Allow-Headers', 'Auth-Key, Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With');
-            //Yii::$app->end();
-			//return true;
+            Yii::$app->end();
+			return true;
 		}
         
         if (isset($this->actions))

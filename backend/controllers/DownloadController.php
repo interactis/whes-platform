@@ -84,9 +84,23 @@ class DownloadController extends HelperController
     	$content = $this->_findContent($id);
         $model = new Download();
         $model->content_id = $content->id;
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        
+        $post = Yii::$app->request->post();
+		if ($model->load($post))
+        {
+        	if ($model->validateTranslations() && $model->validate())
+        	{
+        		if ($model->save(false) && $model->saveTranslations())
+        		{
+        			$content->setQualityControl(false, $content->approved, true);
+        			
+        			Yii::$app->getSession()->setFlash(
+        				'success',
+        				'<span class="glyphicon glyphicon-ok-sign"></span> Your changes have been saved.'
+        			);
+        			return $this->redirect(['update', 'id' => $model->id]);	
+            	}
+       		}
         }
 
         return $this->render('create', [
@@ -104,14 +118,29 @@ class DownloadController extends HelperController
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $content = $model->content;
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        $post = Yii::$app->request->post();
+		if ($model->load($post))
+        {
+        	if ($model->validateTranslations() && $model->validate())
+        	{
+        		if ($model->save(false) && $model->saveTranslations())
+        		{
+        			$content->setQualityControl(false, $content->approved, true);
+        			
+        			Yii::$app->getSession()->setFlash(
+        				'success',
+        				'<span class="glyphicon glyphicon-ok-sign"></span> Your changes have been saved.'
+        			);
+        			return $this->redirect(['update', 'id' => $model->id]);	
+            	}
+       		}
         }
 
         return $this->render('update', [
             'model' => $model,
-            'content' => $model->content
+            'content' => $content
         ]);
     }
 
@@ -124,7 +153,11 @@ class DownloadController extends HelperController
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        
+        // remove document
+        
+        $model->delete();
 
         return $this->redirect(['index']);
     }

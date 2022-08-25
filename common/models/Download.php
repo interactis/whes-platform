@@ -11,6 +11,7 @@ use common\models\helpers\TranslationModel;
  *
  * @property int $id
  * @property int|null $content_id
+ * @property int|null $order
  * @property bool|null $hidden
  * @property int|null $created_at
  * @property int|null $updated_at
@@ -20,7 +21,8 @@ use common\models\helpers\TranslationModel;
  */
 class Download extends TranslationModel
 {
-	public $translationFields = ['title', 'description', 'filename', 'file'];
+	//public $translationFields = ['title', 'description', 'filename', 'file'];
+	public $translationFields = ['title', 'description'];
 	public $requiredTranslationFields = ['title'];
 	
     /**
@@ -47,8 +49,8 @@ class Download extends TranslationModel
     public function rules()
     {
         return [
-            [['content_id', 'created_at', 'updated_at'], 'default', 'value' => null],
-            [['content_id', 'created_at', 'updated_at'], 'integer'],
+            [['content_id', 'order', 'created_at', 'updated_at'], 'default', 'value' => null],
+            [['content_id', 'order', 'created_at', 'updated_at'], 'integer'],
             [['hidden'], 'boolean'],
             [['content_id'], 'exist', 'skipOnError' => true, 'targetClass' => Content::className(), 'targetAttribute' => ['content_id' => 'id']],
         ];
@@ -62,6 +64,7 @@ class Download extends TranslationModel
         return [
             'id' => Yii::t('app', 'ID'),
             'content_id' => Yii::t('app', 'Content ID'),
+            'order' => Yii::t('app', 'Order'),
             'hidden' => Yii::t('app', 'Hidden'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),

@@ -48,7 +48,6 @@ class DownloadTranslation extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-        	[['title', 'filename'], 'required'],
             [['download_id', 'language_id', 'created_at', 'updated_at'], 'default', 'value' => null],
             [['download_id', 'language_id', 'created_at', 'updated_at'], 'integer'],
             [['description'], 'string'],

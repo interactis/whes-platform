@@ -38,6 +38,9 @@ $translationModel = new DownloadTranslation();
 						'isWysiwyg' => true
 					]); ?>
 					
+					<?= $form->field($model, 'order')->textInput()
+    					->hint(Yii::t('app', 'If necessary, use a number to sort the documents among themselves.')) ?>
+					
 					<?= $form->field($model, 'hidden')->checkbox() ?>
 				
 				</div>

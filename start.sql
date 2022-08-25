@@ -1,15 +1,6 @@
 /* SQLEditor (Postgres)*/
 
 
-CREATE TABLE code_series
-(
-id SERIAL,
-code_count INTEGER,
-created_at INTEGER,
-updated_at INTEGER,
-CONSTRAINT code_series_pkey PRIMARY KEY (id)
-);
-
 CREATE TABLE article
 (
 id SERIAL,
@@ -18,6 +9,15 @@ content_id INTEGER,
 created_at INTEGER,
 updated_at INTEGER,
 CONSTRAINT article_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE code_series
+(
+id SERIAL,
+code_count INTEGER,
+created_at INTEGER,
+updated_at INTEGER,
+CONSTRAINT code_series_pkey PRIMARY KEY (id)
 );
 
 CREATE TABLE child_content
@@ -49,6 +49,7 @@ CREATE TABLE download
 (
 id SERIAL,
 content_id INTEGER,
+"order" SMALLINT,
 hidden BOOLEAN DEFAULT false,
 created_at INTEGER,
 updated_at INTEGER,

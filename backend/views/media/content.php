@@ -10,8 +10,12 @@ $this->params['breadcrumbs'][] = ['label' => $contentModel->title, 'url' => [$ty
 $this->params['breadcrumbs'][] = $this->title;
 
 $showSupplier = true;
+$showDownloads = false;
 if ($type == 'article')
+{
 	$showSupplier = false;
+	$showDownloads = true;
+}
 ?>
 
 <div class="media-index">
@@ -21,7 +25,8 @@ if ($type == 'article')
     <?= Yii::$app->controller->renderPartial('//common/_contentNavPills', [
     	'model' => $content,
     	'active' => 2,
-    	'showSupplier' => $showSupplier
+    	'showSupplier' => $showSupplier,
+    	'showDownloads' => $showDownloads
     ]) ?>
 
     <div class="row">

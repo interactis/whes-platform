@@ -1,24 +1,29 @@
 <?php
-
 use yii\helpers\Html;
 use yii\grid\GridView;
 
-/* @var $this yii\web\View */
-/* @var $searchModel backend\models\DownloadSearch */
-/* @var $dataProvider yii\data\ActiveDataProvider */
+$type = $content->types[$content->type];
+$contentModel = $content->{$type};
 
 $this->title = Yii::t('app', 'Downloads');
+$this->params['breadcrumbs'][] = ['label' => $contentModel->pluralName(), 'url' => [$type .'/index']];
+$this->params['breadcrumbs'][] = ['label' => $contentModel->title, 'url' => [$type .'/update', 'id' => $contentModel->id]];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+
 <div class="download-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
+    <h1><?= $contentModel->title ?></h1>
+    
+    <?= $this->render('/common/_contentNavPills', [
+    	'model' => $content,
+    	'active' => 4,
+    	'showDownloads' => true
+    ]) ?>
+	
     <p>
         <?= Html::a(Yii::t('app', 'Create Download'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,

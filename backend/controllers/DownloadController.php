@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use Yii;
 use common\models\Download;
+use common\models\Content;
 use backend\models\DownloadSearch;
 use backend\components\HelperController;
 use yii\web\NotFoundHttpException;
@@ -15,6 +16,8 @@ use yii\filters\VerbFilter;
  */
 class DownloadController extends HelperController
 {
+	private $_content;
+	
     /**
      * {@inheritdoc}
      */
@@ -59,14 +62,16 @@ class DownloadController extends HelperController
      * Lists all Download models.
      * @return mixed
      */
-    public function actionIndex()
+    public function actionIndex($id)
     {
+    	$content = $this->_findContent($id);
         $searchModel = new DownloadSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'content' => $content
         ]);
     }
 
@@ -134,7 +139,23 @@ class DownloadController extends HelperController
 
         return $this->redirect(['index']);
     }
-
+	
+	private function _findContent($id)
+    {
+    	if (empty($this->_content))
+    	{
+    		if (($model = Content::findOne($id)) !== null)
+    		{
+    			$this->_content = $model;
+				return $model;
+			}
+			
+			throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
+    	}
+        else
+			return $this->_content;
+    }
+	
     /**
      * Finds the Download model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

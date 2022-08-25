@@ -4,6 +4,9 @@ use yii\helpers\Html;
 if (!isset($showSupplier))
 	$showSupplier = false;
 
+if (!isset($showDownloads))
+	$showDownloads = false;
+
 $js = "
 	var formChanges = false;
 	$('input, textarea, select').change(function() {
@@ -30,5 +33,9 @@ $contentModel = $model->{$type};
 	
 	<?php if ($showSupplier): ?>
 		<li class="nav-tab <?= ($active == 3) ? 'active' : ''; ?>"><?= Html::a('<span class="glyphicon glyphicon-log-in"></span> '. Yii::t('app', 'Supplier'), Yii::$app->urlManager->createUrl(['supplier/create', 'id' => $model->id])) ?></li>
+	<?php endif; ?>
+	
+	<?php if ($showDownloads): ?>
+		<li class="nav-tab <?= ($active == 4) ? 'active' : ''; ?>"><?= Html::a('<span class="glyphicon glyphicon-download"></span> '. Yii::t('app', 'Downloads'), Yii::$app->urlManager->createUrl(['download/index', 'id' => $model->id])) ?></li>
 	<?php endif; ?>
 </ul>

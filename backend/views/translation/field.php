@@ -2,6 +2,7 @@
 use yii\helpers\Html;
 use common\models\Language;
 use dosamigos\ckeditor\CKEditor;
+use kartik\file\FileInput;
 
 $js = "
 	$('.switch-tabs-en').click(function(e){
@@ -48,7 +49,7 @@ foreach (Language::getLanguages() as $langCode => $langId)
 	$tabContentClass = "";
 	$formField = null;
 	$value = '';
-	$playHtml = "";
+	$fileHtml = "";
 	
 	// if de = default = first tab
 	if ($langCode == 'de')
@@ -77,12 +78,19 @@ foreach (Language::getLanguages() as $langCode => $langId)
 			if ($multiForm)
 				$formField = $form->field($translation, "[{$multiFormId}][{$translation->language_id}]{$field}");
 			
-			// add player html if file input
+			
+			// add file html if file input
 			if (isset($isFileInput) && $isFileInput === true)
 			{
-				if ($translation->file_name != "")
-					$playHtml = "<div class='player-preview'>". Html::a('<span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span> Play', ['play', 'file' => $translation->file_name], ['class' => 'btn btn-primary btn-lg', 'target' => '_blank']) ."</div>";
+				if ($translation->filename != "")
+				{
+					$link = Yii::$app->params['frontendUrl'] .'file/'. strtolower($model->tableName()) .'/'. $langCode .'/'. $translation->filename;
+					
+					$fileHtml = "<div>". Html::a('<span class="glyphicon glyphicon-file" aria-hidden="true"></span> '. $translation->filename, $link, ['target' => '_blank']) ."</div>";
+					$fileHtml .= '<div class="help-block"></div>';
+				}
 			}
+			
 			break;
 		}
 	}
@@ -130,14 +138,24 @@ foreach (Language::getLanguages() as $langCode => $langId)
 	}
 		
 	if (isset($isFileInput) && $isFileInput === true)
-		$formField = $formField->fileInput();
+	{
+		$formField = $formField->widget(FileInput::classname(), [
+			'options' => ['accept' => 'pdf'],
+			'pluginOptions' => [
+				'showPreview' => false,
+				'showCaption' => true,
+				'showRemove' => true,
+				'showUpload' => false
+			]
+		]);
+	}
     
     $formField->label(false);
     
     if (isset($hint))
     	$formField->hint($hint);
     	
-    $tabContent .= '<div id="'. $tabContentId .'" class="tab-pane fade '. $tabContentClass .' '. $langCode .'">'. $playHtml . $formField .'</div>';
+    $tabContent .= '<div id="'. $tabContentId .'" class="tab-pane fade '. $tabContentClass .' '. $langCode .'">'. $formField . $fileHtml .'</div>';
 }
 ?>
 
@@ -146,16 +164,6 @@ if (!isset($hideLabel))
 	echo Html::label($translationModel->getAttributeLabel($field));
 ?>
 
-<?php
-$navTabsClass = "";
-if (isset($isFileInput) && $isFileInput === true)
-{
-	// hide tabs if language neutral file
-	if ($model->language_neutral)
-		$navTabsClass = 'hidden';			
-}
-?>
-
-<ul class="nav nav-tabs <?= $navTabsClass ?>"><?= $tabs ?></ul>
+<ul class="nav nav-tabs"><?= $tabs ?></ul>
 <div class="help-block"></div>
 <div class="tab-content"><?= $tabContent ?></div>

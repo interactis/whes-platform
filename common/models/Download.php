@@ -21,9 +21,9 @@ use common\models\helpers\TranslationModel;
  */
 class Download extends TranslationModel
 {
-	//public $translationFields = ['title', 'description', 'filename', 'file'];
-	public $translationFields = ['title', 'description'];
+	public $translationFields = ['title', 'description', 'file'];
 	public $requiredTranslationFields = ['title'];
+	public $file_field = 'file';
 	
     /**
      * {@inheritdoc}

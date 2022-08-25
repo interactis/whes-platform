@@ -20,7 +20,21 @@ $translationModel = new DownloadTranslation();
 					<h3>Download</h3>
 				</div>
 				<div class="panel-body">
-
+					
+					<label>File Upload</label>
+					
+					<?= Yii::$app->controller->renderPartial('//translation/field', [
+						'model' => $model,
+						'form' => $form,
+						'field' => 'file',
+						'translations' => $translations,
+						'translationModel' => $translationModel,
+						'isFileInput' => true,
+						'hideLabel' => true
+					]); ?>
+					
+					<hr />
+					
 					<?= $this->render('/translation/field', [
 						'model' => $model,
 						'form' => $form,

@@ -221,75 +221,53 @@ class TranslationModel extends \yii\db\ActiveRecord
         foreach ($postFields as $languageId => $content)
         {
             $field = $this->getTranslatedField($languageId);
-              
-        	if (!$this->_translationIsEmpty($content))
-        	{
-        		// create new field if it doesn't exist.
-            	if (!$field)
-            	{
-            	    $className = $this->getTranslationTableName();
-            	    $field = new $className;
-            	    $field->language_id = $languageId;
-            	    $joinField = $this->getJoinField();
-            	    $field->$joinField = $this->id;
-            	}
-            	
-            	// update with values from the POST
-            	foreach ($this->translationFields as $translationFieldName)
-            	{
-            		$field->$translationFieldName = $content[$translationFieldName];
-            		
-            		if (in_array($translationFieldName, $this->hyphenFields))
-            		{
-            			$field->$translationFieldName = str_replace('|', '&shy;', $content[$translationFieldName]);
-            		}
-            		else
-            		{
-            			$field->$translationFieldName = $content[$translationFieldName];
-            		}
-            	}
-            	
-				// save media files
-            	if (isset($this->file_field) && !empty($this->file_field))
-            	{   
-					$instance = "[". $languageId ."]". $this->file_field;
-					$media = $this->saveFile($field, $instance, $languageId);
-					$field->file_name = $media['fileName'];
-				}
+            
+			// create new field if it doesn't exist.
+			if (!$field)
+			{
+				$className = $this->getTranslationTableName();
+				$field = new $className;
+				$field->language_id = $languageId;
+				$joinField = $this->getJoinField();
+				$field->$joinField = $this->id;
+			}
+        	
+			// update with values from the POST
+			foreach ($this->translationFields as $translationFieldName)
+			{
+				$field->$translationFieldName = $content[$translationFieldName];
 				
-            	// break out of the loop if data is invalid; raise the error appropriately.
-            	if ($field->validate())
+				if (in_array($translationFieldName, $this->hyphenFields))
 				{
-					if ($save)
-						$field->save();
+					$field->$translationFieldName = str_replace('|', '&shy;', $content[$translationFieldName]);
 				}
 				else
 				{
-					$this->addErrors($field->errors);
-					return false;
+					$field->$translationFieldName = $content[$translationFieldName];
 				}
+			}
+			
+			// save media files
+			if ($save && isset($this->file_field) && !empty($this->file_field))
+			{   
+				$instance = "[". $languageId ."]". $this->file_field;
+				$media = $this->saveFile($field, $instance, $languageId);
+				$field->filename = $media['fileName'];
+			}
+			
+			// break out of the loop if data is invalid; raise the error appropriately.
+			if ($field->validate())
+			{
+				if ($save)
+					$field->save();
 			}
 			else
 			{
-				// delete existing translation fields if translation is empty
-				if ($field && $save)
-            	{
-            		$field->delete();
-				}
+				$this->addErrors($field->errors);
+				return false;
 			}
         }
         return true;
-    }
-    
-    private function _translationIsEmpty($content)
-    {
-    	$isEmpty = true;
-    	foreach ($this->translationFields as $translationFieldName)
-    	{
-        	if (!empty($content[$translationFieldName]))
-        		$isEmpty = false;
-        }
-        return $isEmpty;
     }
     
     public function saveFile($field, $instance, $languageId)
@@ -304,9 +282,9 @@ class TranslationModel extends \yii\db\ActiveRecord
     			$lang = Yii::$app->params['supportedLanguages'][$languageId-1];
     			
     			// delete old file
-    			if (!empty($field->file_name))
+    			if (!empty($field->filename))
     			{
-    				$oldPath = Yii::getAlias('@frontend/web/file/'. strtolower($this->tableName()) .'/'. $lang .'/'. $field->file_name);
+    				$oldPath = Yii::getAlias('@frontend/web/file/'. strtolower($this->tableName()) .'/'. $lang .'/'. $field->filename);
     				if (file_exists($oldPath))
     					unlink($oldPath);
     			}
@@ -320,7 +298,7 @@ class TranslationModel extends \yii\db\ActiveRecord
 			}
 			else
 			{
-				$fileName = $field->file_name;
+				$fileName = $field->filename;
 			}
 		}
 		else

@@ -2,13 +2,16 @@
 
 use yii\helpers\Html;
 
-/* @var $this yii\web\View */
-/* @var $model common\models\Download */
+$type = $content->types[$content->type];
+$contentModel = $content->{$type};
 
 $this->title = Yii::t('app', 'Create Download');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Downloads'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => $contentModel->pluralName(), 'url' => [$type .'/index']];
+$this->params['breadcrumbs'][] = ['label' => $contentModel->title, 'url' => [$type .'/update', 'id' => $contentModel->id]];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Downloads'), 'url' => ['index', 'id' => $content->id]];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+
 <div class="download-create">
 
     <h1><?= Html::encode($this->title) ?></h1>

@@ -154,12 +154,9 @@ class DownloadController extends HelperController
     public function actionDelete($id)
     {
         $model = $this->findModel($id);
-        
-        // remove document
-        
+        $model->removeFiles();
         $model->delete();
-
-        return $this->redirect(['index']);
+        return $this->redirect(['index', 'id' => $model->content_id]);
     }
 	
 	private function _findContent($id)

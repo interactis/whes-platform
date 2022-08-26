@@ -70,7 +70,20 @@ class Download extends TranslationModel
             'updated_at' => Yii::t('app', 'Updated At'),
         ];
     }
-
+    
+    public function removeFiles()
+    {
+    	foreach($this->downloadTranslations as $translation)
+    	{
+    		if (!empty($translation->filename))
+    		{
+    			$path = Yii::getAlias('@frontend/web/file/download/'. $translation->language->code .'/'. $translation->filename);
+    			if (file_exists($path))
+					unlink($path);
+    		}
+    	}	
+    }
+    
     /**
      * Gets query for [[Content]].
      *

@@ -296,6 +296,15 @@ class Content extends \yii\db\ActiveRecord
         return $this->hasOne(Supplier::className(), ['content_id' => 'id']);
     }
     
+    public function getDownloads()
+    {
+    
+    
+    	 return $this->hasMany(Download::className(), ['content_id' => 'id'])->where([
+    	 	'hidden' => false
+    	 ]);
+    }
+    
     public function getTypes()
     {
     	return [
@@ -378,10 +387,22 @@ class Content extends \yii\db\ActiveRecord
 			->leftJoin('event_translation', 'event_translation.event_id = event.id');
     	
     	$query->andFilterWhere(['or',
-			['article_translation.language_id' => \Yii::$app->params['preferredLanguageId']],
-			['poi_translation.language_id' => \Yii::$app->params['preferredLanguageId']],
-			['route_translation.language_id' => \Yii::$app->params['preferredLanguageId']],
-			['event_translation.language_id' => \Yii::$app->params['preferredLanguageId']],
+			['and',
+				['article_translation.language_id' => \Yii::$app->params['preferredLanguageId']],
+				['>', 'LENGTH(article_translation.title)', 0]
+			],
+			['and',
+				['poi_translation.language_id' => \Yii::$app->params['preferredLanguageId']],
+				['>', 'LENGTH(poi_translation.title)', 0]
+			],
+			['and',
+				['route_translation.language_id' => \Yii::$app->params['preferredLanguageId']],
+				['>', 'LENGTH(route_translation.title)', 0]
+			],
+			['and',
+				['event_translation.language_id' => \Yii::$app->params['preferredLanguageId']],
+				['>', 'LENGTH(event_translation.title)', 0]
+			]
 		]);
     	
     	if ($includeHeritage)

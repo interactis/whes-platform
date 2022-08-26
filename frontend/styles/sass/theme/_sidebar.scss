@@ -1,0 +1,10 @@
+.sidebar-wrapper {
+	display: flex;
+	flex-direction: column;
+  
+	@include media-breakpoint-down(md) {
+		.map-container {
+			order: 2;
+		}
+	}
+}

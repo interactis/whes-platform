@@ -6,6 +6,7 @@
 		padding-top: 20px;
 		padding-bottom: 20px;
 		text-align: center;
+		
 		.h4 {
 			color: white;
 		}
@@ -22,6 +23,10 @@
 		border: none;
 		background: $gray-lighter;
 		padding: 0;
+		
+		.h4 {
+			hyphens: auto;
+		}
 		
 		.list-unstyled {
 			margin: 0;

@@ -11343,6 +11343,10 @@ body {
     border: none;
     background: #F2F2F2;
     padding: 0; }
+    .card .card-body .h4 {
+      -webkit-hyphens: auto;
+          -ms-hyphens: auto;
+              hyphens: auto; }
     .card .card-body .list-unstyled {
       margin: 0; }
       .card .card-body .list-unstyled li {
@@ -11484,6 +11488,20 @@ body {
       overflow-y: scroll;
       scrollbar-width: thin;
       -webkit-overflow-scrolling: touch; } }
+
+.sidebar-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column; }
+  @media (max-width: 991.98px) {
+    .sidebar-wrapper .map-container {
+      -webkit-box-ordinal-group: 3;
+          -ms-flex-order: 2;
+              order: 2; } }
 
 .breadcrumb {
   padding: 0;

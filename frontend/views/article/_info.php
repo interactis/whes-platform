@@ -26,14 +26,20 @@
 				</div>
 		   </div>
 		   <div class="col-lg-4 offset-lg-1">
-				<?= $this->render('/common/_heritageMap', [
-					'type' => 'heritage',
-					'model' => $content->heritage
-				]) ?>
 				
-				<?= $this->render('_downloads', [
-					'models' => $content->downloads
-				]) ?>
+				<div class="sidebar-wrapper">
+					<div class="map-container">
+						<?= $this->render('/common/_heritageMap', [
+							'type' => 'heritage',
+							'model' => $content->heritage
+						]) ?>
+					</div>
+					<div class="downloads-container">
+						<?= $this->render('_downloads', [
+							'models' => $content->downloads
+						]) ?>
+					</div>
+				</div>
 			</div>
 		</div>
 	 </div>

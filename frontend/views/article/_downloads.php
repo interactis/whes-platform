@@ -6,29 +6,25 @@ if ($count > 1)
 	$title = Yii::t('app', 'Downloads');
 
 if ($count > 0): ?>
-	<div class="card margin-bottom-md">
+	<div class="card max-height margin-bottom-lg">
 		<div class="card-header dark">
 			<div class="h4"><?= $title ?></div>
 		</div>
 		<div class="card-body">
 			<ul class="list-unstyled">
-				<?php foreach($models as $model): ?>
+				<?php foreach($models as $model):
+					$url = Yii::$app->params['frontendUrl'] .'file/download/'. $model->language->code .'/'. $model->filename
+					?>
 					<li>
-				
-						
-					
-						
-						
-						<div class="h4">
-							<a href="#">
+						<a class="btn btn-primary btn-sm pull-right" target="_blank" href="<?= $url ?>">
+							<i class="fa fa-download"></i>&nbsp;<?= Yii::t('app', 'Download') ?>
+						</a>
+						<div class="h4 margin-bottom">
+							<a target="_blank" href="<?= $url ?>">
 								<?= $model->title ?>
 							</a>
 						</div>
-						<p class="margin-bottom-md"><?= $model->description ?></p>
-						
-						<a class="btn btn-primary btn-sm" href="#">
-							<i class="fa fa-download"></i>&nbsp;<?= Yii::t('app', 'Download') ?>
-						</a>
+						<p><?= $model->description ?></p>
 					</li>
 				<?php endforeach; ?>
 			</ul>

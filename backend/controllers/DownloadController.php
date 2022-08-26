@@ -66,6 +66,7 @@ class DownloadController extends HelperController
     {
     	$content = $this->_findContent($id);
         $searchModel = new DownloadSearch();
+        $searchModel->content_id = $id;
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [

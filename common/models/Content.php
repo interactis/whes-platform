@@ -298,11 +298,16 @@ class Content extends \yii\db\ActiveRecord
     
     public function getDownloads()
     {
-    
-    
-    	 return $this->hasMany(Download::className(), ['content_id' => 'id'])->where([
-    	 	'hidden' => false
-    	 ]);
+    	return Download::find()
+    		->joinWith('downloadTranslations')
+    		->where(['content_id' => $this->id, 'hidden' => false])
+    		->andFilterWhere(['and',
+				['download_translation.language_id' => \Yii::$app->params['preferredLanguageId']],
+				['>', 'LENGTH(download_translation.title)', 0],
+				['>', 'LENGTH(download_translation.filename)', 0]
+			])
+    		->orderBy(['order' => SORT_ASC, 'download_translation.title' => SORT_ASC])
+    		->all();
     }
     
     public function getTypes()

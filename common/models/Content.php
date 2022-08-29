@@ -296,6 +296,19 @@ class Content extends \yii\db\ActiveRecord
         return $this->hasOne(Supplier::className(), ['content_id' => 'id']);
     }
     
+    public function getAudio()
+    {
+    	return Audio::find()
+    		->joinWith('audioTranslations')
+    		->where(['content_id' => $this->id, 'hidden' => false])
+    		->andFilterWhere(['and',
+				['audio_translation.language_id' => \Yii::$app->params['preferredLanguageId']],
+				['>', 'LENGTH(audio_translation.filename)', 0]
+			])
+    		->orderBy(['order' => SORT_ASC, 'audio_translation.title' => SORT_ASC])
+    		->all();
+    }
+    
     public function getDownloads()
     {
     	return Download::find()

@@ -16,6 +16,8 @@
 						<?= $model->description ?>
 					</div>
 					
+					<?= $this->render('/common/_audio', ['model' => $content]) ?>
+					
 					<?= $this->render('/common/_youtube', ['model' => $model]) ?>
 					
 					<?= $this->render('/common/_vimeo', ['model' => $model]) ?>

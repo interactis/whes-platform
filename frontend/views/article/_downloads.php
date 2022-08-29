@@ -13,7 +13,7 @@ if ($count > 0): ?>
 		<div class="card-body">
 			<ul class="list-unstyled">
 				<?php foreach($models as $model):
-					$url = Yii::$app->params['frontendUrl'] .'file/download/'. $model->language->code .'/'. $model->filename
+					$url = $model->fileUrl
 					?>
 					<li>
 						<a class="btn btn-primary btn-sm pull-right" target="_blank" href="<?= $url ?>">

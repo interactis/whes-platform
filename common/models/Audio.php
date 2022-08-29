@@ -84,6 +84,11 @@ class Audio extends TranslationModel
     	}	
     }
     
+    public function getFileUrl()
+    {
+    	return Yii::$app->params['frontendUrl'] .'file/audio/'. $this->language->code .'/'. $this->filename;	
+    }
+    
     /**
      * Gets query for [[Content]].
      *

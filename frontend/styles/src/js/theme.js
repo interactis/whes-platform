@@ -129,3 +129,12 @@ $(document).on("click", '.smooth-scroll', function(e) {
 	e.preventDefault();
 	smoothScrollTo($(this).attr('href'));
 });
+
+$('.audio').on('play', function() { 
+	let current = this;
+	$('.audio').each(function() {
+		if (this != current) {
+			this.pause();
+		}
+	});
+});

@@ -52,7 +52,7 @@ class AudioTranslation extends \yii\db\ActiveRecord
             [['audio_id', 'language_id', 'created_at', 'updated_at'], 'integer'],
             [['description'], 'string'],
             [['title', 'filename'], 'string', 'max' => 255],
-            [['description'], 'string', 'max' => 180],
+            [['description'], 'string', 'max' => 300],
             [['audio_id'], 'exist', 'skipOnError' => true, 'targetClass' => Audio::className(), 'targetAttribute' => ['audio_id' => 'id']],
             [['language_id'], 'exist', 'skipOnError' => true, 'targetClass' => Language::className(), 'targetAttribute' => ['language_id' => 'id']],
         	['file', 'file', 'extensions' => 'mp3'],

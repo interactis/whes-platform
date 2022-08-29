@@ -30,7 +30,8 @@ $translationModel = new AudioTranslation();
 						'translations' => $translations,
 						'translationModel' => $translationModel,
 						'isFileInput' => true,
-						'hideLabel' => true
+						'fileType' => 'mp3',
+						'hideLabel' => true,
 					]); ?>
 					
 					<hr />

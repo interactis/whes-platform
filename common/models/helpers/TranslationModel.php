@@ -129,7 +129,7 @@ class TranslationModel extends \yii\db\ActiveRecord
         
         // validate file input
         /*
-        if (isset($this->file_field) && !empty($this->file_field))
+        if (isset($this->fileField) && !empty($this->fileField))
         {
         	foreach ($this->availableLanguages as $languageId)
         	{
@@ -187,15 +187,15 @@ class TranslationModel extends \yii\db\ActiveRecord
     
     private function _validateFileInput($languageId)
     {
-		if (isset($this->file_field) && !empty($this->file_field))
+		if (isset($this->fileField) && !empty($this->fileField))
 		{   
-			$instance = "[". $languageId ."]". $this->file_field;
+			$instance = "[". $languageId ."]". $this->fileField;
 			$field = $this->getTranslatedField($languageId);			
 			$file = UploadedFile::getInstance($field, $instance);
     		
 			if (!empty($file))
 			{
-				$this->_setAvailableLanguages($languageId, $this->file_field);
+				$this->_setAvailableLanguages($languageId, $this->fileField);
 			}
 		}
     }
@@ -248,9 +248,9 @@ class TranslationModel extends \yii\db\ActiveRecord
 			}
 			
 			// save media files
-			if ($save && isset($this->file_field) && !empty($this->file_field))
+			if ($save && isset($this->fileField) && !empty($this->fileField))
 			{   
-				$instance = "[". $languageId ."]". $this->file_field;
+				$instance = "[". $languageId ."]". $this->fileField;
 				$media = $this->saveFile($field, $instance, $languageId);
 				$field->filename = $media['fileName'];
 			}

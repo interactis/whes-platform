@@ -86,7 +86,11 @@ foreach (Language::getLanguages() as $langCode => $langId)
 				{
 					$link = Yii::$app->params['frontendUrl'] .'file/'. strtolower($model->tableName()) .'/'. $langCode .'/'. $translation->filename;
 					
-					$fileHtml = "<div>". Html::a('<span class="glyphicon glyphicon-file" aria-hidden="true"></span> '. $translation->filename, $link, ['target' => '_blank']) ."</div>";
+					$icon = '<span class="glyphicon glyphicon-file" aria-hidden="true"></span>';
+					if ($fileType == 'mp3')
+						$icon = '<span class="glyphicon glyphicon-headphones" aria-hidden="true"></span>';
+					
+					$fileHtml = "<div>". Html::a($icon .' '. $translation->filename, $link, ['target' => '_blank']) ."</div>";
 					$fileHtml .= '<div class="help-block"></div>';
 				}
 			}
@@ -140,7 +144,7 @@ foreach (Language::getLanguages() as $langCode => $langId)
 	if (isset($isFileInput) && $isFileInput === true)
 	{
 		$formField = $formField->widget(FileInput::classname(), [
-			'options' => ['accept' => 'pdf'],
+			'options' => ['accept' => $fileType],
 			'pluginOptions' => [
 				'showPreview' => false,
 				'showCaption' => true,

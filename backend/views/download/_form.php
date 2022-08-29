@@ -30,6 +30,7 @@ $translationModel = new DownloadTranslation();
 						'translations' => $translations,
 						'translationModel' => $translationModel,
 						'isFileInput' => true,
+						'fileType' => 'pdf',
 						'hideLabel' => true
 					]); ?>
 					

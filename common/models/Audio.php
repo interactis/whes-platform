@@ -23,7 +23,7 @@ class Audio extends TranslationModel
 {
 	public $translationFields = ['title', 'description', 'file'];
 	public $requiredTranslationFields = ['title'];
-	public $file_field = 'file';
+	public $fileField = 'file';
 	
     /**
      * {@inheritdoc}

@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
 	    
     <?= $this->render('/common/_contentNavPills', [
     	'model' => $model->content,
-    	'active' => 1,
+    	'active' => 'info',
     	'showSupplier' => true
     ]) ?>
 

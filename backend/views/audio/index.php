@@ -5,24 +5,33 @@ use yii\grid\GridView;
 $type = $content->types[$content->type];
 $contentModel = $content->{$type};
 
-$this->title = Yii::t('app', 'Downloads');
+$this->title = Yii::t('app', 'Audio');
 $this->params['breadcrumbs'][] = ['label' => $contentModel->pluralName(), 'url' => [$type .'/index']];
 $this->params['breadcrumbs'][] = ['label' => $contentModel->title, 'url' => [$type .'/update', 'id' => $contentModel->id]];
 $this->params['breadcrumbs'][] = $this->title;
+
+$showSupplier = true;
+$showDownloads = false;
+if ($type == 'article')
+{
+	$showSupplier = false;
+	$showDownloads = true;
+}
 ?>
 
-<div class="download-index">
+<div class="audio-index">
 
     <h1><?= $contentModel->title ?></h1>
     
     <?= $this->render('/common/_contentNavPills', [
     	'model' => $content,
-    	'active' => 'download',
-    	'showDownloads' => true
+    	'active' => 'audio',
+    	'showSupplier' => $showSupplier,
+    	'showDownloads' => $showDownloads
     ]) ?>
 	
     <p>
-        <?= Html::a(Yii::t('app', 'Create Download'), ['create', 'id' => $content->id], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('app', 'Create Audio'), ['create', 'id' => $content->id], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([

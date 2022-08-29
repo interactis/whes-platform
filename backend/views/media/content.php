@@ -24,7 +24,7 @@ if ($type == 'article')
     
     <?= Yii::$app->controller->renderPartial('//common/_contentNavPills', [
     	'model' => $content,
-    	'active' => 2,
+    	'active' => 'img',
     	'showSupplier' => $showSupplier,
     	'showDownloads' => $showDownloads
     ]) ?>

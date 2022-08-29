@@ -11069,6 +11069,14 @@ body {
       .navbar .search-dropdown-menu {
         margin-bottom: 24px; } }
 
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  height: 90%;
+  background-image: url("/img/layout/chevron-l.svg"); }
+
+.carousel-control-next-icon {
+  background-image: url("/img/layout/chevron-r.svg"); }
+
 .jumbotron {
   position: relative;
   padding: 0;
@@ -11095,12 +11103,7 @@ body {
       .jumbotron .carousel-inner .carousel-control-prev .carousel-control-next-icon,
       .jumbotron .carousel-inner .carousel-control-next .carousel-control-prev-icon,
       .jumbotron .carousel-inner .carousel-control-next .carousel-control-next-icon {
-        height: 90%;
-        margin-bottom: 300px;
-        background-image: url("/img/layout/chevron-l.svg"); }
-      .jumbotron .carousel-inner .carousel-control-prev .carousel-control-next-icon,
-      .jumbotron .carousel-inner .carousel-control-next .carousel-control-next-icon {
-        background-image: url("/img/layout/chevron-r.svg"); }
+        margin-bottom: 300px; }
     .jumbotron .carousel-inner::after {
       content: "";
       position: absolute;
@@ -11108,6 +11111,9 @@ body {
       height: 320px;
       width: 100%;
       background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0.7) 100%); }
+    .jumbotron .carousel-inner .carousel-item:hover {
+      cursor: -webkit-zoom-in;
+      cursor: zoom-in; }
     .jumbotron .carousel-inner .carousel-caption {
       text-align: left;
       bottom: 60px;
@@ -11593,6 +11599,66 @@ body {
 .custom-select {
   font-size: 1rem; }
 
+.modal-backdrop {
+  background-color: #000;
+  opacity: 0.8 !important; }
+
+.modal {
+  /*
+	&.image-modal {
+		.modal-body {
+			.img-container {
+				
+			}
+		
+		}
+		
+		.modal-dialog {
+			width: 60%;
+			max-width: 1600px;
+			height: 100%;
+			max-height: 1600px;
+			margin: 0 auto;
+			padding: 0;
+		}
+	
+		.modal-content {
+			position: relative;
+			height: 100%;
+			border: 0;
+			border-radius: 0;
+			
+			
+			
+			.carousel-item {
+				position: relative;
+				background: red;
+				height: 100%;
+			
+			}
+			.caption {
+				position: absolute;
+				bottom: 0;
+			}
+		}
+		
+		
+		
+	}
+	*/ }
+  .modal .modal-header,
+  .modal .modal-body,
+  .modal .modal-footer {
+    padding: 18px !important; }
+    @media (min-width: 992px) {
+      .modal .modal-header,
+      .modal .modal-body,
+      .modal .modal-footer {
+        padding: 24px; } }
+
+.audio {
+  width: 100%; }
+
 .map-view,
 .map-full {
   position: fixed;
@@ -11765,6 +11831,3 @@ body {
             transform: scale(0.33); }
   80%, 100% {
     opacity: 0; } }
-
-.audio {
-  width: 100%; }

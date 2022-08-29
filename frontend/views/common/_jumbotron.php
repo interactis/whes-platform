@@ -18,7 +18,7 @@ if (!isset($showCaption))
 		foreach($models as $i => $model):
 			$imgUrl = $model->getImageUrl(1600);
 			?>
-			<div class="carousel-item <?=  ($i == 0) ? 'active' : ''; ?>">
+			<div class="carousel-item <?=  ($i == 0) ? 'active' : ''; ?>" data-toggle="modal" data-target="#imageModal">
 				<img class="hidden" src="<?= $imgUrl ?>" alt="<?= $model->title ?>"> <?php // preload images ?>
 				<div class="img-bg" style="background-image: url('<?= $imgUrl ?>');"></div>
 				
@@ -75,3 +75,5 @@ if (!isset($showCaption))
 		'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
 	]) ?>
 </div>
+
+<?= $this->render('_imageModal', ['models' => $models]) ?>

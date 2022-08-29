@@ -1,0 +1,68 @@
+.modal-backdrop {
+	background-color: $black;
+	opacity: 0.8 !important;
+}
+
+.modal {
+	
+	
+	
+	.modal-header,
+	.modal-body,
+	.modal-footer {
+		padding: 18px !important;
+		
+		@include media-breakpoint-up(lg) {
+			padding: 24px;
+		}
+	}
+	
+	
+	
+	/*
+	&.image-modal {
+		.modal-body {
+			.img-container {
+				
+			}
+		
+		}
+		
+		.modal-dialog {
+			width: 60%;
+			max-width: 1600px;
+			height: 100%;
+			max-height: 1600px;
+			margin: 0 auto;
+			padding: 0;
+		}
+	
+		.modal-content {
+			position: relative;
+			height: 100%;
+			border: 0;
+			border-radius: 0;
+			
+			
+			
+			.carousel-item {
+				position: relative;
+				background: red;
+				height: 100%;
+			
+			}
+			.caption {
+				position: absolute;
+				bottom: 0;
+			}
+		}
+		
+		
+		
+	}
+	*/
+	
+	
+	
+}
+

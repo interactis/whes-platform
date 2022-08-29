@@ -1,3 +1,12 @@
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+	height: 90%;
+	background-image: url('/img/layout/chevron-l.svg');
+}
+.carousel-control-next-icon {
+	background-image: url('/img/layout/chevron-r.svg');
+}
+
 .jumbotron {
 	position: relative;
 	padding:0;
@@ -28,12 +37,7 @@
 						
   			.carousel-control-prev-icon,
 			.carousel-control-next-icon {
-				height: 90%;
 				margin-bottom: 300px;
-				background-image: url('/img/layout/chevron-l.svg');
-			}
-			.carousel-control-next-icon {
-				background-image: url('/img/layout/chevron-r.svg');
 			}
 		}
 		
@@ -44,6 +48,12 @@
 			height: 320px;
 			width: 100%;
 			background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0.7) 100%);
+		}
+		
+		.carousel-item {
+			&:hover {
+				cursor: zoom-in;
+			}
 		}
 		
 		.carousel-caption {

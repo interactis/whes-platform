@@ -11069,19 +11069,32 @@ body {
       .navbar .search-dropdown-menu {
         margin-bottom: 24px; } }
 
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
+.carousel .carousel-control-prev,
+.carousel .carousel-control-next {
+  position: absolute !important;
+  display: inline-block;
+  opacity: 1; }
+
+.carousel .carousel-control-prev-icon,
+.carousel .carousel-control-next-icon {
   height: 90%;
   background-image: url("/img/layout/chevron-l.svg"); }
 
-.carousel-control-next-icon {
+.carousel .carousel-control-next-icon {
   background-image: url("/img/layout/chevron-r.svg"); }
+
+.carousel .carousel.pointer-event {
+  -ms-touch-action: pan-y pinch-zoom;
+      touch-action: pan-y pinch-zoom; }
 
 .jumbotron {
   position: relative;
   padding: 0;
   min-height: 460px;
   margin-bottom: 60px; }
+  .jumbotron:hover {
+    cursor: -webkit-zoom-in;
+    cursor: zoom-in; }
   @media (min-width: 576px) {
     .jumbotron {
       margin-bottom: 90px; } }
@@ -11094,16 +11107,9 @@ body {
   .jumbotron .carousel-inner {
     position: absolute;
     min-height: 460px; }
-    .jumbotron .carousel-inner .carousel-control-prev,
-    .jumbotron .carousel-inner .carousel-control-next {
-      position: absolute !important;
-      display: inline-block;
-      opacity: 1; }
-      .jumbotron .carousel-inner .carousel-control-prev .carousel-control-prev-icon,
-      .jumbotron .carousel-inner .carousel-control-prev .carousel-control-next-icon,
-      .jumbotron .carousel-inner .carousel-control-next .carousel-control-prev-icon,
-      .jumbotron .carousel-inner .carousel-control-next .carousel-control-next-icon {
-        margin-bottom: 300px; }
+    .jumbotron .carousel-inner .carousel-control-prev-icon,
+    .jumbotron .carousel-inner .carousel-control-next-icon {
+      margin-bottom: 300px; }
     .jumbotron .carousel-inner::after {
       content: "";
       position: absolute;
@@ -11111,9 +11117,6 @@ body {
       height: 320px;
       width: 100%;
       background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0.7) 100%); }
-    .jumbotron .carousel-inner .carousel-item:hover {
-      cursor: -webkit-zoom-in;
-      cursor: zoom-in; }
     .jumbotron .carousel-inner .carousel-caption {
       text-align: left;
       bottom: 60px;
@@ -11601,9 +11604,9 @@ body {
 
 .modal-backdrop {
   background-color: #000;
-  opacity: 0.8 !important; }
+  opacity: 0.9 !important; }
 
-.modal {
+.image-modal {
   /*
 	&.image-modal {
 		.modal-body {
@@ -11646,15 +11649,16 @@ body {
 		
 	}
 	*/ }
-  .modal .modal-header,
-  .modal .modal-body,
-  .modal .modal-footer {
-    padding: 18px !important; }
+  .image-modal .modal-body {
+    padding: 8px; }
+    .image-modal .modal-body .caption {
+      padding: 10px 3px 8px; }
     @media (min-width: 992px) {
-      .modal .modal-header,
-      .modal .modal-body,
-      .modal .modal-footer {
-        padding: 24px; } }
+      .image-modal .modal-body {
+        padding: 14px; }
+        .image-modal .modal-body .caption {
+          padding-top: 14px;
+          padding-bottom: 6px; } }
 
 .audio {
   width: 100%; }

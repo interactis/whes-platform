@@ -11,7 +11,7 @@
 							<div class="carousel-item <?=  ($i == 0) ? 'active' : ''; ?>">
 								
 								<div class="img-container">
-									<?= $model->getImageHtml(1600, 'd-block w-100 margin-bottom-sm', $model->title, 'filename', 'ratio') ?>
+									<?= $model->getImageHtml(1600, 'd-block w-100', $model->title, 'filename', 'ratio') ?>
 								</div>
 								
 								<?php if (!empty($model->description)): ?>

@@ -4572,6 +4572,7 @@ $('.audio').on('play', function() {
 	});
 });
 
+/*
 $( ".carousel .carousel-inner" ).swipe({
 	swipeLeft: function ( event, direction, distance, duration, fingerCount ) {
 		this.parent( ).carousel( 'next' );
@@ -4589,4 +4590,11 @@ $( ".carousel .carousel-inner" ).swipe({
 $('.carousel .carousel-inner').on('dragstart', 'a', function () {
 	return false;
 });
+*/
 
+
+$('.jumbotron').click(function(e) {
+	if (!$(e.target).is('.ignore-modal')) {
+		$('#imageModal').modal('show');
+	}
+});

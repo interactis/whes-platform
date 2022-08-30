@@ -18,7 +18,7 @@ if (!isset($showCaption))
 		foreach($models as $i => $model):
 			$imgUrl = $model->getImageUrl(1600);
 			?>
-			<div class="carousel-item <?=  ($i == 0) ? 'active' : ''; ?>" data-toggle="modal" data-target="#imageModal">
+			<div class="carousel-item <?=  ($i == 0) ? 'active' : ''; ?>">
 				<img class="hidden" src="<?= $imgUrl ?>" alt="<?= $model->title ?>"> <?php // preload images ?>
 				<div class="img-bg" style="background-image: url('<?= $imgUrl ?>');"></div>
 				
@@ -40,13 +40,13 @@ if (!isset($showCaption))
 		<?php endforeach; ?>
 		
 		<?php if ($i > 0): ?>
-			<a class="carousel-control-prev img-link" href="#top-carousel" role="button" data-slide="prev">
-				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-				<span class="sr-only">Previous</span>
+			<a class="carousel-control-prev img-link ignore-modal" href="#top-carousel" role="button" data-slide="prev">
+				<span class="carousel-control-prev-icon ignore-modal" aria-hidden="true"></span>
+				<span class="sr-only ignore-modal">Previous</span>
 			</a>
-			<a class="carousel-control-next img-link" href="#top-carousel" role="button" data-slide="next">
-				<span class="carousel-control-next-icon" aria-hidden="true"></span>
-				<span class="sr-only">Next</span>
+			<a class="carousel-control-next img-link ignore-modal" href="#top-carousel" role="button" data-slide="next">
+				<span class="carousel-control-next-icon ignore-modal" aria-hidden="true"></span>
+				<span class="sr-only ignore-modal">Next</span>
 			</a>
 		<?php endif; ?>
 		

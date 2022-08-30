@@ -1,19 +1,26 @@
 .modal-backdrop {
 	background-color: $black;
-	opacity: 0.8 !important;
+	opacity: 0.9 !important;
 }
 
-.modal {
+.image-modal {
 	
 	
 	
-	.modal-header,
-	.modal-body,
-	.modal-footer {
-		padding: 18px !important;
+		
+	.modal-body {
+		padding: 8px;
+		.caption {
+			padding: 10px 3px 8px;
+		}
 		
 		@include media-breakpoint-up(lg) {
-			padding: 24px;
+			padding: 14px;
+			
+			.caption {
+				padding-top: 14px;
+				padding-bottom: 6px;
+			}
 		}
 	}
 	

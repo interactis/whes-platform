@@ -14,8 +14,8 @@ $nav = [
 		'title' => 'Info'
 	],
 	[
-		'slug' => 'sbb',
-		'title' => 'SBB'
+		'slug' => 'directions',
+		'title' => 'Directions'
 	],
 	[
 		'slug' => 'geo',
@@ -116,9 +116,9 @@ if (!$model->isNewRecord && $model->content->published && !$model->content->arch
 				</div>
 			</div>
 			
-			<div id="sbb" class="panel panel-default">
+			<div id="directions" class="panel panel-default">
 				<div class="panel-heading">
-					<h3>SBB</h3>
+					<h3>Directions</h3>
 				</div>
 				<div class="panel-body">
 					<?= $form->field($model, 'arrival_station')
@@ -133,7 +133,42 @@ if (!$model->isNewRecord && $model->content->published && !$model->content->arch
 						'isWysiwyg' => true,
 						'hint' => Yii::t('app', 'Example: «Follow the signs in the direction of ...»')
 					]); ?>
-				
+					
+					<hr />
+					
+					<?= $this->render('/translation/field', [
+						'model' => $model,
+						'form' => $form,
+						'field' => 'ticket_title',
+						'translations' => $translations,
+						'translationModel' => $translationModel
+					]); ?>
+					
+					<?= $this->render('/translation/field', [
+						'model' => $model,
+						'form' => $form,
+						'field' => 'ticket_button_url',
+						'translations' => $translations,
+						'translationModel' => $translationModel
+					]); ?>
+					
+					<?= $this->render('/translation/field', [
+						'model' => $model,
+						'form' => $form,
+						'field' => 'ticket_button_text',
+						'translations' => $translations,
+						'translationModel' => $translationModel
+					]); ?>
+					
+					<?= $this->render('/translation/field', [
+						'model' => $model,
+						'form' => $form,
+						'field' => 'ticket_remarks',
+						'translations' => $translations,
+						'translationModel' => $translationModel,
+						'isWysiwyg' => true
+					]); ?>
+					
 				</div>
 			</div>
 			

@@ -26,7 +26,7 @@ use nanson\postgis\helpers\GeoJsonHelper;
  */
 class Poi extends HelperModel
 {
-	public $translationFields = ['title', 'slug', 'description', 'youtube_id', 'vimeo_id', 'directions', 'remarks'];
+	public $translationFields = ['title', 'slug', 'description', 'youtube_id', 'vimeo_id', 'directions', 'remarks', 'ticket_title', 'ticket_button_url', 'ticket_button_text', 'ticket_remarks'];
 	public $requiredTranslationFields = ['title', 'description'];
 	
     /**

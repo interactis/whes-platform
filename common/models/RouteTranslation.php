@@ -20,6 +20,10 @@ use yii\behaviors\TimestampBehavior;
  * @property string|null $options
  * @property string|null $directions
  * @property string|null $remarks
+ * @property string|null $ticket_title
+ * @property string|null $ticket_button_url
+ * @property string|null $ticket_button_text
+ * @property string|null $ticket_remarks
  * @property int|null $created_at
  * @property int|null $updated_at
  *
@@ -55,7 +59,8 @@ class RouteTranslation extends \yii\db\ActiveRecord
             [['route_id', 'language_id', 'created_at', 'updated_at'], 'default', 'value' => null],
             [['route_id', 'language_id', 'created_at', 'updated_at'], 'integer'],
             [['description', 'catering', 'options', 'directions', 'remarks'], 'string'],
-            [['slug', 'title', 'youtube_id', 'vimeo_id'], 'string', 'max' => 255],
+            [['slug', 'title', 'youtube_id', 'vimeo_id', 'ticket_title', 'ticket_button_url', 'ticket_button_text'], 'string', 'max' => 255],
+            [['ticket_remarks'], 'string', 'max' => 180],
             [['language_id'], 'exist', 'skipOnError' => true, 'targetClass' => Language::className(), 'targetAttribute' => ['language_id' => 'id']],
             [['route_id'], 'exist', 'skipOnError' => true, 'targetClass' => Route::className(), 'targetAttribute' => ['route_id' => 'id']],
             [['slug'], 'match', 'pattern' => '/^[a-z][-a-z0-9]*$/', 'message' => Yii::t('app', 'Slug can contain only small letters, numbers and -')],
@@ -80,6 +85,10 @@ class RouteTranslation extends \yii\db\ActiveRecord
             'options' => Yii::t('app', 'Route Options'),
             'directions' => Yii::t('app', 'Direction Instructions (optional)'),
             'remarks' => Yii::t('app', 'Remarks'),
+            'ticket_title' => Yii::t('app', 'Ticket Title'),
+            'ticket_button_url' => Yii::t('app', 'Ticket Button URL'),
+            'ticket_button_text' => Yii::t('app', 'Ticket Button Text'),
+            'ticket_remarks' => Yii::t('app', 'Ticket Remarks'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
         ];

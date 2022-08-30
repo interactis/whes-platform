@@ -26,7 +26,7 @@ use nanson\postgis\helpers\GeoJsonHelper;
  */
 class Event extends HelperModel
 {
-	public $translationFields = ['title', 'slug', 'description', 'schedule', 'youtube_id', 'vimeo_id', 'directions', 'remarks'];
+	public $translationFields = ['title', 'slug', 'description', 'schedule', 'youtube_id', 'vimeo_id', 'directions', 'remarks', 'ticket_title', 'ticket_button_url', 'ticket_button_text', 'ticket_remarks'];
 	public $requiredTranslationFields = ['title', 'description'];
 	
     /**

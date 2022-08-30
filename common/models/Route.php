@@ -39,7 +39,7 @@ use yii\web\UploadedFile;
  */
 class Route extends HelperModel
 {
-	public $translationFields = ['title', 'slug', 'description', 'youtube_id', 'vimeo_id', 'catering', 'options', 'directions', 'remarks'];
+	public $translationFields = ['title', 'slug', 'description', 'youtube_id', 'vimeo_id', 'catering', 'options', 'directions', 'remarks', 'ticket_title', 'ticket_button_url', 'ticket_button_text', 'ticket_remarks'];
 	public $requiredTranslationFields = ['title', 'description'];
 	
 	public $geojsonFile;

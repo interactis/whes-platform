@@ -18,6 +18,10 @@ $nav = [
 		'slug' => 'directions',
 		'title' => 'Directions'
 	],
+	[
+		'slug' => 'tickets',
+		'title' => 'Tickets'
+	],
 	/*
 	[
 		'slug' => 'geo',
@@ -166,9 +170,14 @@ if (!$model->isNewRecord && $model->content->published && !$model->content->arch
 						'isWysiwyg' => true,
 						'hint' => Yii::t('app', 'Example: «Follow the signs in the direction of ...»')
 					]); ?>
-					
-					<hr />
-					
+				</div>
+			</div>
+			
+			<div id="tickets" class="panel panel-default">
+				<div class="panel-heading">
+					<h3>Tickets</h3>
+				</div>
+				<div class="panel-body">
 					<?= $this->render('/translation/field', [
 						'model' => $model,
 						'form' => $form,
@@ -201,7 +210,6 @@ if (!$model->isNewRecord && $model->content->published && !$model->content->arch
 						'translationModel' => $translationModel,
 						'isWysiwyg' => true
 					]); ?>
-				
 				</div>
 			</div>
 			

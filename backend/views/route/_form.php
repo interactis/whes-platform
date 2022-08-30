@@ -23,6 +23,10 @@ $nav = [
 		'title' => 'Directions'
 	],
 	[
+		'slug' => 'tickets',
+		'title' => 'Tickets'
+	],
+	[
 		'slug' => 'geo',
 		'title' => 'Geo'
 	],
@@ -176,6 +180,9 @@ if (!$model->isNewRecord && $model->content->published && !$model->content->arch
 					<?= $form->field($model, 'arrival_station')
 						->hint('Please use the exact station name like on <a href="https://sbb.ch" target="_blank">sbb.ch</a>. Otherwise the link to the SBB time schedule will not work.') ?>
 					
+					<?= $form->field($model, 'departure_station')
+						->hint('Please use the exact station name like on <a href="https://sbb.ch" target="_blank">sbb.ch</a>. Otherwise the link to the SBB time schedule will not work.') ?>
+						
 					<?= $this->render('/translation/field', [
 						'model' => $model,
 						'form' => $form,
@@ -185,9 +192,14 @@ if (!$model->isNewRecord && $model->content->published && !$model->content->arch
 						'isWysiwyg' => true,
 						'hint' => Yii::t('app', 'Example: «Follow the signs in the direction of ...»')
 					]); ?>
-					
-					<hr />
-					
+				</div>
+			</div>
+			
+			<div id="tickets" class="panel panel-default">
+				<div class="panel-heading">
+					<h3>Tickets</h3>
+				</div>
+				<div class="panel-body">
 					<?= $this->render('/translation/field', [
 						'model' => $model,
 						'form' => $form,
@@ -220,11 +232,6 @@ if (!$model->isNewRecord && $model->content->published && !$model->content->arch
 						'translationModel' => $translationModel,
 						'isWysiwyg' => true
 					]); ?>
-					
-					<hr />
-					
-					<?= $form->field($model, 'departure_station')
-						->hint('Please use the exact station name like on <a href="https://sbb.ch" target="_blank">sbb.ch</a>. Otherwise the link to the SBB time schedule will not work.') ?>
 				</div>
 			</div>
 			

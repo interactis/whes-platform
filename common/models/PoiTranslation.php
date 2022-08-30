@@ -59,6 +59,7 @@ class PoiTranslation extends \yii\db\ActiveRecord
             [['description', 'directions', 'remarks'], 'string'],
             [['slug', 'title', 'youtube_id', 'vimeo_id', 'ticket_title', 'ticket_button_url', 'ticket_button_text'], 'string', 'max' => 255],
             [['ticket_remarks'], 'string', 'max' => 180],
+            [['ticket_button_url'], 'url'],
             [['language_id'], 'exist', 'skipOnError' => true, 'targetClass' => Language::className(), 'targetAttribute' => ['language_id' => 'id']],
             [['poi_id'], 'exist', 'skipOnError' => true, 'targetClass' => Poi::className(), 'targetAttribute' => ['poi_id' => 'id']],
             [['slug'], 'match', 'pattern' => '/^[a-z][-a-z0-9]*$/', 'message' => Yii::t('app', 'Slug can contain only small letters, numbers and -')],

@@ -78,7 +78,7 @@ class EventTranslation extends \yii\db\ActiveRecord
             'slug' => Yii::t('app', 'Slug'),
             'title' => Yii::t('app', 'Title'),
             'description' => Yii::t('app', 'Description'),
-            'schedule' => Yii::t('app', 'Schedule'),
+            'schedule' => Yii::t('app', 'Programme / Agenda'),
             'youtube_id' => Yii::t('app', 'YouTube ID'),
             'vimeo_id' => Yii::t('app', 'Vimeo ID'),
             'directions' => Yii::t('app', 'Direction Instructions (optional)'),

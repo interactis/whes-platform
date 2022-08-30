@@ -22,9 +22,6 @@ if (!isset($showLangSwitch))
 	<div class="form-group fixed">
 		<?= $form->errorSummary($model) ?>
 		
-		<?php if (isset($contentModel))
-			echo $form->errorSummary($contentModel); ?>
-		
 		<?= Html::submitButton($icon .'&nbsp;&nbsp;'. $btnText, ['class' => 'btn btn-success']) ?>&nbsp;
 		
 		<?php

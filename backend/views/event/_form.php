@@ -278,7 +278,6 @@ if (!$model->isNewRecord && $model->content->published && !$model->content->arch
 		<?= $this->render('/common/_saveColumn', [
 			'form' => $form,
 			'model' => $model,
-			'contentModel' => $contentModel,
 			'showLangSwitch' => true,
 			'viewUrl' => $viewUrl,
 			'nav' => $nav

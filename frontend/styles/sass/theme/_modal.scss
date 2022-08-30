@@ -5,8 +5,6 @@
 
 .image-modal {
 	
-	
-	
 		
 	.modal-body {
 		padding: 8px;
@@ -24,52 +22,7 @@
 		}
 	}
 	
-	
-	
-	/*
-	&.image-modal {
-		.modal-body {
-			.img-container {
-				
-			}
-		
-		}
-		
-		.modal-dialog {
-			width: 60%;
-			max-width: 1600px;
-			height: 100%;
-			max-height: 1600px;
-			margin: 0 auto;
-			padding: 0;
-		}
-	
-		.modal-content {
-			position: relative;
-			height: 100%;
-			border: 0;
-			border-radius: 0;
-			
-			
-			
-			.carousel-item {
-				position: relative;
-				background: red;
-				height: 100%;
-			
-			}
-			.caption {
-				position: absolute;
-				bottom: 0;
-			}
-		}
-		
-		
-		
+	.carousel.pointer-event {
+		touch-action: pan-y pinch-zoom;
 	}
-	*/
-	
-	
-	
 }
-

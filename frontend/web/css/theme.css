@@ -11069,32 +11069,25 @@ body {
       .navbar .search-dropdown-menu {
         margin-bottom: 24px; } }
 
-.carousel .carousel-control-prev,
-.carousel .carousel-control-next {
-  position: absolute !important;
-  display: inline-block;
-  opacity: 1; }
-
-.carousel .carousel-control-prev-icon,
-.carousel .carousel-control-next-icon {
-  height: 90%;
-  background-image: url("/img/layout/chevron-l.svg"); }
-
-.carousel .carousel-control-next-icon {
-  background-image: url("/img/layout/chevron-r.svg"); }
-
-.carousel .carousel.pointer-event {
-  -ms-touch-action: pan-y pinch-zoom;
-      touch-action: pan-y pinch-zoom; }
+.carousel .img-container {
+  position: relative; }
+  .carousel .img-container .carousel-control-prev,
+  .carousel .img-container .carousel-control-next {
+    position: absolute !important;
+    display: inline-block;
+    opacity: 1; }
+  .carousel .img-container .carousel-control-prev-icon,
+  .carousel .img-container .carousel-control-next-icon {
+    height: 100%;
+    background-image: url("/img/layout/chevron-l.svg"); }
+  .carousel .img-container .carousel-control-next-icon {
+    background-image: url("/img/layout/chevron-r.svg"); }
 
 .jumbotron {
   position: relative;
   padding: 0;
   min-height: 460px;
   margin-bottom: 60px; }
-  .jumbotron:hover {
-    cursor: -webkit-zoom-in;
-    cursor: zoom-in; }
   @media (min-width: 576px) {
     .jumbotron {
       margin-bottom: 90px; } }
@@ -11107,9 +11100,12 @@ body {
   .jumbotron .carousel-inner {
     position: absolute;
     min-height: 460px; }
+    .jumbotron .carousel-inner:hover {
+      cursor: -webkit-zoom-in;
+      cursor: zoom-in; }
     .jumbotron .carousel-inner .carousel-control-prev-icon,
     .jumbotron .carousel-inner .carousel-control-next-icon {
-      margin-bottom: 300px; }
+      height: 90%; }
     .jumbotron .carousel-inner::after {
       content: "";
       position: absolute;
@@ -11606,59 +11602,20 @@ body {
   background-color: #000;
   opacity: 0.9 !important; }
 
-.image-modal {
-  /*
-	&.image-modal {
-		.modal-body {
-			.img-container {
-				
-			}
-		
-		}
-		
-		.modal-dialog {
-			width: 60%;
-			max-width: 1600px;
-			height: 100%;
-			max-height: 1600px;
-			margin: 0 auto;
-			padding: 0;
-		}
-	
-		.modal-content {
-			position: relative;
-			height: 100%;
-			border: 0;
-			border-radius: 0;
-			
-			
-			
-			.carousel-item {
-				position: relative;
-				background: red;
-				height: 100%;
-			
-			}
-			.caption {
-				position: absolute;
-				bottom: 0;
-			}
-		}
-		
-		
-		
-	}
-	*/ }
-  .image-modal .modal-body {
-    padding: 8px; }
-    .image-modal .modal-body .caption {
-      padding: 10px 3px 8px; }
-    @media (min-width: 992px) {
-      .image-modal .modal-body {
-        padding: 14px; }
-        .image-modal .modal-body .caption {
-          padding-top: 14px;
-          padding-bottom: 6px; } }
+.image-modal .modal-body {
+  padding: 8px; }
+  .image-modal .modal-body .caption {
+    padding: 10px 3px 8px; }
+  @media (min-width: 992px) {
+    .image-modal .modal-body {
+      padding: 14px; }
+      .image-modal .modal-body .caption {
+        padding-top: 14px;
+        padding-bottom: 6px; } }
+
+.image-modal .carousel.pointer-event {
+  -ms-touch-action: pan-y pinch-zoom;
+      touch-action: pan-y pinch-zoom; }
 
 .audio {
   width: 100%; }

@@ -1,21 +1,22 @@
 .carousel {
-	.carousel-control-prev,
-	.carousel-control-next {
-		position: absolute !important;
-		display: inline-block;
-		opacity: 1;
-	}
-
-	.carousel-control-prev-icon,
-	.carousel-control-next-icon {
-		height: 90%;
-		background-image: url('/img/layout/chevron-l.svg');
-	}
-	.carousel-control-next-icon {
-		background-image: url('/img/layout/chevron-r.svg');
-	}
-
-	.carousel.pointer-event {
-		touch-action: pan-y pinch-zoom;
+	.img-container {
+		position: relative;
+		
+		.carousel-control-prev,
+		.carousel-control-next {
+			position: absolute !important;
+			display: inline-block;
+			opacity: 1;
+		}
+		
+		.carousel-control-prev-icon,
+		.carousel-control-next-icon {
+			height: 100%;
+			background-image: url('/img/layout/chevron-l.svg');
+		}
+		
+		.carousel-control-next-icon {
+			background-image: url('/img/layout/chevron-r.svg');
+		}
 	}
 }

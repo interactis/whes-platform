@@ -12,52 +12,51 @@ if (!isset($showCaption))
 <div id="top-carousel" class="jumbotron carousel fade-in slide <?= $class ?>" data-ride="carousel" data-touch="true">
 
 	<div class="carousel-inner">
-		
 		<?php
 		$i = 0;
+		$count = count($models);
 		foreach($models as $i => $model):
 			$imgUrl = $model->getImageUrl(1600);
 			?>
 			<div class="carousel-item <?=  ($i == 0) ? 'active' : ''; ?>">
-				<img class="hidden" src="<?= $imgUrl ?>" alt="<?= $model->title ?>"> <?php // preload images ?>
-				<div class="img-bg" style="background-image: url('<?= $imgUrl ?>');"></div>
+				<div class="img-container">
+					<img class="hidden" src="<?= $imgUrl ?>" alt="<?= $model->title ?>"> <?php // preload images ?>
+					<div class="img-bg" style="background-image: url('<?= $imgUrl ?>');"></div>
+					<?php if ($count > 1): ?>
+						<a class="carousel-control-prev img-link ignore-modal" href="#top-carousel" role="button" data-slide="prev">
+							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+							<span class="sr-only">Previous</span>
+						</a>
+						<a class="carousel-control-next img-link ignore-modal" href="#top-carousel" role="button" data-slide="next">
+							<span class="carousel-control-next-icon" aria-hidden="true"></span>
+							<span class="sr-only">Next</span>
+						</a>
+					<?php endif; ?>
+					<div class="carousel-caption">
+						<div class="container">
+							<div class="caption">
+								<?php
+								if ($showCaption && !empty($model->description))
+									echo $model->description;
+								?>
 				
-				<div class="carousel-caption">
-					<div class="container">
-						<div class="caption">
-							<?php
-							if ($showCaption && !empty($model->description))
-								echo $model->description;
-							?>
-				
-							<?php if (!empty($model->copyright)): ?>
-								<div class="thin copyright">&copy; <?= $model->copyright ?></div>
-							<?php endif; ?>
+								<?php if (!empty($model->copyright)): ?>
+									<div class="thin copyright">&copy; <?= $model->copyright ?></div>
+								<?php endif; ?>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		<?php endforeach; ?>
-		
-		<?php if ($i > 0): ?>
-			<a class="carousel-control-prev img-link ignore-modal" href="#top-carousel" role="button" data-slide="prev">
-				<span class="carousel-control-prev-icon ignore-modal" aria-hidden="true"></span>
-				<span class="sr-only ignore-modal">Previous</span>
-			</a>
-			<a class="carousel-control-next img-link ignore-modal" href="#top-carousel" role="button" data-slide="next">
-				<span class="carousel-control-next-icon ignore-modal" aria-hidden="true"></span>
-				<span class="sr-only ignore-modal">Next</span>
-			</a>
-		<?php endif; ?>
-		
 	</div>
 	
-	<div class="footer">
+	<div class="footer ignore-modal">
 		<div class="transition"></div>
 	</div>
 	
 	<?php if (isset($content)): ?>
-		<div class="container action-container">
+		<div class="container action-container ignore-modal">
 			<div class="row">
 				<div class="col-lg-4 offset-lg-8">
 					<div class="action">

@@ -5,10 +5,6 @@
   	//overflow: hidden;
 	margin-bottom: 60px;
 	
-	&:hover {
-		cursor: zoom-in;
-	}
-	
 	@include media-breakpoint-up(sm) {
 		margin-bottom: 90px;
 	}
@@ -25,9 +21,13 @@
 		position: absolute;
 		min-height: 460px;
 		
+		&:hover {
+		cursor: zoom-in;
+	}
+		
 		.carousel-control-prev-icon,
 		.carousel-control-next-icon {
-			margin-bottom: 300px;
+			height: 90%;
 		}
 		
 		&::after {

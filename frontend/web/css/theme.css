@@ -11329,6 +11329,21 @@ body {
     padding: 6px;
     border-radius: 3px;
     text-transform: none; }
+  .btn.close-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #fff;
+    color: #A60100 !important;
+    padding: 12px;
+    border-radius: 0;
+    z-index: 1050;
+    font-size: 1.25rem;
+    border: none !important; }
+    .btn.close-btn:hover, .btn.close-btn:focus {
+      opacity: 1;
+      background: #fff !important;
+      color: #C90C0F !important; }
 
 .card {
   border: none; }

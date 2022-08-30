@@ -59,4 +59,23 @@
 		text-transform: none;
 	}
 	
+	&.close-btn {
+		position: absolute;
+		top: 0;
+		right: 0;
+		background: $white;
+		color: $primary !important;
+		padding: 12px;
+		border-radius: 0;
+		z-index: $zindex-modal;
+		font-size: 1.25rem;
+		border: none !important;
+		
+		&:hover,
+		&:focus {
+			opacity: 1;
+			background: $white !important;
+			color: $secondary !important;
+		}
+	}
 }

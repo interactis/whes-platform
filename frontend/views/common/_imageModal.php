@@ -3,6 +3,9 @@
 	<div class="modal-dialog modal-xl">
 		<div class="modal-content">
 			<div class="modal-body">
+				<a href="#" class="btn close-btn" data-dismiss="modal" title="<?= Yii::t('app', 'Close') ?> ">
+					<i class="fa fa-close"></i>
+				</a>
 				<div id="img-modal-carousel" class="carousel slide" data-ride="carousel" data-touch="true" data-interval="false">
 					<div class="carousel-inner">
 						<?php

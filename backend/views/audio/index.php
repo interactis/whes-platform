@@ -10,13 +10,9 @@ $this->params['breadcrumbs'][] = ['label' => $contentModel->pluralName(), 'url' 
 $this->params['breadcrumbs'][] = ['label' => $contentModel->title, 'url' => [$type .'/update', 'id' => $contentModel->id]];
 $this->params['breadcrumbs'][] = $this->title;
 
-$showSupplier = true;
 $showDownloads = false;
 if ($type == 'article')
-{
-	$showSupplier = false;
 	$showDownloads = true;
-}
 ?>
 
 <div class="audio-index">
@@ -26,7 +22,6 @@ if ($type == 'article')
     <?= $this->render('/common/_contentNavPills', [
     	'model' => $content,
     	'active' => 'audio',
-    	'showSupplier' => $showSupplier,
     	'showDownloads' => $showDownloads
     ]) ?>
 	

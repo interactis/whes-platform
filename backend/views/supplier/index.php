@@ -21,16 +21,14 @@ $user = Yii::$app->user->identity;
 if ($user->isAdmin())
 {
 	array_push($colums,
-		/*
 		[
-			'attribute' => 'heritage',
+			'attribute' => 'heritage_id',
 			'value' => function ($model) {
-				if (isset($model->content->heritage))
-					return $model->content->heritage->short_name;
+				if (isset($model->heritage))
+					return $model->heritage->short_name;
 			},
-			'filter' => Heritage::getHeritages(true)
+			'filter' => Heritage::getHeritages()
 		],
-		*/
 	);
 }
 

@@ -10,7 +10,7 @@ use common\models\helpers\TranslationModel;
  * This is the model class for table "supplier".
  *
  * @property int $id
- * @property int|null $content_id
+ * @property int|null $heritage_id
  * @property string|null $street
  * @property string|null $street_number
  * @property string|null $address_addition
@@ -56,8 +56,8 @@ class Supplier extends TranslationModel
     public function rules()
     {
         return [
-            [['content_id', 'created_at', 'updated_at'], 'default', 'value' => null],
-            [['content_id', 'created_at', 'updated_at'], 'integer'],
+            [['heritage_id', 'created_at', 'updated_at'], 'default', 'value' => null],
+            [['heritage_id', 'created_at', 'updated_at'], 'integer'],
             [['geom'], 'string'],
             [['street', 'address_addition', 'url', 'email'], 'string', 'max' => 255],
             [['street_number'], 'string', 'max' => 10],
@@ -67,7 +67,7 @@ class Supplier extends TranslationModel
             [['email'], 'email'],
             [['url'], 'url'],
             ['remove', 'boolean'],
-            [['content_id'], 'exist', 'skipOnError' => true, 'targetClass' => Content::className(), 'targetAttribute' => ['content_id' => 'id']],
+            [['heritage_id'], 'exist', 'skipOnError' => true, 'targetClass' => Heritage::className(), 'targetAttribute' => ['heritage_id' => 'id']],
         ];
     }
 
@@ -78,7 +78,7 @@ class Supplier extends TranslationModel
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'content_id' => Yii::t('app', 'Content ID'),
+            'heritage_id' => Yii::t('app', 'Heritage'),
             'street' => Yii::t('app', 'Street'),
             'street_number' => Yii::t('app', 'Street Number'),
             'address_addition' => Yii::t('app', 'Address Addition'),

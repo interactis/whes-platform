@@ -20,7 +20,7 @@ class SupplierSearch extends Supplier
     public function rules()
     {
         return [
-            [['id', 'created_at', 'updated_at'], 'integer'],
+            [['id', 'heritage_id', 'created_at', 'updated_at'], 'integer'],
             [['name'], 'safe'],
         ];
     }
@@ -45,20 +45,16 @@ class SupplierSearch extends Supplier
     {
         $query = Supplier::find();
         $query->leftJoin('supplier_translation', 'supplier_translation.supplier_id = supplier.id');
-       //$query->leftJoin('heritage', 'heritage.id = content.heritage_id');
-        //$query->leftJoin('heritage_translation', 'heritage_translation.heritage_id = heritage.id');
-      
-       // $query->groupBy(['article.id', 'article_translation.title', 'content.priority', 'content.hidden', 'content.featured', 'content.published', 'content.imported', 'content.archive', 'heritage_translation.short_name']);
+      	$query->groupBy(['supplier.id', 'supplier_translation.name']);
 
         // add conditions that should always apply here
         
         $user = Yii::$app->user->identity;
     	if (!$user->isAdmin())
         {
-        	$query->where([
-        		'heritage_id' => $user->heritage_id
-        		
-        		// or no heritage
+        	$query->where(['or',
+        		['heritage_id' => $user->heritage_id],
+        		['heritage_id' => null]
         	]);
         }
 
@@ -73,16 +69,9 @@ class SupplierSearch extends Supplier
         ]);
         
         $dataProvider->sort->attributes['name'] = [
-			'asc' => ['supplier_translation.title' => SORT_ASC],
-			'desc' => ['supplier_translation.title' => SORT_DESC],
+			'asc' => ['supplier_translation.name' => SORT_ASC],
+			'desc' => ['supplier_translation.name' => SORT_DESC],
 		];
-		
-		/*
-		$dataProvider->sort->attributes['heritage'] = [
-			'asc' => ['heritage_translation.short_name' => SORT_ASC],
-			'desc' => ['heritage_translation.short_name' => SORT_DESC],
-		];
-		*/
 		
         $this->load($params);
 
@@ -95,17 +84,11 @@ class SupplierSearch extends Supplier
         // grid filtering conditions
         $query->andFilterWhere([
             'supplier.id' => $this->id,
+            'heritage_id' => $this->heritage_id,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
             'supplier_translation.language_id' => Yii::$app->params['preferredLanguageId']
         ]);
-        
-        /*
-        $query->andWhere(['or', 
-        	['heritage_id' => null],
-        	['heritage_translation.language_id' => Yii::$app->params['preferredLanguageId']]
-        ]);
-        */
         
         $query->andFilterWhere(['ilike', 'supplier_translation.name', $this->name]);
 

@@ -11,6 +11,7 @@ use yii\helpers\ArrayHelper;
  *
  * @property int $id
  * @property int|null $heritage_id
+ * @property int|null $supplier_id
  * @property int|null $type
  * @property int|null $priority
  * @property int|null $general
@@ -26,6 +27,7 @@ use yii\helpers\ArrayHelper;
  *
  * @property Article[] $article
  * @property Heritage $heritage
+ * @property Supplier $supplier
  * @property ContentFlag[] $contentFlags
  * @property ContentTag[] $contentTags
  * @property ChildContents[] $childContents
@@ -36,7 +38,6 @@ use yii\helpers\ArrayHelper;
  * @property Poi[] $poi
  * @property Event[] $event
  * @property Route[] $route
- * @property Supplier[] $suppliers
  */
 class Content extends \yii\db\ActiveRecord
 {
@@ -79,8 +80,8 @@ class Content extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['heritage_id', 'type', 'priority', 'created_at', 'updated_at'], 'default', 'value' => null],
-            [['heritage_id', 'type', 'priority', 'created_at', 'updated_at'], 'integer'],
+            [['heritage_id', 'supplier_id', 'type', 'priority', 'created_at', 'updated_at'], 'default', 'value' => null],
+            [['heritage_id', 'supplier_id', 'type', 'priority', 'created_at', 'updated_at'], 'integer'],
     
             [['heritage_id'], 'required', 'enableClientValidation' => false, 'when' => function($model) {
             	if ($model->type == $this::TYPE_ARTICLE) {
@@ -98,6 +99,7 @@ class Content extends \yii\db\ActiveRecord
             
             [['published', 'general', 'featured', 'hidden', 'approved', 'edited', 'imported', 'archive'], 'boolean'],
             [['heritage_id'], 'exist', 'skipOnError' => true, 'targetClass' => Heritage::className(), 'targetAttribute' => ['heritage_id' => 'id']],
+            [['supplier_id'], 'exist', 'skipOnError' => true, 'targetClass' => Supplier::className(), 'targetAttribute' => ['supplier_id' => 'id']],
         ];
     }
 
@@ -109,6 +111,7 @@ class Content extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('app', 'ID'),
             'heritage_id' => Yii::t('app', 'Heritage'),
+            'supplier_id' => Yii::t('app', 'Supplier'),
             'type' => Yii::t('app', 'Type'),
             'priority' => Yii::t('app', 'Priority'),
             'general' => Yii::t('app', 'General'),
@@ -142,6 +145,16 @@ class Content extends \yii\db\ActiveRecord
     public function getHeritage()
     {
         return $this->hasOne(Heritage::className(), ['id' => 'heritage_id']);
+    }
+    
+    /**
+     * Gets query for [[Supplier]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getSupplier()
+    {
+        return $this->hasOne(Supplier::className(), ['id' => 'supplier_id']);
     }
 
     /**
@@ -284,16 +297,6 @@ class Content extends \yii\db\ActiveRecord
     public function getRoute()
     {
         return $this->hasOne(Route::className(), ['content_id' => 'id']);
-    }
-
-    /**
-     * Gets query for [[Suppliers]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getSupplier()
-    {
-        return $this->hasOne(Supplier::className(), ['content_id' => 'id']);
     }
     
     public function getAudio()

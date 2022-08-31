@@ -16,13 +16,24 @@ class HeritageController extends HelperController
     public function actionView($slug)
     {
     	$model = $this->findModel($slug);
-    	$filters = $this->getFilterCookie();
+    	$globalFiltersSet = $this->getFilterCookie(true);
+    	$heritageFilters = $this->_getHeritageFilters($model);
+    	
+    	$filtersSet = [];
+    	if ($globalFiltersSet)
+    	{
+    		foreach ($globalFiltersSet as $globalFilterSet)
+			{
+				if (in_array($globalFilterSet, $heritageFilters))
+					$filtersSet[] = $globalFilterSet;
+			}
+    	}
     	
     	return $this->render('view', [
     		'model' => $model,
-    		'content' => $this->findFilterContent($filters, $model->id, false),
-    		'filters' => explode(',', $filters),
-    		'heritageFilters' => $this->_getHeritageFilters($model)
+    		'content' => $this->findFilterContent(implode(',', $filtersSet), $model->id, false),
+    		'filters' => $filtersSet,
+    		'heritageFilters' => $heritageFilters
     	]);
     }
     

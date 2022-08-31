@@ -142,14 +142,19 @@ class HelperController extends Controller
     	return $this->findContent($heritageId, $featured, false, $limit, $offset, $contentIds);
     }
     
-    public function getFilterCookie()
+    public function getFilterCookie($explode = false)
     {
     	$cookies = Yii::$app->request->cookies;
     	$filters = $cookies->get('filters');
     	
     	if ($filters && !empty($filters->value))
     	{
-    		return $filters;
+    		if ($explode)
+    		{
+    			return explode(',', $filters);
+    		}
+    		else
+    			return $filters;
     	}
     	else
     		return false;

@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use common\models\SupplierTranslation;
+use common\models\Heritage;
 
 $translations = $model->supplierTranslations;
 $translationModel = new SupplierTranslation();
@@ -20,7 +21,7 @@ $translationModel = new SupplierTranslation();
 					<h3>Supplier</h3>
 				</div>
 				<div class="panel-body">
-
+					
 					<?= $this->render('/translation/field', [
 						'model' => $model,
 						'form' => $form,
@@ -36,6 +37,17 @@ $translationModel = new SupplierTranslation();
 						'translations' => $translations,
 						'translationModel' => $translationModel
 					]); ?>
+					
+					<?php
+					$user = Yii::$app->user->identity;
+					if ($user->isAdmin())
+					{
+						echo $form->field($model, 'heritage_id')->dropDownList(
+							Heritage::getHeritages(),
+							['prompt' => Yii::t('app', 'Please select')]
+						);
+					}
+					?>
 					
 					<hr />
 					

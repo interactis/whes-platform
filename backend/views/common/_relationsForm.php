@@ -7,16 +7,16 @@ if (!isset($showChildContent))
 	$showChildContent = false;
 
 $tagValue = [];
-if (isset($model->content->contentTags))
-	$tagValue = ArrayHelper::map($model->content->contentTags, 'tag_id', 'tag_id');
+if (isset($contentModel->contentTags))
+	$tagValue = ArrayHelper::map($contentModel->contentTags, 'tag_id', 'tag_id');
 
 $flagValue = [];
-if (isset($model->content->contentFlags))
-	$flagValue = ArrayHelper::map($model->content->contentFlags, 'flag_id', 'flag_id');
+if (isset($contentModel->contentFlags))
+	$flagValue = ArrayHelper::map($contentModel->contentFlags, 'flag_id', 'flag_id');
 
 $childContentValue = [];
-if (isset($model->content->childContents))
-	$childContentValue = ArrayHelper::map($model->content->childContents, 'child_content_id', 'child_content_id');
+if (isset($contentModel->childContents))
+	$childContentValue = ArrayHelper::map($contentModel->childContents, 'child_content_id', 'child_content_id');
 
 $user = Yii::$app->user->identity;
 ?>
@@ -44,7 +44,7 @@ $user = Yii::$app->user->identity;
 			echo $form->field($contentModel, 'supplier_id')->dropDownList(
 				Supplier::getSuppliers(),
 				['prompt' => Yii::t('app', 'Please select')]
-			);
+			)->hint('<a href="/supplier" target="_blank"><span class="glyphicon glyphicon-new-window"></span> Manage suppliers</a>');
 		}
 		?>
 	

@@ -42,6 +42,13 @@ $this->title = 'Dashboard';
 							Events
 						</a>
 					</p>
+				</div>
+				<div class="col-md-4 margin-bottom">
+					<p class="lead">
+						<a href="/supplier">
+							Suppliers
+						</a>
+					</p>
 					<p class="lead">
 						<a  href="/code/list">
 							NFC Codes

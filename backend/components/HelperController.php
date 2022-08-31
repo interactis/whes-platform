@@ -51,7 +51,6 @@ class HelperController extends Controller
 		if ($user->isAdmin())
     		$model->approved = true;
     		
-    	$user = Yii::$app->user->identity;
     	if ($user->isEditor())
     		$model->heritage_id = $user->heritage_id;
     	

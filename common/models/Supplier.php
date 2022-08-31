@@ -24,13 +24,13 @@ use common\models\helpers\TranslationModel;
  * @property int|null $updated_at
  *
  * @property Content $content
+ * @property Heritage $heritage
  * @property SupplierTranslation[] $supplierTranslations
  */
 class Supplier extends TranslationModel
 {
 	public $translationFields = ['name', 'name_affix', 'remarks'];
 	public $requiredTranslationFields = ['name'];
-	public $remove = false;
 	
     /**
      * {@inheritdoc}
@@ -66,7 +66,6 @@ class Supplier extends TranslationModel
             [['phone'], 'string', 'min' => 8, 'max' => 20],
             [['email'], 'email'],
             [['url'], 'url'],
-            ['remove', 'boolean'],
             [['heritage_id'], 'exist', 'skipOnError' => true, 'targetClass' => Heritage::className(), 'targetAttribute' => ['heritage_id' => 'id']],
         ];
     }
@@ -88,7 +87,6 @@ class Supplier extends TranslationModel
             'email' => Yii::t('app', 'Email'),
             'phone' => Yii::t('app', 'Phone'),
             'geom' => Yii::t('app', 'Geom'),
-            'remove' => Yii::t('app', 'Remove Supplier'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
         ];
@@ -102,6 +100,16 @@ class Supplier extends TranslationModel
     public function getContent()
     {
         return $this->hasOne(Content::className(), ['id' => 'content_id']);
+    }
+    
+    /**
+     * Gets query for [[Heritage]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getHeritage()
+    {
+        return $this->hasOne(Heritage::className(), ['id' => 'heritage_id']);
     }
 
     /**

@@ -54,7 +54,7 @@ class SupplierSearch extends Supplier
         {
         	$query->where(['or',
         		['heritage_id' => $user->heritage_id],
-        		['heritage_id' => null]
+        		//['heritage_id' => null]
         	]);
         }
 

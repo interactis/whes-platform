@@ -68,7 +68,7 @@ class SupplierController extends HelperController
     
     public function actionCreate()
     {  	
-        $model = new Supplier();
+        $model = $this->_newSupplierModel();
         
         $post = Yii::$app->request->post();
 		if ($model->load($post))
@@ -97,20 +97,7 @@ class SupplierController extends HelperController
 		
         $post = Yii::$app->request->post();
 		if ($model->load($post))
-        {
-        	if ($model->remove)
-        	{
-        		$model->delete();
-        		
-        		Yii::$app->getSession()->setFlash(
-					'success',
-					'<span class="glyphicon glyphicon-ok-sign"></span> Supplier has been removed.'
-				);
-
-        		return $this->redirect(['create']);
-        	}
-        	
-        	
+        {        	
         	if ($model->validateTranslations() && $model->validate())
         	{
         		if ($model->save(false) && $model->saveTranslations())
@@ -134,6 +121,17 @@ class SupplierController extends HelperController
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+    }
+    
+    private function _newSupplierModel()
+    {
+    	$model = new Supplier();
+    		
+    	$user = Yii::$app->user->identity;
+    	if ($user->isEditor())
+    		$model->heritage_id = $user->heritage_id;
+    	
+    	return $model;		
     }
     
     protected function findModel($id)

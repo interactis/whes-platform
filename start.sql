@@ -426,6 +426,17 @@ updated_at INTEGER,
 CONSTRAINT content_valid_time_pkey PRIMARY KEY (id)
 );
 
+CREATE TABLE download
+(
+id SERIAL,
+content_id INTEGER,
+"order" SMALLINT,
+hidden BOOLEAN DEFAULT false,
+created_at INTEGER,
+updated_at INTEGER,
+CONSTRAINT download_pkey PRIMARY KEY (id)
+);
+
 CREATE TABLE event
 (
 id SERIAL,
@@ -476,25 +487,6 @@ updated_at INTEGER,
 CONSTRAINT code_group_pkey PRIMARY KEY (id)
 );
 
-CREATE TABLE content
-(
-id SERIAL,
-heritage_id INTEGER,
-type SMALLINT,
-priority SMALLINT,
-general BOOLEAN DEFAULT false,
-published BOOLEAN DEFAULT false,
-featured BOOLEAN DEFAULT false,
-hidden BOOLEAN DEFAULT false,
-approved BOOLEAN DEFAULT false,
-edited BOOLEAN DEFAULT false,
-imported BOOLEAN DEFAULT false,
-archive BOOLEAN DEFAULT false,
-created_at INTEGER,
-updated_at INTEGER,
-CONSTRAINT content_pkey PRIMARY KEY (id)
-);
-
 CREATE TABLE code_translation
 (
 id SERIAL,
@@ -504,45 +496,6 @@ info TEXT,
 created_at INTEGER,
 updated_at INTEGER,
 CONSTRAINT code_translation_pkey PRIMARY KEY (id)
-);
-
-CREATE TABLE supplier
-(
-id SERIAL,
-content_id INTEGER,
-street VARCHAR(255),
-street_number VARCHAR(10),
-address_addition VARCHAR(255),
-zip VARCHAR(10),
-city VARCHAR(150),
-url VARCHAR(255),
-email VARCHAR(255),
-phone VARCHAR(50),
-geom GEOMETRY,
-created_at INTEGER,
-updated_at INTEGER,
-CONSTRAINT supplier_pkey PRIMARY KEY (id)
-);
-
-CREATE TABLE related_tag
-(
-id SERIAL,
-tag_id INTEGER,
-related_tag_id INTEGER,
-created_at INTEGER,
-updated_at INTEGER,
-CONSTRAINT related_tag_pkey PRIMARY KEY (id)
-);
-
-CREATE TABLE download
-(
-id SERIAL,
-content_id INTEGER,
-"order" SMALLINT,
-hidden BOOLEAN DEFAULT false,
-created_at INTEGER,
-updated_at INTEGER,
-CONSTRAINT download_pkey PRIMARY KEY (id)
 );
 
 CREATE TABLE audio_translation
@@ -568,6 +521,54 @@ description TEXT,
 created_at INTEGER,
 updated_at INTEGER,
 CONSTRAINT profile_item_translation_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE supplier
+(
+id SERIAL,
+heritage_id INTEGER,
+street VARCHAR(255),
+street_number VARCHAR(10),
+address_addition VARCHAR(255),
+zip VARCHAR(10),
+city VARCHAR(150),
+url VARCHAR(255),
+email VARCHAR(255),
+phone VARCHAR(50),
+geom GEOMETRY,
+created_at INTEGER,
+updated_at INTEGER,
+CONSTRAINT supplier_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE content
+(
+id SERIAL,
+heritage_id INTEGER,
+supplier_id INTEGER,
+type SMALLINT,
+priority SMALLINT,
+general BOOLEAN DEFAULT false,
+published BOOLEAN DEFAULT false,
+featured BOOLEAN DEFAULT false,
+hidden BOOLEAN DEFAULT false,
+approved BOOLEAN DEFAULT false,
+edited BOOLEAN DEFAULT false,
+imported BOOLEAN DEFAULT false,
+archive BOOLEAN DEFAULT false,
+created_at INTEGER,
+updated_at INTEGER,
+CONSTRAINT content_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE related_tag
+(
+id SERIAL,
+tag_id INTEGER,
+related_tag_id INTEGER,
+created_at INTEGER,
+updated_at INTEGER,
+CONSTRAINT related_tag_pkey PRIMARY KEY (id)
 );
 
 ALTER TABLE article ADD FOREIGN KEY (content_id) REFERENCES content (id) ON DELETE CASCADE;
@@ -674,6 +675,8 @@ ALTER TABLE content_valid_time ADD FOREIGN KEY (valid_time_id) REFERENCES valid_
 
 ALTER TABLE content_valid_time ADD FOREIGN KEY (content_id) REFERENCES content (id) ON DELETE CASCADE;
 
+ALTER TABLE download ADD FOREIGN KEY (content_id) REFERENCES content (id) ON DELETE CASCADE;
+
 ALTER TABLE event ADD FOREIGN KEY (content_id) REFERENCES content (id) ON DELETE CASCADE;
 
 ALTER TABLE flag ADD FOREIGN KEY (flag_group_id) REFERENCES flag_group (id) ON DELETE CASCADE;
@@ -682,19 +685,9 @@ ALTER TABLE code_group ADD FOREIGN KEY (heritage_id) REFERENCES heritage (id) ON
 
 ALTER TABLE code_group ADD FOREIGN KEY (code_series_id) REFERENCES code_series (id) ON DELETE CASCADE;
 
-ALTER TABLE content ADD FOREIGN KEY (heritage_id) REFERENCES heritage (id) ON DELETE CASCADE;
-
 ALTER TABLE code_translation ADD FOREIGN KEY (code_id) REFERENCES code (id) ON DELETE CASCADE;
 
 ALTER TABLE code_translation ADD FOREIGN KEY (language_id) REFERENCES language (id) ON DELETE CASCADE;
-
-ALTER TABLE supplier ADD FOREIGN KEY (content_id) REFERENCES content (id) ON DELETE CASCADE;
-
-ALTER TABLE related_tag ADD FOREIGN KEY (tag_id) REFERENCES tag (id) ON DELETE CASCADE;
-
-ALTER TABLE related_tag ADD FOREIGN KEY (related_tag_id) REFERENCES tag (id) ON DELETE CASCADE;
-
-ALTER TABLE download ADD FOREIGN KEY (content_id) REFERENCES content (id) ON DELETE CASCADE;
 
 ALTER TABLE audio_translation ADD FOREIGN KEY (audio_id) REFERENCES audio (id) ON DELETE CASCADE;
 
@@ -703,6 +696,16 @@ ALTER TABLE audio_translation ADD FOREIGN KEY (language_id) REFERENCES language 
 ALTER TABLE profile_item_translation ADD FOREIGN KEY (profile_item_id) REFERENCES profile_item (id) ON DELETE CASCADE;
 
 ALTER TABLE profile_item_translation ADD FOREIGN KEY (language_id) REFERENCES language (id) ON DELETE CASCADE;
+
+ALTER TABLE supplier ADD FOREIGN KEY (heritage_id) REFERENCES heritage (id) ON DELETE CASCADE;
+
+ALTER TABLE content ADD FOREIGN KEY (heritage_id) REFERENCES heritage (id) ON DELETE CASCADE;
+
+ALTER TABLE content ADD FOREIGN KEY (supplier_id) REFERENCES supplier (id) ON DELETE CASCADE;
+
+ALTER TABLE related_tag ADD FOREIGN KEY (tag_id) REFERENCES tag (id) ON DELETE CASCADE;
+
+ALTER TABLE related_tag ADD FOREIGN KEY (related_tag_id) REFERENCES tag (id) ON DELETE CASCADE;
 
 
 

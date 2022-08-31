@@ -144,6 +144,11 @@ $this->title = 'Dashboard';
 							Events
 						</a>
 					</p>
+					<p class="lead">
+						<a href="/supplier">
+							Suppliers
+						</a>
+					</p>
 				</div>
 				
 				<div class="col-md-4 margin-bottom">

@@ -12,6 +12,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
 	<?= $this->render('_intro', ['model' => $model]) ?>
 	
-	<?= $this->render('/common/_filter', ['content' => $content, 'filters' => $filters, 'heritageId' => $model->id]) ?>
+	<?= $this->render('/common/_filter', [
+		'content' => $content,
+		'heritageId' => $model->id,
+		'filters' => $filters,
+		'heritageFilters' => $heritageFilters
+	]) ?>
 	
 </div>

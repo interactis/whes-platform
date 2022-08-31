@@ -290,6 +290,11 @@ class Heritage extends HelperModel
 		return Yii::getAlias('@frontend/web'. $path);
     }
     
+    public function getFlagCacheName()
+    {
+		return 'heritageFlagCache_'. $this->id;
+    }
+    
     private function _removeBadgeFile()
     {
 		$path = $this->getBadgeFilePath();

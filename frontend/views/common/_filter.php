@@ -9,6 +9,9 @@ if (isset($heritageId))
 
 $this->registerJs($js, $this::POS_HEAD);
 $filterSet = false;
+
+if (!isset($heritageFilters))
+	$heritageFilters = false;
 ?>
 
 <div id="filter">
@@ -29,9 +32,11 @@ $filterSet = false;
 			<div class="container filter-groups">
 				<div class="row">
 					<?php foreach($filterGroups as $group): ?>
-						<div class="col col-12 col-lg-4">
-							<?= $this->render('_filterGroup', ['model' => $group, 'filters' => $filters]) ?>
-						</div>
+						<?= $this->render('_filterGroup', [
+							'model' => $group,
+							'filters' => $filters,
+							'heritageFilters' => $heritageFilters
+						]) ?>
 					<?php endforeach; ?>
 				</div>
 			</div>

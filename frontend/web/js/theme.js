@@ -4435,19 +4435,20 @@ var breakPointLg = 992;
 
 $(function () {
 	$('[data-toggle="popover"]').popover()
-});
-
-$(document).on('click', function(){
-	$('[data-toggle="popover"]').popover('hide');
-});
-
-$('[data-toggle="popover"]').click(function(){
-	return false;
-});
-
-$('[data-toggle="popover"]').click(function(){
-	$('[data-toggle="popover"]').not(this).popover('hide');
-});
+		.on("mouseenter", function() {
+			$('[data-toggle="popover"]').popover('hide'); // hide other popovers first
+			$(this).popover("show");
+			$(".popover").on("mouseleave", function() {
+				$(this).popover('hide');
+			});
+		})
+		.on("mouseleave", function() {
+			if (!$(".popover:hover").length) {
+				$(this).popover("hide");
+			}
+		});
+	}
+);
 
 $('.filter-checkbox').change(function() {
 	updateContent();

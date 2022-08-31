@@ -13,6 +13,8 @@ use common\models\Heritage;
 				data-toggle="popover" 
 				data-placement="top" 
 				data-html="true" 
+				data-trigger="manual" 
+				data-animation="false"
 				data-content="<?= $this->render('_popover', ['model' => $model]) ?>">
 			</div>
 		<?php endforeach; ?>

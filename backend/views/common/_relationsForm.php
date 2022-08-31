@@ -1,5 +1,6 @@
 <?php
 use common\models\Heritage;
+use common\models\Supplier;
 use yii\helpers\ArrayHelper;
 
 if (!isset($showChildContent))
@@ -31,6 +32,17 @@ $user = Yii::$app->user->identity;
 		{
 			echo $form->field($contentModel, 'heritage_id')->dropDownList(
 				Heritage::getHeritages(),
+				['prompt' => Yii::t('app', 'Please select')]
+			);
+		}
+		?>
+		
+		<?php
+		$type = $contentModel->types[$contentModel->type];
+		if ($type != 'article')
+		{
+			echo $form->field($contentModel, 'supplier_id')->dropDownList(
+				Supplier::getSuppliers(),
 				['prompt' => Yii::t('app', 'Please select')]
 			);
 		}

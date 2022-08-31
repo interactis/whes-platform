@@ -5,6 +5,7 @@ namespace common\models;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use common\models\helpers\TranslationModel;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "supplier".
@@ -111,6 +112,18 @@ class Supplier extends TranslationModel
     {
         return $this->hasOne(Heritage::className(), ['id' => 'heritage_id']);
     }
+    
+    public static function getSuppliers()
+    {
+        $models = Supplier::find()
+        	->joinWith('supplierTranslations')
+        	->where(['language_id' => Yii::$app->params['preferredLanguageId']])
+        	->orderBy(['name' => SORT_ASC])
+        	->all();
+        	
+       return ArrayHelper::map($models, 'id', 'name');
+    }
+    
 
     /**
      * Gets query for [[SupplierTranslations]].

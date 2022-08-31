@@ -18,7 +18,18 @@ class HeritageController extends HelperController
     	$model = $this->findModel($slug);
     	$globalFiltersSet = $this->getFilterCookie(true);
     	$heritageFilters = $this->_getHeritageFilters($model);
+    	$heritageFiltersSet = $this->_getHeritageFiltersSet($globalFiltersSet, $heritageFilters);
     	
+    	return $this->render('view', [
+    		'model' => $model,
+    		'content' => $this->findFilterContent(implode(',', $heritageFiltersSet), $model->id, false),
+    		'filters' => $heritageFiltersSet,
+    		'heritageFilters' => $heritageFilters
+    	]);
+    }
+    
+    private function _getHeritageFiltersSet($globalFiltersSet, $heritageFilters)
+    {
     	$filtersSet = [];
     	if ($globalFiltersSet)
     	{
@@ -28,13 +39,7 @@ class HeritageController extends HelperController
 					$filtersSet[] = $globalFilterSet;
 			}
     	}
-    	
-    	return $this->render('view', [
-    		'model' => $model,
-    		'content' => $this->findFilterContent(implode(',', $filtersSet), $model->id, false),
-    		'filters' => $filtersSet,
-    		'heritageFilters' => $heritageFilters
-    	]);
+    	return $filtersSet;
     }
     
     private function _getHeritageFilters($heritage)

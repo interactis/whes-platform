@@ -1,5 +1,14 @@
 var breakPointLg = 992;
 
+// on page load
+$('#top-carousel').find('.active').find('.scale-image').addClass('scale');
+
+// after slide
+$('#top-carousel').on('slid.bs.carousel', function () {
+	$('.scale-image').removeClass('scale');
+	$(this).find('.active').find('.scale-image').addClass('scale');
+});
+
 $(function () {
 	$('[data-toggle="popover"]').popover()
 		.on("mouseenter", function() {

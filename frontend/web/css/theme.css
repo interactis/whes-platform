@@ -11097,6 +11097,11 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     min-height: 460px; }
+    .jumbotron .img-bg.scale {
+      -webkit-transition: all 10s ease-in-out;
+      transition: all 10s ease-in-out;
+      -webkit-transform: scale(1.1);
+              transform: scale(1.1); }
   .jumbotron .carousel-inner {
     position: absolute;
     min-height: 460px; }

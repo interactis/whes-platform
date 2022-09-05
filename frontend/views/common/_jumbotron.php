@@ -9,7 +9,7 @@ if (!isset($showCaption))
 	$showCaption = true;
 ?>
 
-<div id="top-carousel" class="jumbotron carousel fade-in slide <?= $class ?>" data-ride="carousel" data-touch="true">
+<div id="top-carousel" class="jumbotron carousel fade-in slide <?= $class ?>" data-ride="carousel" data-touch="true" data-interval="10000">
 
 	<div class="carousel-inner">
 		<?php
@@ -21,7 +21,7 @@ if (!isset($showCaption))
 			<div class="carousel-item <?=  ($i == 0) ? 'active' : ''; ?>">
 				<div class="img-container">
 					<img class="hidden" src="<?= $imgUrl ?>" alt="<?= $model->title ?>"> <?php // preload images ?>
-					<div class="img-bg" style="background-image: url('<?= $imgUrl ?>');"></div>
+					<div class="img-bg scale-image" style="background-image: url('<?= $imgUrl ?>');"></div>
 					<?php if ($count > 1): ?>
 						<a class="carousel-control-prev img-link ignore-modal" href="#top-carousel" role="button" data-slide="prev">
 							<span class="carousel-control-prev-icon" aria-hidden="true"></span>

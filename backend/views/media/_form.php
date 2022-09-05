@@ -35,7 +35,11 @@ $translationModel = new MediaTranslation();
 									'showUpload' => false
 								]
 							]) ?>
-							<div class="hint-block">Please use meaningful filenames. The filename will be kept on upload. It has a positive effect on SEO (search engine optimization) if it is meaningful.</div>
+							<div class="hint-block margin-bottom">Please use meaningful filenames. The filename will be kept on upload. It has a positive effect on SEO (search engine optimization) if it is meaningful.</div>
+							
+							<?= $form->field($model, 'animate')->checkbox()
+								->hint(Yii::t('app', 'Enable this option to animate the image in the header.')) ?>
+							
 						</div>
 					</div>
 					<br />

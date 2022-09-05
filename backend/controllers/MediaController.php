@@ -185,9 +185,7 @@ class MediaController extends Controller
         		$model->createThumbs(Yii::getAlias('@frontend/web/img/'));
         		
         		if ($model->save(false) && $model->saveTranslations())
-        		{
-        			$content->setQualityControl(false, $content->approved, true);
-        			
+        		{	
         			Yii::$app->getSession()->setFlash(
         				'success',
         				'<span class="glyphicon glyphicon-ok-sign"></span> Your changes have been saved.'
@@ -205,7 +203,8 @@ class MediaController extends Controller
     public function actionUpdateContentMedia($id)
     {
         $model = $this->findModel($id);
-
+		$content = $model->content;
+		
         $post = Yii::$app->request->post();
 		if ($model->load($post))
         {
@@ -215,6 +214,8 @@ class MediaController extends Controller
         		
         		if ($model->save(false) && $model->saveTranslations())
         		{
+        			$content->setQualityControl(false, $content->approved, true);
+        			
         			Yii::$app->getSession()->setFlash(
         				'success',
         				'<span class="glyphicon glyphicon-ok-sign"></span> Your changes have been saved.'
@@ -225,6 +226,7 @@ class MediaController extends Controller
         }
 
         return $this->render('updateContentMedia', [
+            'content' => $content,
             'model' => $model
         ]);
     }

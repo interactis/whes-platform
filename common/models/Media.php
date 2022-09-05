@@ -14,7 +14,8 @@ use common\models\helpers\ImageModel;
  * @property int|null $content_id
  * @property int|null $page_id
  * @property string|null $filename
- * @property string|null $exif
+ * @property string|null $exif 
+ * @property bool|null $animate
  * @property int|null $order
  * @property int|null $created_at
  * @property int|null $updated_at
@@ -57,6 +58,7 @@ class Media extends ImageModel
         return [
             [['heritage_id', 'content_id', 'page_id', 'order', 'created_at', 'updated_at'], 'default', 'value' => null],
             [['heritage_id', 'content_id', 'page_id', 'order', 'created_at', 'updated_at'], 'integer'],
+            [['animate'], 'boolean'],
             [['exif'], 'string'],
             [['filename'], 'string', 'max' => 255],
             [['content_id'], 'exist', 'skipOnError' => true, 'targetClass' => Content::className(), 'targetAttribute' => ['content_id' => 'id']],
@@ -83,6 +85,7 @@ class Media extends ImageModel
             'page_id' => Yii::t('app', 'Page ID'),
             'filename' => Yii::t('app', 'Filename'),
             'exif' => Yii::t('app', 'Exif'),
+            'animate' => Yii::t('app', 'Animate'),
             'order' => Yii::t('app', 'Order'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),

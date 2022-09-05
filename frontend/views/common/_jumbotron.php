@@ -21,7 +21,7 @@ if (!isset($showCaption))
 			<div class="carousel-item <?=  ($i == 0) ? 'active' : ''; ?>">
 				<div class="img-container">
 					<img class="hidden" src="<?= $imgUrl ?>" alt="<?= $model->title ?>"> <?php // preload images ?>
-					<div class="img-bg scale-image" style="background-image: url('<?= $imgUrl ?>');"></div>
+					<div class="img-bg <?= ($model->animate ? 'scale-image' : '') ?>" style="background-image: url('<?= $imgUrl ?>');"></div>
 					<?php if ($count > 1): ?>
 						<a class="carousel-control-prev img-link ignore-modal" href="#top-carousel" role="button" data-slide="prev">
 							<span class="carousel-control-prev-icon" aria-hidden="true"></span>

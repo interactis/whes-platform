@@ -28,7 +28,12 @@ use yii\helpers\Html;
 				
 				<?php
 				if (!empty($model->copyright))
-					echo '&copy; '. $model->copyright;
+					echo '<p>&copy; '. $model->copyright .'<p>';
+				?>
+				
+				<?php
+				if (!empty($model->animate))
+					echo '<p class="small text-info"><span class="glyphicon glyphicon-ok-circle"></span> Animated</p>';
 				?>
 			</div>
 		</div>

@@ -1,7 +1,6 @@
 <?php
 use yii\helpers\Html;
 
-$content = $model->content;
 $type = $content->types[$content->type];
 $contentModel = $content->{$type};
 

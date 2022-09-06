@@ -29,11 +29,15 @@ class SiteController extends HelperController
     {
     	$filters = $this->getFilterCookie();
     	
+    	$filtersArray = [];
+    	if (!empty($filters))
+    		$filtersArray = explode(',', $filters);
+    	
         return $this->render('index', [
     		'model' => $this->_findPage(1),
     		'media' => $this->_randomMedia(),
     		'content' => $this->findFilterContent($filters), 
-    		'filters' => explode(',', $filters)
+    		'filters' => $filtersArray
     	]);
     }
 	

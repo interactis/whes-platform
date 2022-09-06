@@ -20,6 +20,7 @@ return [
 	
 	"Good to know" => "Bon à savoir",
 	"Info Filter" => "Filtre d'information",
+	"Reset filter" => "Réinitialiser le filtre",
 	"No results found." => "Aucun résultat trouvé.",
 	"1 result found." => "1 résultat trouvé.",
 	"{count} results found." => "{count} résultats trouvés.",

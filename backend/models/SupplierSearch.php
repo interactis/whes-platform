@@ -64,7 +64,7 @@ class SupplierSearch extends Supplier
 				'defaultOrder' => ['id' => SORT_DESC]
 			],
             'pagination' => [
-				'pageSize' => 10,
+				'pageSize' => 25,
 			]
         ]);
         

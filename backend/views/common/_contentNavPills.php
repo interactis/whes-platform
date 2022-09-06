@@ -31,6 +31,6 @@ $contentModel = $model->{$type};
 	<li class="nav-tab <?= ($active == 'audio') ? 'active' : ''; ?>"><?= Html::a('<span class="glyphicon glyphicon-headphones"></span> '. Yii::t('app', 'Audio'), Yii::$app->urlManager->createUrl(['audio/index', 'id' => $model->id])) ?></li>
 	
 	<?php if ($showDownloads): ?>
-		<li class="nav-tab <?= ($active == 'downlaod') ? 'active' : ''; ?>"><?= Html::a('<span class="glyphicon glyphicon-download"></span> '. Yii::t('app', 'Downloads'), Yii::$app->urlManager->createUrl(['download/index', 'id' => $model->id])) ?></li>
+		<li class="nav-tab <?= ($active == 'download') ? 'active' : ''; ?>"><?= Html::a('<span class="glyphicon glyphicon-download"></span> '. Yii::t('app', 'Downloads'), Yii::$app->urlManager->createUrl(['download/index', 'id' => $model->id])) ?></li>
 	<?php endif; ?>
 </ul>

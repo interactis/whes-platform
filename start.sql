@@ -702,11 +702,12 @@ ALTER TABLE supplier ADD FOREIGN KEY (heritage_id) REFERENCES heritage (id) ON D
 
 ALTER TABLE content ADD FOREIGN KEY (heritage_id) REFERENCES heritage (id) ON DELETE CASCADE;
 
-ALTER TABLE content ADD FOREIGN KEY (supplier_id) REFERENCES supplier (id) ON DELETE CASCADE;
+ALTER TABLE content ADD FOREIGN KEY (supplier_id) REFERENCES supplier (id) ON DELETE NO ACTION;
 
 ALTER TABLE related_tag ADD FOREIGN KEY (tag_id) REFERENCES tag (id) ON DELETE CASCADE;
 
 ALTER TABLE related_tag ADD FOREIGN KEY (related_tag_id) REFERENCES tag (id) ON DELETE CASCADE;
+
 
 
 

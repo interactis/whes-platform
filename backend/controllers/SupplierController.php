@@ -118,7 +118,16 @@ class SupplierController extends HelperController
 	
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        
+        // remove relations
+        foreach($model->contents as $content)
+        {
+        	$content->supplier_id = null;
+        	$content->save();
+        }
+        
+        $model->delete();
 
         return $this->redirect(['index']);
     }

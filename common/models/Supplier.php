@@ -92,15 +92,10 @@ class Supplier extends TranslationModel
             'updated_at' => Yii::t('app', 'Updated At'),
         ];
     }
-
-    /**
-     * Gets query for [[Content]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getContent()
+	
+    public function getContents()
     {
-        return $this->hasOne(Content::className(), ['id' => 'content_id']);
+        return $this->hasMany(Content::className(), ['supplier_id' => 'id']);
     }
     
     /**

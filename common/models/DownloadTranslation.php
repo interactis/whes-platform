@@ -55,7 +55,7 @@ class DownloadTranslation extends \yii\db\ActiveRecord
             [['description'], 'string', 'max' => 180],
             [['download_id'], 'exist', 'skipOnError' => true, 'targetClass' => Download::className(), 'targetAttribute' => ['download_id' => 'id']],
             [['language_id'], 'exist', 'skipOnError' => true, 'targetClass' => Language::className(), 'targetAttribute' => ['language_id' => 'id']],
-        	['file', 'file', 'extensions' => 'pdf'],
+        	['file', 'file', 'extensions' => 'pdf, zip, gz', 'maxSize' => 1024 * 1024 * 10] // 10 MB
         ];
     }
 

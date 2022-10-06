@@ -46,6 +46,18 @@
 				font-size: 1rem;
 				margin-bottom: 0;
 			}
+			
+			ul, ol {
+				margin: 12px 0;
+				li {
+					padding: 0;
+					&:nth-child(even) {
+						background: none;
+					}
+				}
+			
+			}
+			
 		}
 		
 		.body-content {

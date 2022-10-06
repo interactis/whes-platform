@@ -43,6 +43,7 @@ $half = ceil($count/2);
 				<a href="https://www.instagram.com/worldheritageswitzerland/" target="_blank" title="<?= Yii::t('app', 'Follow us on {socialMedia}', ['socialMedia' => 'Instagram']) ?>"><i class="fa fa-instagram"></i></a>
 				<a href="https://www.facebook.com/worldheritageswitzerland/" target="_blank" title="<?= Yii::t('app', 'Follow us on {socialMedia}', ['socialMedia' => 'Facebook']) ?>"><i class="fa fa-facebook-square"></i></a>
 				<a href="https://www.youtube.com/user/UDSwitzerland" target="_blank" title="<?= Yii::t('app', 'Follow us on {socialMedia}', ['socialMedia' => 'YouTube']) ?>"><i class="fa fa-youtube-square"></i></a>
+				<a href="https://www.pinterest.ch/worldheritageswitzerland/" target="_blank" title="<?= Yii::t('app', 'Follow us on {socialMedia}', ['socialMedia' => 'Pinterest']) ?>"><i class="fa fa-pinterest-square"></i></a>
 			</div>
 			<div class="col-md-6 small">
 				<?= Html::a(Yii::t('app', 'Media'), Yii::t('app', 'http://www.whes.ch/en/media/230/?oid=1880&lang=en')) ?> &middot; 

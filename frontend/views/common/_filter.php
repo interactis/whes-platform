@@ -47,13 +47,9 @@ if (!isset($heritageFilters))
 	<div class="section-wrapper margin-top-lg"> 
          <div class="container margin-bottom-lg">
          	
-         	<?php
-         	/*
          	<div class="margin-bottom-md text-right reset-filter-container <?= (count($filters) < 1 ? 'hidden' : '') ?>">
          		<a href="#" class="reset-filter"><i class="fa fa-undo"></i> <?= Yii::t('app', 'Reset filter') ?></a>	
          	</div>
-         	*/
-         	?>
          	
          	<div id="info">
            		<?= $this->render('_previews', ['models' => $content]) ?>

@@ -11386,7 +11386,8 @@ body {
       .card .card-body .list-unstyled ul, .card .card-body .list-unstyled ol {
         margin: 12px 0; }
         .card .card-body .list-unstyled ul li, .card .card-body .list-unstyled ol li {
-          padding: 0; }
+          padding: 0;
+          margin: 0 0 6px 0; }
           .card .card-body .list-unstyled ul li:nth-child(even), .card .card-body .list-unstyled ol li:nth-child(even) {
             background: none; }
     .card .card-body .body-content {

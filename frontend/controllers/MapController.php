@@ -95,6 +95,7 @@ class MapController extends HelperController
 			"routes": "'. Yii::t('app', 'Routes') .'",
 			"perimeter": "'. Yii::t('app', 'World Heritage perimeters') .'",
 			"hikingTrailNetwork": "'. Yii::t('app', 'Hiking trail network') .'",
+			"publicTransport": "'. Yii::t('app', 'Public transports') .'",
 			"close": "'. Yii::t('app', 'Close') .'",
 			"learnMore": "'. Yii::t('app', 'Learn more') .'"
 		}';

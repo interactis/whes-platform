@@ -32,6 +32,7 @@ return [
 	"View" => "Ansicht",
 	"Display" => "Anzeige",
 	"Hiking trail network" => "Wanderwegnetz",
+	"Public transports" => "Öffentliche Verkehrsmittel",
 	
 	"Visitor info" => "Besucherinfo",
 	"Schedule" => "Fahrplan",

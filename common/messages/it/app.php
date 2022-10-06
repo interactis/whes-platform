@@ -32,6 +32,7 @@ return [
 	"View" => "Vedi",
 	"Display" => "Visualizza",
 	"Hiking trail network" => "Rete di sentieri escursionistici",
+	"Public transports" => "Trasporti pubblici",
 	
 	"Visitor info" => "Info per visitatori",
 	"Schedule" => "Orario",

@@ -69,5 +69,13 @@ $user = Yii::$app->user->identity;
 			]);
 		}
 		?>
+		
+		<?php
+		if ($user->isAdmin())
+		{
+			echo $form->field($model, 'external_id');
+		}
+		?>
+		
 	</div>
 </div>

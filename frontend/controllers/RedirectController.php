@@ -42,9 +42,11 @@ class RedirectController extends Controller
 			])->one();
 		
 		if ($model !== null)
-            return $model;
-
-        throw new NotFoundHttpException();
+		{
+			 return $model;
+		}
+		else
+			$this->redirect('/');
     }
     
     protected function findPoi($id)
@@ -60,7 +62,12 @@ class RedirectController extends Controller
 		if ($model !== null)
             return $model;
 
-        throw new NotFoundHttpException();
+        if ($model !== null)
+		{
+			 return $model;
+		}
+		else
+			$this->redirect('/');
     }
     
     protected function findRoute($id)
@@ -74,8 +81,10 @@ class RedirectController extends Controller
 			])->one();
 		
 		if ($model !== null)
-            return $model;
-
-        throw new NotFoundHttpException();
+		{
+			 return $model;
+		}
+		else
+			$this->redirect('/');
     }
 }

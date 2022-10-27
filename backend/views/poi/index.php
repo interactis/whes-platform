@@ -53,6 +53,9 @@ if ($user->isAdmin())
 				return ($model->content->imported ? Yii::t('app', 'Yes') :  Yii::t('app', 'No'));
 			},
 			'filter' => $boolFilter,
+		],
+		[
+			'attribute' => 'external_id'
 		]
 	);
 }

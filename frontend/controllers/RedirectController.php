@@ -46,7 +46,7 @@ class RedirectController extends Controller
 			 return $model;
 		}
 		else
-			$this->redirect('/');
+			$this->redirect('https://ourheritage.ch/schweizer-alpen-jungfrau-aletsch');
     }
     
     protected function findPoi($id)
@@ -67,7 +67,7 @@ class RedirectController extends Controller
 			 return $model;
 		}
 		else
-			$this->redirect('/');
+			$this->redirect('https://ourheritage.ch/schweizer-alpen-jungfrau-aletsch');
     }
     
     protected function findRoute($id)
@@ -85,6 +85,6 @@ class RedirectController extends Controller
 			 return $model;
 		}
 		else
-			$this->redirect('/');
+			$this->redirect('https://ourheritage.ch/schweizer-alpen-jungfrau-aletsch');
     }
 }

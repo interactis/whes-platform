@@ -86,7 +86,7 @@ class Download extends TranslationModel
     
     public function getFileUrl()
     {
-    	return Yii::$app->params['frontendUrl'] .'file/download/'. $this->language->code .'/'. $this->filename;	
+    	return Yii::$app->params['frontendUrl'] .'file/download/'. $this->language->code .'/'. $this->filename .'?'. Yii::$app->security->generateRandomString(6);	
     }
     
     /**

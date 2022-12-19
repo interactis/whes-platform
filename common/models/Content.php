@@ -168,7 +168,7 @@ class Content extends \yii\db\ActiveRecord
         	->joinWith('flag')
         	->where([
         		'content_id' => $this->id,
-        		'flag.hidden' => false
+        		//'flag.hidden' => false
         	])
         	->orderBy(['flag.order' => SORT_ASC])
         	->all();    

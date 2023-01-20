@@ -81,6 +81,10 @@ return [
 	"Click on the rucksack icon to bookmark what you like." => "Clicca sull'icona dello zaino per mettere tra i preferiti quello che ti piace.",
 	"Was added to your collection." => "È stato aggiunto alla tua collezione.",
 	
+	"https://www.myswitzerland.com/en-ch/destinations/attractions/unseco-world-heritage-sites/" => "https://www.myswitzerland.com/it-ch/destinazioni/attrazioni/unesco-patrimonio-mondiale/",
+	"https://www.stnet.ch/de/swisstainable/" => "https://www.stnet.ch/de/swisstainable/",
+	"https://www.mystsnet.com/en/" => "https://www.mystsnet.com/en/",
+	
 	"About" => "Impressum",
 	"privacy policy" => "Politica della privacy",
 	"Contact" => "Contatto",
@@ -93,9 +97,11 @@ return [
 	"/about" => "/impressum",
 	"/contact" => "/contatto",
 	
+	"About us" => "Su di noi",
 	"Media" => "Media",
 	
 	"https://www.sbb.ch/en/buying/pages/fahrplan/fahrplan.xhtml" => "https://www.sbb.ch/it/acquistare/pages/fahrplan/fahrplan.xhtml",
 	"/article/media-corner" => "/articolo/media-corner",
 	"/article/trade-corner" => "/articolo/trade-corner",
+	"/article/world-heritage-experience-switzerland-whes" => "/articolo/world-heritage-experience-switzerland-whes",
 ];

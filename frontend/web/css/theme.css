@@ -10738,16 +10738,28 @@ body {
   padding: 30px 0 30px;
   font-weight: 300; }
   #footer .logo {
-    width: 200px; }
+    width: 200px;
+    margin-bottom: 60px; }
   #footer a:link,
   #footer a:visited {
-    color: white; }
+    color: white;
+    white-space: nowrap; }
   #footer .small {
     font-weight: 300; }
-  #footer .heritage-li {
-    margin-bottom: 6px; }
   #footer .closing-row {
     position: relative; }
+  #footer .partners {
+    margin-bottom: 42px; }
+    #footer .partners a {
+      text-decoration: none; }
+    #footer .partners .spacer {
+      margin: 0 18px; }
+    #footer .partners .switzerland-tourism {
+      height: 44px; }
+    #footer .partners .swisstainable {
+      height: 46px; }
+    #footer .partners .swiss-travel-system {
+      height: 56px; }
   #footer .social-links {
     margin-bottom: 12px;
     font-size: 1.4rem; }
@@ -10755,7 +10767,7 @@ body {
       margin-right: 6px; }
   @media (min-width: 576px) {
     #footer {
-      padding-top: 90px; }
+      padding-top: 60px; }
       #footer .logo {
         width: 260px; } }
   @media (min-width: 768px) {
@@ -10767,6 +10779,18 @@ body {
       text-align: right; }
       #footer .social-links a {
         margin: 0 6px 0 0; } }
+  @media (min-width: 992px) {
+    #footer .partners {
+      margin-bottom: 74px;
+      text-align: right; }
+      #footer .partners .spacer {
+        margin: 0 36px; }
+      #footer .partners .switzerland-tourism {
+        height: 48px; }
+      #footer .partners .swisstainable {
+        height: 50px; }
+      #footer .partners .swiss-travel-system {
+        height: 60px; } }
 
 #cookie-info {
   position: fixed;

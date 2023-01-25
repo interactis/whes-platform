@@ -68,8 +68,7 @@ return [
     			'karte' =>'map/index',
     			'rucksack' =>'rucksack/index',
     			
-    			'about' => 'site/about',
-    			'impressum' => 'site/about',
+    			'impressum' => 'site/impressum',
     			'privacy' => 'site/privacy-policy',
     			'datenschutz' => 'site/privacy-policy',
     			'protezione-dei-dati' => 'site/privacy-policy',

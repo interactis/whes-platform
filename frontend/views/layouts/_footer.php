@@ -36,7 +36,7 @@ use yii\helpers\Html;
 				<?= Html::a(Yii::t('app', 'About us'), Yii::t('app', '/article/world-heritage-experience-switzerland-whes')) ?> &middot; 
 				<?= Html::a(Yii::t('app', 'Media'), Yii::t('app', '/article/media-corner')) ?> &middot; 
 				<?= Html::a('Trade', Yii::t('app', '/article/trade-corner')) ?> &middot; 
-				<?= Html::a(Yii::t('app', 'About'), Yii::t('app', '/about')) ?> &middot; 
+				<?= Html::a('Impressum', '/impressum') ?> &middot; 
 				<?= Html::a(ucfirst(Yii::t('app', 'privacy policy')), Yii::t('app', '/privacy')) ?> &middot;
 				<?= Html::a(Yii::t('app', 'Contact'), Yii::t('app', '/contact')) ?>
 			</div>

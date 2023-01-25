@@ -85,7 +85,6 @@ return [
 	"https://www.stnet.ch/de/swisstainable/" => "https://www.stnet.ch/de/swisstainable/",
 	"https://www.mystsnet.com/en/" => "https://www.mystsnet.com/en/",
 	
-	"About" => "Impressum",
 	"privacy policy" => "Politica della privacy",
 	"Contact" => "Contatto",
 	"Follow us on {socialMedia}" => "Seguici su {socialMedia}",
@@ -94,7 +93,6 @@ return [
 	"To the homepage" => "Alla pagina principale",
 	
 	"/privacy" => "/protezione-dei-dati",
-	"/about" => "/impressum",
 	"/contact" => "/contatto",
 	
 	"About us" => "Su di noi",

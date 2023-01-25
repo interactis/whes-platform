@@ -41,7 +41,7 @@ class SiteController extends HelperController
     	]);
     }
 	
-    public function actionAbout()
+    public function actionImpressum()
     {
         return $this->render('page', [
         	'model' => $this->_findPage(2)

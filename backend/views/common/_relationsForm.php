@@ -71,7 +71,7 @@ $user = Yii::$app->user->identity;
 		?>
 		
 		<?php
-		if ($user->isAdmin())
+		if ($user->isAdmin() && $type != 'event')
 		{
 			echo $form->field($model, 'external_id');
 		}

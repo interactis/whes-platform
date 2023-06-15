@@ -165,28 +165,59 @@ class HelperController extends Controller
     	$contentIds = [];
     	
     	//groups AND not implemented yet
-		foreach ($groups['or'] as $group)
+		
+		if (isset($groups['or']))
 		{
-			$filterCount = 0;
-			$groupContentIds = [];
-			if (isset($group['or']))
+			foreach ($groups['or'] as $group)
 			{
-				$flagIds = $group['or'];
-				$groupContentIds = array_merge($groupContentIds, $this->_getContentIds($flagIds));
-				$filterCount = 1; // all OR filters count as 1
-			}
+				$filterCount = 0;
+				$groupContentIds = [];
+				if (isset($group['or']))
+				{
+					$flagIds = $group['or'];
+					$groupContentIds = array_merge($groupContentIds, $this->_getContentIds($flagIds));
+					$filterCount = 1; // all OR filters count as 1
+				}
 			
-			if (isset($group['and']))
+				if (isset($group['and']))
+				{
+					$flagIds = $group['and'];
+					$groupContentIds = array_merge($groupContentIds, $this->_getContentIds($flagIds));
+					$filterCount = $filterCount + count($flagIds);
+				}
+			
+				if ($filterCount > 1)
+					$groupContentIds = $this->_filterIds($filterCount, $groupContentIds);
+			
+				$contentIds = array_merge($contentIds, $groupContentIds);
+			}
+		}
+		
+		if (isset($groups['and']))
+		{
+			foreach ($groups['and'] as $group)
 			{
-				$flagIds = $group['and'];
-				$groupContentIds = array_merge($groupContentIds, $this->_getContentIds($flagIds));
-				$filterCount = $filterCount + count($flagIds);
+				$filterCount = 0;
+				$groupContentIds = [];
+				if (isset($group['or']))
+				{
+					$flagIds = $group['or'];
+					$groupContentIds = array_merge($groupContentIds, $this->_getContentIds($flagIds));
+					$filterCount = 1; // all AND filters count as 1
+				}
+			
+				if (isset($group['and']))
+				{
+					$flagIds = $group['and'];
+					$groupContentIds = array_merge($groupContentIds, $this->_getContentIds($flagIds));
+					$filterCount = $filterCount + count($flagIds);
+				}
+			
+				if ($filterCount > 1)
+					$groupContentIds = $this->_filterIds($filterCount, $groupContentIds);
+			
+				$contentIds = array_merge($contentIds, $groupContentIds);
 			}
-			
-			if ($filterCount > 1)
-				$groupContentIds = $this->_filterIds($filterCount, $groupContentIds);
-			
-			$contentIds = array_merge($contentIds, $groupContentIds);
 		}
 		
     	return $contentIds;

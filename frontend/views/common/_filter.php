@@ -1,7 +1,7 @@
 <?php
 use common\models\FlagGroup;
 
-$filterGroups = FlagGroup::getActiveFlagGroups();
+$filterGroups = FlagGroup::getActiveFlagGroups(Yii::$app->params['frontendType']);
 
 $js = "var updateUrl = '/filter/content?heritageId=0&featured=1&limit=default&offset=0';";
 if (isset($heritageId))
@@ -29,7 +29,7 @@ if (!isset($heritageFilters))
 
 	<div class="collapse show" id="info-filter">
 		<div class="collapse-wrapper">
-			<div class="container filter-groups">
+			<div class="container filter-groups">		
 				<div class="row">
 					<?php foreach($filterGroups as $group): ?>
 						<?= $this->render('_filterGroup', [

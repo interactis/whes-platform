@@ -108,6 +108,26 @@
 	hr {
 		margin: 0;
 	}
+	.main-filter {
+	
+		.h3 {
+			margin-bottom: 15px;
+		}
+		margin: 0 9px 42px;
+			
+			
+		@include media-breakpoint-up(sm) {
+			margin: 0 0 42px;
+		}
+		
+		@include media-breakpoint-up(md) {
+			margin-bottom: 60px;
+			
+			.h3 {
+				margin-bottom: 0;
+			}
+		}
+	}
 	.filter-groups {
 		
 		.collapse-item {
@@ -134,4 +154,6 @@
 			}
 		}
 	}
+	
+	
 }

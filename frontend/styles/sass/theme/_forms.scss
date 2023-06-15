@@ -40,6 +40,13 @@
 			color: $primary !important;
 		}
 	}
+	
+	&.main {
+		.custom-control-label {
+			color: $gray-dark !important;
+		}
+	}
+	
 	.custom-control-label::before,
 	.custom-control-label::after {
 		width: 28px !important;
@@ -86,6 +93,14 @@
 	}
 }
 
+@include media-breakpoint-up(sm) {
+	.filter-checkbox-control {
+		&.main {
+			margin-left: 6px;
+		}
+	}
+}
+
 @include media-breakpoint-up(md) {
 	
 	.custom-control-lg {
@@ -95,6 +110,13 @@
 			&:after {
 				top: 8px !important;
 			}
+		}
+	}
+	
+	.filter-checkbox-control {
+		&.main {
+			display: inline-block;
+			margin: 18px 72px 0 6px;
 		}
 	}
 }

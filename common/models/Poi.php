@@ -68,8 +68,8 @@ class Poi extends HelperModel
             [['arrival_station', 'arrival_url'], 'string', 'max' => 255],
             [['arrival_url'], 'url'],
             [['content_id'], 'exist', 'skipOnError' => true, 'targetClass' => Content::className(), 'targetAttribute' => ['content_id' => 'id']],
-            [['tags', 'flags'], 'required'],
-            [['childContentIds'], 'safe'],
+            [['tags'], 'required'],
+            [['visitorFlags', 'eduFlags', 'childContentIds'], 'safe'],
         ];
     }
 
@@ -85,7 +85,8 @@ class Poi extends HelperModel
             'arrival_station' => Yii::t('app', 'SBB Arrival Station Name'),
             'arrival_url' => Yii::t('app', 'Arrival Station URL'),
             'geom' => Yii::t('app', 'Geom'),
-            'flags' =>  Yii::t('app', 'Filters'),
+            'visitorFlags' =>  Yii::t('app', 'Visitor Filters'),
+            'eduFlags' =>  Yii::t('app', 'EDU Filters'),
             'childContentIds' => Yii::t('app', 'Child Content'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),

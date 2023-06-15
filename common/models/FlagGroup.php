@@ -130,10 +130,13 @@ class FlagGroup extends TranslationModel
         return ArrayHelper::map($models, 'id', 'title');
     }
     
-    public static function getActiveFlagGroups()
+    public static function getActiveFlagGroups($type = 'visitor')
     {
         return FlagGroup::find()
-        	->where(['hidden' => false])
+        	->where([
+        		$type => true,
+        		'hidden' => false
+        	])
         	->orderBy(['order' => SORT_ASC])
         	->all();
     }

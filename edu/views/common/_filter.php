@@ -1,7 +1,14 @@
 <?php
 use common\models\FlagGroup;
 
-$filterGroups = FlagGroup::getActiveFlagGroups();
+$filterGroups = FlagGroup::getActiveFlagGroups('edu');
+
+$mainFilters = false;
+if ($filterGroups[0]->main)
+{
+	$mainFitlers = $filterGroups[0]->activeFlags;
+	//$filterGroups = array_shift($filterGroups);
+}
 
 $js = "var updateUrl = '/filter/content?heritageId=0&featured=1&limit=default&offset=0';";
 if (isset($heritageId))
@@ -29,16 +36,26 @@ if (!isset($heritageFilters))
 
 	<div class="collapse show" id="info-filter">
 		<div class="collapse-wrapper">
-			<div class="container filter-groups">
-				<div class="row">
-					<?php foreach($filterGroups as $group): ?>
-						<?= $this->render('_filterGroup', [
-							'model' => $group,
-							'filters' => $filters,
-							'heritageFilters' => $heritageFilters
-						]) ?>
-					<?php endforeach; ?>
+			<div class="container">
+				
+				<div class="main-filter margin-bottom-md">
+					<div class="h3">Schulstufe</div>
+					
+					
 				</div>
+			
+				<div class="filter-groups">
+					<div class="row">
+						<?php foreach($filterGroups as $group): ?>
+							<?= $this->render('_filterGroup', [
+								'model' => $group,
+								'filters' => $filters,
+								'heritageFilters' => $heritageFilters
+							]) ?>
+						<?php endforeach; ?>
+					</div>
+				</div>
+				
 			</div>
 		</div>
 		<hr />

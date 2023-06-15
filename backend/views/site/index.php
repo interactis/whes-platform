@@ -65,7 +65,12 @@ $this->title = 'Dashboard';
 					<div class="h1">Pages</div>
 					<p class="lead">
 						<a  href="/page/update/1">
-							Homepage
+							Homepage: Visitors
+						</a>
+					</p>
+					<p class="lead">
+						<a  href="/page/update/5">
+							Homepage: EDU
 						</a>
 					</p>
 					<p class="lead">

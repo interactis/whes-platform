@@ -33,8 +33,15 @@ class SiteController extends HelperController
     	if (!empty($filters))
     		$filtersArray = explode(',', $filters);
     	
+    	if (Yii::$app->params['frontendType'] == 'edu')
+    	{
+    		$model = $this->_findPage(5);
+    	}
+    	else
+    		$model = $this->_findPage(1);
+    	
         return $this->render('index', [
-    		'model' => $this->_findPage(1),
+    		'model' => $model,
     		'media' => $this->_randomMedia(),
     		'content' => $this->findFilterContent($filters), 
     		'filters' => $filtersArray

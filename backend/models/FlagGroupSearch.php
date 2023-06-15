@@ -21,7 +21,7 @@ class FlagGroupSearch extends FlagGroup
     {
         return [
             [['id', 'order', 'created_at', 'updated_at'], 'integer'],
-            [['hidden'], 'boolean'],
+            [['main', 'visitor', 'edu', 'hidden'], 'boolean'],
             [['title', 'operator'], 'safe'],
         ];
     }
@@ -77,6 +77,9 @@ class FlagGroupSearch extends FlagGroup
         $query->andFilterWhere([
             'flag_group.id' => $this->id,
             'order' => $this->order,
+            'main' => $this->main,
+            'visitor' => $this->visitor,
+            'edu' => $this->edu,
             'hidden' => $this->hidden,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,

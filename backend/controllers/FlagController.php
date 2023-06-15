@@ -73,6 +73,8 @@ class FlagController extends Controller
     	$flagGroup = $this->_findFlagGroup($id);
         $model = new Flag();
         $model->flag_group_id = $flagGroup->id;
+        $model->visitor = $flagGroup->visitor;
+        $model->edu = $flagGroup->edu;
         $post = Yii::$app->request->post();
 		
 		if ($model->load($post))
@@ -106,6 +108,8 @@ class FlagController extends Controller
     {
         $model = $this->findModel($id);
 		$flagGroup = $model->flagGroup;
+		$model->visitor = $flagGroup->visitor;
+        $model->edu = $flagGroup->edu;
 		$post = Yii::$app->request->post();
 		
 		if ($model->load($post))
@@ -113,7 +117,7 @@ class FlagController extends Controller
         	if ($model->validateTranslations() && $model->validate())
         	{
         		if ($model->save(false)	&& $model->saveTranslations())
-        		{        						
+        		{		
 					Yii::$app->getSession()->setFlash(
 						'success',
 						'<span class="glyphicon glyphicon-ok-sign"></span> Your changes have been saved.'

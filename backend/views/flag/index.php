@@ -39,6 +39,8 @@ $this->params['breadcrumbs'][] = $this->title;
 					return strtoupper($model->operator);
 				}
 			],
+			'visitor:boolean',
+			'edu:boolean',
             'order',
             'label:boolean',
             'hidden:boolean',

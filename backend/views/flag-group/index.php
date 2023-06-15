@@ -36,6 +36,9 @@ $this->params['breadcrumbs'][] = $this->title;
 			],
 			*/
 			
+			'main:boolean',
+			'visitor:boolean',
+			'edu:boolean',
             'order',
             'hidden:boolean',
 

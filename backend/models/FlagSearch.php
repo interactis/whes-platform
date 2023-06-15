@@ -21,7 +21,7 @@ class FlagSearch extends Flag
     {
         return [
             [['id', 'flag_group_id', 'order', 'created_at', 'updated_at'], 'integer'],
-            [['hidden', 'label'], 'boolean'],
+            [['visitor', 'edu', 'hidden', 'label'], 'boolean'],
             [['title', 'operator'], 'safe'],
         ];
     }
@@ -77,6 +77,8 @@ class FlagSearch extends Flag
         $query->andFilterWhere([
             'flag.id' => $this->id,
             'flag_group_id' => $this->flag_group_id,
+            'visitor' => $this->visitor,
+            'edu' => $this->edu,
             'hidden' => $this->hidden,
             'label' => $this->label,
             'order' => $this->order,

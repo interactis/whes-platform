@@ -12,6 +12,9 @@ use yii\helpers\ArrayHelper;
  *
  * @property int $id
  * @property bool|null $operator
+ * @property bool|null $main
+ * @property bool|null $visitor
+ * @property bool|null $edu
  * @property int|null $order
  * @property bool|null $hidden
  * @property int|null $created_at
@@ -55,7 +58,7 @@ class FlagGroup extends TranslationModel
         return [
             [['order', 'created_at', 'updated_at'], 'default', 'value' => null],
             [['order', 'created_at', 'updated_at'], 'integer'],
-            [['hidden'], 'boolean'],
+            [['main', 'visitor', 'edu', 'hidden'], 'boolean'],
             ['operator', 'string', 'max' => 6],
             ['operator', 'required']
         ];
@@ -69,6 +72,9 @@ class FlagGroup extends TranslationModel
         return [
             'id' => Yii::t('app', 'ID'),
             'operator' => Yii::t('app', 'Operator'),
+            'main' => Yii::t('app', 'Main Flag'),
+            'visitor' => Yii::t('app', 'Visitor'),
+            'edu' => Yii::t('app', 'EDU'),
             'order' => Yii::t('app', 'Order'),
             'hidden' => Yii::t('app', 'Hidden'),
             'created_at' => Yii::t('app', 'Created At'),
@@ -91,6 +97,17 @@ class FlagGroup extends TranslationModel
         return $this->hasMany(Flag::className(), ['flag_group_id' => 'id'])
         	->where(['hidden' => false])
         	->orderBy(['order' => SORT_ASC]);
+    }
+    
+    public function updateFlags()
+    {
+    	foreach($this->flags as $flag)
+    	{
+    		$flag->visitor = $this->visitor;
+    		$flag->edu = $this->edu;
+    		$flag->save(false);
+    	}
+    	return true;
     }
 
     /**

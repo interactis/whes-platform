@@ -25,7 +25,7 @@ class FlagGroupController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['index', 'view', 'create', 'update', 'delete'],
+                        'actions' => ['index', 'create', 'update', 'delete'],
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action) {
@@ -56,19 +56,6 @@ class FlagGroupController extends Controller
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-        ]);
-    }
-
-    /**
-     * Displays a single FlagGroup model.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    public function actionView($id)
-    {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
         ]);
     }
 	
@@ -116,7 +103,7 @@ class FlagGroupController extends Controller
 		{
         	if ($model->validateTranslations() && $model->validate())
         	{
-        		if ($model->save(false)	&& $model->saveTranslations())
+        		if ($model->save(false)	&& $model->saveTranslations() && $model->updateFlags())
         		{        						
 					Yii::$app->getSession()->setFlash(
 						'success',

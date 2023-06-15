@@ -1,4 +1,10 @@
 <?php
 return [
-	'enableAnalytics' => false
+	'enableAnalytics' => false,
+	'isVisitorFrontend' => true, // default
+	'isEduFrontend' => false,
+	'frontends' => [
+		'visitor' => 'whes.local',
+		'edu' => 'edu.whes'
+	]
 ];

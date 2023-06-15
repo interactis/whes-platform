@@ -1,8 +1,7 @@
 <?php
 return [
 	'enableAnalytics' => false,
-	'isVisitorFrontend' => true, // default
-	'isEduFrontend' => false,
+	'frontendType' => 'visitor', // default
 	'frontends' => [
 		'visitor' => 'whes.local',
 		'edu' => 'edu.whes'

@@ -12,7 +12,7 @@ class BootstrapSelector implements BootstrapInterface
     {
        	$this->_setFrontendType($app);
        	
-       	if ($app->params['isEduFrontend'])
+       	if ($app->params['frontendType'] == 'edu')
        	{
        		$this->_setLanguage($app, 'de');
        	}
@@ -24,10 +24,7 @@ class BootstrapSelector implements BootstrapInterface
     {
     	$domain = $_SERVER['SERVER_NAME'];
        	if ($domain == $app->params['frontends']['edu'])
-       	{
-       		$app->params['isVisitorFrontend'] = false;
-       		$app->params['isEduFrontend'] = true;
-       	}
+       		$app->params['frontendType'] = 'edu';
     }
     
     private function _setLanguage($app, $setLang = false)

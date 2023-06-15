@@ -1,8 +1,7 @@
 <?php
 return [
 	'enableAnalytics' => true,
-	'isVisitorFrontend' => true, // default
-	'isEduFrontend' => false,
+	'frontendType' => 'visitor', // default
 	'frontends' => [
 		'visitor' => 'ourheritage.ch',
 		'edu' => 'edu.ourheritage.ch'

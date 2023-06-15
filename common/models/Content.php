@@ -166,16 +166,23 @@ class Content extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getContentFlags()
+    public function getContentFlags($type = false)
     {
-        return ContentFlag::find()
+        $flags = ContentFlag::find()
         	->joinWith('flag')
         	->where([
         		'content_id' => $this->id,
         		//'flag.hidden' => false
-        	])
-        	->orderBy(['flag.order' => SORT_ASC])
-        	->all();    
+        	]);
+        
+        if ($type)
+        {
+        	$flags->andWhere([
+        		$type => true		
+        	]);
+        }
+        
+        return $flags->orderBy(['flag.order' => SORT_ASC])->all();    
     }
 
     /**

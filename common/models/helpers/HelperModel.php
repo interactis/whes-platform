@@ -16,7 +16,8 @@ use common\models\Content;
 class HelperModel extends TranslationModel
 {	
     public $tags = [];
-    public $flags = [];
+    public $visitorFlags = [];
+    public $eduFlags = [];
     public $childContentIds = [];
     
     public function getPriorities()
@@ -61,9 +62,16 @@ class HelperModel extends TranslationModel
     public function saveFlags()
     {
         ContentFlag::deleteAll(['content_id' => $this->content_id]);
-    	
-		$flagIds = [];
-		foreach ($this->flags as $flagId)
+		$flagIds = $this->_getFlagIds([], 'visitorFlags');
+		$flagIds = $this->_getFlagIds($flagIds, 'eduFlags');
+		Yii::$app->db->createCommand()->batchInsert('content_flag', ['content_id', 'flag_id'], $flagIds)->execute();
+        
+        return true;
+    }
+    
+    private function _getFlagIds($flagIds, $type)
+    {
+    	foreach ($this->$type as $flagId)
 		{
 			if (is_numeric($flagId))
 			{
@@ -71,9 +79,8 @@ class HelperModel extends TranslationModel
 					$flagIds[] = [$this->content_id, $flagId];
 			}
 		}
-		Yii::$app->db->createCommand()->batchInsert('content_flag', ['content_id', 'flag_id'], $flagIds)->execute();
-        
-        return true;
+		
+		return $flagIds;
     }
     
     public function saveChildContents()

@@ -1,7 +1,12 @@
 <?php
 use yii\helpers\Html;
 use common\models\Content;
+use yii\helpers\ArrayHelper;
 use kartik\select2\Select2;
+
+$childContentValue = [];
+if (isset($contentModel->childContents))
+	$childContentValue = ArrayHelper::map($contentModel->childContents, 'child_content_id', 'child_content_id');
 ?>
 
 <div class="form-group">

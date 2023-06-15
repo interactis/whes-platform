@@ -116,12 +116,19 @@ class Flag extends TranslationModel
         return $this->hasMany(FlagTranslation::className(), ['flag_id' => 'id']);
     }
     
-    public static function getFlagList()
+    public static function getFlagList($type = false)
     {
     	$models = Flag::find()
-    		->joinWith('flagTranslations')
-    		->orderBy('title')
-    		->all();
+    		->joinWith('flagTranslations');
+    	
+    	if ($type)
+    	{
+    		$models->where([
+        		$type => true		
+        	]);
+    	}
+    	
+    	$models = $models->orderBy('title')->all();
     		
         return ArrayHelper::map($models, 'id', 'title');
     }

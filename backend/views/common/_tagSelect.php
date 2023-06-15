@@ -1,7 +1,12 @@
 <?php
 use yii\helpers\Html;
 use common\models\Tag;
+use yii\helpers\ArrayHelper;
 use kartik\select2\Select2;
+
+$tagValue = [];
+if (isset($contentModel->contentTags))
+	$tagValue = ArrayHelper::map($contentModel->contentTags, 'tag_id', 'tag_id');
 ?>
 
 <div class="form-group">

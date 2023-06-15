@@ -1,22 +1,9 @@
 <?php
 use common\models\Heritage;
 use common\models\Supplier;
-use yii\helpers\ArrayHelper;
 
 if (!isset($showChildContent))
 	$showChildContent = false;
-
-$tagValue = [];
-if (isset($contentModel->contentTags))
-	$tagValue = ArrayHelper::map($contentModel->contentTags, 'tag_id', 'tag_id');
-
-$flagValue = [];
-if (isset($contentModel->contentFlags))
-	$flagValue = ArrayHelper::map($contentModel->contentFlags, 'flag_id', 'flag_id');
-
-$childContentValue = [];
-if (isset($contentModel->childContents))
-	$childContentValue = ArrayHelper::map($contentModel->childContents, 'child_content_id', 'child_content_id');
 
 $user = Yii::$app->user->identity;
 ?>
@@ -50,20 +37,27 @@ $user = Yii::$app->user->identity;
 	
 		<?= $this->render('/common/_tagSelect', [
 			'model' => $model,
-			'tagValue' => $tagValue
-		]); ?>
+			'contentModel' => $contentModel
+		]) ?>
 		
 		<?= $this->render('/common/_flagSelect', [
 			'model' => $model,
-			'flagValue' => $flagValue
-		]); ?>
+			'contentModel' => $contentModel,
+			'type' => 'visitor'
+		]) ?>
+		
+		<?= $this->render('/common/_flagSelect', [
+			'model' => $model,
+			'contentModel' => $contentModel,
+			'type' => 'edu'
+		]) ?>
 		
 		<?php
 		if ($showChildContent)
 		{
 			echo $this->render('/common/_childContentSelect', [
 				'model' => $model,
-				'childContentValue' => $childContentValue,
+				'contentModel' => $contentModel,
 				'childContentTypeIds' => $childContentTypeIds,
 				'childContentHint' => $childContentHint
 			]);

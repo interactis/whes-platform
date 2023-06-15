@@ -69,7 +69,15 @@ class Poi extends HelperModel
             [['arrival_url'], 'url'],
             [['content_id'], 'exist', 'skipOnError' => true, 'targetClass' => Content::className(), 'targetAttribute' => ['content_id' => 'id']],
             [['tags'], 'required'],
-            [['visitorFlags', 'eduFlags', 'childContentIds'], 'safe'],
+            
+            ['visitorFlags', 'required', 'when' => function ($model) {
+				return empty($model->eduFlags);
+			}],
+			['eduFlags', 'required', 'when' => function ($model) {
+				return empty($model->visitorFlags);
+			}],
+            
+            [['childContentIds'], 'safe'],
         ];
     }
 

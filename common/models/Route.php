@@ -93,9 +93,17 @@ class Route extends HelperModel
             [['arrival_url', 'departure_url'], 'url'],
             [['content_id'], 'exist', 'skipOnError' => true, 'targetClass' => Content::className(), 'targetAttribute' => ['content_id' => 'id']],
             [['tags'], 'required'],
-            [['visitorFlags', 'eduFlags', 'childContentIds'], 'safe'],
-            ['difficulty', 'in', 'range' => [self::DIFFICULTY_EASY, self::DIFFICULTY_MEDIUM, self::DIFFICULTY_DIFFICULT]],
             
+            ['visitorFlags', 'required', 'when' => function ($model) {
+				return empty($model->eduFlags);
+			}],
+			['eduFlags', 'required', 'when' => function ($model) {
+				return empty($model->visitorFlags);
+			}],
+            
+            [['childContentIds'], 'safe'],
+            
+            ['difficulty', 'in', 'range' => [self::DIFFICULTY_EASY, self::DIFFICULTY_MEDIUM, self::DIFFICULTY_DIFFICULT]],
             ['geojsonFile', 'file', 'extensions' => ['geojson']],
             ['geom', 'handleFileUpload', 'skipOnEmpty' => false, 'skipOnError' => false]
         ];

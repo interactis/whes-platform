@@ -56,10 +56,18 @@ class Article extends HelperModel
             [['content_id', 'external_id', 'created_at', 'updated_at'], 'integer'],
             [['content_id'], 'exist', 'skipOnError' => true, 'targetClass' => Content::className(), 'targetAttribute' => ['content_id' => 'id']],
             [['tags'], 'required'],
-            [['visitorFlags', 'eduFlags', 'childContentIds'], 'safe'],
+            
+            ['visitorFlags', 'required', 'when' => function ($model) {
+				return empty($model->eduFlags);
+			}],
+			['eduFlags', 'required', 'when' => function ($model) {
+				return empty($model->visitorFlags);
+			}],
+			
+            [['childContentIds'], 'safe'],
         ];
     }
-
+    
     /**
      * {@inheritdoc}
      */

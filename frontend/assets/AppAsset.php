@@ -10,7 +10,7 @@ use yii\web\AssetBundle;
 class AppAsset extends AssetBundle
 {
     public $basePath = '@webroot';
-    public $baseUrl = 'http://whes.local:8888/';
+    public $baseUrl = 'https://ourheritage.ch/';
     public $css = [
         'css/theme.min.css?v=1.3',
     ];

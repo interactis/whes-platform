@@ -80,7 +80,6 @@ if ($user->isSuperAdmin())
 	);
 }
 
-
 array_push($colums,
 	[
 		'attribute' => 'priority',

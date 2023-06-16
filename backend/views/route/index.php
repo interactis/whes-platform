@@ -67,6 +67,26 @@ if ($user->isAdmin())
 	);
 }
 
+if ($user->isSuperAdmin())
+{
+	array_push($colums,
+		[
+			'attribute' => 'visitor',
+			'value' => function ($model) {
+				return ($model->content->visitor ? Yii::t('app', 'Yes') :  Yii::t('app', 'No'));
+			},
+			//'filter' => $boolFilter,
+		],
+		[
+			'attribute' => 'edu',
+			'value' => function ($model) {
+				return ($model->content->edu ? Yii::t('app', 'Yes') :  Yii::t('app', 'No'));
+			},
+			//'filter' => $boolFilter,
+		]
+	);
+}
+
 array_push($colums,
 	[
 		'attribute' => 'priority',

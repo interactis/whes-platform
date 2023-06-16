@@ -14,7 +14,6 @@ else
 {
 	$viewUrl = Yii::$app->params['frontendUrl'];
 	
-	echo $model->id;
 	// edu
 	if ($model->id == 5)
 		$viewUrl = Yii::$app->params['eduUrl'];

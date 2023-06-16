@@ -20,6 +20,9 @@ class HelperModel extends TranslationModel
     public $eduFlags = [];
     public $childContentIds = [];
     
+    private $_visitorFlagsSet = false;
+    private $_eduFlagsSet = false;
+    
     public function getPriorities()
     {
     	return [
@@ -66,6 +69,11 @@ class HelperModel extends TranslationModel
 		$flagIds = $this->_getFlagIds($flagIds, 'eduFlags');
 		Yii::$app->db->createCommand()->batchInsert('content_flag', ['content_id', 'flag_id'], $flagIds)->execute();
         
+        $content = $this->content;
+        $content->visitor = $this->_visitorFlagsSet;
+        $content->edu = $this->_eduFlagsSet;
+        $content->save(false);
+        
         return true;
     }
     
@@ -76,7 +84,12 @@ class HelperModel extends TranslationModel
 			if (is_numeric($flagId))
 			{
 				if (Flag::findOne($flagId))
+				{
 					$flagIds[] = [$this->content_id, $flagId];
+					
+					$set = '_'. $type .'Set';
+					$this->$set = true;
+				}
 			}
 		}
 		

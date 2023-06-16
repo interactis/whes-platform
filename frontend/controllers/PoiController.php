@@ -32,6 +32,7 @@ class PoiController extends Controller
         	->joinWith('poiTranslations')
 			->where([
 				'slug' => $slug,
+				Yii::$app->params['frontendType'] => true,
 				'published' => true,
 				'archive' => false
 			])->one();

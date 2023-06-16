@@ -32,6 +32,7 @@ class EventController extends Controller
         	->joinWith('eventTranslations')
 			->where([
 				'slug' => $slug,
+				Yii::$app->params['frontendType'] => true,
 				'published' => true,
 				'archive' => false
 			])->one();

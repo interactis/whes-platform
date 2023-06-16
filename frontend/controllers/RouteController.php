@@ -32,6 +32,7 @@ class RouteController extends Controller
         	->joinWith('routeTranslations')
 			->where([
 				'slug' => $slug,
+				Yii::$app->params['frontendType'] => true,
 				'published' => true,
 				'archive' => false
 			])->one();

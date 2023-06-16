@@ -72,6 +72,7 @@ class HelperController extends Controller
 			->leftJoin('event_translation', 'event_translation.event_id = event.id');
     	
     	$query->where([
+    		Yii::$app->params['frontendType'] => true,
     		'published' => true,
     		'hidden' => false,
     		'approved' => true,

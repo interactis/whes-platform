@@ -44,8 +44,15 @@ if ($user->isAdmin()) {
 }
 
 $viewUrl = false;
-if (!$model->isNewRecord && $model->content->published && !$model->content->archive)
-	$viewUrl = Yii::$app->params['frontendUrl'] .'poi/'. $model->slug;
+if (!$model->isNewRecord && $contentModel->published && !$contentModel->archive)
+{
+	$viewUrl = Yii::$app->params['frontendUrl'];
+	
+	if ($contentModel->edu && !$contentModel->visitor)
+		$viewUrl = Yii::$app->params['eduUrl'];
+	
+	$viewUrl .= 'poi/'. $model->slug;
+}
 ?>
 
 <div class="poi-form">

@@ -31,8 +31,15 @@ if ($user->isAdmin()) {
 }
 
 $viewUrl = false;
-if (!$model->isNewRecord && $model->content->published && !$model->content->archive)
-	$viewUrl = Yii::$app->params['frontendUrl'] .'article/'. $model->slug;
+if (!$model->isNewRecord && $contentModel->published && !$contentModel->archive)
+{
+	$viewUrl = Yii::$app->params['frontendUrl'];
+	
+	if ($contentModel->edu && !$contentModel->visitor)
+		$viewUrl = Yii::$app->params['eduUrl'];
+	
+	$viewUrl .= 'article/'. $model->slug;
+}
 ?>
 
 <div class="article-form">

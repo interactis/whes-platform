@@ -407,7 +407,12 @@ class Content extends \yii\db\ActiveRecord
     		])
     		->where(['in', 'content_tag.tag_id', $this->tagIds])
     		->andWhere(['!=', 'content_tag.content_id', $this->id])
-    		->andWhere(['published' => true, 'approved' => true, 'hidden' => false]);
+    		->andWhere([
+    			'published' => true,
+    			'approved' => true,
+    			'hidden' => false,
+    			Yii::$app->params['frontendType'] => true
+    		]);
     	
     	$query->leftJoin('article', 'article.content_id = content.id')
 			->leftJoin('poi', 'poi.content_id = content.id')

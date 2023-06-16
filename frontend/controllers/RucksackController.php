@@ -57,7 +57,12 @@ class RucksackController extends HelperController
     		])
     		->where(['in', 'content_tag.tag_id', $tagIds])
     		->andWhere(['not in', 'content_tag.content_id', $excludeIds])
-    		->andWhere(['published' => true, 'approved' => true, 'hidden' => false]);
+    		->andWhere([
+    			'published' => true,
+    			'approved' => true,
+    			'hidden' => false,
+    			Yii::$app->params['frontendType'] => true
+    		]);
     	
     	$query->leftJoin('article', 'article.content_id = content.id')
 			->leftJoin('poi', 'poi.content_id = content.id')

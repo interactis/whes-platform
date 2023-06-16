@@ -347,7 +347,12 @@ class Route extends HelperModel
     		])
     		->where(['in', 'content_tag.tag_id', $this->tagIds])
     		->andWhere(['!=', 'content_tag.content_id', $this->id])
-    		->andWhere(['published' => true, 'hidden' => false]);
+    		->andWhere([
+    			'published' => true,
+    			'approved' => true,
+    			'hidden' => false,
+    			Yii::$app->params['frontendType'] => true
+    		]);
     	
     	if ($includeHeritage)
     		$query = $query->andWhere(['heritage_id' => $this->heritage_id]);

@@ -11,17 +11,20 @@ use yii\helpers\Html;
 					<?= $this->render('_svg/logo.php', ['inverted' => true]) ?>
 				</a>
 			</div>
-			<div class="col-lg-8 partners">
-				<a href="<?= Yii::t('app', 'https://www.myswitzerland.com/en-ch/destinations/attractions/unseco-world-heritage-sites/') ?>" class="img-link" target="_blank">
-					<img class="switzerland-tourism" src="/img/layout/logos/switzerland-tourism/<?= Yii::$app->language ?>.png">
-				</a>
-				<a href="<?= Yii::t('app', 'https://www.stnet.ch/de/swisstainable/') ?>" class="spacer" target="_blank">
-					<img class="swisstainable" src="/img/layout/logos/swisstainable.png">
-				</a>
-				<a href="<?= Yii::t('app', 'https://www.mystsnet.com/en/') ?>" target="_blank">
-					<img class="swiss-travel-system" src="/img/layout/logos/swiss-travel-system/<?= Yii::$app->language ?>.png">
-				</a>
-			</div>
+			
+			<?php if (Yii::$app->params['frontendType'] == 'visitor'): ?>
+				<div class="col-lg-8 partners">
+					<a href="<?= Yii::t('app', 'https://www.myswitzerland.com/en-ch/destinations/attractions/unseco-world-heritage-sites/') ?>" class="img-link" target="_blank">
+						<img class="switzerland-tourism" src="/img/layout/logos/switzerland-tourism/<?= Yii::$app->language ?>.png">
+					</a>
+					<a href="<?= Yii::t('app', 'https://www.stnet.ch/de/swisstainable/') ?>" class="spacer" target="_blank">
+						<img class="swisstainable" src="/img/layout/logos/swisstainable.png">
+					</a>
+					<a href="<?= Yii::t('app', 'https://www.mystsnet.com/en/') ?>" target="_blank">
+						<img class="swiss-travel-system" src="/img/layout/logos/swiss-travel-system/<?= Yii::$app->language ?>.png">
+					</a>
+				</div>
+			<?php endif; ?>
 		</div>
 
 		<div class="row closing-row">
@@ -35,7 +38,12 @@ use yii\helpers\Html;
 			<div class="col-md-9 small">
 				<?= Html::a(Yii::t('app', 'About us'), Yii::t('app', '/article/world-heritage-experience-switzerland-whes')) ?> &middot; 
 				<?= Html::a(Yii::t('app', 'Media'), Yii::t('app', '/article/media-corner')) ?> &middot; 
-				<?= Html::a('Trade', Yii::t('app', '/article/trade-corner')) ?> &middot; 
+				
+				<?php
+				if (Yii::$app->params['frontendType'] == 'visitor')
+					echo Html::a('Trade', Yii::t('app', '/article/trade-corner')) .'&middot;';
+				?>
+				
 				<?= Html::a('Impressum', '/impressum') ?> &middot; 
 				<?= Html::a(ucfirst(Yii::t('app', 'privacy policy')), Yii::t('app', '/privacy')) ?> &middot;
 				<?= Html::a(Yii::t('app', 'Contact'), Yii::t('app', '/contact')) ?>

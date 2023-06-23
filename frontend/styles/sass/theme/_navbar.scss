@@ -220,6 +220,13 @@
 			width: 390px;
 			padding: 18px;
 		}
+		
+		&.edu .nav-item {
+			&.active {
+				border-bottom: 4px solid $intangible;
+			}
+		}
+			
 	}
 	
 	@include media-breakpoint-up(xl) {

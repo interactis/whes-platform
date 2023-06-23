@@ -47,12 +47,13 @@
 		
 		background: $gray-light-bg;
 		.h4 {
-			color: $primary;
+			@include colors;
 		}
 		
 		.handle {
 			width: 14px;
 			margin: 12px 0 0 0;
+			@include colors;
 		}
 		
 		.h4 {

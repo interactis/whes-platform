@@ -13,9 +13,13 @@ $langLinks = [
 
 $rucksackIds = Yii::$app->helpers->getRucksackIds();
 $rucksackCount = count($rucksackIds);
+
+$iconPath = '_svg/visitor/';
+if (Yii::$app->params['frontendType'] == 'edu')
+	$iconPath = '_svg/edu/';
 ?>
 
-<nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+<nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light <?= Yii::$app->params['frontendType'] ?>">
 	
 	<a class="brand" href="/">
 		<?= $this->render('_svg/logo.php') ?>
@@ -27,7 +31,7 @@ $rucksackCount = count($rucksackIds);
 	
 	<a class="collection hide-desktop fade-in" href="/rucksack" title="<?= Yii::t('app', 'My Collection') ?>">
 		<div class="rucksack">
-			<?= $this->render('_svg/rucksack.php') ?>
+			<?= $this->render($iconPath .'rucksack.php') ?>
 			<span id="rucksack-count" class="rucksack-count badge badge-pill badge-primary <?= ($rucksackCount > 0 ? '' : 'hidden') ?>"><?= $rucksackCount ?></span>
 		</div>
 	</a>
@@ -59,13 +63,13 @@ $rucksackCount = count($rucksackIds);
 		<ul class="navbar-nav navbar-nav-left mr-auto">
 			<li class="nav-item <?= (($this->context->id == 'site' && $this->context->action->id == 'index') ? 'active' : '') ?>">
 				<a class="nav-link" href="/">
-					<?= $this->render('_svg/discover.php') ?>
+					<?= $this->render($iconPath .'discover.php') ?>
 					<?= Yii::t('app', 'Discover') ?>
 				</a>
 			</li>
 			<li class="nav-item dropdown <?= (($this->context->id == 'heritage') ? 'active' : '') ?>">
 				<a class="nav-link dropdown-toggle" href="#" id="heritageDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					<?= $this->render('_svg/heritage.php') ?>
+					<?= $this->render($iconPath .'heritage.php') ?>
 					<?= Yii::t('app', 'Our Heritage') ?>
 				</a>
 				<ul class="dropdown-menu heritage-dropdown" aria-labelledby="heritageDropdown">
@@ -117,7 +121,7 @@ $rucksackCount = count($rucksackIds);
 			
 			<li class="nav-item dropdown <?= (($this->context->id == 'search') ? 'active' : '') ?>">
 				<a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					<?= $this->render('_svg/search.php') ?>
+					<?= $this->render($iconPath .'search.php') ?>
 					<?= Yii::t('app', 'Search') ?>
 				</a>
 				<div class="dropdown-menu dropdown-menu-right search-dropdown-menu" aria-labelledby="searchDropdown">
@@ -127,7 +131,7 @@ $rucksackCount = count($rucksackIds);
 			<li class="nav-item <?= (($this->context->id == 'rucksack') ? 'active' : '') ?>">
 				<a class="nav-link" href="/rucksack">
 					<div class="rucksack">
-						<?= $this->render('_svg/rucksack.php') ?>
+						<?= $this->render($iconPath .'rucksack.php') ?>
 						<span class="rucksack-count badge badge-pill badge-primary hide-mobile <?= ($rucksackCount > 0 ? '' : 'hidden') ?>"><?= $rucksackCount ?></span>
 					</div>
 					<?= Yii::t('app', 'My Collection') ?>

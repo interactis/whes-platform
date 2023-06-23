@@ -1,3 +1,21 @@
+@mixin backgrounds {
+	background-color: $primary;
+	
+	&.edu,
+	.edu & {
+		background-color: $intangible;
+	}
+}
+
+@mixin colors {
+	color: $primary;
+	
+	&.edu,
+	.edu & {
+		color: $intangible;
+	}
+}
+
 @mixin centerer {
 	position: absolute;
 	top: 50%;

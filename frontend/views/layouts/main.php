@@ -29,7 +29,7 @@ AppAsset::register($this);
 
 <?= $this->render('_nav') ?>
 
-<div class="page">
+<div class="page <?= Yii::$app->params['frontendType'] ?>">
 	<?= $content ?>
 </div>
 

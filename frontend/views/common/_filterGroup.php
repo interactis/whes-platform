@@ -37,7 +37,7 @@ foreach ($model->activeFlags as $flag)
 				<div class="collapse-title collapse-title-sm collapsed" data-toggle="collapse" data-target="#<?= $groupId ?>" aria-expanded="false" aria-controls="<?= $groupId ?>">
 					<div class="row title-content">
 						<div class="col-lg-12">
-							<svg class="handle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34.42 58.95"><g data-name="Layer 2"><path fill="none" stroke="#A60100" stroke-miterlimit="10" stroke-width="7" d="M2.48 2.48l27 27-27 27" /></g></svg>
+							<svg class="handle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34.42 58.95"><g data-name="Layer 2"><path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="7" d="M2.48 2.48l27 27-27 27" /></g></svg>
 							<div class="h4">
 								<?= $model->title ?>
 								<?php /*

@@ -9,8 +9,12 @@
 	font-size: 0.75rem;
 	
 	&.btn-primary {
-		background: $primary;
+		@include backgrounds;
 		border: 2px $primary solid;
+		
+		.edu & {
+			border: 2px $intangible solid;
+		}
 	}
 	
 	&.btn-secondary {
@@ -32,7 +36,7 @@
 	&.btn-outline-primary:active,
 	&.btn-outline-primary:focus
 	 {
-		background: $primary;
+		@include backgrounds;
 		color: white !important;
 	}
 	

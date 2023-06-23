@@ -1,7 +1,7 @@
 .card {
 	border: none;
 	.card-header {
-		background: $primary;
+		@include backgrounds;
 		border: none;
 		padding-top: 20px;
 		padding-bottom: 20px;
@@ -168,7 +168,7 @@
 			display: inline-block;
 			width: 28px;
 			height: 28px;
-			background: $primary;
+			@include backgrounds;
 			color: white;
 			border-radius: 50%;
 			font-size: 1.1rem;

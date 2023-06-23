@@ -10524,6 +10524,22 @@ h4, .h4 {
   line-height: 1.1;
   font-weight: 300;
   color: #A60100; }
+  h1.edu,
+  .edu h1, .h1.edu,
+  .edu .h1,
+  h2.edu,
+  .edu
+  h2, .h2.edu,
+  .edu .h2,
+  h3.edu,
+  .edu
+  h3, .h3.edu,
+  .edu .h3,
+  h4.edu,
+  .edu
+  h4, .h4.edu,
+  .edu .h4 {
+    color: #1172C9; }
   h1 a:hover,
   h1 a:active, .h1 a:hover,
   .h1 a:active,
@@ -10596,6 +10612,12 @@ a:link,
 a:visited {
   color: #A60100;
   text-decoration: none; }
+  a:link.edu,
+  .edu a:link,
+  a:visited.edu,
+  .edu
+  a:visited {
+    color: #1172C9; }
 
 a:hover,
 a:active {
@@ -10603,6 +10625,12 @@ a:active {
   text-decoration: underline;
   -webkit-transition: 0.2s;
   transition: 0.2s; }
+  a:hover.edu,
+  .edu a:hover,
+  a:active.edu,
+  .edu
+  a:active {
+    color: #1172C9; }
 
 dl,
 .carousel-caption,
@@ -10709,6 +10737,8 @@ body {
             box-shadow: 2px 2px 6px 5px rgba(0, 0, 0, 0.4); }
   .action-btn.active svg .circle {
     stroke: #A60100; }
+    .edu .action-btn.active svg .circle {
+      stroke: #1172C9; }
 
 .youtube-iframe,
 .vimeo-iframe {
@@ -11009,7 +11039,9 @@ body {
         display: none; }
       .navbar .search-dropdown-menu {
         width: 390px;
-        padding: 18px; } }
+        padding: 18px; }
+      .navbar.edu .nav-item.active {
+        border-bottom: 4px solid #1172C9; } }
   @media (min-width: 1200px) {
     .navbar .brand {
       width: 260px; } }
@@ -11259,9 +11291,16 @@ body {
     background: #f9f9f9; }
     .collapse-title.collapse-title-sm .h4 {
       color: #A60100; }
+      .collapse-title.collapse-title-sm .h4.edu,
+      .edu .collapse-title.collapse-title-sm .h4 {
+        color: #1172C9; }
     .collapse-title.collapse-title-sm .handle {
       width: 14px;
-      margin: 12px 0 0 0; }
+      margin: 12px 0 0 0;
+      color: #A60100; }
+      .collapse-title.collapse-title-sm .handle.edu,
+      .edu .collapse-title.collapse-title-sm .handle {
+        color: #1172C9; }
     .collapse-title.collapse-title-sm .h4 {
       margin: 10px 0 0 31px; }
     @media (min-width: 576px) {
@@ -11338,8 +11377,13 @@ body {
   font-weight: 300;
   font-size: 0.75rem; }
   .btn.btn-primary {
-    background: #A60100;
+    background-color: #A60100;
     border: 2px #A60100 solid; }
+    .btn.btn-primary.edu,
+    .edu .btn.btn-primary {
+      background-color: #1172C9; }
+    .edu .btn.btn-primary {
+      border: 2px #1172C9 solid; }
   .btn.btn-secondary {
     background: #333333;
     border: 2px #333333 solid; }
@@ -11351,8 +11395,13 @@ body {
   .btn:hover {
     opacity: 0.8; }
   .btn.btn-outline-primary:hover, .btn.btn-outline-primary:active, .btn.btn-outline-primary:focus {
-    background: #A60100;
+    background-color: #A60100;
     color: white !important; }
+    .btn.btn-outline-primary:hover.edu,
+    .edu .btn.btn-outline-primary:hover, .btn.btn-outline-primary:active.edu,
+    .edu .btn.btn-outline-primary:active, .btn.btn-outline-primary:focus.edu,
+    .edu .btn.btn-outline-primary:focus {
+      background-color: #1172C9; }
   .btn:active {
     background: #707070 !important;
     border-color: #707070 !important;
@@ -11390,11 +11439,14 @@ body {
 .card {
   border: none; }
   .card .card-header {
-    background: #A60100;
+    background-color: #A60100;
     border: none;
     padding-top: 20px;
     padding-bottom: 20px;
     text-align: center; }
+    .card .card-header.edu,
+    .edu .card .card-header {
+      background-color: #1172C9; }
     .card .card-header .h4 {
       color: white; }
     .card .card-header a {
@@ -11499,11 +11551,14 @@ body {
   display: inline-block;
   width: 28px;
   height: 28px;
-  background: #A60100;
+  background-color: #A60100;
   color: white;
   border-radius: 50%;
   font-size: 1.1rem;
   top: 3px; }
+  .trip-card .h3 .counter.edu,
+  .edu .trip-card .h3 .counter {
+    background-color: #1172C9; }
   .trip-card .h3 .counter .count {
     position: absolute;
     top: 50%;
@@ -11590,6 +11645,9 @@ body {
 
 .breadcrumb > .active {
   color: #A60100; }
+  .breadcrumb > .active.edu,
+  .edu .breadcrumb > .active {
+    color: #1172C9; }
 
 .input-group {
   position: relative; }

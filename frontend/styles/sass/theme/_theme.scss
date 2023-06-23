@@ -86,6 +86,10 @@ body {
 	&.active {
 		svg .circle {
 			stroke: $primary;
+			
+			.edu & {
+				stroke: $intangible;
+			}
 		}
 	}
 }

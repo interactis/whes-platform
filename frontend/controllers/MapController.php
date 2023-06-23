@@ -75,7 +75,9 @@ class MapController extends HelperController
 			->joinWith('content')
        		->where([
        			$type .'.id' => $id,
-       			'hidden' => false
+       			Yii::$app->params['frontendType'] => true,
+       			'hidden' => false,
+       			'archive' => false
        		])
        		->andWhere(['not', ['geom' => null]])
         	->one();

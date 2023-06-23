@@ -23,9 +23,9 @@ class PoiController extends ApiController
         ];
     }
     
-    public function actionList()
+    public function actionList($frontend)
     {
-		$this->encodeResponse($this->_getPois());
+		$this->encodeResponse($this->_getPois($frontend));
     }
   	
   	public function actionView($id)
@@ -48,12 +48,15 @@ class PoiController extends ApiController
         $this->encodeResponse($response);
     }
     
-    private function _getPois()
+    private function _getPois($frontend)
     {   
     	$response = [
     		'type' => 'FeatureCollection',
     		'features' => []
     	];
+    	
+    	if ($frontend != 'edu')
+    		$frontend = 'visitor'; // default
     	
     	$pois = Poi::find()
         	->joinWith('content')
@@ -62,7 +65,8 @@ class PoiController extends ApiController
        			'published' => true,
        			'approved' => true,
        			'hidden' => false,
-       			'archive' => false
+       			'archive' => false,
+       			$frontend => true
        		])
         	->all();
         

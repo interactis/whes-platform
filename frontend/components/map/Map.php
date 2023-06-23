@@ -10,6 +10,7 @@ class Map extends Widget
 {
 	public $initialItem;
 	public $translations;
+	public $frontend;
 
     private $_assetBundle;
 
@@ -23,7 +24,8 @@ class Map extends Widget
     {
         return $this->render('view', [
         	'initialItem' => $this->initialItem,
-        	'translations' => $this->translations
+        	'translations' => $this->translations,
+        	'frontend' => $this->frontend,
         ]);
     }
 	

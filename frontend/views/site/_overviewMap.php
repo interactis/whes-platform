@@ -20,8 +20,10 @@ use common\models\Heritage;
 		<?php endforeach; ?>
 	</div>
 	
-	<a href="/map" title="<?= Yii::t('app', 'Show map') ?>">
-		<i class="fa fa-map-marker"></i> 
-		<?= Yii::t('app', 'Show map') ?>
-	</a>
+	<?php if (Yii::$app->params['frontendType'] == 'visitor'): ?>
+		<a href="/map" title="<?= Yii::t('app', 'Show map') ?>">
+			<i class="fa fa-map-marker"></i> 
+			<?= Yii::t('app', 'Show map') ?>
+		</a>
+	<?php endif; ?>
 </div>

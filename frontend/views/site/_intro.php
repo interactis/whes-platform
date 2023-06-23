@@ -11,5 +11,8 @@
 			</div>
 		</div>
 	</div>
-	<?= $this->render('_overviewMap') ?>
+	<?php
+	if (Yii::$app->params['frontendType'] == 'visitor')
+		echo $this->render('_overviewMap');
+	?>
 </div>

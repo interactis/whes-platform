@@ -23,12 +23,13 @@
 
 | Parameter    |Type     |Description                     |              |
 |--------------|:-------:|:------------------------------:|:------------:|
+| frontend     |string   |`visitor` or `edu`              |Required      |
 | lang         |string   |Language code (de, fr, it, en)  |Optional      |
 
 ### Example Request
 
 ```
-curl https://api.ourheritage.ch/v1/poi/list?lang=de
+curl https://api.ourheritage.ch/v1/poi/list?frontend=visitor&lang=de
 ```
 
 ### Example Response
@@ -109,12 +110,13 @@ curl https://api.ourheritage.ch/v1/poi/17?lang=de
 
 | Parameter    |Type     |Description                                                   |              |
 |--------------|:-------:|:------------------------------------------------------------:|:------------:|
+| frontend     |string   |`visitor` or `edu`                                            |Required      |
 | type         |string   |"general" (e.g. Grand Tours) or "detail" (heritage routes)    |Required      |
 
 ### Example Request
 
 ```
-curl https://api.ourheritage.ch/v1/route/list?type=detail
+curl https://api.ourheritage.ch/v1/route/list?frontend=visitor&type=detail
 ```
 
 ### Example Response

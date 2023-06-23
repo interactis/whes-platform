@@ -23,13 +23,13 @@ class RouteController extends ApiController
         ];
     }
     
-    public function actionList($type)
+    public function actionList($type, $frontend)
     {
     	$general = false;
     	if ($type == "general")
     		$general = true;
     			
-		$this->encodeResponse($this->_getRoutes($general));
+		$this->encodeResponse($this->_getRoutes($general, $frontend));
     }
   	
   	public function actionView($id)
@@ -52,12 +52,15 @@ class RouteController extends ApiController
         $this->encodeResponse($response);
     }
     
-    private function _getRoutes($general)
+    private function _getRoutes($general, $frontend)
     {   
     	$response = [
     		'type' => 'FeatureCollection',
     		'features' => []
     	];
+    	
+    	if ($frontend != 'edu')
+    		$frontend = 'visitor'; // default
     	
     	$routes = Route::find()
         	->joinWith('content')
@@ -67,7 +70,8 @@ class RouteController extends ApiController
        			'approved' => true,
        			'hidden' => false,
        			'archive' => false,
-       			'general' => $general
+       			'general' => $general,
+       			$frontend => true
        		])
         	->all();
         

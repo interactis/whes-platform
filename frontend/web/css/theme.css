@@ -11746,8 +11746,8 @@ body {
     width: 25px;
     height: 25px;
     border-radius: 50%; }
-    .overview-map .poi:hover,
-    .heritage-map .poi:hover {
+    .overview-map .poia:hover,
+    .heritage-map .poia:hover {
       cursor: pointer; }
     .overview-map .poi:before,
     .heritage-map .poi:before {

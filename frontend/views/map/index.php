@@ -7,6 +7,7 @@ $this->title = Yii::t('app', 'Map');
 <div class="map-view">
 	<?= Map::widget([
 		'initialItem' => $initialItem,
-		'translations' => $translations
+		'translations' => $translations,
+		'frontend' => Yii::$app->params['frontendType']
 	]) ?>
 </div>

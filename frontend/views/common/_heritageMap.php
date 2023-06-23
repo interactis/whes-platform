@@ -26,18 +26,28 @@ switch ($model->tableName()) {
 <?php if ($url): ?>
 	<div class="margin-bottom-md text-center">
 		
-		<div class="heritage-map">
-			<a href="<?= $url ?>" title="<?= Yii::t('app', 'Show map') ?>">
-				<img src="/img/layout/map.svg" class="map-img" alt="<?= Yii::t('app', 'Map') ?>">
-			</a>
-			<?php if ($heritage): ?>
-				<a class="poi poi-type-<?= $heritage->type ?>" href="<?= $url ?>" title="<?= Yii::t('app', 'Show map') ?>" style="top:<?= $heritage->map_position_y ?>%; left: <?= $heritage->map_position_x ?>%;"></a>
-			<?php endif; ?>
-		</div>
+		<?php if (Yii::$app->params['frontendType'] == 'visitor'): ?>
+			<div class="heritage-map">
+				<a href="<?= $url ?>" title="<?= Yii::t('app', 'Show map') ?>">
+					<img src="/img/layout/map.svg" class="map-img" alt="<?= Yii::t('app', 'Map') ?>">
+				</a>
+				<?php if ($heritage): ?>
+					<a class="poi poi-type-<?= $heritage->type ?>" href="<?= $url ?>" title="<?= Yii::t('app', 'Show map') ?>" style="top:<?= $heritage->map_position_y ?>%; left: <?= $heritage->map_position_x ?>%;"></a>
+				<?php endif; ?>
+			</div>
 		
-		<a href="<?= $url ?>" title="<?= Yii::t('app', 'Show map') ?>">
-			<i class="fa fa-map-marker"></i> 
-			<?= Yii::t('app', 'Show map') ?>
-		</a>
+			<a href="<?= $url ?>" title="<?= Yii::t('app', 'Show map') ?>">
+				<i class="fa fa-map-marker"></i> 
+				<?= Yii::t('app', 'Show map') ?>
+			</a>
+		<?php else: ?>
+			<div class="heritage-map">
+				<img src="/img/layout/map.svg" class="map-img" alt="<?= Yii::t('app', 'Map') ?>">
+				<?php if ($heritage): ?>
+					<span class="poi poi-type-<?= $heritage->type ?>" style="top:<?= $heritage->map_position_y ?>%; left: <?= $heritage->map_position_x ?>%;"></span>
+				<?php endif; ?>
+			</div>
+		
+		<?php endif; ?>
 	</div>
 <?php endif; ?>

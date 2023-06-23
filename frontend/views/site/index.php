@@ -12,6 +12,13 @@ $this->title = Yii::t('app', 'Our Heritage');
 	
 	<?= $this->render('/common/_filter', ['content' => $content, 'filters' => $filters]) ?>
 	
-	<?= $this->render('_instaFeed') ?>
-    
+	<?php
+	if (Yii::$app->params['frontendType'] == 'visitor')
+	{
+		echo $this->render('_instaFeed');
+	}
+	else
+		echo $this->render('_overviewMap');
+	?>
+	
 </div>

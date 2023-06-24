@@ -10539,7 +10539,7 @@ h4, .h4 {
   .edu
   h4, .h4.edu,
   .edu .h4 {
-    color: #1172C9; }
+    color: #105B9F; }
   h1 a:hover,
   h1 a:active, .h1 a:hover,
   .h1 a:active,
@@ -10617,7 +10617,7 @@ a:visited {
   a:visited.edu,
   .edu
   a:visited {
-    color: #1172C9; }
+    color: #105B9F; }
 
 a:hover,
 a:active {
@@ -10630,7 +10630,7 @@ a:active {
   a:active.edu,
   .edu
   a:active {
-    color: #1172C9; }
+    color: #105B9F; }
 
 dl,
 .carousel-caption,
@@ -10738,7 +10738,7 @@ body {
   .action-btn.active svg .circle {
     stroke: #A60100; }
     .edu .action-btn.active svg .circle {
-      stroke: #1172C9; }
+      stroke: #105B9F; }
 
 .youtube-iframe,
 .vimeo-iframe {
@@ -11041,7 +11041,7 @@ body {
         width: 390px;
         padding: 18px; }
       .navbar.edu .nav-item.active {
-        border-bottom: 4px solid #1172C9; } }
+        border-bottom: 4px solid #105B9F; } }
   @media (min-width: 1200px) {
     .navbar .brand {
       width: 260px; } }
@@ -11293,14 +11293,14 @@ body {
       color: #A60100; }
       .collapse-title.collapse-title-sm .h4.edu,
       .edu .collapse-title.collapse-title-sm .h4 {
-        color: #1172C9; }
+        color: #105B9F; }
     .collapse-title.collapse-title-sm .handle {
       width: 14px;
       margin: 12px 0 0 0;
       color: #A60100; }
       .collapse-title.collapse-title-sm .handle.edu,
       .edu .collapse-title.collapse-title-sm .handle {
-        color: #1172C9; }
+        color: #105B9F; }
     .collapse-title.collapse-title-sm .h4 {
       margin: 10px 0 0 31px; }
     @media (min-width: 576px) {
@@ -11381,9 +11381,9 @@ body {
     border: 2px #A60100 solid; }
     .btn.btn-primary.edu,
     .edu .btn.btn-primary {
-      background-color: #1172C9; }
+      background-color: #105B9F; }
     .edu .btn.btn-primary {
-      border: 2px #1172C9 solid; }
+      border: 2px #105B9F solid; }
   .btn.btn-secondary {
     background: #333333;
     border: 2px #333333 solid; }
@@ -11401,7 +11401,7 @@ body {
     .edu .btn.btn-outline-primary:hover, .btn.btn-outline-primary:active.edu,
     .edu .btn.btn-outline-primary:active, .btn.btn-outline-primary:focus.edu,
     .edu .btn.btn-outline-primary:focus {
-      background-color: #1172C9; }
+      background-color: #105B9F; }
   .btn:active {
     background: #707070 !important;
     border-color: #707070 !important;
@@ -11446,7 +11446,7 @@ body {
     text-align: center; }
     .card .card-header.edu,
     .edu .card .card-header {
-      background-color: #1172C9; }
+      background-color: #105B9F; }
     .card .card-header .h4 {
       color: white; }
     .card .card-header a {
@@ -11558,7 +11558,7 @@ body {
   top: 3px; }
   .trip-card .h3 .counter.edu,
   .edu .trip-card .h3 .counter {
-    background-color: #1172C9; }
+    background-color: #105B9F; }
   .trip-card .h3 .counter .count {
     position: absolute;
     top: 50%;
@@ -11647,7 +11647,7 @@ body {
   color: #A60100; }
   .breadcrumb > .active.edu,
   .edu .breadcrumb > .active {
-    color: #1172C9; }
+    color: #105B9F; }
 
 .input-group {
   position: relative; }
@@ -11825,10 +11825,10 @@ body {
               animation: pulse-ring 1.25s cubic-bezier(0.215, 0.61, 0.355, 1) infinite; }
     .overview-map .poi.poi-type-2,
     .heritage-map .poi.poi-type-2 {
-      background: #1172C9; }
+      background: #105B9F; }
       .overview-map .poi.poi-type-2:before,
       .heritage-map .poi.poi-type-2:before {
-        background-color: #1172C9; }
+        background-color: #105B9F; }
     .overview-map .poi.poi-type-3,
     .heritage-map .poi.poi-type-3 {
       background: #558136; }

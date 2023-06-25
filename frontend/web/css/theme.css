@@ -11014,6 +11014,8 @@ body {
           -webkit-transform: rotate(-90deg);
                   transform: rotate(-90deg);
           margin-top: -3px; }
+      .navbar .dropdown-item:active {
+        background: #F2F2F2 !important; }
       .navbar .nav-item.lang-dropdown {
         padding-top: 40px;
         vertical-align: bottom; }
@@ -11124,6 +11126,9 @@ body {
           margin-left: 10px; }
       .navbar .search-dropdown-menu {
         margin-bottom: 24px; } }
+  @media (max-width: 991.98px) {
+    .navbar.edu .nav-item .subdropdown-toggle {
+      color: #105B9F !important; } }
 
 .carousel .img-container {
   position: relative; }
@@ -11794,6 +11799,8 @@ body {
     transition: background 0.17s; }
     .ol-control button:hover {
       opacity: 1; }
+  .edu .ol-control button {
+    background-color: #105B9F !important; }
   @media (max-width: 991.98px) {
     .ol-control {
       display: none; } }

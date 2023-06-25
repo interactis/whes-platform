@@ -51,7 +51,7 @@
 			cursor: pointer;
 		}
 		&.active {
-			color: white !important;	
+			color: white !important;
 		}
 	}
 	
@@ -175,6 +175,12 @@
 					transform: rotate(-90deg);
 					margin-top:-3px;
 				}
+			}
+		}
+		
+		.dropdown-item {
+			&:active {
+				background: $gray-lighter !important;
 			}
 		}
 	
@@ -343,6 +349,14 @@
 		
 		.search-dropdown-menu {
 			margin-bottom: 24px;
+		}
+	}
+	
+	&.edu {
+		@include media-breakpoint-down(md) {
+			.nav-item .subdropdown-toggle {
+				color: $intangible !important;
+			}
 		}
 	}
 }

@@ -31,6 +31,12 @@
 		}
 	}
 	
+	.edu & {
+		button {
+			background-color: $intangible !important;
+		}
+	}
+	
 	@include media-breakpoint-down(md) {
 		display: none;
 	}

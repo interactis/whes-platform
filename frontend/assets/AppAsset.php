@@ -10,15 +10,15 @@ use yii\web\AssetBundle;
 class AppAsset extends AssetBundle
 {
     public $basePath = '@webroot';
-    //public $baseUrl = 'https://ourheritage.ch/';
-    public $baseUrl = 'http://whes.local:8888/';
+    public $baseUrl = 'https://ourheritage.ch/';
+    //public $baseUrl = 'http://whes.local:8888/';
     public $css = [
         'css/theme.min.css?v=1.4',
     ];
     public $js = [
-    	'js/map.js?v=1.4',
+    	'js/map.js?v=1.5',
     	'js/popper.min.js',
-    	'js/theme.js?v=1.4',
+    	'js/theme.js?v=1.5',
     ];
     public $depends = [
         'yii\web\YiiAsset'

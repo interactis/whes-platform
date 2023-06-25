@@ -162,11 +162,9 @@ class HelperController extends Controller
     }
     
     private function _getFilteredContentIds($groups)
-    {
-    	$contentIds = [];
-    	
-    	//groups AND not implemented yet
-		
+    {	
+    	//groups OR
+        $contentIds = [];
 		if (isset($groups['or']))
 		{
 			foreach ($groups['or'] as $group)
@@ -194,8 +192,10 @@ class HelperController extends Controller
 			}
 		}
 		
+		//groups AND
 		if (isset($groups['and']))
 		{
+			$filterSet = false;
 			foreach ($groups['and'] as $group)
 			{
 				$filterCount = 0;
@@ -214,10 +214,24 @@ class HelperController extends Controller
 					$filterCount = $filterCount + count($flagIds);
 				}
 			
-				if ($filterCount > 1)
+				if ($filterSet)
+				{
 					$groupContentIds = $this->_filterIds($filterCount, $groupContentIds);
-			
-				$contentIds = array_merge($contentIds, $groupContentIds);
+					$allContentIds = array_merge($groupContentIds, $contentIds);
+					$counts = array_count_values($allContentIds);
+					
+					$contentIds = [];
+					foreach ($counts as $id => $count)
+					{
+						if ($count > 1)
+							array_push($contentIds, $id);
+					}
+				}
+				else
+				{
+					$filterSet = true;
+					$contentIds = $groupContentIds;
+				}
 			}
 		}
 		

@@ -13,12 +13,12 @@ class AppAsset extends AssetBundle
     //public $baseUrl = 'https://ourheritage.ch/';
     public $baseUrl = 'http://whes.local:8888/';
     public $css = [
-        'css/theme.min.css?v=1.3',
+        'css/theme.min.css?v=1.4',
     ];
     public $js = [
-    	'js/map.js?v=1.3',
+    	'js/map.js?v=1.4',
     	'js/popper.min.js',
-    	'js/theme.js?v=1.3',
+    	'js/theme.js?v=1.4',
     ];
     public $depends = [
         'yii\web\YiiAsset'

@@ -333,39 +333,4 @@ class Route extends HelperModel
     	//$geom = GeoJsonHelper::toGeometry('LineString', $coordinates, '21781');
         $this->geom = $coordinates;
     }
-    
-    private function _relatedContentQuery($includeHeritage = true, $excludeHeritage = false, $limit = 'default')
-    {
-    	if ($limit == 'default')
-    		$limit = $this->_relatedContentLimit;
-    	
-    	$query = ContentTag::find()
-    		->joinWith('content')
-			->select([
-        		'content_tag.content_id',
-        		'COUNT(content_tag.id) AS tag_count' // required for orderBy below
-    		])
-    		->where(['in', 'content_tag.tag_id', $this->tagIds])
-    		->andWhere(['!=', 'content_tag.content_id', $this->id])
-    		->andWhere([
-    			'published' => true,
-    			'approved' => true,
-    			'hidden' => false,
-    			Yii::$app->params['frontendType'] => true
-    		]);
-    	
-    	if ($includeHeritage)
-    		$query = $query->andWhere(['heritage_id' => $this->heritage_id]);
-    	
-    	if ($excludeHeritage)
-    		$query = $query->andWhere(['!=', 'heritage_id', $this->heritage_id]);
-    		
-    	$query = $query->groupBy('content_tag.content_id')
-    		->orderBy(['tag_count' => SORT_DESC])
-    		->limit(9)
-    		->all();
-    	
-    	
-    	return $query;
-    }
 }

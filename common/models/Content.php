@@ -225,7 +225,7 @@ class Content extends \yii\db\ActiveRecord
      */
     public function getParentContents()
     {
-        return $this->hasMany(ChildContent::className(), ['child_content_id' => 'id']);
+        return $this->hasMany(ChildContent::className(), ['child_content_id' => 'id']);    	
     }
     
     public function getActiveParentContents($type = false)
@@ -236,13 +236,23 @@ class Content extends \yii\db\ActiveRecord
         	$content = $parentContent->parentContent;
         	if ($content->isActive)
         	{
+        		$show = true;
+        		if ($content->type == self::TYPE_EVENT)
+        		{
+        			if (strtotime($content->event->to) < time())
+        				$show = false;
+        		}
+        		
         		if ($type)
         		{
-        			if (Content::TYPE_IDS[$type] == $content->type)
+        			if (Content::TYPE_IDS[$type] == $content->type && $show)
         				$contents[] = $content;
         		}
         		else
-        			$contents[] = $content;
+        		{
+        			if ($show)
+        				$contents[] = $content;
+        		}
         	}
         }
         
@@ -441,6 +451,11 @@ class Content extends \yii\db\ActiveRecord
 				['>', 'LENGTH(event_translation.title)', 0]
 			]
 		]);
+		
+		$query->andFilterWhere(['or', 
+    		['>=', 'event.to', date('Y.m.d')],
+    		['!=', 'content.type', Content::TYPE_EVENT],
+    	]);
     	
     	if ($includeHeritage)
     		$query = $query->andWhere(['heritage_id' => $this->heritage_id]);

@@ -4,7 +4,7 @@ use common\models\Heritage;
 
 <div class="overview-map-container text-center container margin-bottom-lg">
 	<div class="overview-map">
-		<img class="map-img" src="/img/layout/map.svg" alt="<?= Yii::t('app', 'Map') ?>">
+		<img class="map-img" src="<?= Yii::$app->params['frontendUrl'] ?>img/layout/map.svg" alt="<?= Yii::t('app', 'Map') ?>">
 	
 		<?php
 		foreach(Heritage::getActiveHeritages() as $model): ?>	

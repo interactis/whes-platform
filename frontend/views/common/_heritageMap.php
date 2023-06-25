@@ -42,7 +42,7 @@ switch ($model->tableName()) {
 			</a>
 		<?php else: ?>
 			<div class="heritage-map">
-				<img src="/img/layout/map.svg" class="map-img" alt="<?= Yii::t('app', 'Map') ?>">
+				<img src="<?= Yii::$app->params['frontendUrl'] ?>img/layout/map.svg" class="map-img" alt="<?= Yii::t('app', 'Map') ?>">
 				<?php if ($heritage): ?>
 					<span class="poi poi-type-<?= $heritage->type ?>" style="top:<?= $heritage->map_position_y ?>%; left: <?= $heritage->map_position_x ?>%;"></span>
 				<?php endif; ?>

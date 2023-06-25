@@ -27,10 +27,20 @@
     }
     &::after {
 		border: 2px $primary solid !important;
-    	background-image: url('/img/layout/checked.svg') !important;
+    	background-image: url('/img/layout/visitor/checked.svg') !important;
     	background-repeat: no-repeat;
     	background-position: center;
     	background-size: 14px;
+    }
+    
+    .edu & {
+    	&::before {
+			border: 2px $intangible solid !important;
+		}
+		&::after {
+			border: 2px $intangible solid !important;
+			background-image: url('/img/layout/edu/checked.svg') !important;
+		}
     }
 }
 
@@ -38,6 +48,14 @@
 	&.active {
 		.custom-control-label {
 			color: $primary !important;
+		}
+	}
+	
+	.edu & {
+		&.active {
+			.custom-control-label {
+				color: $intangible !important;
+			}
 		}
 	}
 	

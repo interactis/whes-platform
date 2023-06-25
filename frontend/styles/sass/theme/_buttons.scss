@@ -26,6 +26,10 @@
 		border: 2px $primary solid !important;
 		color: $primary !important;
 		transition: all 0.17s;
+		
+		.edu & {
+			border: 2px $intangible solid !important;
+		}
 	}
 	
 	&:hover {
@@ -80,6 +84,10 @@
 			opacity: 1;
 			background: $white !important;
 			color: $secondary !important;
+		}
+		
+		.edu & {
+			color: $intangible !important;
 		}
 	}
 }

@@ -34,6 +34,6 @@
 		  })();
 		</script>
 		<!-- End Matomo Code -->
-	<?php endif;>
+	<?php endif; ?>
 	
 <?php endif; ?>

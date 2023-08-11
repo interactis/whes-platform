@@ -2,6 +2,8 @@
 return [
 	"Our Heritage" => "Notre Patrimoine",
 	"Discover" => "Découvrez",
+	"Visit" => "Visiter",
+	"Learn" => "Apprendre",
 	"Heritage" => "Patrimoine mondial",
 	"Search" => "Recherche",
 	"My Collection" => "Ma collection",
@@ -102,4 +104,9 @@ return [
 	"/article/media-corner" => "/article/coin-des-medias",
 	"/article/trade-corner" => "/article/trade-corner",
 	"/article/world-heritage-experience-switzerland-whes" => "/article/world-heritage-experience-switzerland-whes",
+	
+	"Email" => "E-mail",
+	"First Name" => "Prénom",
+	"Last Name" => "Nom de famille",
+	"Subscribe" => "S'inscrire"
 ];

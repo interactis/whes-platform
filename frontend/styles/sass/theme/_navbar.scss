@@ -145,19 +145,19 @@
 		.brand {
 			@include centerer;
 			margin-top: 0;
-			width: 230px;
+			width: 190px;
 		}
 	
 		.navbar-nav-left {
 			padding-top: 0;
 			.nav-item {
-				margin-right: 24px;
+				margin-right: 3px;
 			}
 		}
 	
 		.navbar-nav-right {
 			.nav-item {
-				margin-left: 24px;
+				margin-left: 3px;
 			}
 		}
 		
@@ -219,6 +219,10 @@
 			height: 40px;
 			margin: 0 auto;
 			text-align: center;
+			
+			&#learn-icon {
+				padding: 2px;
+			}
 		}
 		
 		.lang-mobile-dropdown {
@@ -241,6 +245,19 @@
 	@include media-breakpoint-up(xl) {
 		.brand {
 			width: 260px;
+		}
+		
+		.navbar-nav-left {
+			padding-top: 0;
+			.nav-item {
+				margin-right: 24px;
+			}
+		}
+	
+		.navbar-nav-right {
+			.nav-item {
+				margin-left: 24px;
+			}
 		}
 	}
 	

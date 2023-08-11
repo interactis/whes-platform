@@ -101,7 +101,20 @@ if (Yii::$app->params['frontendType'] == 'edu')
                         </ul>
                     </li>
 				</ul>
-			</li>					
+			</li>
+			<li class="nav-item">
+				<?php if (Yii::$app->params['frontendType'] == 'edu'): ?>
+					<a class="nav-link" href="<?= Yii::$app->params['frontendUrl'] ?>">
+						<?= $this->render($iconPath .'visit.php') ?>
+						<?= Yii::t('app', 'Visit') ?>
+					</a>
+				<?php else: ?>
+					<a class="nav-link" href="<?= Yii::$app->params['eduUrl'] ?>">
+						<?= $this->render($iconPath .'learn.php') ?>
+						<?= Yii::t('app', 'Learn') ?>
+					</a>
+				<?php endif; ?>
+			</li>			
 		</ul>
 		
 		<ul class="navbar-nav navbar-nav-right">

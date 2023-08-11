@@ -10770,6 +10770,12 @@ body {
   #footer .logo {
     width: 200px;
     margin-bottom: 60px; }
+  #footer .h2,
+  #footer .control-label {
+    color: #D9D8D7; }
+  #footer div.mce_inline_error {
+    background: #A60100 !important;
+    font-weight: normal !important; }
   #footer a:link,
   #footer a:visited {
     color: white;
@@ -10800,27 +10806,19 @@ body {
       padding-top: 60px; }
       #footer .logo {
         width: 260px; } }
-  @media (min-width: 768px) {
-    #footer .social-links {
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      margin-bottom: 0;
-      text-align: right; }
-      #footer .social-links a {
-        margin: 0 6px 0 0; } }
   @media (min-width: 992px) {
     #footer .partners {
-      margin-bottom: 74px;
-      text-align: right; }
-      #footer .partners .spacer {
-        margin: 0 36px; }
-      #footer .partners .switzerland-tourism {
-        height: 48px; }
-      #footer .partners .swisstainable {
-        height: 50px; }
-      #footer .partners .swiss-travel-system {
-        height: 60px; } }
+      margin-bottom: 0;
+      text-align: right; } }
+  @media (min-width: 1200px) {
+    #footer .partners .spacer {
+      margin: 0 36px; }
+    #footer .partners .switzerland-tourism {
+      height: 48px; }
+    #footer .partners .swisstainable {
+      height: 50px; }
+    #footer .partners .swiss-travel-system {
+      height: 60px; } }
 
 #cookie-info {
   position: fixed;
@@ -10992,13 +10990,13 @@ body {
         -webkit-transform: translate(-50%, -50%);
                 transform: translate(-50%, -50%);
         margin-top: 0;
-        width: 230px; }
+        width: 190px; }
       .navbar .navbar-nav-left {
         padding-top: 0; }
         .navbar .navbar-nav-left .nav-item {
-          margin-right: 24px; }
+          margin-right: 3px; }
       .navbar .navbar-nav-right .nav-item {
-        margin-left: 24px; }
+        margin-left: 3px; }
       .navbar .dropdown-submenu {
         position: relative; }
         .navbar .dropdown-submenu .dropdown-menu {
@@ -11039,6 +11037,8 @@ body {
         height: 40px;
         margin: 0 auto;
         text-align: center; }
+        .navbar .icon#learn-icon {
+          padding: 2px; }
       .navbar .lang-mobile-dropdown {
         display: none; }
       .navbar .search-dropdown-menu {
@@ -11048,7 +11048,13 @@ body {
         border-bottom: 4px solid #105B9F; } }
   @media (min-width: 1200px) {
     .navbar .brand {
-      width: 260px; } }
+      width: 260px; }
+    .navbar .navbar-nav-left {
+      padding-top: 0; }
+      .navbar .navbar-nav-left .nav-item {
+        margin-right: 24px; }
+    .navbar .navbar-nav-right .nav-item {
+      margin-left: 24px; } }
   @media (max-width: 991.98px) {
     .navbar {
       opacity: 0.98;

@@ -73,13 +73,18 @@ $('.reset-filter').click(function(e) {
 var maxShow = 18;
 var nextOffset = maxShow;
 var updateContentRequest = null;
+var loadMoreRequest = null;
 
 var updateContent = function() {
 	
-	// abort existing request
+	// abort existing requests
 	if (updateContentRequest != null) {
 		updateContentRequest.abort();
 		updateContentRequest = null;
+	}
+	if (loadMoreRequest != null) {
+		loadMoreRequest.abort();
+		loadMoreRequest = null;
 	}
 	
 	var filterSet = false;
@@ -129,9 +134,20 @@ $(document).on('click', '.load-more-btn', function(e) {
 });
 
 var loadMore = function() {
+	
+	// abort existing requests
+	if (updateContentRequest != null) {
+		updateContentRequest.abort();
+		updateContentRequest = null;
+	}
+	if (loadMoreRequest != null) {
+		loadMoreRequest.abort();
+		loadMoreRequest = null;
+	}
+	
 	$(".load-more").hide();
 	
-	$.ajax({
+	loadMoreRequest = $.ajax({
 		url: moreUrl + nextOffset,
 		beforeSend: function() {
 			// $('.filter-ajax-loader').show();

@@ -10904,7 +10904,10 @@ body {
     padding-left: 0; }
   .navbar .icon {
     width: 30px;
+    max-height: 40px;
     margin-right: 18px; }
+    .navbar .icon#learn-icon {
+      padding: 2px; }
   .navbar a:not(.btn) {
     text-decoration: none;
     color: #333333 !important; }
@@ -11037,8 +11040,6 @@ body {
         height: 40px;
         margin: 0 auto;
         text-align: center; }
-        .navbar .icon#learn-icon {
-          padding: 2px; }
       .navbar .lang-mobile-dropdown {
         display: none; }
       .navbar .search-dropdown-menu {

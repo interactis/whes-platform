@@ -1,5 +1,17 @@
 <?php
 $lang = Yii::$app->language;
+
+$tagIds = [
+	'bildung' => 7411240,
+	'tourismus_de' => 7420520,
+	'tourismus_en' => 7420524,
+	'tourismus_fr' => 7420528,
+	'tourismus_it' => 7420532
+];
+
+$tagId = $tagIds['bildung'];
+if (Yii::$app->params['frontendType'] == 'visitor')
+	$tagId = $tagIds['tourismus_'. $lang];
 ?>
 
 <div id="mc_embed_shell" class="margin-bottom-lg">
@@ -38,7 +50,7 @@ $lang = Yii::$app->language;
 					</div>
 					
 					<div hidden="">
-						<input type="hidden" name="tags" value="7411240">
+						<input type="hidden" name="tags" value="<?= $tagId ?>">
 					</div>
 				
 					<div id="mce-responses" class="clear foot">

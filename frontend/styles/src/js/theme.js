@@ -72,8 +72,16 @@ $('.reset-filter').click(function(e) {
 
 var maxShow = 18;
 var nextOffset = maxShow;
+var updateContentRequest = null;
 
 var updateContent = function() {
+	
+	// abort existing request
+	if (updateContentRequest != null) {
+		updateContentRequest.abort();
+		updateContentRequest = null;
+	}
+	
 	var filterSet = false;
 	var params = [];
 	$('.filter-checkbox').each(function() {
@@ -98,7 +106,7 @@ var updateContent = function() {
 	
 	$(".load-more").hide();
 			
-	$.ajax({
+	updateContentRequest = $.ajax({
 		url: updateUrl +'&filters='+ params.join(),
 		beforeSend: function() {
 			// $('.filter-ajax-loader').show();

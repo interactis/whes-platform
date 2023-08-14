@@ -16,7 +16,9 @@ $this->params['breadcrumbs'][] = $this->title;
 		'content' => $content,
 		'heritageId' => $model->id,
 		'filters' => $filters,
-		'heritageFilters' => $heritageFilters
+		'heritageFilters' => $heritageFilters,
+		'totalContent' => $totalContent,
+		'showMoreBtn' => $showMoreBtn
 	]) ?>
 	
 </div>

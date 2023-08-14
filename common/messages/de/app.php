@@ -28,6 +28,7 @@ return [
 	"{count} results found." => "{count} Resultate gefunden.",
 	"Search term" => "Suchbegriff",
 	"Please select other filters." => "Bitte andere Filter wählen.",
+	"Show more" => "Mehr anzeigen",
 	
 	"Map" => "Karte",
 	"Show map" => "Karte anzeigen",

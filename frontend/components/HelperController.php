@@ -143,6 +143,22 @@ class HelperController extends Controller
     	return $this->findContent($heritageId, $featured, false, $limit, $offset, $contentIds);
     }
     
+    public function totalContent($filters, $heritageId = false, $featured = true)
+    {
+    	$models = $this->findFilterContent($filters, $heritageId, $featured, false);
+		return count($models);
+    }
+    
+    public function showMoreBtn($totalContent, $offset = 0)
+    {
+    	if ($totalContent > (Yii::$app->params['showMaxContent'] + $offset))
+    	{
+    		return true;
+    	}
+    	else
+    		return false;
+    }
+    
     public function getFilterCookie($explode = false)
     {
     	$cookies = Yii::$app->request->cookies;

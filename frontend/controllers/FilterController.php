@@ -15,10 +15,36 @@ class FilterController extends HelperController
     	$this->_setGlobalFilters($filters, $heritageId);
     	
     	return $this->render('/common/_previews', [
-            'models' => $this->findFilterContent($filters, $heritageId, $featured, $limit, $offset)
+            'models' => $this->findFilterContent(
+            	$filters,
+            	$heritageId,
+            	$featured,
+            	$limit,
+            	$offset
+            ),
+            'totalContent' => $this->totalContent($filters, $heritageId, $featured)
         ], false, true);
     }
     
+    public function actionLoadMore($heritageId, $featured, $offset)
+    {
+    	$this->layout = false;
+    	$filters = $this->getFilterCookie();
+    	
+    	if (is_numeric($offset))
+    	{
+			return $this->render('/common/_previews', [
+				'models' => $this->findFilterContent(
+					$filters,
+					$heritageId,
+					$featured,
+					Yii::$app->params['showMaxContent'],
+					$offset
+				)
+			], false, true);
+		}
+    }
+	
     private function _setGlobalFilters($filters, $heritageId)
     {
     	$globalFilters = $filters;

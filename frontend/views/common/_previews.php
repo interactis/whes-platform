@@ -1,6 +1,9 @@
 <?php
 if (!isset($isFilter))
 	$isFilter = true;
+	
+if (isset($totalContent))
+	echo '<div id="total-filter-content" class="hidden">'. $totalContent .'</div>';
 ?>
 
 <?php if ($isFilter): ?>

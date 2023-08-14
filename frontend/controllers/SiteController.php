@@ -40,11 +40,15 @@ class SiteController extends HelperController
     	else
     		$model = $this->_findPage(1);
     	
+    	$totalContent = $this->totalContent($filters);
+    	
         return $this->render('index', [
     		'model' => $model,
     		'media' => $this->_randomMedia(),
     		'content' => $this->findFilterContent($filters), 
-    		'filters' => $filtersArray
+    		'filters' => $filtersArray,
+    		'totalContent' => $totalContent,
+    		'showMoreBtn' => $this->showMoreBtn($totalContent)
     	]);
     }
 	

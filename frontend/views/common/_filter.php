@@ -3,9 +3,18 @@ use common\models\FlagGroup;
 
 $filterGroups = FlagGroup::getActiveFlagGroups(Yii::$app->params['frontendType']);
 
-$js = "var updateUrl = '/filter/content?heritageId=0&featured=1&limit=default&offset=0';";
+$js = "
+	var updateUrl = '/filter/content?heritageId=0&featured=1&limit=default&offset=0';
+	var moreUrl = '/filter/load-more?heritageId=0&featured=1&offset=';
+";
+
 if (isset($heritageId))
-	$js = "var updateUrl = '/filter/content?heritageId=". $heritageId ."&featured=0&limit=default&offset=0';";
+{
+	$js = "
+		var updateUrl = '/filter/content?heritageId=". $heritageId ."&featured=0&limit=default&offset=0';
+		var moreUrl = '/filter/load-more?heritageId=". $heritageId ."&featured=0&offset=';
+	";
+}
 
 $this->registerJs($js, $this::POS_HEAD);
 $filterSet = false;
@@ -52,8 +61,14 @@ if (!isset($heritageFilters))
          	</div>
          	
          	<div id="info">
-           		<?= $this->render('_previews', ['models' => $content]) ?>
+           		<?= $this->render('_previews', ['models' => $content, 'totalContent' => $totalContent]) ?>
            	</div>
+           	
+          
+          	<div class="load-more <?= ($showMoreBtn ? '' : 'hidden') ?>">
+				<a href="#" class="btn btn-primary load-more-btn margin-bottom-xl"><?= Yii::t('app', 'Show more') ?></a>
+           	</div>
+           	
          </div>
 	</div>
 </div>

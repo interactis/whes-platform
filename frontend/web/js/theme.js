@@ -4503,6 +4503,9 @@ $('.reset-filter').click(function(e) {
 	updateContent();
 });
 
+var maxShow = 18;
+var nextOffset = maxShow;
+
 var updateContent = function() {
 	var filterSet = false;
 	var params = [];
@@ -4525,6 +4528,8 @@ var updateContent = function() {
 	else {
 		$('.reset-filter-container').hide();
 	}
+	
+	$(".load-more").hide();
 			
 	$.ajax({
 		url: updateUrl +'&filters='+ params.join(),
@@ -4533,6 +4538,37 @@ var updateContent = function() {
 		},
 		success: function(data) {
 			$('#info').html(data);
+			nextOffset = maxShow; // reset
+			var totalContent = $('#total-filter-content').text();
+			
+			if (totalContent > nextOffset) {
+				$(".load-more").show();
+			}
+		}
+	});
+}
+
+$(document).on('click', '.load-more-btn', function(e) {
+	e.preventDefault();
+	loadMore();
+});
+
+var loadMore = function() {
+	$(".load-more").hide();
+	
+	$.ajax({
+		url: moreUrl + nextOffset,
+		beforeSend: function() {
+			// $('.filter-ajax-loader').show();
+		},
+		success: function(data) {
+			$('#info').append(data);
+			nextOffset = nextOffset + maxShow
+			var totalContent = $('#total-filter-content').text();
+			
+			if (totalContent > nextOffset) {
+				$(".load-more").show();
+			}
 		}
 	});
 }

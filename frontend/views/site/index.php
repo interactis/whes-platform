@@ -14,7 +14,12 @@ $this->title = Yii::t('app', 'Our Heritage');
 		<div class="spacer"></div>
 	<?php endif; ?>
 	
-	<?= $this->render('/common/_filter', ['content' => $content, 'filters' => $filters]) ?>
+	<?= $this->render('/common/_filter', [
+		'content' => $content,
+		'filters' => $filters,
+		'totalContent' => $totalContent,
+		'showMoreBtn' => $showMoreBtn
+	]) ?>
 	
 	<?php
 	if (Yii::$app->params['frontendType'] == 'visitor')

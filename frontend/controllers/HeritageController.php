@@ -20,11 +20,16 @@ class HeritageController extends HelperController
     	$heritageFilters = $this->getHeritageFilters($model);
     	$heritageFiltersSet = $this->_getHeritageFiltersSet($globalFiltersSet, $heritageFilters);
     	
+    	$filters = implode(',', $heritageFiltersSet);
+    	$totalContent = $this->totalContent($filters, $model->id, false);
+    	
     	return $this->render('view', [
     		'model' => $model,
-    		'content' => $this->findFilterContent(implode(',', $heritageFiltersSet), $model->id, false),
+    		'content' => $this->findFilterContent($filters, $model->id, false),
     		'filters' => $heritageFiltersSet,
-    		'heritageFilters' => $heritageFilters
+    		'heritageFilters' => $heritageFilters,
+    		'totalContent' => $totalContent,
+    		'showMoreBtn' => $this->showMoreBtn($totalContent)
     	]);
     }
     

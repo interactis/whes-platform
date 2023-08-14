@@ -106,7 +106,7 @@ return [
 	"/article/world-heritage-experience-switzerland-whes" => "/articolo/world-heritage-experience-switzerland-whes",
 	
 	"Email" => "E-mail",
-	"First Name" => "Nome di battesimo",
+	"First Name" => "Nome",
 	"Last Name" => "Cognome",
 	"Subscribe" => "Iscriviti"
 ];

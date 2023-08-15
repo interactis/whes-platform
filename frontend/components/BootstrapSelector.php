@@ -12,12 +12,15 @@ class BootstrapSelector implements BootstrapInterface
     {
        	$this->_setFrontendType($app);
        	
+       	/*
        	if ($app->params['frontendType'] == 'edu')
        	{
        		$this->_setLanguage($app, 'de');
        	}
     	else
     		$this->_setLanguage($app);
+    	*/
+    	$this->_setLanguage($app);
     }
     
     private function _setFrontendType($app)

@@ -47,18 +47,16 @@ if (Yii::$app->params['frontendType'] == 'edu')
 
 	<div class="collapse navbar-collapse" id="main-nav">
 		
-		<?php if (Yii::$app->params['frontendType'] == 'visitor'): ?>
-			<div class="dropdown lang-mobile-dropdown">
-				<a class="nav-link dropdown-toggle" href="#" id="langMobileDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					<?= $currentLang ?>
-				</a>
-				<div class="dropdown-menu language-mobile-dropdown-menu" aria-labelledby="langMobileDropdown">
-					<?php foreach($langLinks as $link)
-						echo $link;
-					?>
-				</div>
+		<div class="dropdown lang-mobile-dropdown">
+			<a class="nav-link dropdown-toggle" href="#" id="langMobileDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				<?= $currentLang ?>
+			</a>
+			<div class="dropdown-menu language-mobile-dropdown-menu" aria-labelledby="langMobileDropdown">
+				<?php foreach($langLinks as $link)
+					echo $link;
+				?>
 			</div>
-		<?php endif; ?>
+		</div>
 		
 		<ul class="navbar-nav navbar-nav-left mr-auto">
 			<li class="nav-item <?= (($this->context->id == 'site' && $this->context->action->id == 'index') ? 'active' : '') ?>">
@@ -119,18 +117,16 @@ if (Yii::$app->params['frontendType'] == 'edu')
 		
 		<ul class="navbar-nav navbar-nav-right">
 			
-			<?php if (Yii::$app->params['frontendType'] == 'visitor'): ?>
-				<li class="nav-item dropdown lang-dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						<?= $currentLang ?>
-					</a>
-					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="langDropdown">
-						<?php foreach($langLinks as $link)
-							echo $link;
-						?>
-					</div>
-				</li>
-			<?php endif; ?>
+			<li class="nav-item dropdown lang-dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<?= $currentLang ?>
+				</a>
+				<div class="dropdown-menu dropdown-menu-right" aria-labelledby="langDropdown">
+					<?php foreach($langLinks as $link)
+						echo $link;
+					?>
+				</div>
+			</li>
 			
 			<li class="nav-item dropdown <?= (($this->context->id == 'search') ? 'active' : '') ?>">
 				<a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

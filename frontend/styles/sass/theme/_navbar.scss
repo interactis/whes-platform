@@ -239,6 +239,12 @@
 			&.active {
 				border-bottom: 4px solid $intangible;
 			}
+			
+			&.lang-dropdown {
+				.dropdown-item.active {
+					background: $intangible;
+				}
+			}
 		}
 			
 	}
@@ -378,6 +384,12 @@
 			.nav-item .subdropdown-toggle {
 				color: $intangible !important;
 			}
+			
+			.language-mobile-dropdown-menu {
+				.dropdown-item.active {
+					background: $intangible !important;
+				}
+			}	
 		}
 	}
 }

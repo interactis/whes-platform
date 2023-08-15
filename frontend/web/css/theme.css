@@ -11046,7 +11046,9 @@ body {
         width: 390px;
         padding: 18px; }
       .navbar.edu .nav-item.active {
-        border-bottom: 4px solid #105B9F; } }
+        border-bottom: 4px solid #105B9F; }
+      .navbar.edu .nav-item.lang-dropdown .dropdown-item.active {
+        background: #105B9F; } }
   @media (min-width: 1200px) {
     .navbar .brand {
       width: 260px; }
@@ -11137,7 +11139,9 @@ body {
         margin-bottom: 24px; } }
   @media (max-width: 991.98px) {
     .navbar.edu .nav-item .subdropdown-toggle {
-      color: #105B9F !important; } }
+      color: #105B9F !important; }
+    .navbar.edu .language-mobile-dropdown-menu .dropdown-item.active {
+      background: #105B9F !important; } }
 
 .carousel .img-container {
   position: relative; }

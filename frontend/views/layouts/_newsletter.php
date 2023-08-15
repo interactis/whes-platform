@@ -2,16 +2,22 @@
 $lang = Yii::$app->language;
 
 $tagIds = [
-	'bildung' => 7411240,
+	'bildung_de' => 7411240,
+	'bildung_en' => 7420892,
+	'bildung_fr' => 7420884,
+	'bildung_it' => 7420888,
 	'tourismus_de' => 7420520,
 	'tourismus_en' => 7420524,
 	'tourismus_fr' => 7420528,
 	'tourismus_it' => 7420532
 ];
 
-$tagId = $tagIds['bildung'];
+$tagId = '';
 if (Yii::$app->params['frontendType'] == 'visitor')
 	$tagId = $tagIds['tourismus_'. $lang];
+
+if (Yii::$app->params['frontendType'] == 'edu')
+	$tagId = $tagIds['bildung_'. $lang];
 ?>
 
 <div id="mc_embed_shell" class="margin-bottom-lg">

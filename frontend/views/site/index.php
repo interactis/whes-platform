@@ -22,11 +22,7 @@ $this->title = Yii::t('app', 'Our Heritage');
 	]) ?>
 	
 	<?php
-	if (Yii::$app->params['frontendType'] == 'visitor')
-	{
-		echo $this->render('_instaFeed');
-	}
-	else
+	if (Yii::$app->params['frontendType'] == 'edu')
 	{
 		echo $this->render('_overviewMap');
 		echo '<div class="spacer">&nbsp;</div>';

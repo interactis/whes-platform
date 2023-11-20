@@ -36,7 +36,7 @@ class HeritageController extends ApiController
     	if (!$model) 
     		$this->returnError(404);
     	
-    	if (isset($_GET['fullDescriptionn']) && $_GET['fullDescriptionn'] == 1)
+    	if (isset($_GET['fullDescription']) && $_GET['fullDescription'] == 1)
 		{
     		$description = $model->description;
     	}

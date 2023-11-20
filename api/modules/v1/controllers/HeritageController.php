@@ -36,13 +36,20 @@ class HeritageController extends ApiController
     	if (!$model) 
     		$this->returnError(404);
     	
+    	if (isset($_GET['fullDescriptionn']) && $_GET['fullDescriptionn'] == 1)
+		{
+    		$description = $model->description;
+    	}
+    	else 
+    		$description = Yii::$app->helpers->shortenString($model->description);
+    	
 		$response = [
 			'id' => $model->id,
 			'type' => 'heritage',
 			'slug' => $model->slug,
 			'label' => $model->label,
 			'title' => $model->name,
-			'description' => Yii::$app->helpers->shortenString($model->description),
+			'description' => $description,
 			'img' => $model->previewImage
 		];
 		

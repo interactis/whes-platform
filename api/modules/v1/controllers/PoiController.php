@@ -77,6 +77,18 @@ class PoiController extends ApiController
        		])
         	->all();
         
+        switch ($frontend)
+        {
+			case 'edu':
+				$frontendUrl = Yii::$app->params['frontendEduUrl'];
+				break;
+			case 'edu':
+				$frontendUrl = Yii::$app->params['eduUrl'];
+				break;
+			default:
+				 $frontendUrl = Yii::$app->params['eutUrl'];
+		}
+        
     	foreach($pois as $poi)
     	{
     		$response['features'][] = [
@@ -84,7 +96,7 @@ class PoiController extends ApiController
     			'properties' => [
     				'id' => $poi->id,
     				'type' => 'poi',
-    				'marker' => Yii::$app->params['frontendUrl'] .'img/layout/poi-marker.svg',
+    				'marker' => $frontendUrl .'img/layout/poi-marker.svg',
     				'title' => $poi->title
     			],
     			'geometry' => [

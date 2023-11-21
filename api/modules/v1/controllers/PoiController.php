@@ -80,13 +80,13 @@ class PoiController extends ApiController
         switch ($frontend)
         {
 			case 'edu':
-				$frontendUrl = Yii::$app->params['frontendEduUrl'];
-				break;
-			case 'edu':
 				$frontendUrl = Yii::$app->params['eduUrl'];
 				break;
+			case 'eut':
+				$frontendUrl = Yii::$app->params['eutUrl'];
+				break;
 			default:
-				 $frontendUrl = Yii::$app->params['eutUrl'];
+				 $frontendUrl = Yii::$app->params['frontendUrl'];
 		}
         
     	foreach($pois as $poi)

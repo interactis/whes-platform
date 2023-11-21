@@ -52,11 +52,16 @@ $user = Yii::$app->user->identity;
 			'type' => 'edu'
 		]) ?>
 		
-		<?= $this->render('/common/_flagSelect', [
-			'model' => $model,
-			'contentModel' => $contentModel,
-			'type' => 'eut'
-		]) ?>
+		<?php
+		if ($user->isAdmin())
+		{
+			echo $this->render('/common/_flagSelect', [
+				'model' => $model,
+				'contentModel' => $contentModel,
+				'type' => 'eut'
+			]);
+		}
+		?>
 		
 		<?php
 		if ($showChildContent)

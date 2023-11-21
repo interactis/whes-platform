@@ -83,6 +83,13 @@ if ($user->isSuperAdmin())
 				return ($model->content->edu ? Yii::t('app', 'Yes') :  Yii::t('app', 'No'));
 			},
 			//'filter' => $boolFilter,
+		],
+		[
+			'attribute' => 'eut',
+			'value' => function ($model) {
+				return ($model->content->eut ? Yii::t('app', 'Yes') :  Yii::t('app', 'No'));
+			},
+			//'filter' => $boolFilter,
 		]
 	);
 }

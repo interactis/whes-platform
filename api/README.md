@@ -23,7 +23,7 @@
 
 | Parameter    |Type     |Description                     |              |
 |--------------|:-------:|:------------------------------:|:------------:|
-| frontend     |string   |`visitor` or `edu`              |Required      |
+| frontend     |string   |`visitor`, `edu` or `eut`       |Required      |
 | lang         |string   |Language code (de, fr, it, en)  |Optional      |
 
 ### Example Request
@@ -110,7 +110,7 @@ curl https://api.ourheritage.ch/v1/poi/17?lang=de
 
 | Parameter    |Type     |Description                                                   |              |
 |--------------|:-------:|:------------------------------------------------------------:|:------------:|
-| frontend     |string   |`visitor` or `edu`                                            |Required      |
+| frontend     |string   |`visitor`, `edu` or `eut`                                     |Required      |
 | type         |string   |"general" (e.g. Grand Tours) or "detail" (heritage routes)    |Required      |
 
 ### Example Request

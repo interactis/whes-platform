@@ -18,10 +18,12 @@ class HelperModel extends TranslationModel
     public $tags = [];
     public $visitorFlags = [];
     public $eduFlags = [];
+    public $eutFlags = [];
     public $childContentIds = [];
     
     private $_visitorFlagsSet = false;
     private $_eduFlagsSet = false;
+    private $_eutFlagsSet = false;
     
     public function getPriorities()
     {
@@ -67,11 +69,13 @@ class HelperModel extends TranslationModel
         ContentFlag::deleteAll(['content_id' => $this->content_id]);
 		$flagIds = $this->_getFlagIds([], 'visitorFlags');
 		$flagIds = $this->_getFlagIds($flagIds, 'eduFlags');
+		$flagIds = $this->_getFlagIds($flagIds, 'eutFlags');
 		Yii::$app->db->createCommand()->batchInsert('content_flag', ['content_id', 'flag_id'], $flagIds)->execute();
         
         $content = $this->content;
         $content->visitor = $this->_visitorFlagsSet;
         $content->edu = $this->_eduFlagsSet;
+        $content->eut = $this->_eutFlagsSet;
         $content->save(false);
         
         return true;

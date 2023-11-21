@@ -456,10 +456,14 @@ CREATE TABLE flag_group
 (
 id SERIAL,
 operator VARCHAR(6),
+main BOOLEAN DEFAULT false,
+visitor BOOLEAN DEFAULT false,
+edu BOOLEAN DEFAULT false,
 "order" SMALLINT,
 hidden BOOLEAN DEFAULT false,
 created_at INTEGER,
 updated_at INTEGER,
+eut BOOLEAN DEFAULT false,
 CONSTRAINT flag_group_pkey PRIMARY KEY (id)
 );
 
@@ -469,6 +473,9 @@ id SERIAL,
 flag_group_id INTEGER,
 label BOOLEAN DEFAULT false,
 operator VARCHAR(6),
+visitor BOOLEAN DEFAULT false,
+edu BOOLEAN DEFAULT false,
+eut BOOLEAN DEFAULT false,
 "order" SMALLINT,
 hidden BOOLEAN DEFAULT false,
 created_at INTEGER,
@@ -550,6 +557,9 @@ supplier_id INTEGER,
 type SMALLINT,
 priority SMALLINT,
 general BOOLEAN DEFAULT false,
+visitor BOOLEAN DEFAULT false,
+edu BOOLEAN DEFAULT false,
+eut BOOLEAN DEFAULT false,
 published BOOLEAN DEFAULT false,
 featured BOOLEAN DEFAULT false,
 hidden BOOLEAN DEFAULT false,
@@ -707,7 +717,6 @@ ALTER TABLE content ADD FOREIGN KEY (supplier_id) REFERENCES supplier (id) ON DE
 ALTER TABLE related_tag ADD FOREIGN KEY (tag_id) REFERENCES tag (id) ON DELETE CASCADE;
 
 ALTER TABLE related_tag ADD FOREIGN KEY (related_tag_id) REFERENCES tag (id) ON DELETE CASCADE;
-
 
 
 

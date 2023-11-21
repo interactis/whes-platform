@@ -66,7 +66,7 @@ class RouteController extends ApiController
     		'features' => []
     	];
     	
-    	if ($frontend != 'edu')
+    	if ($frontend != 'edu' && $frontend != 'eut')
     		$frontend = 'visitor'; // default
     	
     	$routes = Route::find()

@@ -75,6 +75,7 @@ class FlagController extends Controller
         $model->flag_group_id = $flagGroup->id;
         $model->visitor = $flagGroup->visitor;
         $model->edu = $flagGroup->edu;
+        $model->eut = $flagGroup->eut;
         $post = Yii::$app->request->post();
 		
 		if ($model->load($post))
@@ -110,6 +111,7 @@ class FlagController extends Controller
 		$flagGroup = $model->flagGroup;
 		$model->visitor = $flagGroup->visitor;
         $model->edu = $flagGroup->edu;
+        $model->eut = $flagGroup->eut;
 		$post = Yii::$app->request->post();
 		
 		if ($model->load($post))

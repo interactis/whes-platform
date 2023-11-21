@@ -100,8 +100,8 @@ class Route extends HelperModel
 			['eduFlags', 'required', 'when' => function ($model) {
 				return empty($model->visitorFlags);
 			}],
-            
-            [['childContentIds'], 'safe'],
+			
+            [['childContentIds', 'eutFlags'], 'safe'],
             
             ['difficulty', 'in', 'range' => [self::DIFFICULTY_EASY, self::DIFFICULTY_MEDIUM, self::DIFFICULTY_DIFFICULT]],
             ['geojsonFile', 'file', 'extensions' => ['geojson']],
@@ -162,6 +162,7 @@ class Route extends HelperModel
             'print_available' => Yii::t('app', 'Print Available'),
             'visitorFlags' =>  Yii::t('app', 'Visitor Filters'),
             'eduFlags' =>  Yii::t('app', 'EDU Filters'),
+            'eutFlags' =>  Yii::t('app', 'Eiger Ultra Trail Filters'),
             'childContentIds' => Yii::t('app', 'Stages (Child Routes)'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),

@@ -11,6 +11,9 @@ if (isset($contentModel->contentFlags))
 $frontendUrl = Yii::$app->params['frontendUrl'];
 if ($type == 'edu')
 	$frontendUrl = Yii::$app->params['eduUrl'];
+
+if ($type == 'eut')
+	$frontendUrl = Yii::$app->params['eutUrl'];
 ?>
 
 <div class="form-group">

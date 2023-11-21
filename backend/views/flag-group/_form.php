@@ -39,6 +39,8 @@ $translationModel = new FlagGroupTranslation();
 					
 					<?= $form->field($model, 'edu')->checkbox() ?>
 					
+					<?= $form->field($model, 'eut')->checkbox() ?>
+					
 					<?= $form->field($model, 'order')->textInput()
 						->hint(Yii::t('app', 'If necessary, use a number to sort the filter groups among themselves.')) ?>
 

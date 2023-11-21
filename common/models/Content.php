@@ -17,6 +17,7 @@ use yii\helpers\ArrayHelper;
  * @property int|null $general
  * @property bool|null $visitor
  * @property bool|null $edu
+ * @property bool|null $eut
  * @property bool|null $published
  * @property bool|null $featured
  * @property bool|null $hidden
@@ -99,7 +100,7 @@ class Content extends \yii\db\ActiveRecord
             		return true;
             }],
             
-            [['visitor', 'edu', 'published', 'general', 'featured', 'hidden', 'approved', 'edited', 'imported', 'archive'], 'boolean'],
+            [['visitor', 'edu', 'eut', 'published', 'general', 'featured', 'hidden', 'approved', 'edited', 'imported', 'archive'], 'boolean'],
             [['heritage_id'], 'exist', 'skipOnError' => true, 'targetClass' => Heritage::className(), 'targetAttribute' => ['heritage_id' => 'id']],
             [['supplier_id'], 'exist', 'skipOnError' => true, 'targetClass' => Supplier::className(), 'targetAttribute' => ['supplier_id' => 'id']],
         ];
@@ -119,6 +120,7 @@ class Content extends \yii\db\ActiveRecord
             'general' => Yii::t('app', 'General'),
             'visitor' => Yii::t('app', 'Visitor'),
             'edu' => Yii::t('app', 'EDU'),
+            'eut' => Yii::t('app', 'Eiger Ultra Trail'),
             'published' => Yii::t('app', 'Published'),
             'featured' => Yii::t('app', 'Featured'),
             'hidden' => Yii::t('app', 'Hidden'),

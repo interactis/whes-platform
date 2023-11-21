@@ -15,6 +15,7 @@ use yii\helpers\ArrayHelper;
  * @property bool|null $main
  * @property bool|null $visitor
  * @property bool|null $edu
+ * @property bool|null $eut
  * @property int|null $order
  * @property bool|null $hidden
  * @property int|null $created_at
@@ -58,7 +59,7 @@ class FlagGroup extends TranslationModel
         return [
             [['order', 'created_at', 'updated_at'], 'default', 'value' => null],
             [['order', 'created_at', 'updated_at'], 'integer'],
-            [['main', 'visitor', 'edu', 'hidden'], 'boolean'],
+            [['main', 'visitor', 'edu', 'eut', 'hidden'], 'boolean'],
             ['operator', 'string', 'max' => 6],
             ['operator', 'required']
         ];
@@ -75,6 +76,7 @@ class FlagGroup extends TranslationModel
             'main' => Yii::t('app', 'Main Flag'),
             'visitor' => Yii::t('app', 'Visitor'),
             'edu' => Yii::t('app', 'EDU'),
+            'eut' => Yii::t('app', 'Eiger Ultra Trail'),
             'order' => Yii::t('app', 'Order'),
             'hidden' => Yii::t('app', 'Hidden'),
             'created_at' => Yii::t('app', 'Created At'),
@@ -105,6 +107,7 @@ class FlagGroup extends TranslationModel
     	{
     		$flag->visitor = $this->visitor;
     		$flag->edu = $this->edu;
+    		$flag->eut = $this->eut;
     		$flag->save(false);
     	}
     	return true;

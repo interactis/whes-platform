@@ -62,7 +62,7 @@ class PoiController extends ApiController
     		'features' => []
     	];
     	
-    	if ($frontend != 'edu')
+    	if ($frontend != 'edu' && $frontend != 'eut')
     		$frontend = 'visitor'; // default
     	
     	$pois = Poi::find()

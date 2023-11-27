@@ -98,7 +98,7 @@ class RouteController extends ApiController
         	'#E25858', // red
         	'#58D7E2', // blue
         	'#E2B858', // orange
-        	'#AD73E8', // purble
+        	'#BA93E2', // purble
         ];
         
         $colorIndex = 0;

@@ -47,7 +47,7 @@ class PoiController extends ApiController
     	foreach($content->media as $media)
     	{
 			$images[] = [
-				'url' => $media->getImageUrl(1200),
+				'url' => $media->getImageUrl(600),
 				'alt' => $media->title
 			];
     	}

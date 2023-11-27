@@ -95,10 +95,14 @@ class Route extends HelperModel
             [['tags'], 'required'],
             
             ['visitorFlags', 'required', 'when' => function ($model) {
-				return empty($model->eduFlags);
+				if (empty($model->eduFlags) && empty($model->eutFlags)) {
+					return true;
+				}
 			}],
 			['eduFlags', 'required', 'when' => function ($model) {
-				return empty($model->visitorFlags);
+				if (empty($model->visitorFlags) && empty($model->eutFlags)) {
+					return true;
+				}
 			}],
 			
             [['childContentIds', 'eutFlags'], 'safe'],

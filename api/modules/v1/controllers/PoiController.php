@@ -41,7 +41,17 @@ class PoiController extends ApiController
     	}
     	else 
     		$description = Yii::$app->helpers->shortenString($model->description);
-    		
+    	
+    	$content = $model->content;
+    	$images = [];
+    	foreach($content->media as $media)
+    	{
+			$images[] = [
+				'url' => $media->getImageUrl(1200),
+				'alt' => $media->title
+			];
+    	}
+    	
 		$response = [
 			'id' => $model->id,
 			'type' => 'poi',
@@ -49,7 +59,8 @@ class PoiController extends ApiController
 			'label' => $model->label,
 			'title' => $model->title,
 			'description' => $description,
-			'img' => $model->content->previewImage
+			'img' => $content->previewImage,
+			'images' => $images
 		];
 		
         $this->encodeResponse($response);

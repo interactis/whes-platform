@@ -89,7 +89,8 @@ class RouteController extends ApiController
     			'properties' => [
     				'id' => $route->id,
     				'type' => 'route',
-    				'title' => $route->title
+    				'title' => $route->title,
+    				'color' => '#333'
     			],
     			'geometry' => [
     				'type' => 'LineString',

@@ -92,7 +92,16 @@ class RouteController extends ApiController
        			$frontend => true
        		])
         	->all();
+        	
+        $colors = [
+        	'#58E278', // green
+        	'#E25858', // red
+        	'#58D7E2', // blue
+        	'#E2B858', // orange
+        	'#AD73E8', // purble
+        ];
         
+        $colorIndex = 0;
     	foreach($routes as $route)
     	{
     		$response['features'][] = [
@@ -101,13 +110,20 @@ class RouteController extends ApiController
     				'id' => $route->id,
     				'type' => 'route',
     				'title' => $route->title,
-    				'color' => '#333'
+    				'color' => $colors[$colorIndex]
     			],
     			'geometry' => [
     				'type' => 'LineString',
     				'coordinates' => $route->geom
     			]
     		];
+    		
+    		if ($colorIndex == 4)
+    		{
+    			$colorIndex = 0;
+    		}
+    		else
+    			$colorIndex = $colorIndex+1;
     	}
     	return $response;
     }

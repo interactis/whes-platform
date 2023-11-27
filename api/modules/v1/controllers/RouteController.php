@@ -46,6 +46,16 @@ class RouteController extends ApiController
     	else 
     		$description = Yii::$app->helpers->shortenString($model->description);
     	
+    	$content = $model->content;
+    	$images = [];
+    	foreach($content->media as $media)
+    	{
+			$images[] = [
+				'url' => $media->getImageUrl(600),
+				'alt' => $media->title
+			];
+    	}
+    	
 		$response = [
 			'id' => $model->id,
 			'type' => 'route',
@@ -53,7 +63,8 @@ class RouteController extends ApiController
 			'label' => $model->label,
 			'title' => $model->title,
 			'description' => $description,
-			'img' => $model->content->previewImage
+			'img' => $model->content->previewImage,
+			'images' => $images
 		];
 		
         $this->encodeResponse($response);

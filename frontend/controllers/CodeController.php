@@ -32,16 +32,26 @@ class CodeController extends HelperController
 		return $this->_infoRedirect($model, true);
 	}
 	
-	private function _infoRedirect($model, $flash = false)
+	private function _infoRedirect($model, $collect = false)
 	{
 		$content = $model->content;
 		$type = $content->typeText;
 		$typeContent = $content->$type;
+		$trackType = 'info';
 		
-		if ($flash)
+		if ($collect)
+		{
+			$trackType = 'collect';
 			Yii::$app->session->setFlash('collected', $typeContent->title);
-			
-		return $this->redirect([$type .'/view', 'slug' => $typeContent->slug]);
+		}
+		
+		return $this->redirect([
+			$type .'/view',
+			'slug' => $typeContent->slug,
+			'trackType' => $trackType,
+			'trackName' => $model->codeGroup->title,
+			'trackValue' => '/'. $type .'/'. $typeContent->slug
+		]);
 	}
     
     private function _findCode($code)

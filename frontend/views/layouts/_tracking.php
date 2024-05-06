@@ -35,5 +35,11 @@
 		</script>
 		<!-- End Matomo Code -->
 	<?php endif; ?>
+
+	<?php if (isset($_GET["trackType"]) && isset($_GET["trackName"]) && isset($_GET["trackValue"])): ?>
+		<script>
+			_paq.push(['trackEvent', 'code', '<?= $_GET["trackType"] ?>', '<?= $_GET["trackName"] ?>', '<?= $_GET["trackValue"] ?>']);
+		</script>
+	<?php endif; ?>
 	
 <?php endif; ?>

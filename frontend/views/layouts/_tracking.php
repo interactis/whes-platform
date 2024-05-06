@@ -38,7 +38,7 @@
 
 	<?php if (isset($_GET["trackType"]) && isset($_GET["trackName"]) && isset($_GET["trackValue"])): ?>
 		<script>
-			_paq.push(['trackEvent', 'code', '<?= $_GET["trackType"] ?>', '<?= $_GET["trackName"] ?>', '<?= $_GET["trackValue"] ?>']);
+			_paq.push(['trackEvent', 'Code', '<?= $_GET["trackType"] ?>', '<?= $_GET["trackName"] ?>', '<?= $_GET["trackValue"] ?>']);
 		</script>
 	<?php endif; ?>
 	

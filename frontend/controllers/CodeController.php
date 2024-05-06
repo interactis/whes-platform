@@ -37,11 +37,11 @@ class CodeController extends HelperController
 		$content = $model->content;
 		$type = $content->typeText;
 		$typeContent = $content->$type;
-		$trackType = 'info';
+		$trackType = 'Info';
 		
 		if ($collect)
 		{
-			$trackType = 'collect';
+			$trackType = 'Collect';
 			Yii::$app->session->setFlash('collected', $typeContent->title);
 		}
 		

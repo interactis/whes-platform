@@ -423,6 +423,7 @@ class Content extends \yii\db\ActiveRecord
     			'published' => true,
     			'approved' => true,
     			'hidden' => false,
+    			'archive' => false,
     			Yii::$app->params['frontendType'] => true
     		]);
     	

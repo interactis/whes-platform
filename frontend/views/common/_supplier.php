@@ -8,7 +8,7 @@
 			<address class="margin-bottom-sm">
 				<strong><?= $supplier->name ?></strong><br />
 				<?= (!empty($supplier->name_affix) ? $supplier->name_affix .'<br />' : '') ?>
-				<?= (!empty($supplier->street) ? $supplier->street .'<br />' : '') ?>
+				<?= (!empty($supplier->street) ? $supplier->street .' '. $supplier->street_number .'<br />' : '') ?>
 				<?= (!empty($supplier->address_addition) ? $supplier->address_addition .'<br />' : '') ?>
 				<?= (!empty($supplier->zip) ? $supplier->zip .' ' : '') ?>
 				<?= (!empty($supplier->city) ? $supplier->city .'<br />' : '') ?>

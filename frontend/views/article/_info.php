@@ -37,7 +37,7 @@
 						]) ?>
 					</div>
 					<div class="downloads-container">
-						<?= $this->render('_downloads', [
+						<?= $this->render('/common/_downloads', [
 							'models' => $content->downloads
 						]) ?>
 					</div>

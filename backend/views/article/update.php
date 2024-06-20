@@ -15,8 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     
     <?= $this->render('/common/_contentNavPills', [
     	'model' => $model->content,
-    	'active' => 'info',
-    	'showDownloads' => true
+    	'active' => 'info'
     ]) ?>
 
     <?= $this->render('_form', [

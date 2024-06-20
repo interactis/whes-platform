@@ -23,6 +23,9 @@
 					<?= $this->render('/common/_remarks', ['model' => $model]) ?>
 					
 					<?= $this->render('/common/_supplier', ['model' => $content]) ?>
+					
+					<?= $this->render('/common/_downloads', ['models' => $content->downloads]) ?>
+					
 				</div>
 		   </div>
 		   <div class="col-lg-4 offset-lg-1">

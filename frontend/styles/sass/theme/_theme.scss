@@ -163,16 +163,16 @@ body {
 			margin: 0 18px;
 		}
 		
-		.switzerland-tourism {
-			height: 44px;
+		.switzerland-partner {
+			height: 26px;
 		}
 		
 		.swisstainable {
 			height: 46px;
 		}
 		
-		.swiss-travel-system {
-			height: 56px;
+		.travel-switzerland {
+			height: 14px;
 		}
 	}
 	
@@ -192,29 +192,25 @@ body {
 		}
 	}
 	
-	@include media-breakpoint-up(lg) {
+	@include media-breakpoint-up(xl) {
 		.partners {
 			margin-bottom: 0;
 			text-align: right;
-		}
-	}
-	
-	@include media-breakpoint-up(xl) {
-		.partners {
+			
 			.spacer {
 				margin: 0 36px;
 			}
 			
-			.switzerland-tourism {
-				height: 48px;
+			.switzerland-partner {
+				height: 34px;
 			}
 		
 			.swisstainable {
 				height: 50px;
 			}
 		
-			.swiss-travel-system {
-				height: 60px;
+			.travel-switzerland {
+				height: 17px;
 			}
 		}
 	}

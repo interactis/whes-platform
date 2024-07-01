@@ -10790,12 +10790,12 @@ body {
       text-decoration: none; }
     #footer .partners .spacer {
       margin: 0 18px; }
-    #footer .partners .switzerland-tourism {
-      height: 44px; }
+    #footer .partners .switzerland-partner {
+      height: 26px; }
     #footer .partners .swisstainable {
       height: 46px; }
-    #footer .partners .swiss-travel-system {
-      height: 56px; }
+    #footer .partners .travel-switzerland {
+      height: 14px; }
   #footer .social-links {
     margin-bottom: 12px;
     font-size: 1.4rem; }
@@ -10806,19 +10806,18 @@ body {
       padding-top: 60px; }
       #footer .logo {
         width: 260px; } }
-  @media (min-width: 992px) {
+  @media (min-width: 1200px) {
     #footer .partners {
       margin-bottom: 0;
-      text-align: right; } }
-  @media (min-width: 1200px) {
-    #footer .partners .spacer {
-      margin: 0 36px; }
-    #footer .partners .switzerland-tourism {
-      height: 48px; }
-    #footer .partners .swisstainable {
-      height: 50px; }
-    #footer .partners .swiss-travel-system {
-      height: 60px; } }
+      text-align: right; }
+      #footer .partners .spacer {
+        margin: 0 36px; }
+      #footer .partners .switzerland-partner {
+        height: 34px; }
+      #footer .partners .swisstainable {
+        height: 50px; }
+      #footer .partners .travel-switzerland {
+        height: 17px; } }
 
 #cookie-info {
   position: fixed;

@@ -16,20 +16,20 @@ use yii\helpers\Html;
 
 		<div class="row closing-row">
 			<?php if (Yii::$app->params['frontendType'] == 'visitor'): ?>
-				<div class="col-lg-5 order-lg-2 partners">
+				<div class="col-xl-7 order-xl-2 partners">
 					<a href="<?= Yii::t('app', 'https://www.myswitzerland.com/en-ch/destinations/attractions/unseco-world-heritage-sites/') ?>" class="img-link" target="_blank">
-						<img class="switzerland-tourism" src="/img/layout/logos/switzerland-tourism/<?= Yii::$app->language ?>.png">
+						<img class="switzerland-partner" src="/img/layout/logos/Switzerland_Partner.png">
 					</a>
 					<a href="<?= Yii::t('app', 'https://www.stnet.ch/de/swisstainable/') ?>" class="spacer" target="_blank">
 						<img class="swisstainable" src="/img/layout/logos/swisstainable.png">
 					</a>
-					<a href="<?= Yii::t('app', 'https://www.mystsnet.com/en/') ?>" target="_blank">
-						<img class="swiss-travel-system" src="/img/layout/logos/swiss-travel-system/<?= Yii::$app->language ?>.png">
+					<a href="https://www.travelswitzerland.com" target="_blank">
+						<img class="travel-switzerland" src="/img/layout/logos/Travel_Switzerland.png">
 					</a>
 				</div>
 			<?php endif; ?>
 			
-			<div class="col-lg-7 small">
+			<div class="col-xl-5 small">
 				<div class="social-links">
 					<a href="https://www.instagram.com/worldheritageswitzerland/" target="_blank" title="<?= Yii::t('app', 'Follow us on {socialMedia}', ['socialMedia' => 'Instagram']) ?>"><i class="fa fa-instagram"></i></a>
 					<a href="https://www.facebook.com/worldheritageswitzerland/" target="_blank" title="<?= Yii::t('app', 'Follow us on {socialMedia}', ['socialMedia' => 'Facebook']) ?>"><i class="fa fa-facebook-square"></i></a>

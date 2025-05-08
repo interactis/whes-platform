@@ -154,7 +154,9 @@ class PoiSearch extends Poi
         
         $query->andFilterWhere(['ilike', 'poi_translation.title', $this->title]);
         $query->andFilterWhere(['ilike', 'heritage_translation.short_name', $this->heritage]);
-        $query->andFilterWhere(['like', 'lower(tag_translation.title)', strtolower($this->tags)]);
+        
+        if ($this->tags)
+        	$query->andFilterWhere(['like', 'lower(tag_translation.title)', strtolower($this->tags)]);
 
         return $dataProvider;
     }

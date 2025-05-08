@@ -19,7 +19,8 @@ use yii\helpers\Url;
 		[
 			'attribute' => 'Heritage',
 			'value' => function ($model) {
-				return $model->heritage['short_name'];
+				if ($model->heritage)
+					return $model->heritage['short_name'];
 			}
 		],
 		[

@@ -11,6 +11,27 @@ use nanson\postgis\helpers\GeoJsonHelper;
 */
 class SwissGeometryBehavior extends GeometryBehavior
 {
+	public function afterFind()
+    {
+		if ($this->owner->{$this->attribute})
+		{
+			if (!is_object(json_decode($this->owner->{$this->attribute})))
+			{
+				if ($this->skipAfterFindPostgis)
+				{
+					return true;
+				}
+				else
+				{
+					$this->postgisToGeoJson();
+				}
+			}
+		}
+        $this->geoJsonToCoordinates();
+        $this->owner->setOldAttribute($this->attribute, $this->owner->{$this->attribute});
+        return true;
+    }
+    
 	public static function toGeometry($type, $coordinates)
 	{
 		if (!empty($coordinates))

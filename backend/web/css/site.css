@@ -177,3 +177,11 @@ h4,
 .margin-bottom-sm {
 	margin-bottom: 12px;
 }
+
+.margin-bottom-lg {
+	margin-bottom: 60px;
+}
+
+.margin-top-lg {
+	margin-top: 60px;
+}

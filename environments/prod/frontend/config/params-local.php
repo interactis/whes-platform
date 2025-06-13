@@ -1,7 +1,13 @@
 <?php
 return [
 	'enableAnalytics' => true,
-	'frontendType' => 'visitor', // default
+	'conversionPages' => [
+		'heritage' => [],
+		'poi' => [],
+		'route' => [],
+		'article' => [],
+		'event' => []
+	],
 	'frontends' => [
 		'visitor' => 'ourheritage.ch',
 		'edu' => 'edu.ourheritage.ch'

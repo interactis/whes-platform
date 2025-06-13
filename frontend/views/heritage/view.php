@@ -1,6 +1,6 @@
 <?php
-
-/* @var $this yii\web\View */
+if (in_array($model->id, Yii::$app->params['conversionPages']['heritage']))
+	Yii::$app->params['isConversionPage'] = true;
 
 $this->title = $model->short_name;
 

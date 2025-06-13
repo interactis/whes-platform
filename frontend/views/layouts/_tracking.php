@@ -16,6 +16,12 @@
 		  })();
 		</script>
 		<!-- End Matomo Code -->
+		
+		<!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11171923062"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-11171923062'); </script>
+	
+		<?php if (Yii::$app->params['isConversionPage']): ?>
+			<!-- Event snippet for Website traffic conversion page --> <script> gtag('event', 'conversion', {'send_to': 'AW-11171923062/Lcq2CPTQ3aAYEPaImM8p'}); </script>
+		<?php endif; ?>
 	<?php endif; ?>
 	
 	<?php if (Yii::$app->params['frontendType'] == 'edu'): ?>

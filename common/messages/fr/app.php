@@ -36,6 +36,9 @@ return [
 	"Display" => "Afficher",
 	"Hiking trail network" => "Réseau de sentiers de randonnée",
 	"Public transports" => "Transports publics",
+	"Perimeter of World Heritage properties" => "Périmètre des biens du Patrimoine mondial",
+	"Buffer zone of World Heritage properties" => "Zone tampon des biens du Patrimoine mondial",
+	"Perimeter of Biosphere reserves" => "Périmètre des réserves de biosphère",
 	
 	"Visitor info" => "Infos pour visiteurs",
 	"Schedule" => "Horaire",

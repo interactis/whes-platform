@@ -253,6 +253,40 @@ class Route extends HelperModel
 		return $this->_stages;
     }
     
+    public function getKeyFiguresSet()
+    {
+    	$keyFiguresSet = false;
+    	
+    	if (!empty($model->difficulty))
+    		$keyFiguresSet = true;
+    	
+    	if (!empty($model->distance_in_km))
+    		$keyFiguresSet = true;
+    		
+   		if (!empty($model->duration_in_min))
+    		$keyFiguresSet = true;
+    		
+		if (!empty($model->start_altitude))
+    		$keyFiguresSet = true;
+		
+		if (!empty($model->end_altitude))
+    		$keyFiguresSet = true;
+    	
+    	if (!empty($model->ascent))
+    		$keyFiguresSet = true;
+		
+		if (!empty($model->descent))
+    		$keyFiguresSet = true;
+    	
+    	if (!empty($model->min_altitude))
+    		$keyFiguresSet = true;
+    	
+    	if (!empty($model->max_altitude))
+    		$keyFiguresSet = true;
+		
+		return $keyFiguresSet;
+    }
+    
     public function getDifficulties($uppercase = false)
     {
     	if ($uppercase)

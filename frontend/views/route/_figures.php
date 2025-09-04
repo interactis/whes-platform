@@ -1,4 +1,4 @@
-<?php if (!empty($model->catering)): ?>
+<?php if (!empty($model->keyFiguresSet)): ?>
 	<div class="small margin-bottom-md">
 		<div class="h3 margin-bottom-sm"><?= Yii::t('app', 'Short Info') ?></div>
 		

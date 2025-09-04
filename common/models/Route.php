@@ -257,31 +257,31 @@ class Route extends HelperModel
     {
     	$keyFiguresSet = false;
     	
-    	if (!empty($model->difficulty))
+    	if (!empty($this->difficulty))
     		$keyFiguresSet = true;
     	
-    	if (!empty($model->distance_in_km))
+    	if (!empty($this->distance_in_km))
     		$keyFiguresSet = true;
     		
-   		if (!empty($model->duration_in_min))
+   		if (!empty($this->duration_in_min))
     		$keyFiguresSet = true;
     		
-		if (!empty($model->start_altitude))
+		if (!empty($this->start_altitude))
     		$keyFiguresSet = true;
 		
-		if (!empty($model->end_altitude))
+		if (!empty($this->end_altitude))
     		$keyFiguresSet = true;
     	
-    	if (!empty($model->ascent))
+    	if (!empty($this->ascent))
     		$keyFiguresSet = true;
 		
-		if (!empty($model->descent))
+		if (!empty($this->descent))
     		$keyFiguresSet = true;
     	
-    	if (!empty($model->min_altitude))
+    	if (!empty($this->min_altitude))
     		$keyFiguresSet = true;
     	
-    	if (!empty($model->max_altitude))
+    	if (!empty($this->max_altitude))
     		$keyFiguresSet = true;
 		
 		return $keyFiguresSet;

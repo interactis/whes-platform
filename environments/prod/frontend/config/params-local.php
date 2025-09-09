@@ -7,14 +7,16 @@ return [
 			'poi' => [],
 			'route' => [],
 			'article' => [],
-			'event' => []
+			'event' => [],
+			'page' => []
 		],
 		'edu' => [
 			'heritage' => [],
 			'poi' => [],
 			'route' => [],
 			'article' => [],
-			'event' => []
+			'event' => [],
+			'page' => []
 		]
 	],
 	'frontends' => [

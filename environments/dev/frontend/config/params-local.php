@@ -2,11 +2,20 @@
 return [
 	'enableAnalytics' => false,
 	'conversionPages' => [
-		'heritage' => [],
-		'poi' => [],
-		'route' => [],
-		'article' => [],
-		'event' => []
+		'visitor' => [
+			'heritage' => [],
+			'poi' => [],
+			'route' => [],
+			'article' => [],
+			'event' => []
+		],
+		'edu' => [
+			'heritage' => [],
+			'poi' => [],
+			'route' => [],
+			'article' => [],
+			'event' => []
+		]
 	],
 	'frontends' => [
 		'visitor' => 'whes.local',

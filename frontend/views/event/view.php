@@ -1,5 +1,5 @@
 <?php
-if (in_array($model->id, Yii::$app->params['conversionPages']['event']))
+if (in_array($model->id, Yii::$app->params['conversionPages'][Yii::$app->params['frontendType']]['event']))
 	Yii::$app->params['isConversionPage'] = true;
 
 $this->title = $model->title;
